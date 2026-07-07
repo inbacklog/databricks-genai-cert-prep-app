@@ -35,49 +35,19 @@ Option 2, Windows helper:
 
 The app is static. It does not require Python, Node.js, npm, a backend server, or Databricks credentials.
 
-## Upload to a public GitHub repository
+## GitHub Pages
 
-### A. Create the repository on GitHub
+This app can be hosted with GitHub Pages.
 
-1. Go to GitHub.
-2. Click **New repository**.
-3. Choose a repository name, for example `databricks-genai-cert-prep`.
-4. Set visibility to **Public**.
-5. Do not add a README from GitHub if this folder already has one.
-6. Create the repository.
+To enable it:
 
-### B. Push the files with Git
+1. Go to Settings → Pages
+2. Set Source to "Deploy from a branch"
+3. Select branch: main
+4. Select folder: /root
+5. Click Save
 
-Open Git Bash, PowerShell, or Windows Terminal inside the unzipped app folder and run:
-
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "Initial Databricks GenAI cert prep app"
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-git push -u origin main
-```
-
-Replace:
-
-```text
-YOUR_USERNAME = your GitHub username
-YOUR_REPO_NAME = your repository name
-```
-
-### C. Enable GitHub Pages
-
-1. Open the repository on GitHub.
-2. Go to **Settings**.
-3. Open **Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Choose branch **main** and folder **/root**.
-6. Save.
-7. Wait a minute or two.
-8. GitHub will show a public Pages URL.
-
-The app entry point is `index.html`, so it should work directly from GitHub Pages.
+After a few minutes, GitHub will provide a public URL for the app.
 
 ## Import private questions locally
 
