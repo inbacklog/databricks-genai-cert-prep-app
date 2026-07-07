@@ -1,0 +1,32 @@
+{
+  "questions": [
+    {
+      "id": "PRIVATE_001",
+      "origin_type": "Private local import",
+      "origin_label": "My private/manual question",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "example"
+      ],
+      "question": "Example private question?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Correct option",
+          "explanation": "Correct. Replace this template text with a concrete explanation of what this answer means and why it satisfies the scenario."
+        },
+        {
+          "id": "B",
+          "text": "Wrong option",
+          "explanation": "Incorrect. Replace this template text with a concrete explanation of what this distractor means and why it fails the scenario."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Overall explanation.",
+      "source_links": []
+    }
+  ]
+}

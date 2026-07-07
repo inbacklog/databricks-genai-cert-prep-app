@@ -1,0 +1,7 @@
+private_question_packs/
+Question.docx
+*.docx
+*.pdf
+*.zip
+.DS_Store
+__pycache__/
