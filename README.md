@@ -1,34 +1,82 @@
-# Databricks GenAI Cert Prep
+# Databricks GenAI Certification Prep App
 
-Browser-based practice app for Databricks Certified Generative AI Engineer Associate preparation.
+Browser-based practice app for the Databricks Certified Generative AI Engineer Associate exam.
 
-## Version 5.0 notes
+## v5.6 notes
 
-This version includes a stricter rewrite pass over generated-practice questions. The pass focused on replacing weak/random distractors with realistic exam-style traps, recalibrating inflated difficulty labels, and keeping per-option explanations with quick examples.
+This version performs a source/QC cleanup pass on top of v5.5.
 
-User-imported questions were intentionally left unchanged, except for normal app rendering, because they came from the user-provided file.
+- Total questions: 325
+- Origin labels: `Generated practice`, `Official guide sample`, `User imported`
+- Multi-select questions included where the scenario naturally requires more than one action
+- Answer-choice shuffling enabled
+- Study mode and strict Exam mode
+- Custom exam length
+- Previous question in Study mode
+- Mark for review, Report issue, Hide for session
+- New: `Unhide session-hidden` button
+- Performance tracking by section/tag
 
-## Question bank
+## Important content note
 
-- Total questions: 286
-- Origin labels: {'Official guide sample': 10, 'Generated practice': 185, 'User imported': 91}
-- Difficulty distribution: {'Easy': 20, 'Medium': 231, 'Hard': 35}
+This app is an unofficial study tool. It is not affiliated with Databricks.
 
-## Local use
+This package includes user-imported practice questions. If you publish this repository publicly, those questions become public too.
 
-Open `index.html` in a browser, or run `run_app.bat` on Windows.
+## Run locally
+
+Open `index.html` in a browser, or on Windows double-click:
+
+```bat
+run_app.bat
+```
+
+No backend server is required.
 
 ## GitHub Pages
 
-Deploy the repository from `main` / `/root` using GitHub Pages. After updating, open the Pages URL with a cache-buster such as `?v=50` and press Ctrl+F5.
+This static app can be hosted with GitHub Pages.
 
+Repository maintainers can enable Pages from:
 
+```text
+Settings → Pages → Deploy from a branch → main → /root
+```
 
-## v5.2 strict rewrite pass — part 2
+After deployment, open the generated GitHub Pages URL.
 
-This version continues the strict generated-question review. User-imported questions were intentionally left unchanged. Additional generated-practice questions were rewritten or recalibrated so distractors are realistic exam traps rather than random wrong choices.
+## Study workflow
 
+1. Click `Start / restart selected mode`.
+2. Use Study mode for immediate feedback.
+3. Use Exam mode for fixed/custom-length simulations.
+4. Use `Review mistakes`, `Review marked questions`, and `Review reported issues`.
+5. Check `Performance by category` to see weak areas.
+6. Verify surprising answers against the official Databricks exam guide and docs.
 
-## v5.2 update
+## Files
 
-Strict rewrite pass part 3 reviewed the remaining generated-practice bank, removed one app-meta question, cleaned remaining generic explanations, and recalibrated difficulty labels. User-imported questions were left unchanged.
+- `index.html` — browser app
+- `question_bank.json` — question data
+- `question_bank.js` — same data for static loading
+- `QC_REPORT.md` — quality-control summary
+- `private_question_pack_template.json` — optional import template
+- `assets/dbx-prep-icon.svg` — simple app icon
+- `run_app.bat` — Windows local launcher
+
+## Updating the public repo
+
+Copy/replace the files into your local repo folder, then run:
+
+```bash
+git status
+git add .
+git commit -m "Source and QC cleanup pass"
+git push
+```
+
+Then open your GitHub Pages URL with a cache buster, for example:
+
+```text
+https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=56
+```
