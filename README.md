@@ -65,9 +65,17 @@ Exam mode is intentionally strict and sequential:
 
 The app is a study aid, not a guarantee of passing. Verify important details against the latest Databricks exam guide and official docs before the exam. Databricks product names and features change, so check the guide again close to your exam date.
 
-## v4.7 logic polish
+## v4.8 logic polish
 
 - Renamed the confusing round button to **Start / restart selected mode**.
 - Fixed the custom exam restart path so changing mode or exam length starts cleanly.
 - Disabled **Hide this question** in exam mode to avoid accidental exam skipping.
 - Clarified reset controls and exam-mode behavior.
+
+
+## v4.8 UX updates
+
+- Difficulty filter now supports selecting one or more of Easy, Medium, and Hard.
+- Changing mode/filters/search no longer auto-starts or scrolls to a question.
+- Questions are hidden until the user clicks **Start / restart selected mode**.
+- Exam-result messages are tiered by score: Strong exam attempt, Almost ready, Needs targeted review, or Restart with fundamentals.

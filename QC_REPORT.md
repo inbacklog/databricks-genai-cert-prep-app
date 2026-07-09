@@ -1,4 +1,4 @@
-# QC report — v4.7
+# QC report — v4.8
 
 ## Scope
 
@@ -31,3 +31,11 @@ The app does not currently support returning to earlier exam questions during th
 ## Public note
 
 This version includes user-imported questions from `Question.docx`. Publishing this version makes those questions public.
+
+
+## v4.8 logic check
+
+- No question is rendered on initial page load.
+- Changing settings updates availability/stats but does not start a round.
+- Difficulty filtering supports multi-select values: Easy, Medium, Hard.
+- Exam mode remains sequential: answer current question, submit, auto-advance; no back/skip/revisit during the attempt.

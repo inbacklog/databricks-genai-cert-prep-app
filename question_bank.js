@@ -1,10 +1,10 @@
 window.QUESTION_BANK = {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "v4.7",
+    "version": "v4.8",
     "updated": "2026-07-09",
     "question_count": 268,
-    "notes": "Logic polish: clearer Start/restart selected mode button, custom exam restart fix, exam-mode hide disabled, and reset controls clarified.",
+    "notes": "v4.8: multi-select difficulty filter, no auto-start before clicking Start, cleaner exam-result messages.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Official Databricks documentation pages linked per question"
