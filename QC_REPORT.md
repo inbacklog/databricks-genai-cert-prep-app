@@ -1,30 +1,29 @@
-# QC Report — v4.3 user-imported
+# QC Report – v4.4
 
-## Summary
+## Scope
 
-- Total questions: **268**
-- Origin labels simplified:
-  - Official guide sample: 10
-  - Generated practice: 167
-  - User imported: 91
+- Started from v4.3.1 with user-imported questions.
+- Reviewed all user-imported questions for repeated/generic explanations.
+- Rebuilt per-option explanations so each answer explains what the option means, why it is correct/incorrect, and gives a quick example.
+- Added source/verify links to every question.
+- Added a per-session **Hide this question** action in the UI.
+- Corrected `USER_IMPORTED_085` from structured logging to MLflow tracing based on current Databricks GenAI observability/tracing practice.
 
-## Changes from v4.2
+## Counts
 
-- Replaced confusing internal labels `Quality-checked practice` and `Quality-added practice` with **Generated practice**.
-- Added questions from the uploaded Word document and labelled them **User imported**.
-- Regenerated explanations for the imported questions so each option explains why it is correct or incorrect and includes a practical example.
-- Removed non-URL source strings from source links and kept official Databricks verification links where relevant.
-- Updated browser storage keys to avoid stale cached question queues from earlier versions.
+- Total questions: 268
+- User imported questions: 91
+- Missing per-option explanations: 0
+- Duplicate per-option explanations in a question: 0
+- Options with old generic phrases: 0
+- Questions missing source/verify links: 0
 
-## Remaining note
+## UI additions
 
-The user-imported questions are included directly in the question bank in this version. If the repository is public, that content is public too.
+- Added **Hide this question for this session**. The question is removed from the active deck until the tab/session is closed.
+- Hidden count is shown in the top stats.
 
+## Notes
 
-## v4.3.1 user-imported checks
-
-- User imported questions checked: 91.
-- Missing per-option explanations: 0.
-- Missing quick examples: 0.
-- User imported questions without source/verify links before fix: 17.
-- User imported questions without source/verify links after fix: 0.
+- Some user-imported questions are retained because the user requested inclusion, but explanations now call out limitations where an option is only the best choice among the provided answers.
+- Review whether user-imported workshop content should be public before pushing this version to GitHub.
