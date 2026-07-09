@@ -1,4 +1,4 @@
-# QC report — v4.6
+# QC report — v4.7
 
 ## Scope
 
@@ -7,7 +7,7 @@
 - Generated practice: 167
 - User imported: 91
 
-## Checks retained from v4.4/v4.5
+## Content checks retained
 
 - Per-option explanations are present.
 - Every question has source/verify links.
@@ -15,13 +15,19 @@
 - Answer options shuffle per browser session.
 - Exam mode and review tools are available.
 
-## v4.6 changes
+## Logic checks reviewed
 
-- Renamed **Reset round** to **Reshuffle current round** to make the behavior clearer.
-- Added **Reset all stats** to clear mistakes, marked questions, reported issues, performance stats, saved round/exam state, and hidden-session questions.
-- Added **Exam mode — custom length** with a user-defined question count.
-- Updated README with clearer GitHub/public usage notes.
+- Changing mode or custom exam question count starts a fresh round/exam and does not trigger the old submit-first alert.
+- **Start / restart selected mode** clears only active round/exam state and session-hidden questions, not long-term performance or review stats.
+- **Reset all stats** clears mistakes, marked review, reported issues, performance stats, saved round/exam state, and session-hidden questions.
+- **Show answer** remains disabled in exam mode.
+- **Hide this question** is disabled in exam mode so the user cannot skip an exam question.
+- Exam mode is sequential: answer current question → auto-advance → no back button during the exam.
 
-## Notes
+## Known design decision
+
+The app does not currently support returning to earlier exam questions during the same exam attempt. Marked questions are available for review after the exam. This is stricter than some exam UIs, but it keeps the simulation simple and prevents accidental answer leakage before scoring.
+
+## Public note
 
 This version includes user-imported questions from `Question.docx`. Publishing this version makes those questions public.

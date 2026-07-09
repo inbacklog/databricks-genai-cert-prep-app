@@ -4,7 +4,7 @@ Browser-based practice app for Databricks Certified Generative AI Engineer Assoc
 
 ## What is included
 
-Version: **4.6 custom exam and reset controls**.
+Version: **4.7 logic polish**.
 
 - **268 total questions**.
 - Origin labels:
@@ -15,11 +15,12 @@ Version: **4.6 custom exam and reset controls**.
 - Source / verify links on every question.
 - Deck-based randomization: every filtered question appears once before reshuffle.
 - Answer-choice shuffling per browser session.
-- **Hide this question for this session** button.
+- **Start / restart selected mode** button to start the selected mode cleanly with current filters and exam length.
+- **Hide this question for this session** button in study/review modes.
 - **Mark for review** and review modes for marked, mistaken, or reported questions.
 - **Exam mode** with either 45 questions or a custom number of questions.
 - Performance by exam section and topic/tag, stored locally in your browser.
-- Reset controls for round-only reshuffle, performance-only reset, and full local stats reset.
+- Reset controls for current mode restart, performance-only reset, and full local stats reset.
 
 ## Run locally
 
@@ -43,12 +44,30 @@ This version includes questions imported from `Question.docx`. If you push this 
 
 ## Controls explained
 
-- **Reshuffle current round**: rebuilds only the current filtered question deck. It does not clear mistakes, marked questions, reported issues, or performance stats.
-- **Clear saved progress**: clears the current saved round/exam state, mistakes, and performance stats. Marked/reported questions remain.
+- **Start / restart selected mode**: starts the selected mode again using the current filters and exam length. It clears the active round/exam state and session-hidden questions, but keeps mistakes, performance, marked questions, reported issues, and imports.
+- **Clear saved progress**: clears the current saved round/exam state, mistakes, performance stats, and session-hidden questions. Marked/reported questions remain.
 - **Reset performance stats**: clears only the Performance by category table.
 - **Reset all stats**: clears mistakes, marked review, reported issues, performance stats, saved round/exam state, and session-hidden questions. Imported question packs are kept.
 - **Exam questions**: used only by **Exam mode — custom length**.
 
+## Exam mode behavior
+
+Exam mode is intentionally strict and sequential:
+
+- You must submit the current question before moving forward.
+- The app automatically advances after submission.
+- There is no previous/back button during the exam.
+- You cannot hide questions during exam mode.
+- You can mark a question for post-exam review, but you cannot return to it during the same exam attempt.
+- Feedback and explanations are shown only after the exam through review modes.
+
 ## Study guidance
 
 The app is a study aid, not a guarantee of passing. Verify important details against the latest Databricks exam guide and official docs before the exam. Databricks product names and features change, so check the guide again close to your exam date.
+
+## v4.7 logic polish
+
+- Renamed the confusing round button to **Start / restart selected mode**.
+- Fixed the custom exam restart path so changing mode or exam length starts cleanly.
+- Disabled **Hide this question** in exam mode to avoid accidental exam skipping.
+- Clarified reset controls and exam-mode behavior.
