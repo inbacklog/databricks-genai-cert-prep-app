@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "v4.4",
+    "version": "v4.5",
     "updated": "2026-07-09",
     "question_count": 268,
     "notes": "Reviewed user-imported explanations, added per-session hide button, and removed repeated/generic explanations.",

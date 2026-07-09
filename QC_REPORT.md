@@ -27,3 +27,20 @@
 
 - Some user-imported questions are retained because the user requested inclusion, but explanations now call out limitations where an option is only the best choice among the provided answers.
 - Review whether user-imported workshop content should be public before pushing this version to GitHub.
+
+
+## v4.5 feature quality update
+
+Implemented requested exam-prep workflow enhancements:
+
+- Answer choices are shuffled per question per browser session and displayed with fresh A/B/C/D labels.
+- Correctness is still evaluated by internal option IDs, so shuffling does not change the answer key.
+- Added Mark for review and Review marked questions mode.
+- Added 45-question Exam mode with feedback hidden until the end.
+- Added Report issue and Review reported issues mode, plus export to JSON.
+- Added readiness labels to category performance stats.
+
+Not implemented by request:
+
+- Confidence buttons.
+- Hide-reason prompts.

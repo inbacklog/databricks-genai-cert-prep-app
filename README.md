@@ -46,3 +46,14 @@ This version specifically rechecks the `User imported` questions and removes rep
 ## Study guidance
 
 The app is a study aid, not a guarantee of passing. Verify important details against the latest Databricks exam guide and official docs before the exam. Databricks product names and features change, so check the guide again close to your exam date.
+
+
+## v4.5 updates
+
+- Shuffles answer choices per browser session so users do not memorize option letters.
+- Adds **Exam mode**: 45 questions with feedback shown only at the end.
+- Adds **Mark for review** and review modes for marked, mistaken, or reported questions.
+- Adds local **Report issue** tracking and JSON export for problematic questions.
+- Improves the category table with a simple readiness label: Need data, Focus first, Almost ready, Strong.
+
+Notes: hidden questions are session-only; marked/reported questions are stored locally in the browser.
