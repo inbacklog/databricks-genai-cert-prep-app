@@ -4,13 +4,15 @@ Browser-based practice app for Databricks Certified Generative AI Engineer Assoc
 
 ## What is included
 
-Version: 4.1.1 quality-checked expanded.
+Version: **4.3 user-imported**.
 
-- 177 quality-checked practice questions.
-- Official guide sample questions from the uploaded Databricks exam guide.
-- Manual expert-reviewed practice questions aligned to the exam guide objectives.
+- **268 total questions**.
+- Origin labels simplified to user-friendly labels:
+  - **Official guide sample**: sample-style questions from the uploaded Databricks exam guide.
+  - **Generated practice**: original scenario-based practice questions aligned to Databricks exam objectives and docs.
+  - **User imported**: questions imported from the user's `Question.docx` file.
 - Per-option explanations: every answer explains what the option means, why it is correct or incorrect, and includes a quick example.
-- Source / verify links on questions, pointing to the uploaded exam guide or official Databricks documentation.
+- Source / verify links on questions, pointing to official Databricks documentation where relevant.
 - Deck-based randomization: every filtered question appears once before reshuffle.
 - 45-question mock exam mode.
 - Mistake review mode.
@@ -32,15 +34,15 @@ This app can be hosted with GitHub Pages.
 
 After a few minutes, GitHub provides a public URL for the app.
 
-## Public-safe note
+## Important note about user-imported questions
 
-This public version contains only public-safe, original practice content plus official sample-style questions from the uploaded Databricks exam guide. Do not commit private workshop packs, internal files, API keys, or paid course materials to a public repository.
+This version includes questions imported from `Question.docx`. If you push this version to a public GitHub repo, those user-imported questions will also be public. Use this version publicly only if you are comfortable publishing that content.
 
 ## Study guidance
 
 The app is a study aid, not a guarantee of passing. Verify important details against the latest Databricks exam guide and official docs before the exam. Databricks product names and features change, so check the guide again close to your exam date.
 
 
-## v4.2 quality expansion
+## v4.3.1 note
 
-This version adds 48 additional scenario-based questions with realistic exam traps, per-option explanations, quick examples, and official Databricks documentation links. Total public-safe question count: 177.
+All `User imported` questions from `Question.docx` have per-option explanations with quick examples. Questions also include source/verify links where possible; workshop-derived items should still be treated as user-provided practice material and verified against official Databricks documentation.

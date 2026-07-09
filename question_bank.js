@@ -1,20 +1,25 @@
 window.QUESTION_BANK = {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "4.2-quality-expanded",
+    "version": "v4.3.1",
     "updated": "2026-07-09",
-    "question_count": 177,
-    "notes": "Quality-expanded set: weak filler removed; added scenario-based questions with realistic traps, per-option explanations, quick examples, and official Databricks source links.",
+    "question_count": 268,
+    "notes": "All User imported questions include per-option explanations, quick examples, and at least one source/verify link.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Official Databricks documentation pages linked per question"
     ],
-    "public_safe": true
+    "public_safe": false,
+    "origin_types": [
+      "Official guide sample",
+      "Generated practice",
+      "User imported"
+    ]
   },
   "questions": [
     {
       "id": "OFFICIAL_SAMPLE_001",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "2. Data Preparation",
       "difficulty": "Easy",
       "tags": [
@@ -55,16 +60,14 @@ window.QUESTION_BANK = {
         "B"
       ],
       "explanation": "This is about record count, not vector size. Record count is mainly controlled by how many chunks you create: larger chunks and less overlap produce fewer records.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_002",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -99,16 +102,14 @@ window.QUESTION_BANK = {
         "B"
       ],
       "explanation": "The missing knowledge is structured and keyed by transaction. Use the source that contains the actual field, rather than hoping a prompt or fine-tune recreates operational data.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_003",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "2. Data Preparation",
       "difficulty": "Easy",
       "tags": [
@@ -142,16 +143,14 @@ window.QUESTION_BANK = {
         "C"
       ],
       "explanation": "Scanned image documents require OCR. HTML parsers and crawlers are useful for web pages, but not for image-only text extraction.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_004",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "3. Application Development",
       "difficulty": "Easy",
       "tags": [
@@ -186,16 +185,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Match embedding context length to chunk size and optimization objective. If quality is not the priority, avoid over-sized models and dimensions.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_005",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "3. Application Development",
       "difficulty": "Easy",
       "tags": [
@@ -229,16 +226,14 @@ window.QUESTION_BANK = {
         "D"
       ],
       "explanation": "The desired output is a concise summary, not a label or a sentence-boundary operation.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_006",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -274,17 +269,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "This official sample tests the tradeoff between upfront model/index work and query-time latency. The exam answer is the custom embedding approach without hybrid/reranking overhead.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_007",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -320,17 +314,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "For exam prep, think “version, evaluate, promote, rollback” rather than “copy/overwrite text.”",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/",
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_008",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -366,17 +359,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Serving an enterprise GenAI app requires authentication, backend credential handling, and permission-aware retrieval.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
         "https://docs.databricks.com/aws/en/agents/tutorials/agent-quickstart"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_009",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -418,16 +410,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Use managed integrations when available, and secure external integrations with secrets/configuration rather than hardcoded credentials.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/mcp/use-mcp-in-agents"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "OFFICIAL_SAMPLE_010",
-      "source": "Quality-checked practice",
+      "source": "Official guide sample",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -463,17 +454,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "For human feedback, align the rubric first. Good evaluation depends on consistent criteria, not just more labels.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers",
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Official guide sample",
+      "origin_label": "Official Databricks exam guide sample"
     },
     {
       "id": "QC_001",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -509,17 +499,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "This tests mapping business requirements to a pipeline. Frequent document updates + citations usually points to RAG, not memorization in model weights.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/ai-search",
         "https://docs.databricks.com/aws/en/agents/gen-ai-capabilities"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_002",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -553,16 +542,14 @@ window.QUESTION_BANK = {
         "B"
       ],
       "explanation": "For formatted outputs, specify exact schema, allowed values, and constraints. The exam often rewards precise output contracts.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_003",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -598,16 +585,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Pick the managed capability that directly matches the use case. Document-grounded Q&A with citations maps to Knowledge Assistant.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-bricks/knowledge-assistant"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_004",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -642,16 +628,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "This tests task selection: structured fields from unstructured documents = information extraction.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-bricks/key-info-extraction"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_005",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -686,16 +671,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "When a request spans multiple domains/actions, use an agent/supervisor pattern rather than a single static prompt.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-bricks/multi-agent-supervisor"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_006",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Easy",
       "tags": [
@@ -729,16 +713,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Fixed label set = classification. Do not confuse it with generation or retrieval.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_007",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -774,16 +756,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Tool order should gather required structured and unstructured context before final generation.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-bricks/multi-agent-supervisor"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_008",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -817,16 +798,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Exam questions often ask you to translate goals into precise pipeline inputs and outputs.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_009",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Hard",
       "tags": [
@@ -861,16 +840,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "For extraction, explicitly define absence handling. “Do not guess” is a key guardrail for structured outputs.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_010",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -905,16 +882,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Chunk according to document structure and retrieval needs. Preserve enough context while avoiding huge noisy chunks.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_011",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -950,16 +926,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Row count is controlled by chunking and overlap, while embedding dimension controls row size.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_012",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Easy",
       "tags": [
@@ -993,16 +968,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Match extraction tool to file type: HTML parser for HTML, OCR for images, PDF parser for PDFs.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_013",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -1037,16 +1010,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "RAG quality starts with good source preparation and retrieval filtering, not only prompt instructions.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_014",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -1082,16 +1054,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Prepare chunked text as a Delta table with one row per retrievable unit plus metadata.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_015",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -1126,16 +1097,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Use metadata for exact constraints and embeddings for semantic matching inside the constrained set.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_016",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -1171,16 +1141,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Retriever evaluation should focus on retrieval outcomes: recall, precision/ranking metrics, and relevance judgments.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_017",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -1215,17 +1184,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Reranking is a retrieval-quality tool used after initial candidate retrieval and before final context selection.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_018",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -1264,12 +1232,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_019",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Hard",
       "tags": [
@@ -1304,16 +1272,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Index design is a tradeoff among embedding count, update frequency, latency, and cost.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_020",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Easy",
       "tags": [
@@ -1348,16 +1315,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "The exam outline explicitly includes selecting LangChain or similar tools for GenAI apps.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_021",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1396,12 +1362,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_022",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1439,12 +1405,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_023",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1483,12 +1449,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/create-custom-tool"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_024",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1527,12 +1493,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/create-custom-tool"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_025",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1567,17 +1533,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "For agent safety, enforce permissions and tool constraints outside the LLM. Do not rely only on prompt text.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-framework/create-custom-tool",
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_026",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1612,17 +1577,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "For model selection, constraints matter: confidentiality and quality can outweigh latency/cost.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_027",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1657,16 +1621,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Daily-changing knowledge is a classic RAG use case. Fine-tuning is not a document-refresh mechanism.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_028",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1701,16 +1664,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Prompt chaining is about decomposition and control, not magic speed/cost improvements.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_029",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1751,16 +1713,14 @@ window.QUESTION_BANK = {
         "B"
       ],
       "explanation": "Token budget is controlled by chunk size, number of chunks, compression, prompt text, and output tokens—not vector dimension.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_030",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -1796,16 +1756,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Model selection is scenario-based: task, quality, context, cost/latency, license, and deployment environment.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_031",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Easy",
       "tags": [
@@ -1844,12 +1803,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_032",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -1889,12 +1848,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_033",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -1930,17 +1889,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "For SQL-based batch calls to model endpoints, remember ai_query().",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/sql/language-manual/functions/ai_query",
         "https://docs.databricks.com/aws/en/large-language-models/ai-functions"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_034",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -1980,12 +1938,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/create-manage-serving-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_035",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -2020,16 +1978,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Use pyfunc when your “model” is custom Python logic, including GenAI chains.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_036",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -2069,12 +2026,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_037",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -2114,12 +2071,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_038",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -2157,12 +2114,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/tutorials/agent-quickstart"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_039",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -2201,12 +2158,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_040",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -2242,16 +2199,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Masking/redaction is a common guardrail for sensitive outputs; it complements access control.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_041",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -2285,16 +2241,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Licensing is about permission and terms before use, not whether data is easy to download.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_042",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -2329,17 +2283,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Agent security requires defense in depth: prompt rules plus real permission/tool enforcement.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/agents/agent-framework/create-custom-tool",
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_043",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -2374,16 +2327,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "For problematic source text, fix the data pipeline and apply safety guardrails; do not rely on user disclaimers.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_044",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -2418,17 +2370,16 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Never pass unauthorized context to the model. Enforce access before retrieval/generation.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search",
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_045",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -2469,12 +2420,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/usage-tracking"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_046",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Hard",
       "tags": [
@@ -2514,12 +2465,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_047",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Easy",
       "tags": [
@@ -2558,12 +2509,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/judges/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_048",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2603,12 +2554,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_049",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2647,12 +2598,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_050",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2690,12 +2641,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_051",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2734,12 +2685,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/inference-tables"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_052",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2778,12 +2729,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/usage-tracking"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_053",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2822,12 +2773,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/inference-tables"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_054",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2865,12 +2816,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_055",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2909,12 +2860,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_056",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -2953,12 +2904,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_057",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Hard",
       "tags": [
@@ -2998,12 +2949,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_058",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Easy",
       "tags": [
@@ -3038,16 +2989,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "This version keeps options in the same RAG pipeline family: embedding, retrieval, reranking, generation. The correct next component after retrieval is the generator LLM.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_059",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3086,12 +3036,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_060",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3129,12 +3079,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_061",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -3172,12 +3122,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/production-monitoring"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_062",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3211,16 +3161,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "When the answer content is good but the format is wrong, improve prompt instructions/examples or add output parsing/validation.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_063",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -3258,12 +3206,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/judges/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_064",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -3297,16 +3245,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Guardrail labels overlap in practice, but exam-style questions usually key on the main risk: safety harm, security abuse, compliance/policy, or contextual grounding.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_065",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -3345,12 +3292,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_066",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -3384,16 +3331,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "For structured outputs, combine prompt constraints, lower randomness, and validation/parsing.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_067",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3431,12 +3376,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_068",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -3474,12 +3419,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_069",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -3518,12 +3463,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_070",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -3562,12 +3507,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_071",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3605,12 +3550,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/mcp/use-mcp-in-agents"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_072",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -3645,16 +3590,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Retrieval quality often improves when queries include key fields/entities from the user context.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_073",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3692,12 +3636,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/create-custom-tool"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_074",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Hard",
       "tags": [
@@ -3736,12 +3680,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/judges/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_075",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -3779,12 +3723,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_076",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -3822,12 +3766,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/rate-limits"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_077",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -3861,16 +3805,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "The correct answer is the option that directly addresses the operational or architectural constraint in the scenario, rather than a generic “use a bigger model” workaround.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_078",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -3908,12 +3850,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_079",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -3951,12 +3893,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_080",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -3994,12 +3936,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/judges/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_081",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4037,12 +3979,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-bricks/key-info-extraction"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_082",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4080,12 +4022,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_083",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4119,16 +4061,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "The correct answer is the option that directly addresses the operational or architectural constraint in the scenario, rather than a generic “use a bigger model” workaround.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_084",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -4166,12 +4106,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_085",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4205,16 +4145,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Structured-output failures need schema instructions, examples, and validation rather than vague wording.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_086",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4248,16 +4186,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Choose the smallest task abstraction that matches the business output.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_087",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4296,12 +4232,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-bricks/multi-agent-supervisor"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_088",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Hard",
       "tags": [
@@ -4339,12 +4275,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-bricks/multi-agent-supervisor"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_089",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4378,16 +4314,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Translate business needs into explicit inputs and outputs suitable for downstream systems.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_090",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -4421,16 +4355,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Format-sensitive tasks need concrete constraints, not vague style guidance.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_091",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4468,12 +4400,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_092",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4507,16 +4439,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Match the extraction tool to the file format and whether text is already machine-readable.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_093",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4554,12 +4484,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_094",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4597,12 +4527,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_095",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Hard",
       "tags": [
@@ -4636,16 +4566,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Structured content needs structure-aware extraction/chunking.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_096",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4684,12 +4612,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_097",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -4727,12 +4655,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_098",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -4770,12 +4698,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_099",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -4813,12 +4741,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_100",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -4857,12 +4785,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_101",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -4896,16 +4824,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Select models by modality and task: audio transcription requires an audio/speech model.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_102",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -4943,12 +4869,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_103",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -4987,12 +4913,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_104",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -5030,12 +4956,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_105",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -5074,12 +5000,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/mcp/use-mcp-in-agents"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_106",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -5117,12 +5043,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/tutorials/agent-quickstart"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_107",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -5161,12 +5087,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/large-language-models/ai-functions"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_108",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Hard",
       "tags": [
@@ -5205,12 +5131,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_109",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -5248,12 +5174,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_110",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -5291,12 +5217,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-ai-gateway-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_111",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -5335,12 +5261,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_112",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Hard",
       "tags": [
@@ -5379,12 +5305,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_113",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -5418,16 +5344,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Licensing must match intended use before deployment.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_114",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -5466,12 +5390,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_115",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -5510,12 +5434,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_116",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Hard",
       "tags": [
@@ -5553,12 +5477,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/judges/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_117",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -5592,16 +5516,14 @@ window.QUESTION_BANK = {
         "A"
       ],
       "explanation": "Performance by category is useful only if it drives targeted repair work.",
-      "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)"
-      ],
+      "source_links": [],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_118",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -5645,12 +5567,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/inference-tables"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "QC_119",
-      "source": "Quality-checked practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -5691,16 +5613,15 @@ window.QUESTION_BANK = {
       ],
       "explanation": "Chunk size and overlap control how many chunks/records are created.",
       "source_links": [
-        "Databricks Certified Generative AI Engineer Associate Exam Guide (uploaded PDF, Mar 18 2026)",
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-checked practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_001",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -5740,12 +5661,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_002",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -5784,12 +5705,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_003",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Hard",
       "tags": [
@@ -5829,12 +5750,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/resources/limits"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_004",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -5874,12 +5795,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality-eval"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_005",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -5919,12 +5840,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_006",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -5964,12 +5885,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_007",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6009,12 +5930,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_008",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6053,12 +5974,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_009",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Hard",
       "tags": [
@@ -6100,12 +6021,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/unstructured-retrieval-tools"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_010",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6144,12 +6065,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_011",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6188,12 +6109,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/agent-tool"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_012",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -6233,12 +6154,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/overview-serving-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_013",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -6278,12 +6199,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/unity-catalog-tool-integration"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_014",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Hard",
       "tags": [
@@ -6323,12 +6244,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/mcp/managed-mcp"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_015",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -6368,12 +6289,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_016",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -6412,12 +6333,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/tracing"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_017",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -6456,12 +6377,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_018",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -6500,12 +6421,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/agent-tool"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_019",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6545,12 +6466,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/glossary"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_020",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6590,12 +6511,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/production-optimization"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_021",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Hard",
       "tags": [
@@ -6635,12 +6556,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_022",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6680,12 +6601,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_023",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6725,12 +6646,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow/mlflow-3-install"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_024",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6769,12 +6690,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_025",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -6814,12 +6735,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_026",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -6859,12 +6780,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_027",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -6903,12 +6824,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/overview-serving-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_028",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -6948,12 +6869,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/overview-serving-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_029",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -6993,12 +6914,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_030",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Hard",
       "tags": [
@@ -7038,12 +6959,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_031",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7083,12 +7004,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_032",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7128,12 +7049,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_033",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7173,12 +7094,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_034",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7217,12 +7138,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_035",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Hard",
       "tags": [
@@ -7262,12 +7183,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/judges/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_036",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7307,12 +7228,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_037",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7352,12 +7273,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/overview-serving-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_038",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
@@ -7397,12 +7318,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/agents/agent-framework/agent-tool"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_039",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -7441,12 +7362,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_040",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
@@ -7486,12 +7407,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_041",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
@@ -7530,12 +7451,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_042",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "1. Design Applications",
       "difficulty": "Hard",
       "tags": [
@@ -7574,12 +7495,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_043",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -7619,12 +7540,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_044",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Hard",
       "tags": [
@@ -7665,12 +7586,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_045",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
@@ -7710,12 +7631,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-gateway/configure-endpoints"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_046",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Hard",
       "tags": [
@@ -7755,12 +7676,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_047",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
@@ -7800,12 +7721,12 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
     },
     {
       "id": "V42_048",
-      "source": "Quality-added scenario practice",
+      "source": "Generated practice",
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
@@ -7845,8 +7766,4104 @@ window.QUESTION_BANK = {
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
       ],
       "origin": "Manual expert-reviewed practice",
-      "origin_type": "Quality-added practice",
-      "origin_label": "Manual expert-reviewed practice"
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice aligned to Databricks exam objectives"
+    },
+    {
+      "id": "USER_IMPORTED_001",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has created a RAG application to look up answers to questions about a series of fantasy novels that are being asked on the author’s web forum. The fantasy novel texts are chunked and embedded into a vector store with metadata (page number, chapter number, book title), retrieved with the user’s query, and provided to an LLM for response generation. The Generative AI Engineer used their intuition to pick the chunking strategy and associated configurations but now wants to more methodically choose the best values. Which TWO strategies should the Generative AI Engineer take to optimize their chunking strategy and parameters? (Choose two.)",
+      "options": [
+        {
+          "id": "A",
+          "text": "Change embedding models and compare performance.",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Add a classifier for user queries that predicts which book will best contain the answer. Use this to filter retrieval.",
+          "explanation": "Incorrect. metadata filtering can improve retrieval precision, but it does not tell you how to choose chunk size, overlap, or splitting strategy. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Choose an appropriate evaluation metric (such as recall or NDCG) and experiment with changes in the chunking strategy, such as splitting chunks by paragraphs or chapters. Choose the strategy that gives the best performance metric.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Pass known questions and best answers to an LLM and instruct the LLM to provide the best token count. Use a summary statistic (mean, median, etc.) of the best token counts to choose chunk size.",
+          "explanation": "Incorrect. asking an LLM to guess a chunk size is weaker than measuring retrieval quality on representative questions. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "E",
+          "text": "Create an LLM-as-a-judge metric to evaluate how well previous questions are answered by the most appropriate chunk. Optimize the chunking parameters based upon the values of the metric.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C",
+        "E"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Choose an appropriate evaluation metric (such as recall or NDCG) and experiment with changes in the chunking strategy, such as splitting chunks by paragraphs or chapters. Choose the strategy that gives the best performance metric., E. Create an LLM-as-a-judge metric to evaluate how well previous questions are answered by the most appropriate chunk. Optimize the chunking parameters based upon the values of the metric.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_002",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is designing a RAG application for answering user questions on technical regulations as they learn a new sport. What are the steps needed to build this RAG application and deploy it?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ingest documents from a source –> Index the documents and saves to Vector Search –> User submits queries against an LLM –> LLM retrieves relevant documents –> Evaluate model –> LLM generates a response –> Deploy it using Model Serving",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Ingest documents from a source –> Index the documents and save to Vector Search –> User submits queries against an LLM –> LLM retrieves relevant documents –> LLM generates a response -> Evaluate model –> Deploy it using Model Serving",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Ingest documents from a source –> Index the documents and save to Vector Search –> Evaluate model –> Deploy it using Model Serving",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "User submits queries against an LLM –> Ingest documents from a source –> Index the documents and save to Vector Search –> LLM retrieves relevant documents –> LLM generates a response –> Evaluate model –> Deploy it using Model Serving",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. Ingest documents from a source –> Index the documents and save to Vector Search –> User submits queries against an LLM –> LLM retrieves relevant documents –> LLM generates a response -> Evaluate model –> Deploy it using Model Serving. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_003",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer just deployed an LLM application at a digital marketing company that assists with answering customer service inquiries. Which metric should they monitor for their customer service LLM application in production?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Number of customer inquiries processed per unit of time",
+          "explanation": "Correct. it measures the quality dimension the scenario asks about. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "B",
+          "text": "Energy usage per query",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "C",
+          "text": "Final perplexity scores for the training of the model",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "D",
+          "text": "HuggingFace Leaderboard values for the base LLM",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests Evaluation and monitoring check whether the application is correct, grounded, relevant, safe, cost-effective, and stable after changes or deployment. The correct answer is A. Number of customer inquiries processed per unit of time. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_004",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer is building a Generative AI system that suggests the best matched employee team member to newly scoped projects. The team member is selected from a very large team. The match should be based upon project date availability and how well their employee profile matches the project scope. Both the employee profile and project scope are unstructured text. How should the Generative AI Engineer architect their system?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a tool for finding available team members given project dates. Embed all project scopes into a vector store, perform a retrieval using team member profiles to find the best team member.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Create a tool for finding team member availability given project dates, and another tool that uses an LLM to extract keywords from project scopes. Iterate through available team members’ profiles and perform keyword matching to find the best available team member.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Create a tool to find available team members given project dates. Create a second tool that can calculate a similarity score for a combination of team member profile and the project scope. Iterate through the team members and rank by best score to select a team member.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Create a tool for finding available team members given project dates. Embed team profiles into a vector store and use the project scope and filtering to perform retrieval to find the available best matched team members.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Create a tool for finding available team members given project dates. Embed team profiles into a vector store and use the project scope and filtering to perform retrieval to find the available best matched team members.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_005",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is designing an LLM-powered live sports commentary platform. The platform provides real-time updates and LLM-generated analyses for any users who would like to have live summaries, rather than reading a series of potentially outdated news articles. Which tool below will give the platform access to real-time data for generating game analyses based on the latest game scores?",
+      "options": [
+        {
+          "id": "A",
+          "text": "DatabricksIQ",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Foundation Model APIs",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Feature Serving",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "AutoML",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is C. Feature Serving. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_006",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has a provisioned throughput model serving endpoint as part of a RAG application and would like to monitor the serving endpoint’s incoming requests and outgoing responses. The current approach is to include a micro-service in between the endpoint and the user interface to write logs to a remote server. Which Databricks feature should they use instead which will perform the same task?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Vector Search",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Lakeview",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "DBSQL",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Inference Tables",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. Inference Tables. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/ai-gateway/inference-tables",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_007",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is tasked with improving the RAG quality by addressing its inflammatory outputs. Which action would be most effective in mitigating the problem of offensive text outputs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Increase the frequency of upstream data updates",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Inform the user of the expected RAG behavior",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Restrict access to the data sources to a limited number of users",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Curate upstream data properly that includes manual review before it is fed into the RAG system",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. Curate upstream data properly that includes manual review before it is fed into the RAG system. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_008",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is creating an LLM-based application. The documents for its retriever have been chunked to a maximum of 512 tokens each. The Generative AI Engineer knows that cost and latency are more important than quality for this application. They have several context length levels to choose from. Which will fulfill their need?",
+      "options": [
+        {
+          "id": "A",
+          "text": "context length 514; smallest model is 0.44GB and embedding dimension 768",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "context length 2048: smallest model is 11GB and embedding dimension 2560",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "context length 32768: smallest model is 14GB and embedding dimension 4096",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "context length 512: smallest model is 0.13GB and embedding dimension 384",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. context length 512: smallest model is 0.13GB and embedding dimension 384. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_009",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A small and cost-conscious startup in the cancer research field wants to build a RAG application using Foundation Model APIs. Which strategy would allow the startup to build a good-quality RAG application while being cost-conscious and able to cater to customer needs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Limit the number of relevant documents available for the RAG application to retrieve from",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Pick a smaller LLM that is domain-specific",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Limit the number of queries a customer can send per day",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Use the largest LLM possible because that gives the best performance for any general queries",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. Pick a smaller LLM that is domain-specific. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_010",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer is responsible for developing a chatbot to enable their company’s internal HelpDesk Call Center team to more quickly find related tickets and provide resolution. While creating the GenAI application work breakdown tasks for this project, they realize they need to start planning which data sources (either Unity Catalog volume or Delta table) they could choose for this application. They have collected several candidate data sources for consideration: call_rep_history: a Delta table with primary keys representative_id, call_id. This table is maintained to calculate representatives’ call resolution from fields call_duration and call start_time. transcript Volume: a Unity Catalog Volume of all recordings as a *.wav files, but also a text transcript as *.txt files. call_cust_history: a Delta table with primary keys customer_id, cal1_id. This table is maintained to calculate how much internal customers use the HelpDesk to make sure that the charge back model is consistent with actual service use. call_detail: a Delta table that includes a snapshot of all call details updated hourly. It includes root_cause and resolution fields, but those fields may be empty for calls that are still active. maintenance_schedule – a Delta table that includes a listing of both HelpDesk application outages as well as planned upcoming maintenance downtimes. They need sources that could add context to best identify ticket root cause and resolution. Which TWO sources do that? (Choose two.)",
+      "options": [
+        {
+          "id": "A",
+          "text": "call_cust_history",
+          "explanation": "Incorrect. it does not use Unity Catalog governance/metadata in the way the scenario requires. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "B",
+          "text": "maintenance_schedule",
+          "explanation": "Incorrect. it does not use Unity Catalog governance/metadata in the way the scenario requires. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "C",
+          "text": "call_rep_history",
+          "explanation": "Incorrect. it does not use Unity Catalog governance/metadata in the way the scenario requires. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "D",
+          "text": "call_detail",
+          "explanation": "Correct. it uses Unity Catalog governance/discovery instead of duplicating permissions or metadata in app code. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "E",
+          "text": "transcript Volume",
+          "explanation": "Correct. it uses Unity Catalog governance/discovery instead of duplicating permissions or metadata in app code. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        }
+      ],
+      "correct_answers": [
+        "D",
+        "E"
+      ],
+      "explanation": "This question tests Unity Catalog centralizes governance for data, functions, models, permissions, lineage, and discoverability. The correct answer is D. call_detail, E. transcript Volume. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/",
+        "https://docs.databricks.com/aws/en/udf/unity-catalog"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_011",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "What is the most suitable library for building a multi-step LLM-based workflow?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Pandas",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "TensorFlow",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "PySpark",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "LangChain",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. LangChain. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/langchain-uc-integration"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_012",
+      "source": "User imported",
+      "section": "5. Governance",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "governance"
+      ],
+      "question": "When developing an LLM application, it’s crucial to ensure that the data used for training the model complies with licensing requirements to avoid legal risks. Which action is NOT appropriate to avoid legal risks?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reach out to the data curators directly before you have started using the trained model to let them know.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Use any available data you personally created which is completely original and you can decide what license to use.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Only use data explicitly labeled with an open license and ensure the license terms are followed.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Reach out to the data curators directly after you have started using the trained model to let them know.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Reach out to the data curators directly after you have started using the trained model to let them know.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models",
+        "https://www.databricks.com/learn/certification/genai-engineer-associate",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_013",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is creating an LLM system that will retrieve news articles from the year 1918 and related to a user's query and summarize them. The engineer has noticed that the summaries are generated well but often also include an explanation of how the summary was generated, which is undesirable. Which change could the Generative AI Engineer perform to mitigate this issue?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Split the LLM output by newline characters to truncate away the summarization explanation.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Tune the chunk size of news articles or experiment with different embedding models.",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Revisit their document ingestion logic, ensuring that the news articles are being ingested properly.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Provide few shot examples of desired output format to the system and/or user prompt.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. Provide few shot examples of desired output format to the system and/or user prompt.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_014",
+      "source": "User imported",
+      "section": "5. Governance",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "governance"
+      ],
+      "question": "A Generative AI Engineer has developed an LLM application to answer questions about internal company policies. The Generative AI Engineer must ensure that the application doesn’t hallucinate or leak confidential data. Which approach should NOT be used to mitigate hallucination or confidential data leakage?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Add guardrails to filter outputs from the LLM before it is shown to the user",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "Fine-tune the model on your data, hoping it will learn what is appropriate and not",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "Limit the data available based on the user’s access level",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "Use a strong system prompt to ensure the model aligns with your needs.",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is B. Fine-tune the model on your data, hoping it will learn what is appropriate and not. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_015",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer interfaces with an LLM with prompt/response behavior that has been trained on customer calls inquiring about product availability. The LLM is designed to output “In Stock” if the product is available or only the term “Out of Stock” if not. Which prompt will work to allow the engineer to respond to call classification labels correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Respond with “In Stock” if the customer asks for a product.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "You will be given a customer call transcript where the customer asks about product availability. The outputs are either “In Stock” or “Out of Stock”. Format the output in JSON, for example: {“call_id”: “123”, “label”: “In Stock”}.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Respond with “Out of Stock” if the customer asks for a product.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "You will be given a customer call transcript where the customer inquires about product availability. Respond with “In Stock” if the product is available or “Out of Stock” if not.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. You will be given a customer call transcript where the customer inquires about product availability. Respond with “In Stock” if the product is available or “Out of Stock” if not.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_016",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is tasked with developing a RAG application that will help a small internal group of experts at their company answer specific questions, augmented by an internal knowledge base. They want the best possible quality in the answers, and neither latency nor throughput is a huge concern given that the user group is small and they’re willing to wait for the best answer. The topics are sensitive in nature and the data is highly confidential and so, due to regulatory requirements, none of the information is allowed to be transmitted to third parties. Which model meets all the Generative AI Engineer’s needs in this situation?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dolly 1.5B",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "OpenAI GPT-4",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "BGE-large",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Llama2-70B",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. Llama2-70B. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_017",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer would like an LLM to generate formatted JSON from emails. This will require parsing and extracting the following information: order ID, date, and sender email. Here’s a sample email: They will need to write a prompt that will extract the relevant information in JSON format with the highest level of output accuracy. Which prompt will do that?",
+      "options": [
+        {
+          "id": "A",
+          "text": "You will receive customer emails and need to extract date, sender email, and order ID. You should return the date, sender email, and order ID information in JSON format.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here’s an example: {“date”: “April 16, 2024”, “sender_email”: “sarah.lee925@gmail.com”, “order_id”: “RE987D”}",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in a human-readable format.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "You will receive customer emails and need to extract date, sender email, and order IReturn the extracted information in JSON format.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here’s an example: {“date”: “April 16, 2024”, “sender_email”: “sarah.lee925@gmail.com”, “order_id”: “RE987D”}. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_018",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer has been asked to build an LLM-based question-answering application. The application should take into account new documents that are frequently published. The engineer wants to build this application with the least cost and least development effort and have it operate at the lowest cost possible. Which combination of chaining components and configuration meets these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "For the application a prompt, a retriever, and an LLM are required. The retriever output is inserted into the prompt which is given to the LLM to generate answers.",
+          "explanation": "Correct. it composes the required prompt/model/tool/retriever components in the intended workflow. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "B",
+          "text": "The LLM needs to be frequently with the new documents in order to provide most up-to-date answers.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "C",
+          "text": "For the question-answering application, prompt engineering and an LLM are required to generate answers.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "D",
+          "text": "For the application a prompt, an agent and a fine-tuned LLM are required. The agent is used by the LLM to retrieve relevant content that is inserted into the prompt which is given to the LLM to generate answers.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests LangChain-style chains and agents connect prompts, LLM calls, retrievers, tools, and parsers into multi-step GenAI workflows. The correct answer is A. For the application a prompt, a retriever, and an LLM are required. The retriever output is inserted into the prompt which is given to the LLM to generate answers.. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_019",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is creating an agent-based LLM system for their favorite monster truck team. The system can answer text based questions about the monster truck team, lookup event dates via an API call, or query tables on the team’s latest standings. How could the Generative AI Engineer best design these capabilities into their system?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ingest PDF documents about the monster truck team into a vector store and query it in a RAG architecture.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Write a system prompt for the agent listing available tools and bundle it into an agent system that runs a number of calls to solve a query.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Instruct the LLM to respond with “RAG”, “API”, or “TABLE” depending on the query, then use text parsing and conditional statements to resolve the query.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Build a system prompt with all possible event dates and table information in the system prompt. Use a RAG architecture to lookup generic text questions and otherwise leverage the information in the system prompt.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. Write a system prompt for the agent listing available tools and bundle it into an agent system that runs a number of calls to solve a query.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_020",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer has been asked to design an LLM-based application that accomplishes the following business objective: answer employee HR questions using HR PDF documentation. Which set of high level tasks should the Generative AI Engineer's system perform?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Calculate averaged embeddings for each HR document, compare embeddings to user query to find the best document. Pass the best document with the user query into an LLM with a large context window to generate a response to the employee.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Use an LLM to summarize HR documentation. Provide summaries of documentation and user query into an LLM with a large context window to generate a response to the user.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Create an interaction matrix of historical employee questions and HR documentation. Use ALS to factorize the matrix and create embeddings. Calculate the embeddings of new queries and use them to find the best HR documentation. Use an LLM to generate a response to the employee question based upon the documentation retrieved.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Split HR documentation into chunks and embed into a vector store. Use the employee question to retrieve best matched chunks of documentation, and use the LLM to generate a response to the employee based upon the documentation retrieved.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Split HR documentation into chunks and embed into a vector store. Use the employee question to retrieve best matched chunks of documentation, and use the LLM to generate a response to the employee based upon the documentation retrieved.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_021",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "Generative AI Engineer at an electronics company just deployed a RAG application for customers to ask questions about products that the company carries. However, they received feedback that the RAG response often returns information about an irrelevant product. What can the engineer do to improve the relevance of the RAG’s response?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Assess the quality of the retrieved context",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Implement caching for frequently asked questions",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Use a different LLM to improve the generated response",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Use a different semantic similarity search algorithm",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. Use a different semantic similarity search algorithm. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_022",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is developing a chatbot designed to assist users with insurance-related queries. The chatbot is built on a large language model (LLM) and is conversational. However, to maintain the chatbot’s focus and to comply with company policy, it must not provide responses to questions about politics. Instead, when presented with political inquiries, the chatbot should respond with a standard message: “Sorry, I cannot answer that. I am a chatbot that can only answer questions around insurance.” Which framework type should be implemented to solve this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Safety Guardrail",
+          "explanation": "Incorrect. safety guardrails focus on harmful or unsafe content; this scenario is mainly about enforcing a company policy boundary. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "Security Guardrail",
+          "explanation": "Incorrect. security guardrails focus on attacks, permissions, or tool/action abuse; this scenario is not primarily about unauthorized system access. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "Contextual Guardrail",
+          "explanation": "Incorrect. contextual guardrails check whether responses stay grounded in allowed context; here the issue is a business policy topic restriction. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "Compliance Guardrail",
+          "explanation": "Correct. it enforces a business/policy restriction on what the bot is allowed to discuss. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is D. Compliance Guardrail. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_023",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer I using the code below to test setting up a vector store: Assuming they intend to use Databricks managed embeddings with the default embedding model, what should be the next logical function call?",
+      "options": [
+        {
+          "id": "A",
+          "text": "vsc.get_index()",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "vsc.create_delta_sync_index()",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "vsc.create_direct_access_index()",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "vsc.similarity_search()",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. vsc.create_delta_sync_index(). Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_024",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer is tasked with deploying an application that takes advantage of a custom MLflow Pyfunc model to return some interim results. How should they configure the endpoint to pass the secrets and credentials?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use spark.conf.set ()",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "B",
+          "text": "Pass variables using the Databricks Feature Store API",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "C",
+          "text": "Add credentials using environment variables",
+          "explanation": "Correct. it matches the MLflow lifecycle step being tested: tracking, tracing, packaging, evaluation, or registry management. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "D",
+          "text": "Pass the secrets in plain text",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests MLflow is used to package, track, trace, evaluate, register, and manage GenAI applications and agents across their lifecycle. The correct answer is C. Add credentials using environment variables. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/store-env-variable-model-serving",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_025",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer wants to build an LLM-based solution to help a restaurant improve its online customer experience with bookings by automatically handling common customer inquiries. The goal of the solution is to minimize escalations to human intervention and phone calls while maintaining a personalized interaction. To design the solution, the Generative AI Engineer needs to define the input data to the LLM and the task it should perform. Which input/output pair will support their goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Input: Online chat logs; Output: Group the chat logs by users, followed by summarizing each user’s interactions",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Input: Online chat logs; Output: Buttons that represent choices for booking details",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Input: Customer reviews; Output: Classify review sentiment",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Input: Online chat logs; Output: Cancellation options",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. Input: Online chat logs; Output: Group the chat logs by users, followed by summarizing each user’s interactions. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_026",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "What is an effective method to preprocess prompts using custom code before sending them to an LLM?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Directly modify the LLM’s internal architecture to include preprocessing steps",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "It is better not to introduce custom code to preprocess prompts as the LLM has not been trained with examples of the preprocessed prompts",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Rather than preprocessing prompts, it’s more effective to postprocess the LLM outputs to align the outputs to desired outcomes",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Write a MLflow PyFunc model that has a separate function to process the prompts",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Write a MLflow PyFunc model that has a separate function to process the prompts. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow/models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_027",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is developing an LLM application that users can use to generate personalized birthday poems based on their names. Which technique would be most effective in safeguarding the application, given the potential for malicious user inputs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist",
+          "explanation": "Correct. it directly reduces harmful or unsafe input/output behavior in the application. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "Reduce the time that the users can interact with the LLM",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "Ask the LLM to remind the user that the input is malicious but continue the conversation with the user",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "Increase the amount of compute that powers the LLM to process input faster",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is A. Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_028",
+      "source": "User imported",
+      "section": "6. Evaluation and Monitoring",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "evaluation/monitoring"
+      ],
+      "question": "Which indicator should be considered to evaluate the safety of the LLM outputs when qualitatively assessing LLM responses for a translation use case?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The ability to generate responses in code",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "The similarity to the previous language",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "The latency of the response and the length of text generated",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "The accuracy and relevance of the responses",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is D. The accuracy and relevance of the responses. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_029",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer is developing a patient-facing healthcare-focused chatbot. If the patient’s question is not a medical emergency, the chatbot should solicit more information from the patient to pass to the doctor’s office and suggest a few relevant pre-approved medical articles for reading. If the patient’s question is urgent, direct the patient to calling their local emergency services. Given the following user input: “I have been experiencing severe headaches and dizziness for the past two days.” Which response is most appropriate for the chatbot to generate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Here are a few relevant articles for your browsing. Let me know if you have questions after reading them.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Please call your local emergency services.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Headaches can be tough. Hope you feel better soon!",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Please provide your age, recent activities, and any other symptoms you have noticed along with your headaches and dizziness.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. Please call your local emergency services.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_030",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "After changing the response generating LLM in a RAG pipeline from GPT-4 to a model with a shorter context length that the company self-hosts, the Generative AI Engineer is getting the following error: What TWO solutions should the Generative AI Engineer implement without changing the response generating model? (Choose two.)",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use a smaller embedding model to generate embeddings",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Reduce the maximum output tokens of the new model",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Decrease the chunk size of embedded documents",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Reduce the number of records retrieved from the vector database",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "E",
+          "text": "Retrain the response generating model using ALiBi",
+          "explanation": "Incorrect. fine-tuning changes the generator, but the scenario is about retrieval/chunking quality or index size. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C",
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Decrease the chunk size of embedded documents, D. Reduce the number of records retrieved from the vector database. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_031",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer is building a system which will answer questions on latest stock news articles. Which will NOT help with ensuring the outputs are relevant to financial news?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Implement a comprehensive guardrail framework that includes policies for content filters tailored to the finance sector.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Increase the compute to improve processing speed of questions to allow greater relevancy analysis",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Implement a profanity filter to screen out offensive language.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Incorporate manual reviews to correct any problematic outputs prior to sending to the users",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. Increase the compute to improve processing speed of questions to allow greater relevancy analysis. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://www.databricks.com/learn/certification/genai-engineer-associate",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_032",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is building a RAG application that answers questions about internal documents for the company SnoPen AI. The source documents may contain a significant amount of irrelevant content, such as advertisements, sports news, or entertainment news, or content about other companies. Which approach is advisable when building a RAG application to achieve this goal of filtering irrelevant information?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Keep all articles because the RAG application needs to understand non-company content to avoid answering questions about them.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Include in the system prompt that any information it sees will be about SnoPenAI, even if no data filtering is performed.",
+          "explanation": "Incorrect. metadata filtering can improve retrieval precision, but it does not tell you how to choose chunk size, overlap, or splitting strategy. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Include in the system prompt that the application is not supposed to answer any questions unrelated to SnoPen AI.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Consolidate all SnoPen AI related documents into a single chunk in the vector database.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Include in the system prompt that the application is not supposed to answer any questions unrelated to SnoPen AI.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_033",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has successfully ingested unstructured documents and chunked them by document sections. They would like to store the chunks in a Vector Search index. The current format of the dataframe has two columns: (i) original document file name (ii) an array of text chunks for each document. What is the most performant way to store this dataframe?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Split the data into train and test set, create a unique identifier for each document, then save to a Delta table",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Flatten the dataframe to one chunk per row, create a unique identifier for each row, and save to a Delta table",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "First create a unique identifier for each document, then save to a Delta table",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Store each chunk as an independent JSON file in Unity Catalog Volume. For each JSON file, the key is the document section name and the value is the array of text chunks for that section",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. Flatten the dataframe to one chunk per row, create a unique identifier for each row, and save to a Delta table. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_034",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has created a RAG application which can help employees retrieve answers from an internal knowledge base, such as Confluence pages or Google Drive. The prototype application is now working with some positive feedback from internal company testers. Now the Generative AI Engineer wants to formally evaluate the system’s performance and understand where to focus their efforts to further improve the system. How should the Generative AI Engineer evaluate the system?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use cosine similarity score to comprehensively evaluate the quality of the final generated answers.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Curate a dataset that can test the retrieval and generation components of the system separately. Use MLflow’s built in evaluation metrics to perform the evaluation on the retrieval and generation components.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Benchmark multiple LLMs with the same data and pick the best LLM for the job.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Use an LLM-as-a-judge to evaluate the quality of the final answers generated.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. Curate a dataset that can test the retrieval and generation components of the system separately. Use MLflow’s built in evaluation metrics to perform the evaluation on the retrieval and generation components.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_035",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer has already trained an LLM on Databricks and it is now ready to be deployed. Which of the following steps correctly outlines the easiest process for deploying a model on Databricks?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Log the model as a pickle object, upload the object to Unity Catalog Volume, register it to Unity Catalog using MLflow, and start a serving endpoint",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Log the model using MLflow during training, directly register the model to Unity Catalog using the MLflow API, and start a serving endpoint",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Save the model along with its dependencies in a local directory, build the Docker image, and run the Docker container",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Wrap the LLM’s prediction function into a Flask application and serve using Gunicorn",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. Log the model using MLflow during training, directly register the model to Unity Catalog using the MLflow API, and start a serving endpoint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_036",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer developed an LLM application using the provisioned throughput Foundation Model API. Now that the application is ready to be deployed, they realize their volume of requests are not sufficiently high enough to create their own provisioned throughput endpoint. They want to choose a strategy that ensures the best cost-effectiveness for their application. What strategy should the Generative AI Engineer use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Switch to using External Models instead",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "B",
+          "text": "Deploy the model using pay-per-token throughput as it comes with cost guarantees",
+          "explanation": "Correct. it uses a production serving feature rather than an offline training or notebook-only workflow. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "C",
+          "text": "Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "D",
+          "text": "Throttle the incoming batch of requests manually to avoid rate limiting issues",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Model Serving exposes models, agents, and external/foundation model APIs behind endpoints with production controls such as traffic routing, scaling, and access management. The correct answer is B. Deploy the model using pay-per-token throughput as it comes with cost guarantees. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/ai-gateway/rate-limits-beta"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_037",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is building an LLM to generate article summaries in the form of a type of poem, such as a haiku, given the article content. However, the initial output from the LLM does not match the desired tone or style. Which approach will NOT improve the LLM’s response to achieve the desired response?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Use a neutralizer to normalize the tone and style of the underlying documents",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Include few-shot examples in the prompt to the LLM",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Fine-tune the LLM on a dataset of desired tone and style",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. Use a neutralizer to normalize the tone and style of the underlying documents. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_038",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is creating an LLM-powered application that will need access to up-to-date news articles and stock prices. The design requires the use of stock prices which are stored in Delta tables and finding the latest relevant news articles by searching the internet. How should the Generative AI Engineer architect their LLM system?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use an LLM to summarize the latest news articles and lookup stock tickers from the summaries to find stock prices.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Query the Delta table for volatile stock prices and use an LLM to generate a search query to investigate potential causes of the stock volatility.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Download and store news articles and stock price information in a vector store. Use a RAG architecture to retrieve and generate at runtime.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Create an agent with tools for SQL querying of Delta tables and web searching, provide retrieved values to an LLM for generation of response.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Create an agent with tools for SQL querying of Delta tables and web searching, provide retrieved values to an LLM for generation of response.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_039",
+      "source": "User imported",
+      "section": "6. Evaluation and Monitoring",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "evaluation/monitoring"
+      ],
+      "question": "A Generative AI Engineer is designing a chatbot for a gaming company that aims to engage users on its platform while its users play online video games. Which metric would help them increase user engagement and retention for their platform?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Randomness",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "B",
+          "text": "Diversity of responses",
+          "explanation": "Correct. it measures the quality dimension the scenario asks about. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "C",
+          "text": "Lack of relevance",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "D",
+          "text": "Repetition of responses",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Evaluation and monitoring check whether the application is correct, grounded, relevant, safe, cost-effective, and stable after changes or deployment. The correct answer is B. Diversity of responses. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_040",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A company has a typical RAG-enabled, customer-facing chatbot on its website. Select the correct sequence of components a user's questions will go through before the final output is returned. Use the diagram above for reference.",
+      "options": [
+        {
+          "id": "A",
+          "text": "1.embedding model, 2.vector search, 3.context-augmented prompt, 4.response-generating LLM",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "1.context-augmented prompt, 2.vector search, 3.embedding model, 4.response-generating LLM",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "1.response-generating LLM, 2.vector search, 3.context-augmented prompt, 4.embedding model",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "1.response-generating LLM, 2.context-augmented prompt, 3.vector search, 4.embedding model",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is A. 1.embedding model, 2.vector search, 3.context-augmented prompt, 4.response-generating LLM. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_041",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A team wants to serve a code generation model as an assistant for their software developers. It should support multiple programming languages. Quality is the primary objective. Which of the Databricks Foundation Model APIs, or models available in the Marketplace, would be the best fit?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Llama2-70b",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "B",
+          "text": "BGE-large",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "C",
+          "text": "MPT-7b",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "D",
+          "text": "CodeLlama-34B",
+          "explanation": "Correct. it uses a production serving feature rather than an offline training or notebook-only workflow. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests Model Serving exposes models, agents, and external/foundation model APIs behind endpoints with production controls such as traffic routing, scaling, and access management. The correct answer is D. CodeLlama-34B. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_042",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is building a RAG application that will rely on context retrieved from source documents that are currently in PDF format. These PDFs can contain both text and images. They want to develop a solution using the least amount of lines of code. Which Python package should be used to extract the text from the source documents?",
+      "options": [
+        {
+          "id": "A",
+          "text": "flask",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "beautifulsoup",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "unstructured",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "numpy",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. unstructured. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_043",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer received the following business requirements for an external chatbot. The chatbot needs to know what types of questions the user asks and routes to appropriate models to answer the questions. For example, the user might ask about upcoming event details. Another user might ask about purchasing tickets for a particular event. What is an ideal workflow for such a chatbot?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The chatbot should only look at previous event information",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "There should be two different chatbots handling different types of user queries.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it’s an upcoming event question, send the query to a text-to-SQL model. If it’s about ticket purchasing, the customer should be redirected to a payment platform.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "The chatbot should only process payments",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is C. The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it’s an upcoming event question, send the query to a text-to-SQL model. If it’s about ticket purchasing, the customer should be redirected to a payment platform.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_044",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is tasked with developing an application that is based on an open source large language model (LLM). They need a foundation LLM with a large context window. Which model fits this need?",
+      "options": [
+        {
+          "id": "A",
+          "text": "DistilBERT",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "MPT-30B",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Llama2-70B",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "DBRX",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. DBRX. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_045",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is building an LLM-based application that has an important transcription (speech-to-text) task. Speed is essential for the success of the application. Which open Generative AI models should be used?",
+      "options": [
+        {
+          "id": "A",
+          "text": "DBRX",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "MPT-30B-Instruct",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Llama-2-70b-chat-hf",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "whisper-large-v3 (1.6B)",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. whisper-large-v3 (1.6B). Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_046",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has a provisioned throughput model serving endpoint as part of a RAG application and would like to monitor the serving endpoint’s incoming requests and outgoing responses. Which Databricks feature should they use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "AutoML",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Vector Search",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Inference Tables",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Feature Serving",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Inference Tables. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/ai-gateway/inference-tables",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_047",
+      "source": "User imported",
+      "section": "6. Evaluation and Monitoring",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "evaluation/monitoring"
+      ],
+      "question": "A Generative AI Engineer is deciding between using LSH (Locality Sensitive Hashing) and HNSW (Hierarchical Navigable Small World) for indexing their vector database. Their top priority is semantic accuracy. Which approach should the Generative AI Engineer use to evaluate these two techniques?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Compare the cosine similarities of the embeddings of returned results against those of a representative sample of test inputs",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Compare the Bilingual Evaluation Understudy (BLEU) scores of returned results for a representative sample of test inputs",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Compare the Recall-Oriented-Understudy for Gisting Evaluation (ROUGE) scores of returned results for a representative sample of test inputs",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Compare the Levenshtein distances of returned results against a representative sample of test inputs",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is A. Compare the cosine similarities of the embeddings of returned results against those of a representative sample of test inputs. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_048",
+      "source": "User imported",
+      "section": "5. Governance",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "governance"
+      ],
+      "question": "When developing an LLM application, it’s crucial to ensure that the data used for training the model complies with licensing requirements to avoid legal risks. Which action is most appropriate to avoid legal risks?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Only use data explicitly labeled with an open license and ensure the license terms are followed.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Any LLM outputs are reasonable to use because they do not reveal the original sources of data directly.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Reach out to the data curators directly to gain written consent for using their data.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Use any publicly available data as public data does not have legal restrictions.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. Only use data explicitly labeled with an open license and ensure the license terms are followed.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models",
+        "https://www.databricks.com/learn/certification/genai-engineer-associate",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_049",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer interfaces with an LLM with instruction-following capabilities trained on customer calls inquiring about product availability. The LLM should output “Success” if the product is available or “Fail” if not. Which prompt allows the engineer to receive call classification labels correctly?",
+      "options": [
+        {
+          "id": "A",
+          "text": "You are a helpful assistant that reads customer call transcripts. Walk through the transcript and think step-by-step if the customer’s inquiries are addressed successfully. Answer “Success” if yes; otherwise, answer “Fail”.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "You will be given a customer call transcript where the customer asks about product availability. Classify the call as “Success” if the product is available and “Fail” if the product is unavailable.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "You will be given a customer call transcript where the customer asks about product availability. The outputs are either “Success” or “Fail”. Format the output in JSON, for example: {\"call_id\": \"123\", \"label\": \"Succes\"}.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "You will be given a customer call transcript. Answer “Success” if the customer call has been resolved successfully. Answer “Fail” if the call is redirected or if the question is not resolved.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. You will be given a customer call transcript where the customer asks about product availability. Classify the call as “Success” if the product is available and “Fail” if the product is unavailable.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_050",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "Which TWO chain components are required for building a basic LLM-enabled chat application that includes conversational capabilities, knowledge retrieval, and contextual memory? (Choose two.)",
+      "options": [
+        {
+          "id": "A",
+          "text": "Vector Stores",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Conversation Buffer Memory",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "External tools",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Chat loaders",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "E",
+          "text": "React Components",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is A. Vector Stores, B. Conversation Buffer Memory. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_051",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has written scalable PySpark code to ingest unstructured PDF documents and chunk them in preparation for storing in a Databricks Vector Search index. Currently, the two columns of their dataframe include the original filename as a string and an array of text chunks from that document. What set of steps should the Generative AI Engineer perform to store the chunks in a ready-to-ingest manner for Databricks Vector Search?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use PySpark’s autoloader to apply a UDF across all chunks, formatting them in a JSON structure for Vector Search ingestion.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Flatten the dataframe to one chunk per row, create a unique identifier for each row, and enable change feed on the output Delta table.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Utilize the original filename as the unique identifier and save the dataframe as is.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Create a unique identifier for each document, flatten the dataframe to one chunk per row and save to an output Delta table.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. Flatten the dataframe to one chunk per row, create a unique identifier for each row, and enable change feed on the output Delta table.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_052",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is asked to build an LLM application that would excel at code generation. They need to select a model that has been specifically trained to generate code. Which model would likely produce the best results out of the box?",
+      "options": [
+        {
+          "id": "A",
+          "text": "CodeLlama-34b-Instruct-hf",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Mixtral-8x7B-v0.1",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Llama-2-70b-hf",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "mpt-7b-8k-instruct",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. CodeLlama-34b-Instruct-hf. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_053",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer needs to design an LLM pipeline to conduct multi-stage reasoning that leverages external tools. To be effective at this, the LLM will need to plan and adapt actions while performing complex reasoning tasks. Which approach will do this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Train the LLM to generate a single, comprehensive response without interacting with any external tools, relying solely on its pre-trained knowledge.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Use a Chain-of-Thought (CoT) prompting technique to guide the LLM through a series of reasoning steps, then manually input the results from external tools for the final answer.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Implement a framework like ReAct, which allows the LLM to generate reasoning traces and perform task-specific actions that leverage external tools if necessary.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Encourage the LLM to make multiple API calls in sequence without planning or structuring the calls, allowing the LLM to decide when and how to use external tools spontaneously.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Implement a framework like ReAct, which allows the LLM to generate reasoning traces and perform task-specific actions that leverage external tools if necessary.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_054",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer at an automotive company would like to build a question-answering chatbot for customers to inquire about their vehicles. They have a database containing various documents of different vehicle makes, their hardware parts, and common maintenance information. Which of the following components will NOT be useful in building such a chatbot?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Invite users to submit long, rather than concise, questions",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Response-generating LLM",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Embedding model",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Vector database",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. Invite users to submit long, rather than concise, questions. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_055",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is building an LLM to generate article headlines given the article content. However, the initial output from the LLM does not match the desired tone or style. Which approach would be most effective for adjusting the LLM’s response to achieve the desired response?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Exclude any article headlines that do not match the desired output",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Fine-tune the LLM on a dataset of desired tone and style",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "All of the above",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is C. Provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_056",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer is creating a customer support bot that should respond differently to an end user based on the sentiment in their initial message. For example, if the end user’s message was angry, the bot should try to de-escalate their negative sentiments as it solves the customer query. They want to make sure their approach follows best practices. Which approach will do this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use an encoder-only LLM model to both detect sentiment and generate replies based upon the detected sentiment.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Implement a RAG architecture for how to respond to users depending on detected sentiment.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Use linear regression model to classify sentiment and feed the result to a system prompt for the LLM to respond.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Create a chain which first uses an LLM to classify sentiment, then changes system prompt for the customer interaction LLM based upon the initial customer query sentiment.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Create a chain which first uses an LLM to classify sentiment, then changes system prompt for the customer interaction LLM based upon the initial customer query sentiment.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_057",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer is ready to deploy an LLM application written using Foundation Model APIs. They want to follow security best practices for production scenarios. Which authentication method should they choose?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use OAuth machine-to-machine authentication",
+          "explanation": "Correct. it uses a production serving feature rather than an offline training or notebook-only workflow. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "B",
+          "text": "Use an access token belonging to service principals",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "C",
+          "text": "Use an access token belonging to any workspace user",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "D",
+          "text": "Use a frequently rotated access token belonging to either a workspace user or a service principal",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests Model Serving exposes models, agents, and external/foundation model APIs behind endpoints with production controls such as traffic routing, scaling, and access management. The correct answer is A. Use OAuth machine-to-machine authentication. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_058",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is developing a RAG system for their company to perform internal document Q&A for structured HR policies, but the answers returned are frequently incomplete and unstructured. It seems that the retriever is not returning all relevant context. The Generative AI Engineer has experimented with different embedding and response generating LLMs but that did not improve results. Which TWO options could be used to improve the response quality? (Choose two.) ΑΠΟ ΕΔΩ",
+      "options": [
+        {
+          "id": "A",
+          "text": "Add the section header as a prefix to chunks",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Split the document by sentence",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Use a larger embedding model",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Increase the document chunk size",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "E",
+          "text": "Fine tune the response generation model",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is A. Add the section header as a prefix to chunks, D. Increase the document chunk size. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_059",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is building a production-ready LLM system which replies directly to customers. The solution makes use of the Foundation Model API via provisioned throughput. They are concerned that the LLM could potentially respond in a toxic or otherwise unsafe way. They also wish to perform this with the least amount of effort. Which approach will do this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ask users to report unsafe responses",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "B",
+          "text": "Host Llama Guard on Foundation Model API and use it to detect unsafe responses.",
+          "explanation": "Correct. it uses a production serving feature rather than an offline training or notebook-only workflow. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "C",
+          "text": "Add some LLM calls to their chain to detect unsafe content before returning text",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        },
+        {
+          "id": "D",
+          "text": "Add a regex expression on inputs and outputs to detect unsafe responses.",
+          "explanation": "Incorrect. it belongs to another part of the ML/GenAI lifecycle, not the serving requirement being tested. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Model Serving exposes models, agents, and external/foundation model APIs behind endpoints with production controls such as traffic routing, scaling, and access management. The correct answer is B. Host Llama Guard on Foundation Model API and use it to detect unsafe responses.. Example: deploy a logged model or agent behind a serving endpoint, then use traffic splitting or provisioned throughput when production needs require it.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_060",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer would like an LLM to parse and extract the following information: date, sender email, and order ID. The output should be formatted into JSON. Here’s an email sample: They need a prompt that will extract and output the required information in JSON with the highest level of output accuracy. Which prompt will do that?",
+      "options": [
+        {
+          "id": "A",
+          "text": "You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in a human-readable format.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here’s an example: {\"date\":\"April 16, 2024\", \"sender_email\":\"sarah.lee925@gmail.com\", \"order_id\":\"RE987D\"}",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "You will receive customer emails and need to extract date, sender email, and order IYou should return the date, sender email, and order ID information in JSON format.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is C. You will receive customer emails and need to extract date, sender email, and order ID. Return the extracted information in JSON format. Here’s an example: {\"date\":\"April 16, 2024\", \"sender_email\":\"sarah.lee925@gmail.com\", \"order_id\":\"RE987D\"}. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_061",
+      "source": "User imported",
+      "section": "6. Evaluation and Monitoring",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "evaluation/monitoring"
+      ],
+      "question": "A Generative AI Engineer has built an LLM-based system that will automatically translate user text between two languages. They now want to benchmark multiple LLM’s on this task and pick the best one. They have an evaluation set with known high quality translation examples. They want to evaluate each LLM using the evaluation set with a performant metric. Which metric should they choose for this evaluation?",
+      "options": [
+        {
+          "id": "A",
+          "text": "BLEU metric",
+          "explanation": "Correct. it measures the quality dimension the scenario asks about. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "B",
+          "text": "NDCG metric",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "C",
+          "text": "ROUGE metric",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "D",
+          "text": "RECALL metric",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests Evaluation and monitoring check whether the application is correct, grounded, relevant, safe, cost-effective, and stable after changes or deployment. The correct answer is A. BLEU metric. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_062",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is using an LLM to classify species of edible mushrooms based on text descriptions of certain features. The model is returning accurate responses in testing and the Generative AI Engineer is confident they have the correct list of possible labels, but the output frequently contains additional reasoning in the answer when the Generative AI Engineer only wants to return the label with no additional text. Which action should they take to elicit the desired behavior from this LLM?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use few shot prompting to instruct the model on expected output format",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Use zero shot prompting to instruct the model on expected output format",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Use zero shot chain-of-thought prompting to prevent a verbose output format",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Use a system prompt to instruct the model to be succinct in its answer",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. Use few shot prompting to instruct the model on expected output format. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_063",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is working with a retail company that wants to enhance its customer experience by automatically handling common customer inquiries. They are working on an LLM-powered AI solution that should improve response times while maintaining a personalized interaction. They want to define the appropriate input and LLM task to do this. Which input/output pair will do this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Input: Customer service chat logs; Output: Group the chat logs by users, followed by summarizing each user’s interactions, then respond",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Input: Customer service chat logs; Output: Find the answers to similar questions and respond with a summary",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Input: Customer reviews; Output: Classify review sentiment",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Input: Customer reviews; Output: Group the reviews by users and aggregate per-user average rating, then respond",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. Input: Customer service chat logs; Output: Group the chat logs by users, followed by summarizing each user’s interactions, then respond. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_064",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is developing a RAG application and would like to experiment with different embedding models to improve the application performance. Which strategy for picking an embedding model should they choose?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Pick an embedding model with multilingual support to support potential multilingual user questions",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Pick the most recent and most performant open LLM released at the time",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Pick an embedding model trained on related domain knowledge",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Pick the embedding model ranked highest on the Massive Text Embedding Benchmark (MTEB) leaderboard hosted by HuggingFace",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Pick an embedding model trained on related domain knowledge. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_065",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer wants their finetuned LLMs in their prod Databricks workspace available for testing in their dev workspace as well. All of their workspaces are Unity Catalog enabled and they are currently logging their models into the Model Registry in MLflow. What is the most cost-effective and secure option for the Generative AI Engineer to accomplish their goal?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use an external model registry which can be accessed from all workspaces.",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "B",
+          "text": "Use MLflow to log the model directly into Unity Catalog, and enable READ access in the dev workspace to the model.",
+          "explanation": "Correct. it matches the MLflow lifecycle step being tested: tracking, tracing, packaging, evaluation, or registry management. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "C",
+          "text": "Setup a duplicate training pipeline in dev, so that an identical model is available in dev.",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "D",
+          "text": "Setup a script to export the model from prod and import it to dev.",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests MLflow is used to package, track, trace, evaluate, register, and manage GenAI applications and agents across their lifecycle. The correct answer is B. Use MLflow to log the model directly into Unity Catalog, and enable READ access in the dev workspace to the model.. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_066",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer has just deployed an LLM application at a manufacturing company that assists with answering customer service inquiries. They need to identity the key enterprise metrics to monitor the application in production. Which is NOT a metric they will implement for their customer service LLM application in production?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Massive Multi-task Language Understanding (MMLU) score",
+          "explanation": "Correct. it measures the quality dimension the scenario asks about. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "B",
+          "text": "Number of customer inquiries processed per unit of time",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "C",
+          "text": "Factual accuracy of the response",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "D",
+          "text": "Time taken for LLM to generate a response",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests Evaluation and monitoring check whether the application is correct, grounded, relevant, safe, cost-effective, and stable after changes or deployment. The correct answer is A. Massive Multi-task Language Understanding (MMLU) score. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_067",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "Generative AI Engineer is helping a cinema extend its website’s chat bot to be able to respond to questions about specific showtimes for movies currently playing at their local theater. They already have the location of the user provided by location services to their agent, and a Delta table which is continually updated with the latest showtime information by location. They want to implement this new capability in their RAG application. Which option will do this with the least effort and in the most performant way?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a Feature Serving Endpoint from a FeatureSpec that references an online store synced from the Delta table. Query the Feature Serving Endpoint as part of the agent logic / tool implementation.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Query the Delta table directly via a SQL query constructed from the user’s input using a text-to-SQL LLM in the agent logic / tool implementation.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Set up a task in Databricks Workflows to write the information in the Delta table periodically to an external database such as MySQL and query the information from there as part of the agent logic / tool implementation.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Write the Delta table contents to a text column, then embed those texts using an embedding model and store these in the vector index. Look up the information based on the embedding as part of the agent logic / tool implementation.",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is B. Query the Delta table directly via a SQL query constructed from the user’s input using a text-to-SQL LLM in the agent logic / tool implementation.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_068",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "Generative AI Engineer needs to build an LLM application that can understand medical documents, including recently published ones. They want to select an open model available on HuggingFace’s model hub. Which step is most appropriate for selecting an LLM?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Pick any model in the Mistral family, as Mistral models are good with all types of use cases",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Select a model based on the highest number of downloads, as this indicates popularity, reliability, and general suitability",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Select a model that is most recently uploaded, as this indicates the model is the newest and highly likely to be the most performant",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Check for the model and training data description to identify if the model is trained on any medical data.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Check for the model and training data description to identify if the model is trained on any medical data.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_069",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "Generative AI Engineer is building a RAG application that answers questions about technology-related news articles. The source documents may contain a significant amount of irrelevant content, such as advertisements, sports news, or entertainment news. Which approach is NOT advisable for building a RAG application focused on answering technology-only questions?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Include in the system prompt that the application is not supposed to answer any questions unrelated to technology.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Filter out irrelevant news articles in the retrieval process.",
+          "explanation": "Incorrect. metadata filtering can improve retrieval precision, but it does not tell you how to choose chunk size, overlap, or splitting strategy. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Keep all news articles because the RAG application needs to understand non-technological content to avoid answering questions about them.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Filter out irrelevant news articles in the upstream document database.",
+          "explanation": "Incorrect. metadata filtering can improve retrieval precision, but it does not tell you how to choose chunk size, overlap, or splitting strategy. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Keep all news articles because the RAG application needs to understand non-technological content to avoid answering questions about them.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_070",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is building a RAG application that will rely on context retrieved from source documents that are currently in HTML format. They want to develop a solution using the least amount of lines of code. Which Python package should be used to extract the text from the source documents?",
+      "options": [
+        {
+          "id": "A",
+          "text": "pytesseract",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "numpy",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "pypdf2",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "beautifulsoup",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. beautifulsoup. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_071",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer is building a RAG application for answering employee questions on company policies. What are the steps needed to build this RAG application and deploy it?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ingest documents from a source -> Index the documents and saves to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> Evaluate model -> LLM generates a response -> Deploy it using Model Serving",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "User submits queries against an LLM -> Ingest documents from a source -> Index the documents and save to Vector Search -> LLM retrieves relevant documents -> LLM generates a response -> Evaluate model -> Deploy it using Model Serving",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Ingest documents from a source -> Index the documents and save to Vector Search -> Evaluate model -> Deploy it using Model Serving -> User submits queries against an LLM -> LLM retrieves relevant documents -> LLM generates a response",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Ingest documents from a source -> Index the documents and save to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> LLM generates a response -> Evaluate model -> Deploy it using Model Serving",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is D. Ingest documents from a source -> Index the documents and save to Vector Search -> User submits queries against an LLM -> LLM retrieves relevant documents -> LLM generates a response -> Evaluate model -> Deploy it using Model Serving. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_072",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer who was prototyping an LLM system accidentally ran thousands of inference queries against a Foundation Model endpoint over the weekend. They want to take action to prevent this from unintentionally happening again in the future. What action should they take?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use prompt engineering to instruct the LLM endpoints to refuse too many subsequent queries.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Require that all development code which interfaces with a Foundation Model endpoint must be reviewed by a Staff level engineer before execution.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Build a pyfunc model which proxies to the Foundation Model endpoint and add throttling within the pyfune model.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Configure rate limiting on the Foundation Model endpoints.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Configure rate limiting on the Foundation Model endpoints.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/ai-gateway/rate-limits-beta"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_073",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer is setting up a Databricks Vector Search that will lookup news articles by topic within 10 days of the date specified. An example query might be “Tell me about monster truck news around January 5th 1992”. They want to do this with the least amount of effort. How can they set up their Vector Search index to support this use case?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create separate indexes by topic and add a classifier model to appropriately pick the best index.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: a Delta Sync index is useful when indexed rows come from a Delta table that changes regularly."
+        },
+        {
+          "id": "B",
+          "text": "Include metadata columns for article date and topic to support metadata filtering.",
+          "explanation": "Correct. it chooses the search/indexing behavior that matches the data freshness, latency, and retrieval-quality requirement. Example: a Delta Sync index is useful when indexed rows come from a Delta table that changes regularly."
+        },
+        {
+          "id": "C",
+          "text": "Pass the query directly to the vector search index and return the best articles.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: a Delta Sync index is useful when indexed rows come from a Delta table that changes regularly."
+        },
+        {
+          "id": "D",
+          "text": "Split articles by 10 day blocks and return the block closest to the query.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: a Delta Sync index is useful when indexed rows come from a Delta table that changes regularly."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Databricks AI Search / Vector Search is used to index embeddings and retrieve relevant context; index type, sync mode, and query strategy depend on latency, updates, and governance needs. The correct answer is B. Include metadata columns for article date and topic to support metadata filtering.. Example: a Delta Sync index is useful when indexed rows come from a Delta table that changes regularly.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/ai-search/ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_074",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer developed an LLM application using the pay-per-token Foundation Model API. Now that the application is ready to be deployed, they would like to ensure the model endpoint can serve high incoming volumes of requests in production. What should the Generative AI Engineer consider?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Switch to using External Models instead",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Throttle the incoming batch of requests manually to avoid rate limiting issues",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Deploy the model using provisioned throughput as it comes with performance guarantees",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is D. Deploy the model using provisioned throughput as it comes with performance guarantees. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/ai-gateway/rate-limits-beta"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_075",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer at a home appliance company has been asked to design an LLM based application that accomplishes the following business objective: answer customer questions on home appliances using the associated instruction manuals. Which set of high-level tasks should the Generative AI Engineer’s system perform?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Split instruction manuals into chunks and embed into a vector store. Use the question to retrieve best matched chunks of manual, and use the LLM to generate a response to the user based upon the manual retrieved.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "Create an interaction matrix of historical user questions and appliance instruction manuals. Use ALS to factorize the matrix and create embeddings. Calculate the embeddings of new queries and use them to find the best manual. Use an LLM to generate a response to the question based upon the manual retrieved.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "Calculate averaged embeddings for each instruction manual, compare embeddings to user query to find the best manual. Pass the best manual with user query into an LLM with a large context window to generate a response to the employee.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Use an LLM to summarize all of the instruction manuals. Provide summaries of each manual and user query into an LLM with a large context window to generate a response to the user.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. Split instruction manuals into chunks and embed into a vector store. Use the question to retrieve best matched chunks of manual, and use the LLM to generate a response to the user based upon the manual retrieved.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_076",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is developing an LLM application to interact with users to provide personalized movie recommendations. Given the potential for malicious user inputs, which technique would be most effective in safeguarding the application?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reduce the time that the users can interact with the LLM",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "Increase the amount of compute that powers the LLM to process input faster",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "Ask the LLM to remind the user that the input is malicious but continue the conversation with the user",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist",
+          "explanation": "Correct. it directly reduces harmful or unsafe input/output behavior in the application. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is D. Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_077",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer received the following business requirements for an internal chatbot. The internal chatbot needs to know what types of questions the user asks and route them to appropriate models to answer the questions. For example, the user might ask about historical failure rates of a specific electrical part. Another user might ask about how to troubleshoot a piece of electrical equipment. Available data sources include a database of electrical equipment PDF manuals and also a table with information on when an electrical part experiences failure. Which workflow supports such a chatbot?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Parse the electrical equipment PDF manuals into a table of question and response pairs. That way, the same chatbot can query tables easily to answer questions about both historical failure rates and equipment troubleshooting.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it’s a historical failure rate question, send the query to a text-to-SQL model. If it’s a troubleshooting question, then send the query to another model that summarizes the equipment-specific document and generates the response.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "There should be two different chatbots handling different types of user queries.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "The table with electrical part failures should be converted into a text document first. That way, the same chatbot can use the same document retrieval process to generate answers regardless of question types.",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it’s a historical failure rate question, send the query to a text-to-SQL model. If it’s a troubleshooting question, then send the query to another model that summarizes the equipment-specific document and generates the response.. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_078",
+      "source": "User imported",
+      "section": "5. Governance",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "governance"
+      ],
+      "question": "A Generative AI Engineer is building a system that will answer questions on currently unfolding news topics. As such, it pulls information from a variety of sources including articles and social media posts. They are concerned about toxic posts on social media causing toxic outputs from their system. Which guardrail will limit toxic outputs?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Reduce the amount of context items the system will include in consideration for its response.",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "Use only approved social media and news accounts to prevent unexpected toxic data from getting to the LLM.",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "Log all LLM system responses and perform a batch toxicity analysis monthly.",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "Implement rate limiting.",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is B. Use only approved social media and news accounts to prevent unexpected toxic data from getting to the LLM.. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/rate-limits-beta",
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_079",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer has created a RAG application which can help employees interpret HR documentation. The prototype application is now working with some positive feedback from internal company testers. Now the Generative AI Engineer wants to formally evaluate the system’s performance and understand where to focus their efforts to further improve the system How should the Generative AI Engineer evaluate the system?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use ROUGE score to comprehensively evaluate the quality of the final generated answers.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Use an LLM-as-a-judge to evaluate the quality of the final answers generated.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Curate a dataset that can test the retrieval and generation components of the system separately. Use MLflow’s built in evaluation metrics to perform the evaluation on the retrieval and generation components.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Benchmark multiple LLMs with the same data and pick the best LLM for the job.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is C. Curate a dataset that can test the retrieval and generation components of the system separately. Use MLflow’s built in evaluation metrics to perform the evaluation on the retrieval and generation components.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_080",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "A Generative AI Engineer is using LangChain to assist a museum in classifying documents and using this code: Their code results in an error. What do they need to change in order to fix this template?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Provide an LLM argument to PromptTemplate()",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "B",
+          "text": "Provide template and LLM arguments to PromptTemplate()",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "C",
+          "text": "Omit PromptTemplate(), it is only used for multi-part templates",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "D",
+          "text": "Provide a template argument to PromptTemplate()",
+          "explanation": "Correct. it composes the required prompt/model/tool/retriever components in the intended workflow. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        }
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "This question tests LangChain-style chains and agents connect prompts, LLM calls, retrievers, tools, and parsers into multi-step GenAI workflows. The correct answer is D. Provide a template argument to PromptTemplate(). Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/langchain-uc-integration",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_081",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer has been reviewing issues with their company's LLM based question-answering assistant and has determined that a technique called prompt chaining could help alleviate some performance concerns. However, to suggest this to their team, they have to clearly explain how it works and how it can benefit their question-answering assistant. Which explanation do they communicate to the team?",
+      "options": [
+        {
+          "id": "A",
+          "text": "It allows you to break down complex tasks into multiple independent subtasks. This enables the assistant to generate more comprehensive and accurate responses.",
+          "explanation": "Correct. it composes the required prompt/model/tool/retriever components in the intended workflow. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "B",
+          "text": "It allows you to reduce the latency of your applications. By having multiple chains participating in the response as a chain, you increase the rate at which the response is generated.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "C",
+          "text": "It allows you to decrease the effort involved in crafting a prompt. Chains make it possible to reuse prompt text across multiple different use cases.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "D",
+          "text": "It reduces the average cost of a typical request. Chains make more efficient use of the tokens produced to generate higher quality responses with fewer tokens.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests LangChain-style chains and agents connect prompts, LLM calls, retrievers, tools, and parsers into multi-step GenAI workflows. The correct answer is A. It allows you to break down complex tasks into multiple independent subtasks. This enables the assistant to generate more comprehensive and accurate responses.. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_082",
+      "source": "User imported",
+      "section": "6. Evaluation and Monitoring",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "evaluation/monitoring"
+      ],
+      "question": "An AI developer team wants to fine tune an open-weight model to have exceptional performance on a code generation use case. They are trying to choose the best model to start with. They want to minimize model hosting costs, and are using Huggingface model cards and spaces to explore models. Which TWO model attributes and metrics should the team focus on to make their selection? (Choose two.)",
+      "options": [
+        {
+          "id": "A",
+          "text": "Big Code Models Leaderboard",
+          "explanation": "Correct. it measures the quality dimension the scenario asks about. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "B",
+          "text": "Number of model parameters",
+          "explanation": "Correct. it measures the quality dimension the scenario asks about. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "C",
+          "text": "MTEB Leaderboard",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "D",
+          "text": "Chatbot Arena Leaderboard",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        },
+        {
+          "id": "E",
+          "text": "Number of model downloads last month",
+          "explanation": "Incorrect. it measures a different quality dimension from the one asked in the scenario. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists."
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "This question tests Evaluation and monitoring check whether the application is correct, grounded, relevant, safe, cost-effective, and stable after changes or deployment. The correct answer is A. Big Code Models Leaderboard, B. Number of model parameters. Example: use faithfulness when checking if an answer is grounded in retrieved context; use correctness when a ground truth answer exists.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_083",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer at an automotive company would like to build a question-answering chatbot to help customers answer specific questions about their vehicles. They have: • A catalog with hundreds of thousands of cars manufactured since the 1960s • Historical searches, with user queries and successful matches • Descriptions of their own cars in multiple languages They have already selected an open source LLM and created a test set of user queries. They need to discard techniques that will not help them build the chatbot. Which do they discard?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Setting chunk size to match the model's context window to maximize coverage",
+          "explanation": "Correct. it uses Unity Catalog governance/discovery instead of duplicating permissions or metadata in app code. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "B",
+          "text": "Implementing metadata filtering based on car models and years",
+          "explanation": "Incorrect. it does not use Unity Catalog governance/metadata in the way the scenario requires. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "C",
+          "text": "Fine-tuning an embedding model on automotive terminology",
+          "explanation": "Incorrect. it does not use Unity Catalog governance/metadata in the way the scenario requires. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        },
+        {
+          "id": "D",
+          "text": "Adding few-shot examples for response generation",
+          "explanation": "Incorrect. it does not use Unity Catalog governance/metadata in the way the scenario requires. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests Unity Catalog centralizes governance for data, functions, models, permissions, lineage, and discoverability. The correct answer is A. Setting chunk size to match the model's context window to maximize coverage. Example: a UC function with a useful COMMENT is discoverable by an agent and still governed by UC permissions.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/manage-model-lifecycle/",
+        "https://docs.databricks.com/aws/en/udf/unity-catalog"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_084",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A Generative AI Engineer at a legal firm is designing a RAG system to analyze historical legal case precedents. The system needs to process millions of court opinions and legal documents, already organized by time and topic, to track how interpretations of specific laws have evolved over time. All of these documents are in plain-text. The engineer needs to choose a chunking method that would most effectively preserve continuity and the temporal nature of the cases. Which method do they choose?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Implement windowed summarization with overlapping chunks.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Implement a hierarchical tree structure, like RAPTOR, to group similar legal concepts.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Implement paragraph level embeddings with each chunk.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Implement sentence level embeddings with each chunk tagged with the time to enable metadata filtering.",
+          "explanation": "Incorrect. metadata filtering can improve retrieval precision, but it does not tell you how to choose chunk size, overlap, or splitting strategy. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is A. Implement windowed summarization with overlapping chunks.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_085",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is developing an agent system using a popular agent-authoring library. The agent comprises multiple parallel and sequential chains. The engineer encounters challenges as the agent fails at one of the steps, making it difficult to debug the root cause. They need to find an appropriate approach to research this issue and discover the cause of failure. Which approach do they choose?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enable MLflow tracing to gain visibility into each agent's behavior and execution step.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "B",
+          "text": "Run MLflow.evaluate to determine root cause of failed step.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "C",
+          "text": "Implement structured logging within the agent's code to capture detailed execution information.",
+          "explanation": "Correct. it composes the required prompt/model/tool/retriever components in the intended workflow. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        },
+        {
+          "id": "D",
+          "text": "Deconstruct the agent into independent steps to simplify debugging.",
+          "explanation": "Incorrect. it does not compose the LangChain-style workflow the question is testing. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow."
+        }
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "This question tests LangChain-style chains and agents connect prompts, LLM calls, retrievers, tools, and parsers into multi-step GenAI workflows. The correct answer is C. Implement structured logging within the agent's code to capture detailed execution information.. Example: a LangChain chain can compose a prompt template, retriever, chat model, and parser into one flow.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_086",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is experimenting with using parameters to configure an agent in Mosaic Agent Framework. However, they are struggling to get the agent to respond with relevant information with this configuration: Which error is causing the problem?",
+      "options": [
+        {
+          "id": "A",
+          "text": "The prompt does not parse the user's input vars",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "The prompt does not set the retriever schema",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "The prompt does not list available agents for the LLM to call",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "The prompt is not wrapped in ChatModel",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is A. The prompt does not parse the user's input vars. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_087",
+      "source": "User imported",
+      "section": "3. Application Development",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "application development"
+      ],
+      "question": "A Generative AI Engineer is using LangGraph to define multiple tools in a single agentic application. They want to enable the main orchestrator LLM to decide on its own which tools are most appropriate to call for a given prompt. To do this, they must determine the general flow of the code. Which sequence will do this?",
+      "options": [
+        {
+          "id": "A",
+          "text": "1. Define or import the tools 2. Add tools and LLM to the agent 3. Create the ReAct agent",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "1. Define or import the tools 2. Define the agent 3. Initialize the agent with ReAct, the LLM, and the tools",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "1. Define the tools 2. Load each tool into a separate agent 3. Instruct the LLM to use ReAct to call the appropriate agent",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "1. Define the tools inside the agents 2. Load the agents into the LLM 3. Instruct the LLM to use CoT reasoning to determine the appropriate agent",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. 1. Define or import the tools 2. Define the agent 3. Initialize the agent with ReAct, the LLM, and the tools. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/langchain-uc-integration",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_088",
+      "source": "User imported",
+      "section": "1. Design Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported"
+      ],
+      "question": "All of the following are python APIs used to query Databricks foundation models. When running in an interactive notebook, which of the following libraries does not automatically use the current session credentials?",
+      "options": [
+        {
+          "id": "A",
+          "text": "OpenAI client",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "B",
+          "text": "REST API via requests library",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "C",
+          "text": "MLflow Deployments SDK",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        },
+        {
+          "id": "D",
+          "text": "Databricks Python SDK",
+          "explanation": "Incorrect. it solves a different problem or misses an important scenario constraint. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests The best answer is the one that directly satisfies the scenario constraints, not a workaround that solves a different problem. The correct answer is B. REST API via requests library. Example: match the tool to the scenario constraint: current private data usually needs RAG or a governed tool, not model memory.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
+        "https://docs.databricks.com/aws/en/mlflow/models"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_089",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A Generative AI Engineer is deploying a customer-facing, fine-tuned LLM on their public website. Given the large investment the company put into fine tuning this model, and the proprietary nature of the tuning data, they are concerned about model inversion attacks. Which of the following Databricks AI Security Framework (DASF) risk mitigation strategies are most relevant to this use case?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Implement AI guardrails to allow users to configure and enforce compliance",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "B",
+          "text": "Leverage Databricks access control lists (ACLs) to configure permissions for accessing models",
+          "explanation": "Correct. it directly satisfies the main scenario constraint. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "C",
+          "text": "Use secure model features with Databricks Feature Store",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        },
+        {
+          "id": "D",
+          "text": "Apply attribute-based access controls (ABAC) to limit unauthorized access",
+          "explanation": "Incorrect. it does not target the exact risk described in the scenario. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt."
+        }
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "This question tests Guardrails reduce safety, security, privacy, and compliance risk by controlling inputs, outputs, access, and allowed tool actions. The correct answer is B. Leverage Databricks access control lists (ACLs) to configure permissions for accessing models. Example: a chatbot that must avoid politics should enforce a policy refusal, not merely hope the model follows a vague prompt.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_090",
+      "source": "User imported",
+      "section": "2. Data Preparation",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "RAG/retrieval"
+      ],
+      "question": "A team uses Mosaic AI Vector Search to retrieve documents for their Retrieval-Augmented Generation (RAG) pipeline. The search query returns five relevant documents, and the first three are added to the prompt as context. Performance evaluation with Agent Evaluation shows that some lower-ranked retrieved documents have higher context relevancy scores than higher-ranked documents. Which option should the team consider to optimize this workflow?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use a reranker to order the documents based on the relevance scores.",
+          "explanation": "Correct. it directly improves or evaluates the retrieval setup, which determines what context the LLM receives. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "B",
+          "text": "Modify the prompt to instruct the LLM to order the documents based on the relevance scores.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "C",
+          "text": "Use a different embedding model for computing document embeddings.",
+          "explanation": "Incorrect. changing the embedding model can affect semantic similarity, but it is not itself a chunking strategy or chunking parameter. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        },
+        {
+          "id": "D",
+          "text": "Increase the number of documents added to the prompt to improve context relevance.",
+          "explanation": "Incorrect. it is related to RAG, but it does not directly optimize the chunking choice being tested. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests RAG retrieval quality depends on chunking, metadata filtering, embeddings, and ranking; tune retrieval with metrics rather than intuition. The correct answer is A. Use a reranker to order the documents based on the relevance scores.. Example: to tune chunks, compare paragraph-sized vs section-sized chunks on a small labelled set and measure retrieval recall/NDCG or answer quality.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/vector-search/vector-search",
+        "https://docs.databricks.com/aws/en/vector-search/vector-search-retrieval-quality",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
+        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
+        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
+    },
+    {
+      "id": "USER_IMPORTED_091",
+      "source": "User imported",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Medium",
+      "tags": [
+        "user-imported",
+        "deployment"
+      ],
+      "question": "A generative AI engineer is deploying an AI agent authored with MLflow's ChatAgent interface for a retail company's customer support system on Databricks. The agent must handle thousands of inquiries daily, and the engineer needs to track its performance and quality in real-time to ensure it meets service-level agreements. Which metrics are automatically captured by default and made available for monitoring when the agent is deployed using the Mosaic AI Agent Framework?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Operational metrics like request volume, latency, and errors",
+          "explanation": "Correct. it matches the MLflow lifecycle step being tested: tracking, tracing, packaging, evaluation, or registry management. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "B",
+          "text": "Quality metrics like correctness and guideline adherence",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "C",
+          "text": "Both operational and quality metrics",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        },
+        {
+          "id": "D",
+          "text": "No metrics are automatically captured",
+          "explanation": "Incorrect. it is not the MLflow method or lifecycle feature required by this operation. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "This question tests MLflow is used to package, track, trace, evaluate, register, and manage GenAI applications and agents across their lifecycle. The correct answer is A. Operational metrics like request volume, latency, and errors. Example: use MLflow tracing to see the retriever call, tool call, LLM call, latency, inputs, and outputs for one user request.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow/models",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/"
+      ],
+      "origin": "User imported from Question.docx",
+      "origin_type": "User imported",
+      "origin_label": "User imported from Question.docx"
     }
   ]
 };

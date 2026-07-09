@@ -16,7 +16,7 @@
   <section class="hero">
     <div class="brand"><img src="assets/dbx-prep-icon.svg" alt="Prep app icon"><div><h1>Databricks GenAI Cert Prep</h1><div class="small" style="color:#ffd6d2">Browser practice app</div></div></div>
     <p>Randomized browser quiz for Databricks Certified Generative AI Engineer Associate prep. Includes per-option explanations, source/verify links, origin labels, mock exam mode, mistake review, and saved shuffled progress.</p>
-    <div class="disclaimer">Unofficial study/practice app. Use it for learning and self-assessment; verify important details in official Databricks docs.</div>
+    <div class="disclaimer">Unofficial study/practice app. Includes generated practice, official-guide samples, and user-imported questions. Verify important details in official Databricks docs.</div>
   </section>
 
   <div class="stats" id="stats"></div>
@@ -55,7 +55,7 @@
 </div>
 <script>
 const baseBank = window.QUESTION_BANK || {meta:{}, questions:[]};
-const LS_QUEUE='dbx_genai_v3_queue', LS_KEY='dbx_genai_v3_state', LS_MIST='dbx_genai_v3_mistakes', LS_IMPORTED='dbx_genai_v3_imported', LS_PERF='dbx_genai_v3_performance';
+const LS_QUEUE='dbx_genai_v4_3_1_1_queue', LS_KEY='dbx_genai_v4_3_1_1_state', LS_MIST='dbx_genai_v4_3_1_1_mistakes', LS_IMPORTED='dbx_genai_v4_3_1_1_imported', LS_PERF='dbx_genai_v4_3_1_1_performance';
 let importedQuestions = loadImported();
 let questions = normalizeQuestions([...(baseBank.questions||[]), ...importedQuestions]);
 let queue=[], current=null, answered=false, score=0, seen=0;
