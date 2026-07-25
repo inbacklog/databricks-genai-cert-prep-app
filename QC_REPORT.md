@@ -1,6 +1,4 @@
-# QC Report — v5.6 source/QC pass
-
-This version keeps the v5.5 question set and performs a final cleanup pass before user review.
+# QC Report — v5.7 incomplete-context and explanation pass
 
 ## Counts
 
@@ -8,33 +6,35 @@ This version keeps the v5.5 question set and performs a final cleanup pass befor
 - Generated practice: 224
 - User imported: 91
 - Official guide sample: 10
+- Difficulty: Easy 22, Medium 259, Hard 44
 
-## Difficulty distribution
+## Repairs in v5.7
 
-- Easy: 22
-- Medium: 259
-- Hard: 44
+- Repaired `USER_IMPORTED_030`, whose imported source said “following error” but omitted the actual error. The question now supplies an explicit **input-context-length overflow** while preserving the intended two answers (smaller chunks and fewer retrieved chunks). The uploaded source confirms the original text omitted the error itself.
+- Repaired three other imported questions that depended on missing material:
+  - `USER_IMPORTED_023`: added the preceding VectorSearchClient setup.
+  - `USER_IMPORTED_040`: removed the unavailable “diagram above” dependency.
+  - `USER_IMPORTED_080`: added the missing `PromptTemplate` code.
+  - `USER_IMPORTED_086`: added the missing agent prompt-variable configuration.
+- Replaced 197 copied generic examples with option-specific examples derived from the actual answer choice and explanation.
+- Removed 12 instances of generic NOT-question boilerplate.
+- Corrected small wording/typing issues without changing answer keys.
+- Added a compact bottom-right **Buy me a coffee** widget using the supplied Wallet of Satoshi Lightning address and QR code. The QR crop was decoded successfully before packaging.
 
-## Fixes made in v5.6
+- Replaced 58 generic main-question summaries with concept-specific summaries derived from the correct option explanations.
+- Rewrote four remaining generic distractor explanations manually.
 
-- Rechecked the bank against the uploaded Databricks exam guide, official Databricks docs, and the uploaded Big Book of GenAI.
-- Replaced old Vector Search source links with current AI Search source links where applicable.
-- Replaced local/uploaded Big Book placeholder links with the official Databricks Big Book of Generative AI resource URL.
-- Removed remaining generic boilerplate phrases from option explanations, especially in user-imported explanations.
-- Fixed all remaining option explanations missing a quick example.
-- Updated source links for selected user-imported questions where the previous source links were too broad or not directly relevant.
-- Added an **Unhide session-hidden** button so an accidentally hidden question can be restored without resetting all stats.
+## Automated structural checks
 
-## Automated checks
+- Missing visual/code/error references after repairs: 0
+- Missing per-option `Example:` blocks: 0
+- Duplicate option explanations within the same question: 0
+- Fixed answer-letter references incompatible with shuffled options: 0
+- Multi-select wording/key inconsistencies: 0
+- Example texts repeated 4+ times after cleanup: 0
 
-- Option explanations missing `Example:`: 0
-- Non-HTTP source links: 0
-- Duplicate per-option explanations within a question: 0
-- Remaining generic boilerplate phrase hits: 0
-- Generated/official answer choices starting with `Only`: 0
+## Source notes
 
-## Notes
-
-- `User imported` questions are preserved as user-provided practice material. The known corrected answer for the multi-step agent debugging question remains MLflow tracing.
-- The app still avoids copying paid/exam-dump content verbatim. New/source-grounded questions are original practice questions based on official/public learning materials.
-- Public deployment note: this package includes `User imported` questions. Pushing it to a public GitHub repository makes those questions public.
+- Current Databricks documentation uses **Databricks AI Search** for the product formerly called Databricks Vector Search. Imported and official-guide questions may retain the older wording where it is part of the source material; explanations and links use current terminology where practical.
+- User-imported questions remain labelled `User imported`. Their wording is kept where possible, but missing screenshots/code/configuration were reconstructed as explicit, self-contained scenarios so the questions can be answered in the browser.
+- This automated scan checks structure, answer-key consistency, missing context markers, repeated explanations, and shuffle-safe wording. It does not claim that every third-party imported answer is an official Databricks exam answer; source links remain available for verification.

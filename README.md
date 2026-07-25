@@ -2,9 +2,9 @@
 
 Browser-based practice app for the Databricks Certified Generative AI Engineer Associate exam.
 
-## v5.6 notes
+## v5.7 notes
 
-This version performs a source/QC cleanup pass on top of v5.5.
+This version repairs incomplete imported questions, removes repeated generic examples, expands structural QC, and adds an optional Wallet of Satoshi support widget.
 
 - Total questions: 325
 - Origin labels: `Generated practice`, `Official guide sample`, `User imported`
@@ -14,7 +14,8 @@ This version performs a source/QC cleanup pass on top of v5.5.
 - Custom exam length
 - Previous question in Study mode
 - Mark for review, Report issue, Hide for session
-- New: `Unhide session-hidden` button
+- `Unhide session-hidden` button
+- New: compact bottom-right Wallet of Satoshi support button
 - Performance tracking by section/tag
 
 ## Important content note
@@ -71,12 +72,12 @@ Copy/replace the files into your local repo folder, then run:
 ```bash
 git status
 git add .
-git commit -m "Source and QC cleanup pass"
+git commit -m "Repair question context and add support widget"
 git push
 ```
 
 Then open your GitHub Pages URL with a cache buster, for example:
 
 ```text
-https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=56
+https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=57
 ```
