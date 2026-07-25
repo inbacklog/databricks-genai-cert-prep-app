@@ -1,4 +1,4 @@
-# QC Report — v5.7 incomplete-context and explanation pass
+# QC Report — v5.9.1 mobile support polish
 
 ## Counts
 
@@ -8,7 +8,7 @@
 - Official guide sample: 10
 - Difficulty: Easy 22, Medium 259, Hard 44
 
-## Repairs in v5.7
+## Question-bank repairs retained from v5.7
 
 - Repaired `USER_IMPORTED_030`, whose imported source said “following error” but omitted the actual error. The question now supplies an explicit **input-context-length overflow** while preserving the intended two answers (smaller chunks and fewer retrieved chunks). The uploaded source confirms the original text omitted the error itself.
 - Repaired three other imported questions that depended on missing material:
@@ -38,3 +38,11 @@
 - Current Databricks documentation uses **Databricks AI Search** for the product formerly called Databricks Vector Search. Imported and official-guide questions may retain the older wording where it is part of the source material; explanations and links use current terminology where practical.
 - User-imported questions remain labelled `User imported`. Their wording is kept where possible, but missing screenshots/code/configuration were reconstructed as explicit, self-contained scenarios so the questions can be answered in the browser.
 - This automated scan checks structure, answer-key consistency, missing context markers, repeated explanations, and shuffle-safe wording. It does not claim that every third-party imported answer is an official Databricks exam answer; source links remain available for verification.
+
+
+## v5.9.1 UI changes
+
+- Buy Me a Coffee and Lightning support options.
+- Icon-only floating support button.
+- Mobile layout cleanup.
+- Support panel closes on outside click or Escape.

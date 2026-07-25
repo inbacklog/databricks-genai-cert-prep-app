@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "5.7",
+    "version": "5.9.1",
     "updated": "2026-07-25",
     "question_count": 325,
-    "notes": "v5.7 repairs missing imported-question context, replaces repeated generic examples, adds a compact Wallet of Satoshi support widget, and expands automated QC.",
+    "notes": "v5.9.1 keeps the v5.7 question-bank QC improvements and adds Buy Me a Coffee plus Bitcoin Lightning support, mobile layout polish, icon-only support button, and click-outside-to-close behavior.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Uploaded Big Book of GenAI PDF",
@@ -17,7 +17,7 @@
       "User imported"
     ],
     "generated_at": "2026-07-25",
-    "description": "v5.7: incomplete-context repair, explanation de-duplication, UI support widget, and whole-bank structural QC."
+    "description": "v5.9.1: source/QC-cleaned question bank with mobile support widget polish and Buy Me a Coffee plus Lightning options."
   },
   "questions": [
     {

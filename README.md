@@ -1,8 +1,8 @@
-# Databricks GenAI Certification Prep App
+# Databricks GenAI Cert Prep App — v5.9.1
 
 Browser-based practice app for the Databricks Certified Generative AI Engineer Associate exam.
 
-## v5.7 notes
+## v5.9.1 notes
 
 This version repairs incomplete imported questions, removes repeated generic examples, expands structural QC, and adds an optional Wallet of Satoshi support widget.
 
@@ -81,3 +81,10 @@ Then open your GitHub Pages URL with a cache buster, for example:
 ```text
 https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=57
 ```
+
+
+## v5.9.1 support-widget update
+
+- Adds Buy Me a Coffee and Bitcoin Lightning options.
+- Uses an icon-only floating coffee button.
+- Improves mobile layout and closes the support panel when clicking outside it.
