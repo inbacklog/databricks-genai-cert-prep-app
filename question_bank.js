@@ -1,10 +1,10 @@
 window.QUESTION_BANK = {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "5.9.1",
-    "updated": "2026-07-25",
+    "version": "5.10",
+    "updated": "2026-07-30",
     "question_count": 325,
-    "notes": "v5.9.1 keeps the v5.7 question-bank QC improvements and adds Buy Me a Coffee plus Bitcoin Lightning support, mobile layout polish, icon-only support button, and click-outside-to-close behavior.",
+    "notes": "v5.10 removes repetitive and truncated auto-generated examples, repairs several mismatched imported-option explanations, and keeps the v5.9.1 mobile/support UI.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Uploaded Big Book of GenAI PDF",
@@ -17,7 +17,7 @@ window.QUESTION_BANK = {
       "User imported"
     ],
     "generated_at": "2026-07-25",
-    "description": "v5.9.1: source/QC-cleaned question bank with mobile support widget polish and Buy Me a Coffee plus Lightning options."
+    "description": "v5.10: concise, non-repetitive option explanations with targeted semantic repairs; Buy Me a Coffee and Lightning support retained."
   },
   "questions": [
     {
@@ -8150,27 +8150,27 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Change embedding models and compare performance.",
-          "explanation": "Incorrect. Changing the embedding model can affect semantic matching, but it is not itself a chunking strategy; it should be tested after you define a retrieval metric. Example: If the engineer chose “Change embedding models and compare performance,” changing the embedding model can affect semantic matching, but it is not itself a chunking strategy; it should be tested after you define a retrieval metric."
+          "explanation": "Incorrect. Changing the embedding model can affect semantic matching, but it does not directly optimize chunk size, overlap, or split boundaries. Example: compare embedding models only after holding the chunking configuration constant, so you know which change caused the result."
         },
         {
           "id": "B",
           "text": "Add a classifier for user queries that predicts which book will best contain the answer. Use this to filter retrieval.",
-          "explanation": "Incorrect. A classifier can route/filter retrieval by metadata, but it does not directly choose the best chunk size or overlap. Example: If the engineer chose “Add a classifier for user queries that predicts which book will best contain the answer. Use this to filter retrieval,” a classifier can route/filter retrieval by metadata, but it does not directly choose the best chunk size or overlap."
+          "explanation": "Incorrect. Routing a query to the most likely book can narrow the search space, but it does not determine the best chunking strategy. Example: book-level filtering may improve precision while the chunks themselves are still too large or split at poor boundaries."
         },
         {
           "id": "C",
           "text": "Choose an appropriate evaluation metric (such as recall or NDCG) and experiment with changes in the chunking strategy, such as splitting chunks by paragraphs or chapters. Choose the strategy that gives the best performance metric.",
-          "explanation": "Correct. Retrieval metrics such as recall or NDCG let you compare retrieval configurations empirically instead of relying on intuition. Example: A concrete implementation is to choose an appropriate evaluation metric (such as recall or NDCG) and experiment with changes in the chunking strategy, such…."
+          "explanation": "Correct. Use a labeled evaluation set and retrieval metrics such as recall@k or NDCG to compare candidate chunking configurations empirically. Example: test paragraph-based, chapter-section, and fixed-token chunks on the same questions, then keep the configuration that most consistently retrieves the answer-bearing passage."
         },
         {
           "id": "D",
           "text": "Pass known questions and best answers to an LLM and instruct the LLM to provide the best token count. Use a summary statistic (mean, median, etc.) of the best token counts to choose chunk size.",
-          "explanation": "Incorrect. Asking an LLM to guess a token count is not a reliable evaluation method; chunk size should be chosen using measured retrieval/answer quality. Example: If the engineer chose “Pass known questions and best answers to an LLM and instruct the LLM to provide the best token count. Use a summary statisti…,” asking an LLM to guess a token count is not a reliable evaluation method; chunk size should be chosen using measured retrieval/answer quality."
+          "explanation": "Incorrect. Asking an LLM to guess an ideal token count is not a controlled evaluation method and provides no evidence about retrieval quality. Example: a guessed 700-token chunk size could perform worse than 350-token chunks on the actual benchmark questions."
         },
         {
           "id": "E",
           "text": "Create an LLM-as-a-judge metric to evaluate how well previous questions are answered by the most appropriate chunk. Optimize the chunking parameters based upon the values of the metric.",
-          "explanation": "Correct. An LLM judge can score answer quality, style, or guideline adherence, but by itself it may not reveal whether failures came from retrieval, generation, or data preparation. Example: use a judge for answer faithfulness, but also track context recall/precision to find retrieval failures."
+          "explanation": "Correct. An LLM-as-a-judge can provide an end-to-end signal for whether each chunking configuration supports accurate, grounded answers. Example: compare groundedness or answer-quality scores across chunk sizes while keeping the generator and retrieval settings otherwise unchanged."
         }
       ],
       "correct_answers": [
@@ -8249,22 +8249,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Number of customer inquiries processed per unit of time",
-          "explanation": "Correct. Request volume/throughput is an operational production metric for a customer-service LLM app. Example: In this scenario, “Number of customer inquiries processed per unit of time” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Throughput—the number of inquiries processed per unit of time—is a relevant operational metric for a production customer-service application. It helps show whether the service can handle real demand."
         },
         {
           "id": "B",
           "text": "Energy usage per query",
-          "explanation": "Incorrect. Energy per query may be a sustainability or infrastructure metric, but it is not the primary customer-service application metric. Example: If the engineer chose “Energy usage per query,” energy per query may be a sustainability or infrastructure metric, but it is not the primary customer-service application metric."
+          "explanation": "Incorrect. Energy usage may matter for sustainability reporting, but it does not directly measure whether the customer-service application is handling its workload effectively."
         },
         {
           "id": "C",
           "text": "Final perplexity scores for the training of the model",
-          "explanation": "Incorrect. Perplexity is mainly a language-model training/evaluation signal; it is not a direct production metric for a deployed customer-support workflow. Example: If the engineer chose “Final perplexity scores for the training of the model,” perplexity is mainly a language-model training/evaluation signal; it is not a direct production metric for a deployed customer-support workflow."
+          "explanation": "Incorrect. Training perplexity describes model behavior during development; it is not a direct production-service metric for the deployed application."
         },
         {
           "id": "D",
           "text": "HuggingFace Leaderboard values for the base LLM",
-          "explanation": "Incorrect. A public leaderboard describes a base model benchmark, not how your deployed application is serving real users. Example: If the engineer chose “HuggingFace Leaderboard values for the base LLM,” a public leaderboard describes a base model benchmark, not how your deployed application is serving real users."
+          "explanation": "Incorrect. A public base-model leaderboard does not measure the latency, throughput, errors, or user experience of this specific deployed application."
         }
       ],
       "correct_answers": [
@@ -8291,22 +8291,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Create a tool for finding available team members given project dates. Embed all project scopes into a vector store, perform a retrieval using team member profiles to find the best team member.",
-          "explanation": "Incorrect. Embedding project scopes reverses the retrieval direction; the query should be the new project and the searchable corpus should be candidate profiles. Example: If the engineer chose “Create a tool for finding available team members given project dates. Embed all project scopes into a vector store, perform…,” embedding project scopes reverses the retrieval direction; the query should be the new project and the searchable corpus should be candidate profiles."
+          "explanation": "Incorrect. Embedding project scopes reverses the retrieval direction; the query should be the new project and the searchable corpus should be candidate profiles."
         },
         {
           "id": "B",
           "text": "Create a tool for finding team member availability given project dates, and another tool that uses an LLM to extract keywords from project scopes. Iterate through available team members’ profiles and perform keyword matching to find the best available team member.",
-          "explanation": "Incorrect. Keyword matching is brittle for unstructured profile matching because synonyms and phrasing differences can hide good matches. Example: If the engineer chose “Create a tool for finding team member availability given project dates, and another tool that uses an LLM to extract keyword…,” keyword matching is brittle for unstructured profile matching because synonyms and phrasing differences can hide good matches."
+          "explanation": "Incorrect. Keyword matching is brittle for unstructured profile matching because synonyms and phrasing differences can hide good matches."
         },
         {
           "id": "C",
           "text": "Create a tool to find available team members given project dates. Create a second tool that can calculate a similarity score for a combination of team member profile and the project scope. Iterate through the team members and rank by best score to select a team member.",
-          "explanation": "Incorrect. Scoring every available employee can work at small scale, but it is less efficient than indexing profiles and retrieving candidates from a large population. Example: If the engineer chose “Create a tool to find available team members given project dates. Create a second tool that can calculate a similarity score…,” scoring every available employee can work at small scale, but it is less efficient than indexing profiles and retrieving candidates from a large population."
+          "explanation": "Incorrect. Scoring every available employee can work at small scale, but it is less efficient than indexing profiles and retrieving candidates from a large population."
         },
         {
           "id": "D",
           "text": "Create a tool for finding available team members given project dates. Embed team profiles into a vector store and use the project scope and filtering to perform retrieval to find the available best matched team members.",
-          "explanation": "Correct. Embedding team-member profiles and filtering by availability lets retrieval compare the project scope against a large set of unstructured profiles efficiently. Example: A concrete implementation is to create a tool for finding available team members given project dates. Embed team profiles into a vector store and use the pr…."
+          "explanation": "Correct. Embedding team-member profiles and filtering by availability lets retrieval compare the project scope against a large set of unstructured profiles efficiently."
         }
       ],
       "correct_answers": [
@@ -8335,22 +8335,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "DatabricksIQ",
-          "explanation": "Incorrect. DatabricksIQ is not the runtime data-access tool for pulling current scores into an LLM workflow. Example: If the engineer chose “DatabricksIQ,” databricksIQ is not the runtime data-access tool for pulling current scores into an LLM workflow."
+          "explanation": "Incorrect. DatabricksIQ provides platform intelligence and semantic understanding; it is not the online mechanism for serving the latest game-score values to an application."
         },
         {
           "id": "B",
           "text": "Foundation Model APIs",
-          "explanation": "Incorrect. Foundation Model APIs generate or embed text; they do not by themselves provide live structured data like current scores unless connected to a data source. Example: If the engineer chose “Foundation Model APIs,” foundation Model APIs generate or embed text; they do not by themselves provide live structured data like current scores unless connected to a data source."
+          "explanation": "Incorrect. Foundation Model APIs generate or embed content, but they need a separate governed data source or tool to obtain current scores."
         },
         {
           "id": "C",
           "text": "Feature Serving",
-          "explanation": "Correct. Feature Serving is appropriate when the agent needs fresh structured values, such as latest scores or showtimes, from governed tables or online features. Example: In this scenario, “Feature Serving” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Feature Serving can expose fresh structured values from governed data for low-latency application use. Example: the agent can retrieve the latest score before asking the LLM to produce commentary."
         },
         {
           "id": "D",
           "text": "AutoML",
-          "explanation": "Incorrect. AutoML trains predictive models; it is not the simplest way to give an LLM app live external or tabular facts. Example: If the engineer chose “AutoML,” autoML trains predictive models; it is not the simplest way to give an LLM app live external or tabular facts."
+          "explanation": "Incorrect. AutoML trains predictive models; it does not provide live game scores to the LLM application."
         }
       ],
       "correct_answers": [
@@ -8378,22 +8378,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Vector Search",
-          "explanation": "Incorrect. This describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy. Example: If the engineer chose “Vector Search,” this describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy."
+          "explanation": "Incorrect. Databricks AI Search retrieves relevant documents for RAG; it does not automatically capture Model Serving request and response payloads."
         },
         {
           "id": "B",
           "text": "Lakeview",
-          "explanation": "Incorrect. Lakeview is for dashboards; it can visualize data later, but it is not the feature that captures serving payloads. Example: If the engineer chose “Lakeview,” lakeview is for dashboards; it can visualize data later, but it is not the feature that captures serving payloads."
+          "explanation": "Incorrect. Lakeview dashboards can visualize data after it has been collected, but they are not the mechanism that records endpoint inputs and outputs."
         },
         {
           "id": "C",
           "text": "DBSQL",
-          "explanation": "Incorrect. DBSQL can query tables, but it does not automatically capture model-serving request and response logs. Example: If the engineer chose “DBSQL,” dBSQL can query tables, but it does not automatically capture model-serving request and response logs."
+          "explanation": "Incorrect. Databricks SQL can query stored logs, but it does not automatically create serving request/response records."
         },
         {
           "id": "D",
           "text": "Inference Tables",
-          "explanation": "Correct. Inference Tables capture served-model requests and responses for monitoring/debugging without building a separate logging microservice. Example: In this scenario, “Inference Tables” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Inference Tables automatically log Model Serving requests and responses to governed Delta tables for monitoring, debugging, and later analysis."
         }
       ],
       "correct_answers": [
@@ -8425,22 +8425,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Increase the frequency of upstream data updates",
-          "explanation": "Incorrect. More frequent updates make content fresher, but they do not remove offensive or toxic content. Example: If the engineer chose “Increase the frequency of upstream data updates,” more frequent updates make content fresher, but they do not remove offensive or toxic content."
+          "explanation": "Incorrect. More frequent updates improve freshness, not safety. Example: a toxic article remains toxic even when it is refreshed every hour."
         },
         {
           "id": "B",
           "text": "Inform the user of the expected RAG behavior",
-          "explanation": "Incorrect. User messaging sets expectations, but it does not reduce toxic retrieved content or unsafe generation. Example: If the engineer chose “Inform the user of the expected RAG behavior,” user messaging sets expectations, but it does not reduce toxic retrieved content or unsafe generation."
+          "explanation": "Incorrect. Informing users about expected behavior sets expectations but does not prevent offensive content from being retrieved or generated. Example: a warning banner does not filter an inflammatory passage from the prompt."
         },
         {
           "id": "C",
           "text": "Restrict access to the data sources to a limited number of users",
-          "explanation": "Incorrect. Restricting who can see data is an access-control measure; it does not clean inflammatory content for allowed users. Example: If the engineer chose “Restrict access to the data sources to a limited number of users,” restricting who can see data is an access-control measure; it does not clean inflammatory content for allowed users."
+          "explanation": "Incorrect. Restricting access is an authorization control; it does not clean the content for users who are allowed to access it. Example: an approved employee could still receive an offensive passage from the same source."
         },
         {
           "id": "D",
           "text": "Curate upstream data properly that includes manual review before it is fed into the RAG system",
-          "explanation": "Correct. Curating upstream data attacks toxic or inflammatory outputs at the source before that content is retrieved and passed to the LLM. Example: A concrete implementation is to curate upstream data properly that includes manual review before it is fed into the RAG system."
+          "explanation": "Correct. Curating and reviewing upstream content removes or corrects harmful material before it enters the retrieval corpus. Example: exclude toxic documents, redact inflammatory passages, or require manual approval before indexing high-risk content."
         }
       ],
       "correct_answers": [
@@ -8470,22 +8470,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "context length 514; smallest model is 0.44GB and embedding dimension 768",
-          "explanation": "Incorrect. A 514-token context barely exceeds the chunk size and uses a larger model than necessary; the extra 2 tokens do not justify higher cost. Example: If the engineer chose “context length 514; smallest model is 0.44GB and embedding dimension 768,” a 514-token context barely exceeds the chunk size and uses a larger model than necessary; the extra 2 tokens do not justify higher cost."
+          "explanation": "Incorrect. A 514-token context barely exceeds the chunk size and uses a larger model than necessary; the extra 2 tokens do not justify higher cost."
         },
         {
           "id": "B",
           "text": "context length 2048: smallest model is 11GB and embedding dimension 2560",
-          "explanation": "Incorrect. A 2048-token context gives more room, but the scenario prioritizes cost and latency over extra context. Example: If the engineer chose “context length 2048: smallest model is 11GB and embedding dimension 2560,” a 2048-token context gives more room, but the scenario prioritizes cost and latency over extra context."
+          "explanation": "Incorrect. A 2048-token context gives more room, but the scenario prioritizes cost and latency over extra context."
         },
         {
           "id": "C",
           "text": "context length 32768: smallest model is 14GB and embedding dimension 4096",
-          "explanation": "Incorrect. A very large context window is useful for long-context quality, but it is overkill for 512-token chunks when low cost/latency is the priority. Example: If the engineer chose “context length 32768: smallest model is 14GB and embedding dimension 4096,” a very large context window is useful for long-context quality, but it is overkill for 512-token chunks when low cost/latency is the priority."
+          "explanation": "Incorrect. A very large context window is useful for long-context quality, but it is overkill for 512-token chunks when low cost/latency is the priority."
         },
         {
           "id": "D",
           "text": "context length 512: smallest model is 0.13GB and embedding dimension 384",
-          "explanation": "Correct. A 512-token context with the smallest model best matches 512-token chunks when cost and latency matter more than extra context. Example: In this scenario, “context length 512: smallest model is 0.13GB and embedding dimension 384” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. A 512-token context with the smallest model best matches 512-token chunks when cost and latency matter more than extra context."
         }
       ],
       "correct_answers": [
@@ -8515,22 +8515,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Limit the number of relevant documents available for the RAG application to retrieve from",
-          "explanation": "Incorrect. Removing available relevant documents reduces retrieval coverage and can hurt answer quality. Example: If the engineer chose “Limit the number of relevant documents available for the RAG application to retrieve from,” removing available relevant documents reduces retrieval coverage and can hurt answer quality."
+          "explanation": "Incorrect. Removing available relevant documents reduces retrieval coverage and can hurt answer quality."
         },
         {
           "id": "B",
           "text": "Pick a smaller LLM that is domain-specific",
-          "explanation": "Correct. A smaller domain-specific model can be a good quality/cost trade-off when the application domain is narrow. Example: In this scenario, “Pick a smaller LLM that is domain-specific” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. A smaller domain-specific model can be a good quality/cost trade-off when the application domain is narrow."
         },
         {
           "id": "C",
           "text": "Limit the number of queries a customer can send per day",
-          "explanation": "Incorrect. Query limits control spend, but they do not improve the quality of the RAG design itself. Example: If the engineer chose “Limit the number of queries a customer can send per day,” query limits control spend, but they do not improve the quality of the RAG design itself."
+          "explanation": "Incorrect. Query limits control spend, but they do not improve the quality of the RAG design itself."
         },
         {
           "id": "D",
           "text": "Use the largest LLM possible because that gives the best performance for any general queries",
-          "explanation": "Incorrect. The largest model can improve quality in some cases, but it is rarely the cost-conscious default and can waste budget. Example: If the engineer chose “Use the largest LLM possible because that gives the best performance for any general queries,” the largest model can improve quality in some cases, but it is rarely the cost-conscious default and can waste budget."
+          "explanation": "Incorrect. The largest model can improve quality in some cases, but it is rarely the cost-conscious default and can waste budget."
         }
       ],
       "correct_answers": [
@@ -8560,27 +8560,27 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "call_cust_history",
-          "explanation": "Incorrect. Customer-call history supports chargeback/usage analytics, not resolution context. Example: If the engineer chose “call_cust_history,” customer-call history supports chargeback/usage analytics, not resolution context."
+          "explanation": "Incorrect. `call_cust_history` is designed for usage and chargeback analysis, not for retrieving the technical context or resolution of previous incidents."
         },
         {
           "id": "B",
           "text": "maintenance_schedule",
-          "explanation": "Incorrect. Maintenance schedules can explain outages, but they do not generally contain call-specific root cause/resolution details. Example: If the engineer chose “maintenance_schedule,” maintenance schedules can explain outages, but they do not generally contain call-specific root cause/resolution details."
+          "explanation": "Incorrect. `maintenance_schedule` may explain known outages, but it does not generally contain the call-specific symptoms, root cause, and final resolution needed to find related tickets."
         },
         {
           "id": "C",
           "text": "call_rep_history",
-          "explanation": "Incorrect. Representative history is useful for performance analytics, not for identifying the technical root cause of a ticket. Example: If the engineer chose “call_rep_history,” representative history is useful for performance analytics, not for identifying the technical root cause of a ticket."
+          "explanation": "Incorrect. `call_rep_history` measures representative performance and call duration rather than the technical details of the support problem."
         },
         {
           "id": "D",
           "text": "call_detail",
-          "explanation": "Correct. Call details contain root cause and resolution fields, which directly support finding related tickets and fixes. Example: In this scenario, “call_detail” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. `call_detail` directly contains root-cause and resolution fields, making it a strong source for matching current issues to prior fixes."
         },
         {
           "id": "E",
           "text": "transcript Volume",
-          "explanation": "Correct. Transcripts contain the actual conversation text, which can provide context for root cause and resolution beyond summary metrics. Example: In this scenario, “transcript Volume” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. The transcript volume contains the actual conversation text, which can provide symptoms and context that structured summary fields may omit."
         }
       ],
       "correct_answers": [
@@ -8611,22 +8611,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Pandas",
-          "explanation": "Incorrect. Pandas is for dataframe manipulation; it is not an LLM workflow/orchestration library. Example: If the engineer chose “Pandas,” pandas is for dataframe manipulation; it is not an LLM workflow/orchestration library."
+          "explanation": "Incorrect. Pandas is for dataframe manipulation; it is not an LLM workflow/orchestration library."
         },
         {
           "id": "B",
           "text": "TensorFlow",
-          "explanation": "Incorrect. TensorFlow is a ML/deep-learning framework, not the usual library for chaining prompts, tools, and LLM calls. Example: If the engineer chose “TensorFlow,” tensorFlow is a ML/deep-learning framework, not the usual library for chaining prompts, tools, and LLM calls."
+          "explanation": "Incorrect. TensorFlow is a ML/deep-learning framework, not the usual library for chaining prompts, tools, and LLM calls."
         },
         {
           "id": "C",
           "text": "PySpark",
-          "explanation": "Incorrect. PySpark is for distributed data processing; it is not the main orchestration layer for multi-step LLM workflows. Example: If the engineer chose “PySpark,” pySpark is for distributed data processing; it is not the main orchestration layer for multi-step LLM workflows."
+          "explanation": "Incorrect. PySpark is for distributed data processing; it is not the main orchestration layer for multi-step LLM workflows."
         },
         {
           "id": "D",
           "text": "LangChain",
-          "explanation": "Correct. LangChain is designed to compose prompts, models, retrievers, memory, tools, and multi-step LLM workflows. Example: In this scenario, “LangChain” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. LangChain is designed to compose prompts, models, retrievers, memory, tools, and multi-step LLM workflows."
         }
       ],
       "correct_answers": [
@@ -8654,22 +8654,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Reach out to the data curators directly before you have started using the trained model to let them know.",
-          "explanation": "Incorrect. Contacting curators before use can reduce legal risk, but it must result in permission/license clarity, not just a notification. Example: If the engineer chose “Reach out to the data curators directly before you have started using the trained model to let them know,” this is not the answer because it can be a reasonable supporting action. Contacting curators before use can reduce legal risk, but it must result in permission/license clarity, not just a notification."
+          "explanation": "Incorrect. Contacting curators before use can reduce legal risk, but it must result in permission/license clarity, not just a notification."
         },
         {
           "id": "B",
           "text": "Use any available data you personally created which is completely original and you can decide what license to use.",
-          "explanation": "Incorrect. Original data you created can be usable if you control the rights, but you still need to document the license/permission decision. Example: If the engineer chose “Use any available data you personally created which is completely original and you can decide what license to use,” this is not the answer because it can be a reasonable supporting action. Original data you created can be usable if you control the rights, but you still need to document the license/permission decision."
+          "explanation": "Incorrect. Original data you created can be usable if you control the rights, but you still need to document the license/permission decision."
         },
         {
           "id": "C",
           "text": "Only use data explicitly labeled with an open license and ensure the license terms are followed.",
-          "explanation": "Incorrect. Using data with an explicit open license and following its terms is a safe licensing practice. Example: If the engineer chose “Only use data explicitly labeled with an open license and ensure the license terms are followed,” this is not the answer because it can be a reasonable supporting action. Using data with an explicit open license and following its terms is a safe licensing practice."
+          "explanation": "Incorrect. Using data with an explicit open license and following its terms is a safe licensing practice."
         },
         {
           "id": "D",
           "text": "Reach out to the data curators directly after you have started using the trained model to let them know.",
-          "explanation": "Correct. This is the option to avoid. Asking permission after using the data is too late; licensing should be resolved before training or deployment. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives. Example: In this scenario, “Reach out to the data curators directly after you have started using the trained model to let them know” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. This is the option to avoid. Asking permission after using the data is too late; licensing should be resolved before training or deployment. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives."
         }
       ],
       "correct_answers": [
@@ -8700,22 +8700,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Split the LLM output by newline characters to truncate away the summarization explanation.",
-          "explanation": "Incorrect. Post-processing by truncating text is brittle; it hides the symptom instead of teaching the model the expected format. Example: If the engineer chose “Split the LLM output by newline characters to truncate away the summarization explanation,” post-processing by truncating text is brittle; it hides the symptom instead of teaching the model the expected format."
+          "explanation": "Incorrect. Post-processing by truncating text is brittle; it hides the symptom instead of teaching the model the expected format."
         },
         {
           "id": "B",
           "text": "Tune the chunk size of news articles or experiment with different embedding models.",
-          "explanation": "Incorrect. Chunking or embeddings affect retrieval quality, not the output style issue described here. Example: If the engineer chose “Tune the chunk size of news articles or experiment with different embedding models,” chunking or embeddings affect retrieval quality, not the output style issue described here."
+          "explanation": "Incorrect. Chunking or embeddings affect retrieval quality, not the output style issue described here."
         },
         {
           "id": "C",
           "text": "Revisit their document ingestion logic, ensuring that the news articles are being ingested properly.",
-          "explanation": "Incorrect. Ingestion fixes missing or malformed source content; it does not address a model adding unwanted explanation after a good summary. Example: If the engineer chose “Revisit their document ingestion logic, ensuring that the news articles are being ingested properly,” ingestion fixes missing or malformed source content; it does not address a model adding unwanted explanation after a good summary."
+          "explanation": "Incorrect. Ingestion fixes missing or malformed source content; it does not address a model adding unwanted explanation after a good summary."
         },
         {
           "id": "D",
           "text": "Provide few shot examples of desired output format to the system and/or user prompt.",
-          "explanation": "Correct. Few-shot examples show the exact desired output format or style, which helps stop unwanted extra explanation. Example: A concrete implementation is to provide few shot examples of desired output format to the system and/or user prompt."
+          "explanation": "Correct. Few-shot examples show the exact desired output format or style, which helps stop unwanted extra explanation."
         }
       ],
       "correct_answers": [
@@ -8745,22 +8745,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Add guardrails to filter outputs from the LLM before it is shown to the user",
-          "explanation": "Incorrect. Output guardrails can block unsafe or confidential responses before users see them, but they should complement retrieval permissions. Example: If the engineer chose “Add guardrails to filter outputs from the LLM before it is shown to the user,” this is not the answer because it can be a reasonable supporting action. Output guardrails can block unsafe or confidential responses before users see them, but they should complement retrieval permissions."
+          "explanation": "Incorrect. Output guardrails can block unsafe or confidential responses before users see them, but they should complement retrieval permissions."
         },
         {
           "id": "B",
           "text": "Fine-tune the model on your data, hoping it will learn what is appropriate and not",
-          "explanation": "Correct. This is the option to avoid. Fine-tuning and hoping the model learns safety is not a reliable guardrail for hallucination or data leakage. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives. Example: A concrete implementation is to fine-tune the model on your data, hoping it will learn what is appropriate and not."
+          "explanation": "Correct. This is the option to avoid. Fine-tuning and hoping the model learns safety is not a reliable guardrail for hallucination or data leakage. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives."
         },
         {
           "id": "C",
           "text": "Limit the data available based on the user’s access level",
-          "explanation": "Incorrect. Limiting retrieved data by user permission is a strong control against confidential-data leakage. Example: If the engineer chose “Limit the data available based on the user’s access level,” this is not the answer because it can be a reasonable supporting action. Limiting retrieved data by user permission is a strong control against confidential-data leakage."
+          "explanation": "Incorrect. Limiting retrieved data by user permission is a strong control against confidential-data leakage."
         },
         {
           "id": "D",
           "text": "Use a strong system prompt to ensure the model aligns with your needs.",
-          "explanation": "Incorrect. A system prompt helps set behavior, but it is not sufficient alone for confidential data access or hallucination control. Example: If the engineer chose “Use a strong system prompt to ensure the model aligns with your needs,” this is not the answer because it can be a reasonable supporting action. A system prompt helps set behavior, but it is not sufficient alone for confidential data access or hallucination control."
+          "explanation": "Incorrect. A system prompt helps set behavior, but it is not sufficient alone for confidential data access or hallucination control."
         }
       ],
       "correct_answers": [
@@ -8935,12 +8935,12 @@ window.QUESTION_BANK = {
         {
           "id": "C",
           "text": "For the question-answering application, prompt engineering and an LLM are required to generate answers.",
-          "explanation": "Incorrect. Prompt plus LLM alone cannot reliably answer questions about new documents that are not in the model context. Example: If the engineer chose “For the question-answering application, prompt engineering and an LLM are required to generate answers,” prompt plus LLM alone cannot reliably answer questions about new documents that are not in the model context."
+          "explanation": "Incorrect. Prompt plus LLM alone cannot reliably answer questions about new documents that are not in the model context."
         },
         {
           "id": "D",
           "text": "For the application a prompt, an agent and a fine-tuned LLM are required. The agent is used by the LLM to retrieve relevant content that is inserted into the prompt which is given to the LLM to generate answers.",
-          "explanation": "Incorrect. Fine-tuning for frequently changing documents is usually higher effort/cost than retrieval because the knowledge changes over time. Example: If the engineer chose “For the application a prompt, an agent and a fine-tuned LLM are required. The agent is used by the LLM to retrieve relevant…,” fine-tuning for frequently changing documents is usually higher effort/cost than retrieval because the knowledge changes over time."
+          "explanation": "Incorrect. Fine-tuning for frequently changing documents is usually higher effort/cost than retrieval because the knowledge changes over time."
         }
       ],
       "correct_answers": [
@@ -9015,22 +9015,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Calculate averaged embeddings for each HR document, compare embeddings to user query to find the best document. Pass the best document with the user query into an LLM with a large context window to generate a response to the employee.",
-          "explanation": "Incorrect. Averaging an entire document into one vector loses section-level detail and can retrieve the wrong context. Example: If the engineer chose “Calculate averaged embeddings for each HR document, compare embeddings to user query to find the best document. Pass the bes…,” averaging an entire document into one vector loses section-level detail and can retrieve the wrong context."
+          "explanation": "Incorrect. Averaging an entire document into one vector loses section-level detail and can retrieve the wrong context."
         },
         {
           "id": "B",
           "text": "Use an LLM to summarize HR documentation. Provide summaries of documentation and user query into an LLM with a large context window to generate a response to the user.",
-          "explanation": "Incorrect. Summaries can omit details needed for exact answers; RAG should retrieve the relevant original chunks. Example: If the engineer chose “Use an LLM to summarize HR documentation. Provide summaries of documentation and user query into an LLM with a large context…,” summaries can omit details needed for exact answers; RAG should retrieve the relevant original chunks."
+          "explanation": "Incorrect. Summaries can omit details needed for exact answers; RAG should retrieve the relevant original chunks."
         },
         {
           "id": "C",
           "text": "Create an interaction matrix of historical employee questions and HR documentation. Use ALS to factorize the matrix and create embeddings. Calculate the embeddings of new queries and use them to find the best HR documentation. Use an LLM to generate a response to the employee question based upon the documentation retrieved.",
-          "explanation": "Incorrect. ALS/collaborative filtering is for recommendations, not document-grounded question answering. Example: If the engineer chose “Create an interaction matrix of historical employee questions and HR documentation. Use ALS to factorize the matrix and crea…,” aLS/collaborative filtering is for recommendations, not document-grounded question answering."
+          "explanation": "Incorrect. ALS/collaborative filtering is for recommendations, not document-grounded question answering."
         },
         {
           "id": "D",
           "text": "Split HR documentation into chunks and embed into a vector store. Use the employee question to retrieve best matched chunks of documentation, and use the LLM to generate a response to the employee based upon the documentation retrieved.",
-          "explanation": "Correct. Chunking documents into a searchable vector store is the standard RAG approach for answering questions from manuals/policies. Example: A concrete implementation is to split HR documentation into chunks and embed into a vector store. Use the employee question to retrieve best matched chunks…."
+          "explanation": "Correct. Chunking documents into a searchable vector store is the standard RAG approach for answering questions from manuals/policies."
         }
       ],
       "correct_answers": [
@@ -9060,22 +9060,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Assess the quality of the retrieved context",
-          "explanation": "Incorrect. Assessing retrieved context is the first step when a RAG app returns irrelevant products or documents. Example: If the engineer chose “Assess the quality of the retrieved context,” assessing retrieved context is the first step when a RAG app returns irrelevant products or documents."
+          "explanation": "Incorrect. Assessing retrieved context is the first step when a RAG app returns irrelevant products or documents."
         },
         {
           "id": "B",
           "text": "Implement caching for frequently asked questions",
-          "explanation": "Incorrect. Caching can reduce latency/cost for repeated questions, but it does not fix irrelevant retrieval. Example: If the engineer chose “Implement caching for frequently asked questions,” caching can reduce latency/cost for repeated questions, but it does not fix irrelevant retrieval."
+          "explanation": "Incorrect. Caching can reduce latency/cost for repeated questions, but it does not fix irrelevant retrieval."
         },
         {
           "id": "C",
           "text": "Use a different LLM to improve the generated response",
-          "explanation": "Incorrect. Changing the generator may not help if the wrong context is being retrieved. Example: If the engineer chose “Use a different LLM to improve the generated response,” changing the generator may not help if the wrong context is being retrieved."
+          "explanation": "Incorrect. Changing the generator may not help if the wrong context is being retrieved."
         },
         {
           "id": "D",
           "text": "Use a different semantic similarity search algorithm",
-          "explanation": "Correct. Changing the retrieval/search algorithm can improve relevance, but first you should evaluate the retrieved context to know the failure mode. Example: A concrete implementation is to use a different semantic similarity search algorithm."
+          "explanation": "Correct. Changing the retrieval/search algorithm can improve relevance, but first you should evaluate the retrieved context to know the failure mode."
         }
       ],
       "correct_answers": [
@@ -9105,22 +9105,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Safety Guardrail",
-          "explanation": "Incorrect. A safety guardrail targets harmful, toxic, violent, or unsafe content; that is related but not as specific as enforcing an insurance-only policy. Example: If the engineer chose “Safety Guardrail,” a safety guardrail targets harmful, toxic, violent, or unsafe content; that is related but not as specific as enforcing an insurance-only policy."
+          "explanation": "Incorrect. A safety guardrail targets harmful, toxic, violent, or unsafe content; that is related but not as specific as enforcing an insurance-only policy."
         },
         {
           "id": "B",
           "text": "Security Guardrail",
-          "explanation": "Incorrect. A security guardrail focuses on threats like prompt injection, credential leakage, or unauthorized tool/data access. Example: If the engineer chose “Security Guardrail,” a security guardrail focuses on threats like prompt injection, credential leakage, or unauthorized tool/data access."
+          "explanation": "Incorrect. A security guardrail focuses on threats like prompt injection, credential leakage, or unauthorized tool/data access."
         },
         {
           "id": "C",
           "text": "Contextual Guardrail",
-          "explanation": "Incorrect. A contextual guardrail checks whether a response stays grounded in provided context; it is not mainly for a company policy refusal. Example: If the engineer chose “Contextual Guardrail,” a contextual guardrail checks whether a response stays grounded in provided context; it is not mainly for a company policy refusal."
+          "explanation": "Incorrect. A contextual guardrail checks whether a response stays grounded in provided context; it is not mainly for a company policy refusal."
         },
         {
           "id": "D",
           "text": "Compliance Guardrail",
-          "explanation": "Correct. A compliance guardrail enforces business policy such as refusing out-of-scope political questions in an insurance chatbot. Example: In this scenario, “Compliance Guardrail” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. A compliance guardrail enforces business policy such as refusing out-of-scope political questions in an insurance chatbot."
         }
       ],
       "correct_answers": [
@@ -9192,22 +9192,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Use spark.conf.set ()",
-          "explanation": "Incorrect. spark.conf is notebook/cluster configuration and is not the recommended way to pass production serving credentials. Example: If the engineer chose “Use spark.conf.set (),” spark.conf is notebook/cluster configuration and is not the recommended way to pass production serving credentials."
+          "explanation": "Incorrect. spark.conf is notebook/cluster configuration and is not the recommended way to pass production serving credentials."
         },
         {
           "id": "B",
           "text": "Pass variables using the Databricks Feature Store API",
-          "explanation": "Incorrect. Feature Store/Feature Engineering APIs provide features, not a general mechanism for endpoint credentials. Example: If the engineer chose “Pass variables using the Databricks Feature Store API,” feature Store/Feature Engineering APIs provide features, not a general mechanism for endpoint credentials."
+          "explanation": "Incorrect. Feature Store/Feature Engineering APIs provide features, not a general mechanism for endpoint credentials."
         },
         {
           "id": "C",
           "text": "Add credentials using environment variables",
-          "explanation": "Correct. ALS/collaborative filtering is for recommendations, not document-grounded question answering. Example: A concrete implementation is to add credentials using environment variables."
+          "explanation": "Correct. ALS/collaborative filtering is for recommendations, not document-grounded question answering."
         },
         {
           "id": "D",
           "text": "Pass the secrets in plain text",
-          "explanation": "Incorrect. Plain-text secrets are unsafe and should not be committed or embedded in model code. Example: If the engineer chose “Pass the secrets in plain text,” plain-text secrets are unsafe and should not be committed or embedded in model code."
+          "explanation": "Incorrect. Plain-text secrets are unsafe and should not be committed or embedded in model code."
         }
       ],
       "correct_answers": [
@@ -9249,7 +9249,7 @@ window.QUESTION_BANK = {
         {
           "id": "C",
           "text": "Input: Customer reviews; Output: Classify review sentiment",
-          "explanation": "Incorrect. Classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue. Example: If the engineer chose “Input: Customer reviews; Output: Classify review sentiment,” classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue."
+          "explanation": "Incorrect. Classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue."
         },
         {
           "id": "D",
@@ -9328,22 +9328,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist",
-          "explanation": "Correct. A safety filter detects harmful inputs/outputs and refuses or blocks them before the app continues. Example: A concrete implementation is to implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist."
+          "explanation": "Correct. A safety filter detects harmful inputs/outputs and refuses or blocks them before the app continues."
         },
         {
           "id": "B",
           "text": "Reduce the time that the users can interact with the LLM",
-          "explanation": "Incorrect. Limiting session time does not detect malicious input or prevent unsafe outputs. Example: If the engineer chose “Reduce the time that the users can interact with the LLM,” limiting session time does not detect malicious input or prevent unsafe outputs."
+          "explanation": "Incorrect. Limiting session time does not detect malicious input or prevent unsafe outputs."
         },
         {
           "id": "C",
           "text": "Ask the LLM to remind the user that the input is malicious but continue the conversation with the user",
-          "explanation": "Incorrect. Continuing after identifying malicious input still exposes the app to abuse; the safer pattern is to refuse/block. Example: If the engineer chose “Ask the LLM to remind the user that the input is malicious but continue the conversation with the user,” continuing after identifying malicious input still exposes the app to abuse; the safer pattern is to refuse/block."
+          "explanation": "Incorrect. Continuing after identifying malicious input still exposes the app to abuse; the safer pattern is to refuse/block."
         },
         {
           "id": "D",
           "text": "Increase the amount of compute that powers the LLM to process input faster",
-          "explanation": "Incorrect. More compute improves capacity/latency, not safety. Example: If the engineer chose “Increase the amount of compute that powers the LLM to process input faster,” more compute improves capacity/latency, not safety."
+          "explanation": "Incorrect. More compute improves capacity/latency, not safety."
         }
       ],
       "correct_answers": [
@@ -9371,22 +9371,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "The ability to generate responses in code",
-          "explanation": "Incorrect. Code generation ability is unrelated to translation safety/quality. Example: If the engineer chose “The ability to generate responses in code,” code generation ability is unrelated to translation safety/quality."
+          "explanation": "Incorrect. Code generation ability is unrelated to translation safety/quality."
         },
         {
           "id": "B",
           "text": "The similarity to the previous language",
-          "explanation": "Incorrect. Similarity to the source language is not a reliable safety or translation-quality indicator. Example: If the engineer chose “The similarity to the previous language,” similarity to the source language is not a reliable safety or translation-quality indicator."
+          "explanation": "Incorrect. Similarity to the source language is not a reliable safety or translation-quality indicator."
         },
         {
           "id": "C",
           "text": "The latency of the response and the length of text generated",
-          "explanation": "Incorrect. Latency and output length are operational metrics, not indicators of safe/accurate translation. Example: If the engineer chose “The latency of the response and the length of text generated,” latency and output length are operational metrics, not indicators of safe/accurate translation."
+          "explanation": "Incorrect. Latency and output length are operational metrics, not indicators of safe/accurate translation."
         },
         {
           "id": "D",
           "text": "The accuracy and relevance of the responses",
-          "explanation": "Correct. For a translation use case, quality/safety review should include whether the translation is accurate and relevant to the source meaning. Example: In this scenario, “The accuracy and relevance of the responses” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. For a translation use case, quality/safety review should include whether the translation is accurate and relevant to the source meaning."
         }
       ],
       "correct_answers": [
@@ -9416,22 +9416,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Here are a few relevant articles for your browsing. Let me know if you have questions after reading them.",
-          "explanation": "Incorrect. Providing articles is for non-urgent education, not potential emergencies. Example: If the engineer chose “Here are a few relevant articles for your browsing. Let me know if you have questions after reading them,” providing articles is for non-urgent education, not potential emergencies."
+          "explanation": "Incorrect. Providing articles is for non-urgent education, not potential emergencies."
         },
         {
           "id": "B",
           "text": "Please call your local emergency services.",
-          "explanation": "Correct. For urgent healthcare symptoms, the safest response is to direct the user to emergency services rather than continue triage. Example: In this scenario, “Please call your local emergency services” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. For urgent healthcare symptoms, the safest response is to direct the user to emergency services rather than continue triage."
         },
         {
           "id": "C",
           "text": "Headaches can be tough. Hope you feel better soon!",
-          "explanation": "Incorrect. A sympathetic message alone does not satisfy the safety requirement. Example: If the engineer chose “Headaches can be tough. Hope you feel better soon!,” a sympathetic message alone does not satisfy the safety requirement."
+          "explanation": "Incorrect. A sympathetic message alone does not satisfy the safety requirement."
         },
         {
           "id": "D",
           "text": "Please provide your age, recent activities, and any other symptoms you have noticed along with your headaches and dizziness.",
-          "explanation": "Incorrect. Collecting more information is appropriate for non-emergency triage, but severe symptoms in the prompt should trigger emergency guidance. Example: If the engineer chose “Please provide your age, recent activities, and any other symptoms you have noticed along with your headaches and dizziness,” collecting more information is appropriate for non-emergency triage, but severe symptoms in the prompt should trigger emergency guidance."
+          "explanation": "Incorrect. Collecting more information is appropriate for non-emergency triage, but severe symptoms in the prompt should trigger emergency guidance."
         }
       ],
       "correct_answers": [
@@ -9511,22 +9511,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Implement a comprehensive guardrail framework that includes policies for content filters tailored to the finance sector.",
-          "explanation": "Incorrect. Domain-specific guardrails/content policies can keep outputs aligned to financial-news use cases. Example: If the engineer chose “Implement a comprehensive guardrail framework that includes policies for content filters tailored to the finance sector,” this is not the answer because it can be a reasonable supporting action. Domain-specific guardrails/content policies can keep outputs aligned to financial-news use cases."
+          "explanation": "Incorrect. Domain-specific guardrails/content policies can keep outputs aligned to financial-news use cases."
         },
         {
           "id": "B",
           "text": "Increase the compute to improve processing speed of questions to allow greater relevancy analysis",
-          "explanation": "Correct. This is the option to avoid. More compute can make the app faster, but it does not make answers more relevant to financial news. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives. Example: A concrete implementation is to increase the compute to improve processing speed of questions to allow greater relevancy analysis."
+          "explanation": "Correct. This is the option to avoid. More compute can make the app faster, but it does not make answers more relevant to financial news. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives."
         },
         {
           "id": "C",
           "text": "Implement a profanity filter to screen out offensive language.",
-          "explanation": "Incorrect. A profanity filter handles offensive language, but it does not ensure the content is financially relevant. Example: If the engineer chose “Implement a profanity filter to screen out offensive language,” this is not the answer because it can be a reasonable supporting action. A profanity filter handles offensive language, but it does not ensure the content is financially relevant."
+          "explanation": "Incorrect. A profanity filter handles offensive language, but it does not ensure the content is financially relevant."
         },
         {
           "id": "D",
           "text": "Incorporate manual reviews to correct any problematic outputs prior to sending to the users",
-          "explanation": "Incorrect. Curating upstream data attacks toxic or inflammatory outputs at the source before that content is retrieved and passed to the LLM. Example: If the engineer chose “Incorporate manual reviews to correct any problematic outputs prior to sending to the users,” this is not the answer because it can be a reasonable supporting action. Curating upstream data attacks toxic or inflammatory outputs at the source before that content is retrieved and passed to the LLM."
+          "explanation": "Incorrect. Curating upstream data attacks toxic or inflammatory outputs at the source before that content is retrieved and passed to the LLM."
         }
       ],
       "correct_answers": [
@@ -9694,22 +9694,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Log the model as a pickle object, upload the object to Unity Catalog Volume, register it to Unity Catalog using MLflow, and start a serving endpoint",
-          "explanation": "Incorrect. A pickle file in a volume bypasses MLflow packaging, signatures, dependencies, and governance metadata. Example: If the engineer chose “Log the model as a pickle object, upload the object to Unity Catalog Volume, register it to Unity Catalog using MLflow, and…,” a pickle file in a volume bypasses MLflow packaging, signatures, dependencies, and governance metadata."
+          "explanation": "Incorrect. A pickle file in a volume bypasses MLflow packaging, signatures, dependencies, and governance metadata."
         },
         {
           "id": "B",
           "text": "Log the model using MLflow during training, directly register the model to Unity Catalog using the MLflow API, and start a serving endpoint",
-          "explanation": "Correct. Logging with MLflow and registering to Unity Catalog is the native Databricks path from training to governed serving. Example: In this scenario, “Log the model using MLflow during training, directly register the model to Unity Catalog using the MLflow API, and start a s…” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Logging with MLflow and registering to Unity Catalog is the native Databricks path from training to governed serving."
         },
         {
           "id": "C",
           "text": "Save the model along with its dependencies in a local directory, build the Docker image, and run the Docker container",
-          "explanation": "Incorrect. Building your own Docker service is more operational work than Databricks Model Serving for this scenario. Example: If the engineer chose “Save the model along with its dependencies in a local directory, build the Docker image, and run the Docker container,” building your own Docker service is more operational work than Databricks Model Serving for this scenario."
+          "explanation": "Incorrect. Building your own Docker service is more operational work than Databricks Model Serving for this scenario."
         },
         {
           "id": "D",
           "text": "Wrap the LLM’s prediction function into a Flask application and serve using Gunicorn",
-          "explanation": "Incorrect. Serving with Flask/Gunicorn is a custom web-service approach, not the easiest Databricks-native deployment path. Example: If the engineer chose “Wrap the LLM’s prediction function into a Flask application and serve using Gunicorn,” serving with Flask/Gunicorn is a custom web-service approach, not the easiest Databricks-native deployment path."
+          "explanation": "Incorrect. Serving with Flask/Gunicorn is a custom web-service approach, not the easiest Databricks-native deployment path."
         }
       ],
       "correct_answers": [
@@ -9739,22 +9739,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Switch to using External Models instead",
-          "explanation": "Incorrect. External Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost. Example: If the engineer chose “Switch to using External Models instead,” external Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost."
+          "explanation": "Incorrect. External Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost."
         },
         {
           "id": "B",
           "text": "Deploy the model using pay-per-token throughput as it comes with cost guarantees",
-          "explanation": "Correct. Pay-per-token Foundation Model APIs are cost-effective for low/variable traffic because you avoid reserving dedicated throughput. Example: A concrete implementation is to deploy the model using pay-per-token throughput as it comes with cost guarantees."
+          "explanation": "Correct. Pay-per-token Foundation Model APIs are cost-effective for low/variable traffic because you avoid reserving dedicated throughput."
         },
         {
           "id": "C",
           "text": "Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
-          "explanation": "Incorrect. A smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself. Example: If the engineer chose “Change to a model with a fewer number of parameters in order to reduce hardware constraint issues,” a smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself."
+          "explanation": "Incorrect. A smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself."
         },
         {
           "id": "D",
           "text": "Throttle the incoming batch of requests manually to avoid rate limiting issues",
-          "explanation": "Incorrect. Manual throttling is an operational workaround, not the cost-effective serving mode choice. Example: If the engineer chose “Throttle the incoming batch of requests manually to avoid rate limiting issues,” manual throttling is an operational workaround, not the cost-effective serving mode choice."
+          "explanation": "Incorrect. Manual throttling is an operational workaround, not the cost-effective serving mode choice."
         }
       ],
       "correct_answers": [
@@ -9830,22 +9830,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Use an LLM to summarize the latest news articles and lookup stock tickers from the summaries to find stock prices.",
-          "explanation": "Incorrect. Summarizing news first and inferring tickers is indirect and can miss the exact structured stock-price lookup. Example: If the engineer chose “Use an LLM to summarize the latest news articles and lookup stock tickers from the summaries to find stock prices,” summarizing news first and inferring tickers is indirect and can miss the exact structured stock-price lookup."
+          "explanation": "Incorrect. Summarizing news first and inferring tickers is indirect and can miss the exact structured stock-price lookup."
         },
         {
           "id": "B",
           "text": "Query the Delta table for volatile stock prices and use an LLM to generate a search query to investigate potential causes of the stock volatility.",
-          "explanation": "Incorrect. Starting only with volatile prices changes the task; the app needs both user-driven news search and table lookup. Example: If the engineer chose “Query the Delta table for volatile stock prices and use an LLM to generate a search query to investigate potential causes of…,” starting only with volatile prices changes the task; the app needs both user-driven news search and table lookup."
+          "explanation": "Incorrect. Starting only with volatile prices changes the task; the app needs both user-driven news search and table lookup."
         },
         {
           "id": "C",
           "text": "Download and store news articles and stock price information in a vector store. Use a RAG architecture to retrieve and generate at runtime.",
-          "explanation": "Incorrect. RAG is good for text knowledge, but it does not cover API lookups and structured table queries by itself. Example: If the engineer chose “Download and store news articles and stock price information in a vector store. Use a RAG architecture to retrieve and gener…,” rAG is good for text knowledge, but it does not cover API lookups and structured table queries by itself."
+          "explanation": "Incorrect. RAG is good for text knowledge, but it does not cover API lookups and structured table queries by itself."
         },
         {
           "id": "D",
           "text": "Create an agent with tools for SQL querying of Delta tables and web searching, provide retrieved values to an LLM for generation of response.",
-          "explanation": "Correct. An agent with SQL and web-search tools fits a task that needs both structured table values and current external news. Example: A concrete implementation is to create an agent with tools for SQL querying of Delta tables and web searching, provide retrieved values to an LLM for genera…."
+          "explanation": "Correct. An agent with SQL and web-search tools fits a task that needs both structured table values and current external news."
         }
       ],
       "correct_answers": [
@@ -9875,22 +9875,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Randomness",
-          "explanation": "Incorrect. Randomness alone can make responses inconsistent or irrelevant; diversity should be controlled and useful. Example: If the engineer chose “Randomness,” randomness alone can make responses inconsistent or irrelevant; diversity should be controlled and useful."
+          "explanation": "Incorrect. Randomness alone can make responses inconsistent or irrelevant; diversity should be controlled and useful."
         },
         {
           "id": "B",
           "text": "Diversity of responses",
-          "explanation": "Correct. Response diversity can improve engagement by avoiding repetitive chatbot interactions. Example: In this scenario, “Diversity of responses” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Response diversity can improve engagement by avoiding repetitive chatbot interactions."
         },
         {
           "id": "C",
           "text": "Lack of relevance",
-          "explanation": "Incorrect. Irrelevance reduces engagement because users do not get useful responses. Example: If the engineer chose “Lack of relevance,” irrelevance reduces engagement because users do not get useful responses."
+          "explanation": "Incorrect. Irrelevance reduces engagement because users do not get useful responses."
         },
         {
           "id": "D",
           "text": "Repetition of responses",
-          "explanation": "Incorrect. Repetitive responses make the assistant feel stale and reduce retention. Example: If the engineer chose “Repetition of responses,” repetitive responses make the assistant feel stale and reduce retention."
+          "explanation": "Incorrect. Repetitive responses make the assistant feel stale and reduce retention."
         }
       ],
       "correct_answers": [
@@ -9923,7 +9923,7 @@ window.QUESTION_BANK = {
         {
           "id": "B",
           "text": "1.context-augmented prompt, 2.vector search, 3.embedding model, 4.response-generating LLM",
-          "explanation": "Incorrect. The prompt cannot be augmented with context before retrieval happens. Example: you need Vector Search results before you can add “Context: …” to the prompt."
+          "explanation": "Incorrect. The prompt cannot be augmented with context before retrieval happens."
         },
         {
           "id": "C",
@@ -9963,22 +9963,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Llama2-70b",
-          "explanation": "Incorrect. Llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here. Example: If the engineer chose “Llama2-70b,” llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here."
+          "explanation": "Incorrect. Llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here."
         },
         {
           "id": "B",
           "text": "BGE-large",
-          "explanation": "Incorrect. BGE is an embedding model family, not a code-generation chat/completion model. Example: If the engineer chose “BGE-large,” bGE is an embedding model family, not a code-generation chat/completion model."
+          "explanation": "Incorrect. BGE is an embedding model family, not a code-generation chat/completion model."
         },
         {
           "id": "C",
           "text": "MPT-7b",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task. Example: If the engineer chose “MPT-7b,” mPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
         },
         {
           "id": "D",
           "text": "CodeLlama-34B",
-          "explanation": "Correct. CodeLlama is specialized for code generation, making it a better fit for a coding assistant than general chat models. Example: In this scenario, “CodeLlama-34B” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. CodeLlama is specialized for code generation, making it a better fit for a coding assistant than general chat models."
         }
       ],
       "correct_answers": [
@@ -10007,22 +10007,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "flask",
-          "explanation": "Incorrect. Serving with Flask/Gunicorn is a custom web-service approach, not the easiest Databricks-native deployment path. Example: If the engineer chose “flask,” serving with Flask/Gunicorn is a custom web-service approach, not the easiest Databricks-native deployment path."
+          "explanation": "Incorrect. Serving with Flask/Gunicorn is a custom web-service approach, not the easiest Databricks-native deployment path."
         },
         {
           "id": "B",
           "text": "beautifulsoup",
-          "explanation": "Incorrect. BeautifulSoup is good for HTML/XML parsing, not general PDF text extraction. Example: If the engineer chose “beautifulsoup,” beautifulSoup is good for HTML/XML parsing, not general PDF text extraction."
+          "explanation": "Incorrect. BeautifulSoup is good for HTML/XML parsing, not general PDF text extraction."
         },
         {
           "id": "C",
           "text": "unstructured",
-          "explanation": "Correct. The unstructured package is designed to parse document formats such as PDFs and extract text with relatively little custom code. Example: In this scenario, “unstructured” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. The unstructured package is designed to parse document formats such as PDFs and extract text with relatively little custom code."
         },
         {
           "id": "D",
           "text": "numpy",
-          "explanation": "Incorrect. NumPy is numerical computing; it does not extract document text. Example: If the engineer chose “numpy,” numPy is numerical computing; it does not extract document text."
+          "explanation": "Incorrect. NumPy is numerical computing; it does not extract document text."
         }
       ],
       "correct_answers": [
@@ -10052,17 +10052,17 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "The chatbot should only look at previous event information",
-          "explanation": "Incorrect. handling one data type misses part of the business requirement. Example: If the engineer chose “The chatbot should only look at previous event information,” handling one data type misses part of the business requirement."
+          "explanation": "Incorrect. handling one data type misses part of the business requirement."
         },
         {
           "id": "B",
           "text": "There should be two different chatbots handling different types of user queries.",
-          "explanation": "Incorrect. Separate chatbots create a poor user experience and push routing responsibility to the user. Example: If the engineer chose “There should be two different chatbots handling different types of user queries,” separate chatbots create a poor user experience and push routing responsibility to the user."
+          "explanation": "Incorrect. Separate chatbots create a poor user experience and push routing responsibility to the user."
         },
         {
           "id": "C",
           "text": "The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it’s an upcoming event question, send the query to a text-to-SQL model. If it’s about ticket purchasing, the customer should be redirected to a payment platform.",
-          "explanation": "Correct. Routing by intent to the right model/tool is a multi-step workflow pattern for mixed question types. Example: In this scenario, “The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the q…” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Routing by intent to the right model/tool is a multi-step workflow pattern for mixed question types."
         },
         {
           "id": "D",
@@ -10098,22 +10098,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "DistilBERT",
-          "explanation": "Incorrect. DistilBERT is a smaller encoder model for understanding/classification, not a large generative LLM. Example: If the engineer chose “DistilBERT,” distilBERT is a smaller encoder model for understanding/classification, not a large generative LLM."
+          "explanation": "Incorrect. DistilBERT is a smaller encoder model for understanding/classification, not a large generative LLM."
         },
         {
           "id": "B",
           "text": "MPT-30B",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task. Example: If the engineer chose “MPT-30B,” mPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
         },
         {
           "id": "C",
           "text": "Llama2-70B",
-          "explanation": "Incorrect. Llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here. Example: If the engineer chose “Llama2-70B,” llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here."
+          "explanation": "Incorrect. Llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here."
         },
         {
           "id": "D",
           "text": "DBRX",
-          "explanation": "Correct. DBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models. Example: In this scenario, “DBRX” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. DBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models."
         }
       ],
       "correct_answers": [
@@ -10144,12 +10144,12 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "DBRX",
-          "explanation": "Incorrect. DBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models. Example: If the engineer chose “DBRX,” dBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models."
+          "explanation": "Incorrect. DBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models."
         },
         {
           "id": "B",
           "text": "MPT-30B-Instruct",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task. Example: If the engineer chose “MPT-30B-Instruct,” mPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
         },
         {
           "id": "C",
@@ -10159,7 +10159,7 @@ window.QUESTION_BANK = {
         {
           "id": "D",
           "text": "whisper-large-v3 (1.6B)",
-          "explanation": "Correct. Whisper is a speech-to-text model, which matches a transcription task. Example: In this scenario, “whisper-large-v3 (1.6B)” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Whisper is a speech-to-text model, which matches a transcription task."
         }
       ],
       "correct_answers": [
@@ -10188,22 +10188,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "AutoML",
-          "explanation": "Incorrect. AutoML trains predictive models; it is not the simplest way to give an LLM app live external or tabular facts. Example: If the engineer chose “AutoML,” autoML trains predictive models; it is not the simplest way to give an LLM app live external or tabular facts."
+          "explanation": "Incorrect. AutoML trains predictive models; it does not capture traffic sent to and returned from a Model Serving endpoint."
         },
         {
           "id": "B",
           "text": "Vector Search",
-          "explanation": "Incorrect. This describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy. Example: If the engineer chose “Vector Search,” this describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy."
+          "explanation": "Incorrect. Databricks AI Search supports retrieval over indexed data, not endpoint request/response logging."
         },
         {
           "id": "C",
           "text": "Inference Tables",
-          "explanation": "Correct. Inference Tables capture served-model requests and responses for monitoring/debugging without building a separate logging microservice. Example: In this scenario, “Inference Tables” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Inference Tables capture Model Serving inputs and outputs in Delta tables, providing the observability requested in the scenario."
         },
         {
           "id": "D",
           "text": "Feature Serving",
-          "explanation": "Incorrect. Feature Serving is appropriate when the agent needs fresh structured values, such as latest scores or showtimes, from governed tables or online features. Example: If the engineer chose “Feature Serving,” feature Serving is appropriate when the agent needs fresh structured values, such as latest scores or showtimes, from governed tables or online features."
+          "explanation": "Incorrect. Feature Serving exposes fresh structured features for online applications; it does not record LLM endpoint payloads."
         }
       ],
       "correct_answers": [
@@ -10240,17 +10240,17 @@ window.QUESTION_BANK = {
         {
           "id": "B",
           "text": "Compare the Bilingual Evaluation Understudy (BLEU) scores of returned results for a representative sample of test inputs",
-          "explanation": "Incorrect. BLEU measures n-gram overlap for generated text such as translations; it does not evaluate retrieval ranking or application operations. Example: If the engineer chose “Compare the Bilingual Evaluation Understudy (BLEU) scores of returned results for a representative sample of test inputs,” bLEU measures n-gram overlap for generated text such as translations; it does not evaluate retrieval ranking or application operations."
+          "explanation": "Incorrect. BLEU measures n-gram overlap for generated text such as translations; it does not evaluate retrieval ranking or application operations."
         },
         {
           "id": "C",
           "text": "Compare the Recall-Oriented-Understudy for Gisting Evaluation (ROUGE) scores of returned results for a representative sample of test inputs",
-          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior. Example: If the engineer chose “Compare the Recall-Oriented-Understudy for Gisting Evaluation (ROUGE) scores of returned results for a representative sample…,” rOUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
+          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
         },
         {
           "id": "D",
           "text": "Compare the Levenshtein distances of returned results against a representative sample of test inputs",
-          "explanation": "Incorrect. Levenshtein distance compares character edits, not semantic relevance. Example: If the engineer chose “Compare the Levenshtein distances of returned results against a representative sample of test inputs,” levenshtein distance compares character edits, not semantic relevance."
+          "explanation": "Incorrect. Levenshtein distance compares character edits, not semantic relevance."
         }
       ],
       "correct_answers": [
@@ -10282,7 +10282,7 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Only use data explicitly labeled with an open license and ensure the license terms are followed.",
-          "explanation": "Correct. Using data with an explicit open license and following its terms is a safe licensing practice. Example: In this scenario, “Only use data explicitly labeled with an open license and ensure the license terms are followed” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Using data with an explicit open license and following its terms is a safe licensing practice."
         },
         {
           "id": "B",
@@ -10374,27 +10374,27 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Vector Stores",
-          "explanation": "Correct. Vector stores provide retrieval over knowledge for chat applications that need grounded answers. Example: In this scenario, “Vector Stores” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Vector stores provide retrieval over knowledge for chat applications that need grounded answers."
         },
         {
           "id": "B",
           "text": "Conversation Buffer Memory",
-          "explanation": "Correct. Conversation memory preserves prior turns so the assistant can respond contextually. Example: In this scenario, “Conversation Buffer Memory” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Conversation memory preserves prior turns so the assistant can respond contextually."
         },
         {
           "id": "C",
           "text": "External tools",
-          "explanation": "Incorrect. External tools are useful for actions/API calls, but a basic chat app with retrieval and memory does not necessarily require them. Example: If the engineer chose “External tools,” external tools are useful for actions/API calls, but a basic chat app with retrieval and memory does not necessarily require them."
+          "explanation": "Incorrect. External tools are useful for actions/API calls, but a basic chat app with retrieval and memory does not necessarily require them."
         },
         {
           "id": "D",
           "text": "Chat loaders",
-          "explanation": "Incorrect. Chat loaders ingest chat transcripts; they are not a runtime component for retrieval plus memory. Example: If the engineer chose “Chat loaders,” chat loaders ingest chat transcripts; they are not a runtime component for retrieval plus memory."
+          "explanation": "Incorrect. Chat loaders ingest chat transcripts; they are not a runtime component for retrieval plus memory."
         },
         {
           "id": "E",
           "text": "React Components",
-          "explanation": "Incorrect. React components are UI building blocks, not LLM chain components. Example: If the engineer chose “React Components,” react components are UI building blocks, not LLM chain components."
+          "explanation": "Incorrect. React components are UI building blocks, not LLM chain components."
         }
       ],
       "correct_answers": [
@@ -10426,22 +10426,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Use PySpark’s autoloader to apply a UDF across all chunks, formatting them in a JSON structure for Vector Search ingestion.",
-          "explanation": "Incorrect. This describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy. Example: If the engineer chose “Use PySpark’s autoloader to apply a UDF across all chunks, formatting them in a JSON structure for Vector Search ingestion,” this describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy."
+          "explanation": "Incorrect. Auto Loader helps ingest files, and a JSON UDF is not required to prepare a Delta Sync source table. The key requirement is one uniquely identified chunk per row."
         },
         {
           "id": "B",
           "text": "Flatten the dataframe to one chunk per row, create a unique identifier for each row, and enable change feed on the output Delta table.",
-          "explanation": "Correct. Vector indexes expect one retrievable unit per row; flattening creates one row per chunk with a unique ID. Example: A concrete implementation is to flatten the dataframe to one chunk per row, create a unique identifier for each row, and enable change feed on the output De…."
+          "explanation": "Correct. Explode the chunks array so each chunk becomes its own row, assign a unique chunk identifier, write the result to Delta, and enable Change Data Feed for Delta Sync indexing."
         },
         {
           "id": "C",
           "text": "Utilize the original filename as the unique identifier and save the dataframe as is.",
-          "explanation": "Incorrect. The filename is shared by many chunks, so it cannot uniquely identify each retrievable row. Example: If the engineer chose “Utilize the original filename as the unique identifier and save the dataframe as is,” the filename is shared by many chunks, so it cannot uniquely identify each retrievable row."
+          "explanation": "Incorrect. The filename repeats for every chunk from the same document, so it cannot serve as a unique primary key for retrievable rows."
         },
         {
           "id": "D",
           "text": "Create a unique identifier for each document, flatten the dataframe to one chunk per row and save to an output Delta table.",
-          "explanation": "Incorrect. Vector indexes expect one retrievable unit per row; flattening creates one row per chunk with a unique ID. Example: If the engineer chose “Create a unique identifier for each document, flatten the dataframe to one chunk per row and save to an output Delta table,” vector indexes expect one retrievable unit per row; flattening creates one row per chunk with a unique ID."
+          "explanation": "Incorrect. A document-level identifier would be duplicated across all chunks from that document. Each chunk needs its own unique identifier, and a Delta Sync workflow also needs the source table configured for change tracking."
         }
       ],
       "correct_answers": [
@@ -10473,7 +10473,7 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "CodeLlama-34b-Instruct-hf",
-          "explanation": "Correct. CodeLlama is specialized for code generation, making it a better fit for a coding assistant than general chat models. Example: In this scenario, “CodeLlama-34b-Instruct-hf” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. CodeLlama is specialized for code generation, making it a better fit for a coding assistant than general chat models."
         },
         {
           "id": "B",
@@ -10488,7 +10488,7 @@ window.QUESTION_BANK = {
         {
           "id": "D",
           "text": "mpt-7b-8k-instruct",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task. Example: If the engineer chose “mpt-7b-8k-instruct,” mPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
         }
       ],
       "correct_answers": [
@@ -10609,12 +10609,12 @@ window.QUESTION_BANK = {
         {
           "id": "B",
           "text": "Fine-tune the LLM on a dataset of desired tone and style",
-          "explanation": "Incorrect. Explicit tone/style instructions or examples directly guide the model toward the requested output format. Example: If the engineer chose “Fine-tune the LLM on a dataset of desired tone and style,” explicit tone/style instructions or examples directly guide the model toward the requested output format."
+          "explanation": "Incorrect. Explicit tone/style instructions or examples directly guide the model toward the requested output format."
         },
         {
           "id": "C",
           "text": "Provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style",
-          "explanation": "Correct. Explicit tone/style instructions or examples directly guide the model toward the requested output format. Example: A concrete implementation is to provide the LLM with a prompt that explicitly instructs it to generate text in the desired tone and style."
+          "explanation": "Correct. Explicit tone/style instructions or examples directly guide the model toward the requested output format."
         },
         {
           "id": "D",
@@ -10737,22 +10737,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Add the section header as a prefix to chunks",
-          "explanation": "Correct. Adding section headers to chunks preserves structure and helps retrieval/generation understand what each chunk is about. Example: A concrete implementation is to add the section header as a prefix to chunks."
+          "explanation": "Correct. Adding section headers to chunks preserves structure and helps retrieval/generation understand what each chunk is about."
         },
         {
           "id": "B",
           "text": "Split the document by sentence",
-          "explanation": "Incorrect. Sentence-level chunks often become too small and lose surrounding context, causing incomplete answers. Example: If the engineer chose “Split the document by sentence,” sentence-level chunks often become too small and lose surrounding context, causing incomplete answers."
+          "explanation": "Incorrect. Sentence-level chunks often become too small and lose surrounding context, causing incomplete answers."
         },
         {
           "id": "C",
           "text": "Use a larger embedding model",
-          "explanation": "Incorrect. Changing embedding size alone may not fix missing context if the chunk structure is the real problem. Example: If the engineer chose “Use a larger embedding model,” changing embedding size alone may not fix missing context if the chunk structure is the real problem."
+          "explanation": "Incorrect. Changing embedding size alone may not fix missing context if the chunk structure is the real problem."
         },
         {
           "id": "D",
           "text": "Increase the document chunk size",
-          "explanation": "Correct. Larger chunks can include enough surrounding policy text when answers are incomplete because context is fragmented. Example: A concrete implementation is to increase the document chunk size."
+          "explanation": "Correct. Larger chunks can include enough surrounding policy text when answers are incomplete because context is fragmented."
         },
         {
           "id": "E",
@@ -10788,12 +10788,12 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Ask users to report unsafe responses",
-          "explanation": "Incorrect. User reporting is reactive and does not prevent unsafe content from reaching customers. Example: If the engineer chose “Ask users to report unsafe responses,” user reporting is reactive and does not prevent unsafe content from reaching customers."
+          "explanation": "Incorrect. User reporting is reactive and does not prevent unsafe content from reaching customers."
         },
         {
           "id": "B",
           "text": "Host Llama Guard on Foundation Model API and use it to detect unsafe responses.",
-          "explanation": "Correct. Foundation Model APIs generate or embed text; they do not by themselves provide live structured data like current scores unless connected to a data source. Example: In this scenario, “Host Llama Guard on Foundation Model API and use it to detect unsafe responses” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Foundation Model APIs generate or embed text; they do not by themselves provide live structured data like current scores unless connected to a data source."
         },
         {
           "id": "C",
@@ -10803,7 +10803,7 @@ window.QUESTION_BANK = {
         {
           "id": "D",
           "text": "Add a regex expression on inputs and outputs to detect unsafe responses.",
-          "explanation": "Incorrect. Regex catches simple patterns but is brittle for nuanced toxic or unsafe language. Example: If the engineer chose “Add a regex expression on inputs and outputs to detect unsafe responses,” regex catches simple patterns but is brittle for nuanced toxic or unsafe language."
+          "explanation": "Incorrect. Regex catches simple patterns but is brittle for nuanced toxic or unsafe language."
         }
       ],
       "correct_answers": [
@@ -10878,7 +10878,7 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "BLEU metric",
-          "explanation": "Correct. BLEU measures n-gram overlap for generated text such as translations; it does not evaluate retrieval ranking or application operations. Example: In this scenario, “BLEU metric” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. BLEU measures n-gram overlap for generated text such as translations; it does not evaluate retrieval ranking or application operations."
         },
         {
           "id": "B",
@@ -10888,7 +10888,7 @@ window.QUESTION_BANK = {
         {
           "id": "C",
           "text": "ROUGE metric",
-          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior. Example: If the engineer chose “ROUGE metric,” rOUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
+          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
         },
         {
           "id": "D",
@@ -10924,7 +10924,7 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Use few shot prompting to instruct the model on expected output format",
-          "explanation": "Correct. Few-shot prompting shows the model exactly that only the label should be returned. Example: “Input: brown cap… Output: edible” teaches a concise label-only format."
+          "explanation": "Correct. Few-shot prompting shows the model exactly that only the label should be returned."
         },
         {
           "id": "B",
@@ -10980,7 +10980,7 @@ window.QUESTION_BANK = {
         {
           "id": "C",
           "text": "Input: Customer reviews; Output: Classify review sentiment",
-          "explanation": "Incorrect. Classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue. Example: If the engineer chose “Input: Customer reviews; Output: Classify review sentiment,” classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue."
+          "explanation": "Incorrect. Classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue."
         },
         {
           "id": "D",
@@ -11028,7 +11028,7 @@ window.QUESTION_BANK = {
         {
           "id": "D",
           "text": "Pick the embedding model ranked highest on the Massive Text Embedding Benchmark (MTEB) leaderboard hosted by HuggingFace",
-          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation LLMs. Example: If the engineer chose “Pick the embedding model ranked highest on the Massive Text Embedding Benchmark (MTEB) leaderboard hosted by HuggingFace,” mTEB evaluates embedding models, not code-generation LLMs."
+          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation LLMs."
         }
       ],
       "correct_answers": [
@@ -11110,7 +11110,7 @@ window.QUESTION_BANK = {
         {
           "id": "B",
           "text": "Number of customer inquiries processed per unit of time",
-          "explanation": "Incorrect. Request volume/throughput is an operational production metric for a customer-service LLM app. Example: If the engineer chose “Number of customer inquiries processed per unit of time,” this is not the answer because it can be a reasonable supporting action. Request volume/throughput is an operational production metric for a customer-service LLM app."
+          "explanation": "Incorrect. Request volume/throughput is an operational production metric for a customer-service LLM app."
         },
         {
           "id": "C",
@@ -11283,22 +11283,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "pytesseract",
-          "explanation": "Incorrect. pytesseract is OCR for images/scans; it is not the best least-code choice for HTML or general PDFs unless OCR is needed. Example: If the engineer chose “pytesseract,” pytesseract is OCR for images/scans; it is not the best least-code choice for HTML or general PDFs unless OCR is needed."
+          "explanation": "Incorrect. pytesseract is OCR for images/scans; it is not the best least-code choice for HTML or general PDFs unless OCR is needed."
         },
         {
           "id": "B",
           "text": "numpy",
-          "explanation": "Incorrect. NumPy is numerical computing; it does not extract document text. Example: If the engineer chose “numpy,” numPy is numerical computing; it does not extract document text."
+          "explanation": "Incorrect. NumPy is numerical computing; it does not extract document text."
         },
         {
           "id": "C",
           "text": "pypdf2",
-          "explanation": "Incorrect. PyPDF can extract text from many PDFs, but it is weaker for mixed-layout PDFs with images compared with document parsing tools. Example: If the engineer chose “pypdf2,” pyPDF can extract text from many PDFs, but it is weaker for mixed-layout PDFs with images compared with document parsing tools."
+          "explanation": "Incorrect. PyPDF can extract text from many PDFs, but it is weaker for mixed-layout PDFs with images compared with document parsing tools."
         },
         {
           "id": "D",
           "text": "beautifulsoup",
-          "explanation": "Correct. BeautifulSoup is good for HTML/XML parsing, not general PDF text extraction. Example: In this scenario, “beautifulsoup” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. BeautifulSoup is good for HTML/XML parsing, not general PDF text extraction."
         }
       ],
       "correct_answers": [
@@ -11422,22 +11422,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Create separate indexes by topic and add a classifier model to appropriately pick the best index.",
-          "explanation": "Incorrect. Separate indexes plus a classifier add avoidable complexity. Example: a single index with topic/date metadata filters can handle “monster truck news around Jan 5, 1992” with less effort."
+          "explanation": "Incorrect. Separate indexes and a classifier add maintenance and routing complexity that metadata filtering can avoid."
         },
         {
           "id": "B",
           "text": "Include metadata columns for article date and topic to support metadata filtering.",
-          "explanation": "Correct. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG. Example: In this scenario, “Include metadata columns for article date and topic to support metadata filtering” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Store article date and topic as metadata columns, then apply filters alongside semantic search. This supports constraints such as a topic plus a date window without creating many indexes."
         },
         {
           "id": "C",
           "text": "Pass the query directly to the vector search index and return the best articles.",
-          "explanation": "Incorrect. This describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy. Example: If the engineer chose “Pass the query directly to the vector search index and return the best articles,” this describes the core RAG flow: ingest and index knowledge first, then retrieve context for the user query, generate, evaluate, and deploy."
+          "explanation": "Incorrect. Pure similarity search may return topically related articles from the wrong date. The date and topic constraints should be applied as metadata filters."
         },
         {
           "id": "D",
           "text": "Split articles by 10 day blocks and return the block closest to the query.",
-          "explanation": "Incorrect. Fixed 10-day blocks are coarse and can return irrelevant results near boundaries. Example: a query around Jan 5 may need articles from Dec 31 through Jan 15, not a preselected block."
+          "explanation": "Incorrect. Fixed ten-day buckets are coarse and create boundary problems. A query around January 5 may need a rolling date range that crosses two predefined buckets."
         }
       ],
       "correct_answers": [
@@ -11467,17 +11467,17 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Switch to using External Models instead",
-          "explanation": "Incorrect. External Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost. Example: If the engineer chose “Switch to using External Models instead,” external Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost."
+          "explanation": "Incorrect. External Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost."
         },
         {
           "id": "B",
           "text": "Throttle the incoming batch of requests manually to avoid rate limiting issues",
-          "explanation": "Incorrect. Manual throttling is an operational workaround, not the cost-effective serving mode choice. Example: If the engineer chose “Throttle the incoming batch of requests manually to avoid rate limiting issues,” manual throttling is an operational workaround, not the cost-effective serving mode choice."
+          "explanation": "Incorrect. Manual throttling is an operational workaround, not the cost-effective serving mode choice."
         },
         {
           "id": "C",
           "text": "Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
-          "explanation": "Incorrect. A smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself. Example: If the engineer chose “Change to a model with a fewer number of parameters in order to reduce hardware constraint issues,” a smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself."
+          "explanation": "Incorrect. A smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself."
         },
         {
           "id": "D",
@@ -11512,22 +11512,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Split instruction manuals into chunks and embed into a vector store. Use the question to retrieve best matched chunks of manual, and use the LLM to generate a response to the user based upon the manual retrieved.",
-          "explanation": "Correct. Chunking documents into a searchable vector store is the standard RAG approach for answering questions from manuals/policies. Example: A concrete implementation is to split instruction manuals into chunks and embed into a vector store. Use the question to retrieve best matched chunks of man…."
+          "explanation": "Correct. Chunking documents into a searchable vector store is the standard RAG approach for answering questions from manuals/policies."
         },
         {
           "id": "B",
           "text": "Create an interaction matrix of historical user questions and appliance instruction manuals. Use ALS to factorize the matrix and create embeddings. Calculate the embeddings of new queries and use them to find the best manual. Use an LLM to generate a response to the question based upon the manual retrieved.",
-          "explanation": "Incorrect. ALS/collaborative filtering is for recommendations, not document-grounded question answering. Example: If the engineer chose “Create an interaction matrix of historical user questions and appliance instruction manuals. Use ALS to factorize the matrix…,” aLS/collaborative filtering is for recommendations, not document-grounded question answering."
+          "explanation": "Incorrect. ALS/collaborative filtering is for recommendations, not document-grounded question answering."
         },
         {
           "id": "C",
           "text": "Calculate averaged embeddings for each instruction manual, compare embeddings to user query to find the best manual. Pass the best manual with user query into an LLM with a large context window to generate a response to the employee.",
-          "explanation": "Incorrect. Averaging an entire document into one vector loses section-level detail and can retrieve the wrong context. Example: If the engineer chose “Calculate averaged embeddings for each instruction manual, compare embeddings to user query to find the best manual. Pass th…,” averaging an entire document into one vector loses section-level detail and can retrieve the wrong context."
+          "explanation": "Incorrect. Averaging an entire document into one vector loses section-level detail and can retrieve the wrong context."
         },
         {
           "id": "D",
           "text": "Use an LLM to summarize all of the instruction manuals. Provide summaries of each manual and user query into an LLM with a large context window to generate a response to the user.",
-          "explanation": "Incorrect. Summaries can omit details needed for exact answers; RAG should retrieve the relevant original chunks. Example: If the engineer chose “Use an LLM to summarize all of the instruction manuals. Provide summaries of each manual and user query into an LLM with a l…,” summaries can omit details needed for exact answers; RAG should retrieve the relevant original chunks."
+          "explanation": "Incorrect. Summaries can omit details needed for exact answers; RAG should retrieve the relevant original chunks."
         }
       ],
       "correct_answers": [
@@ -11556,22 +11556,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Reduce the time that the users can interact with the LLM",
-          "explanation": "Incorrect. Limiting session time does not detect malicious input or prevent unsafe outputs. Example: If the engineer chose “Reduce the time that the users can interact with the LLM,” limiting session time does not detect malicious input or prevent unsafe outputs."
+          "explanation": "Incorrect. Limiting session time does not detect malicious input or prevent unsafe outputs."
         },
         {
           "id": "B",
           "text": "Increase the amount of compute that powers the LLM to process input faster",
-          "explanation": "Incorrect. More compute improves capacity/latency, not safety. Example: If the engineer chose “Increase the amount of compute that powers the LLM to process input faster,” more compute improves capacity/latency, not safety."
+          "explanation": "Incorrect. More compute improves capacity/latency, not safety."
         },
         {
           "id": "C",
           "text": "Ask the LLM to remind the user that the input is malicious but continue the conversation with the user",
-          "explanation": "Incorrect. Continuing after identifying malicious input still exposes the app to abuse; the safer pattern is to refuse/block. Example: If the engineer chose “Ask the LLM to remind the user that the input is malicious but continue the conversation with the user,” continuing after identifying malicious input still exposes the app to abuse; the safer pattern is to refuse/block."
+          "explanation": "Incorrect. Continuing after identifying malicious input still exposes the app to abuse; the safer pattern is to refuse/block."
         },
         {
           "id": "D",
           "text": "Implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist",
-          "explanation": "Correct. A safety filter detects harmful inputs/outputs and refuses or blocks them before the app continues. Example: A concrete implementation is to implement a safety filter that detects any harmful inputs and ask the LLM to respond that it is unable to assist."
+          "explanation": "Correct. A safety filter detects harmful inputs/outputs and refuses or blocks them before the app continues."
         }
       ],
       "correct_answers": [
@@ -11603,12 +11603,12 @@ window.QUESTION_BANK = {
         {
           "id": "B",
           "text": "The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the question to the appropriate model. If it’s a historical failure rate question, send the query to a text-to-SQL model. If it’s a troubleshooting question, then send the query to another model that summarizes the equipment-specific document and generates the response.",
-          "explanation": "Correct. Routing by intent to the right model/tool is a multi-step workflow pattern for mixed question types. Example: In this scenario, “The chatbot should be implemented as a multi-step LLM workflow. First, identify the type of question asked, then route the q…” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Routing by intent to the right model/tool is a multi-step workflow pattern for mixed question types."
         },
         {
           "id": "C",
           "text": "There should be two different chatbots handling different types of user queries.",
-          "explanation": "Incorrect. Separate chatbots create a poor user experience and push routing responsibility to the user. Example: If the engineer chose “There should be two different chatbots handling different types of user queries,” separate chatbots create a poor user experience and push routing responsibility to the user."
+          "explanation": "Incorrect. Separate chatbots create a poor user experience and push routing responsibility to the user."
         },
         {
           "id": "D",
@@ -11686,7 +11686,7 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Use ROUGE score to comprehensively evaluate the quality of the final generated answers.",
-          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior. Example: If the engineer chose “Use ROUGE score to comprehensively evaluate the quality of the final generated answers,” rOUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
+          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
         },
         {
           "id": "B",
@@ -11776,22 +11776,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "It allows you to break down complex tasks into multiple independent subtasks. This enables the assistant to generate more comprehensive and accurate responses.",
-          "explanation": "Correct. Prompt chaining decomposes a complex task into smaller steps so each step is easier to control and evaluate. Example: retrieve context, extract key facts, then generate the final answer as separate steps."
+          "explanation": "Correct. Prompt chaining decomposes a complex task into controlled steps, allowing each intermediate output to be inspected and optimized. Example: retrieve evidence, extract key facts, and then generate the final answer in separate stages."
         },
         {
           "id": "B",
           "text": "It allows you to reduce the latency of your applications. By having multiple chains participating in the response as a chain, you increase the rate at which the response is generated.",
-          "explanation": "Incorrect. Latency and output length are operational metrics, not indicators of safe/accurate translation. Example: If the engineer chose “It allows you to reduce the latency of your applications. By having multiple chains participating in the response as a chain…,” latency and output length are operational metrics, not indicators of safe/accurate translation."
+          "explanation": "Incorrect. Prompt chains are commonly sequential and may increase latency because they require multiple model or tool calls; they do not automatically execute in parallel."
         },
         {
           "id": "C",
           "text": "It allows you to decrease the effort involved in crafting a prompt. Chains make it possible to reuse prompt text across multiple different use cases.",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task. Example: If the engineer chose “It allows you to decrease the effort involved in crafting a prompt. Chains make it possible to reuse prompt text across mult…,” mPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "explanation": "Incorrect. Reusable prompt components can reduce some duplication, but the main purpose of prompt chaining is task decomposition and controlled handoff between steps, not avoiding prompt design."
         },
         {
           "id": "D",
           "text": "It reduces the average cost of a typical request. Chains make more efficient use of the tokens produced to generate higher quality responses with fewer tokens.",
-          "explanation": "Incorrect. Prompt chaining can sometimes increase cost because it may require multiple model calls. Example: quality may improve, but token usage can go up when the workflow has several steps."
+          "explanation": "Incorrect. Multiple calls can increase token usage and cost. Chaining is chosen primarily for control, modularity, and quality, not guaranteed cost reduction."
         }
       ],
       "correct_answers": [
@@ -11821,27 +11821,27 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Big Code Models Leaderboard",
-          "explanation": "Correct. A code-specific leaderboard helps identify models suited for code generation. Example: In this scenario, “Big Code Models Leaderboard” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. A code-specific leaderboard helps identify models suited for code generation."
         },
         {
           "id": "B",
           "text": "Number of model parameters",
-          "explanation": "Correct. Parameter count affects hosting cost and capacity planning; fewer parameters usually reduce serving cost. Example: In this scenario, “Number of model parameters” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. Parameter count affects hosting cost and capacity planning; fewer parameters usually reduce serving cost."
         },
         {
           "id": "C",
           "text": "MTEB Leaderboard",
-          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation LLMs. Example: If the engineer chose “MTEB Leaderboard,” mTEB evaluates embedding models, not code-generation LLMs."
+          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation LLMs."
         },
         {
           "id": "D",
           "text": "Chatbot Arena Leaderboard",
-          "explanation": "Incorrect. Chatbot Arena measures general chat preference, not specifically code-generation performance. Example: If the engineer chose “Chatbot Arena Leaderboard,” chatbot Arena measures general chat preference, not specifically code-generation performance."
+          "explanation": "Incorrect. Chatbot Arena measures general chat preference, not specifically code-generation performance."
         },
         {
           "id": "E",
           "text": "Number of model downloads last month",
-          "explanation": "Incorrect. Download count is popularity, not a reliable quality or cost metric. Example: If the engineer chose “Number of model downloads last month,” download count is popularity, not a reliable quality or cost metric."
+          "explanation": "Incorrect. Download count is popularity, not a reliable quality or cost metric."
         }
       ],
       "correct_answers": [
@@ -11871,12 +11871,12 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Setting chunk size to match the model's context window to maximize coverage",
-          "explanation": "Correct. This is the option to avoid. Matching chunk size to the full model context window usually creates huge chunks and poor retrieval granularity. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives. Example: In this scenario, “Setting chunk size to match the model's context window to maximize coverage” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. This is the option to avoid. Matching chunk size to the full model context window usually creates huge chunks and poor retrieval granularity. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives."
         },
         {
           "id": "B",
           "text": "Implementing metadata filtering based on car models and years",
-          "explanation": "Incorrect. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG. Example: If the engineer chose “Implementing metadata filtering based on car models and years,” this is not the answer because it can be a reasonable supporting action. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG."
+          "explanation": "Incorrect. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG."
         },
         {
           "id": "C",
@@ -11886,7 +11886,7 @@ window.QUESTION_BANK = {
         {
           "id": "D",
           "text": "Adding few-shot examples for response generation",
-          "explanation": "Incorrect. Few-shot examples show the exact desired output format or style, which helps stop unwanted extra explanation. Example: If the engineer chose “Adding few-shot examples for response generation,” this is not the answer because it can be a reasonable supporting action. Few-shot examples show the exact desired output format or style, which helps stop unwanted extra explanation."
+          "explanation": "Incorrect. Few-shot examples show the exact desired output format or style, which helps stop unwanted extra explanation."
         }
       ],
       "correct_answers": [
@@ -11916,22 +11916,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Implement windowed summarization with overlapping chunks.",
-          "explanation": "Correct. Windowed/overlapping chunks preserve continuity across time and neighboring legal text. Example: A concrete implementation is to implement windowed summarization with overlapping chunks."
+          "explanation": "Correct. Windowed/overlapping chunks preserve continuity across time and neighboring legal text."
         },
         {
           "id": "B",
           "text": "Implement a hierarchical tree structure, like RAPTOR, to group similar legal concepts.",
-          "explanation": "Incorrect. Hierarchical retrieval can help large corpora, but this scenario emphasizes temporal continuity over concept clustering. Example: If the engineer chose “Implement a hierarchical tree structure, like RAPTOR, to group similar legal concepts,” hierarchical retrieval can help large corpora, but this scenario emphasizes temporal continuity over concept clustering."
+          "explanation": "Incorrect. Hierarchical retrieval can help large corpora, but this scenario emphasizes temporal continuity over concept clustering."
         },
         {
           "id": "C",
           "text": "Implement paragraph level embeddings with each chunk.",
-          "explanation": "Incorrect. Paragraph chunks may be too isolated for tracking legal evolution across connected sections/time. Example: If the engineer chose “Implement paragraph level embeddings with each chunk,” paragraph chunks may be too isolated for tracking legal evolution across connected sections/time."
+          "explanation": "Incorrect. Paragraph chunks may be too isolated for tracking legal evolution across connected sections/time."
         },
         {
           "id": "D",
           "text": "Implement sentence level embeddings with each chunk tagged with the time to enable metadata filtering.",
-          "explanation": "Incorrect. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG. Example: If the engineer chose “Implement sentence level embeddings with each chunk tagged with the time to enable metadata filtering,” metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG."
+          "explanation": "Incorrect. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG."
         }
       ],
       "correct_answers": [
@@ -12094,22 +12094,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "OpenAI client",
-          "explanation": "Incorrect. The Databricks-compatible OpenAI client can be configured to use workspace credentials in notebook examples. Example: If the engineer chose “OpenAI client,” the Databricks-compatible OpenAI client can be configured to use workspace credentials in notebook examples."
+          "explanation": "Incorrect. The Databricks-compatible OpenAI client can be configured to use workspace credentials in notebook examples."
         },
         {
           "id": "B",
           "text": "REST API via requests library",
-          "explanation": "Correct. A raw requests call does not automatically pick up notebook session credentials; you must provide the host/token/auth headers yourself. Example: In this scenario, “REST API via requests library” is the choice that directly satisfies the stated requirement."
+          "explanation": "Correct. A raw requests call does not automatically pick up notebook session credentials; you must provide the host/token/auth headers yourself."
         },
         {
           "id": "C",
           "text": "MLflow Deployments SDK",
-          "explanation": "Incorrect. The MLflow Deployments SDK integrates with Databricks credentials more directly than raw HTTP requests. Example: If the engineer chose “MLflow Deployments SDK,” the MLflow Deployments SDK integrates with Databricks credentials more directly than raw HTTP requests."
+          "explanation": "Incorrect. The MLflow Deployments SDK integrates with Databricks credentials more directly than raw HTTP requests."
         },
         {
           "id": "D",
           "text": "Databricks Python SDK",
-          "explanation": "Incorrect. The Databricks SDK is built to use Databricks authentication from the current environment. Example: If the engineer chose “Databricks Python SDK,” the Databricks SDK is built to use Databricks authentication from the current environment."
+          "explanation": "Incorrect. The Databricks SDK is built to use Databricks authentication from the current environment."
         }
       ],
       "correct_answers": [
@@ -12138,22 +12138,22 @@ window.QUESTION_BANK = {
         {
           "id": "A",
           "text": "Implement AI guardrails to allow users to configure and enforce compliance",
-          "explanation": "Incorrect. Letting users configure guardrails does not protect the proprietary model from unauthorized access or inversion attempts. Example: If the engineer chose “Implement AI guardrails to allow users to configure and enforce compliance,” letting users configure guardrails does not protect the proprietary model from unauthorized access or inversion attempts."
+          "explanation": "Incorrect. Letting users configure guardrails does not protect the proprietary model from unauthorized access or inversion attempts."
         },
         {
           "id": "B",
           "text": "Leverage Databricks access control lists (ACLs) to configure permissions for accessing models",
-          "explanation": "Correct. ACLs control who can access a model/endpoint and are directly relevant to protecting proprietary models. Example: A concrete implementation is to leverage Databricks access control lists (ACLs) to configure permissions for accessing models."
+          "explanation": "Correct. ACLs control who can access a model/endpoint and are directly relevant to protecting proprietary models."
         },
         {
           "id": "C",
           "text": "Use secure model features with Databricks Feature Store",
-          "explanation": "Incorrect. Feature Store secures features, not the model artifact itself. Example: If the engineer chose “Use secure model features with Databricks Feature Store,” feature Store secures features, not the model artifact itself."
+          "explanation": "Incorrect. Feature Store secures features, not the model artifact itself."
         },
         {
           "id": "D",
           "text": "Apply attribute-based access controls (ABAC) to limit unauthorized access",
-          "explanation": "Incorrect. ABAC can be useful for fine-grained data access, but the direct model-access mitigation here is model/endpoint ACLs. Example: If the engineer chose “Apply attribute-based access controls (ABAC) to limit unauthorized access,” aBAC can be useful for fine-grained data access, but the direct model-access mitigation here is model/endpoint ACLs."
+          "explanation": "Incorrect. ABAC can be useful for fine-grained data access, but the direct model-access mitigation here is model/endpoint ACLs."
         }
       ],
       "correct_answers": [

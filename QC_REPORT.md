@@ -1,4 +1,4 @@
-# QC Report — v5.9.1 mobile support polish
+# QC Report — v5.10 mobile support polish
 
 ## Counts
 
@@ -40,9 +40,19 @@
 - This automated scan checks structure, answer-key consistency, missing context markers, repeated explanations, and shuffle-safe wording. It does not claim that every third-party imported answer is an official Databricks exam answer; source links remain available for verification.
 
 
-## v5.9.1 UI changes
+## v5.10 UI changes
 
 - Buy Me a Coffee and Lightning support options.
 - Icon-only floating support button.
 - Mobile layout cleanup.
 - Support panel closes on outside click or Escape.
+
+
+## v5.10 explanation cleanup
+
+- Repetitive boilerplate examples removed: 197
+- Truncated example fragments removed: 2
+- Manually repaired imported questions: USER_IMPORTED_001, 003, 005, 006, 007, 010, 046, 051, 073, 081
+- Remaining `If the engineer chose` phrases: 0
+- Remaining `A concrete implementation is to` phrases: 0
+- Remaining explanation truncation artifacts (`…` after boilerplate): 0
