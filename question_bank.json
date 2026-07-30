@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "5.11.1",
-    "updated": "2026-07-30",
-    "question_count": 325,
-    "notes": "v5.11.1 re-audits all 91 user-imported questions against the March 2026 exam guide and current official Databricks documentation; 29 ambiguous, stale, incomplete, or incorrect imported items were corrected or reframed.",
+    "version": "5.12",
+    "updated": "2026-07-31",
+    "question_count": 339,
+    "notes": "v5.12 adds 14 source-grounded hard questions on underrepresented March 2026 exam objectives, including AI Search index architecture, Delta Sync/CDF prerequisites, Prompt Registry aliases, Unity AI Gateway usage tracking, Databricks Apps authorization, MCP, ai_query batch inference, and Supervisor Agent permissions.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Uploaded Big Book of GenAI PDF",
@@ -17,7 +17,7 @@
       "User imported"
     ],
     "generated_at": "2026-07-25",
-    "description": "v5.11.1: full user-imported question re-audit, corrected answer logic, repaired missing context, updated Databricks terminology, and concise option-specific explanations."
+    "description": "v5.12: 14 difficult, source-grounded scenario questions added for underrepresented exam objectives; no user-imported questions or existing answer keys changed."
   },
   "questions": [
     {
@@ -14913,6 +14913,681 @@
         "https://www.databricks.com/resources/ebook/big-book-generative-ai",
         "https://docs.databricks.com/aws/en/mlflow3/genai/",
         "https://docs.databricks.com/aws/en/ai-gateway/"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_001",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "AI Search",
+        "Delta Sync",
+        "Change Data Feed",
+        "standard endpoint",
+        "troubleshooting"
+      ],
+      "question": "A Delta Sync AI Search index is being created on a standard endpoint from a Unity Catalog Delta table. The table has a unique primary key, but index creation fails before the first sync because the source does not meet an incremental-sync prerequisite. What should the engineer change?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enable Change Data Feed on the source Delta table, then retry the Delta Sync index creation.",
+          "explanation": "Correct. Standard AI Search endpoints require Change Data Feed on the source table so changes can be synchronized incrementally. Example: set the table property delta.enableChangeDataFeed=true before creating the index."
+        },
+        {
+          "id": "B",
+          "text": "Replace the primary key with a generated UUID on every pipeline run.",
+          "explanation": "Incorrect. A new key on every run destroys row identity and can create duplicates or unnecessary re-embedding. Stable keys are needed to recognize updates to existing chunks."
+        },
+        {
+          "id": "C",
+          "text": "Change the index to Direct Vector Access but continue expecting the Delta table to synchronize automatically.",
+          "explanation": "Incorrect. Direct Vector Access transfers update responsibility to the application. It does not automatically track changes in the source Delta table."
+        },
+        {
+          "id": "D",
+          "text": "Enable inference tables on the embedding endpoint.",
+          "explanation": "Incorrect. Inference tables log model-service requests and responses; they do not provide the change stream used by a Delta Sync index."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The failure concerns the source-table prerequisite for a standard Delta Sync index, not embedding observability or endpoint serving.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search",
+        "https://docs.databricks.com/aws/en/tables/features/change-data-feed"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_002",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "AI Search",
+        "storage-optimized endpoint",
+        "triggered sync",
+        "scale",
+        "cost"
+      ],
+      "question": "A retailer has 350 million product embeddings in a Delta table. Updates arrive in one nightly batch, and the index may be several minutes behind after that batch. The team prioritizes scale and cost over continuous freshness. Which configuration best fits?",
+      "options": [
+        {
+          "id": "A",
+          "text": "A storage-optimized AI Search endpoint with a Delta Sync index using triggered sync.",
+          "explanation": "Correct. Storage-optimized endpoints are intended for very large indexes and use triggered synchronization, which matches a nightly refresh requirement."
+        },
+        {
+          "id": "B",
+          "text": "A storage-optimized endpoint with continuous Delta Sync.",
+          "explanation": "Incorrect. Storage-optimized endpoints accept triggered sync rather than continuous sync. The requested combination is not supported."
+        },
+        {
+          "id": "C",
+          "text": "A standard endpoint with continuous sync solely because the source is a Delta table.",
+          "explanation": "Incorrect. Continuous sync improves freshness, but it does not address the stated preference for very large-scale, cost-oriented indexing when nightly triggered refresh is acceptable."
+        },
+        {
+          "id": "D",
+          "text": "A Direct Vector Access index with a notebook scheduled nightly, even though Databricks should manage embeddings and synchronization.",
+          "explanation": "Incorrect. Direct access is appropriate when the application manages vectors and updates. Here, Delta Sync better matches the requirement for platform-managed synchronization."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Choose the endpoint and sync mode from the size, update cadence, freshness, and operational-ownership requirements together.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_003",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "AI Search",
+        "Direct Vector Access",
+        "self-managed embeddings",
+        "upserts",
+        "architecture"
+      ],
+      "question": "An application receives precomputed embeddings from an external real-time service. Records do not originate in a Delta table, and the application must upsert and delete vectors within seconds. Which AI Search index design is most appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Direct Vector Access, with the application performing vector upserts and deletes through the SDK or REST API.",
+          "explanation": "Correct. Direct access is designed for application-managed vectors and record-level updates when there is no Delta source to synchronize."
+        },
+        {
+          "id": "B",
+          "text": "A Delta Sync index with continuous mode, using the external service as the source table.",
+          "explanation": "Incorrect. Delta Sync requires a Delta table source. An external service is not itself a synchronizable Delta source."
+        },
+        {
+          "id": "C",
+          "text": "A managed-embedding Delta Sync index, while continuing to use the externally computed vectors as the authoritative embeddings.",
+          "explanation": "Incorrect. Managed embeddings and externally supplied vectors are different ownership models. The requirement is to preserve externally computed vectors and manage their updates directly."
+        },
+        {
+          "id": "D",
+          "text": "An inference table attached to the external embedding model.",
+          "explanation": "Incorrect. Inference tables capture request and response logs; they are not a searchable vector index and do not support upsert/delete semantics."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The deciding factors are the absence of a Delta source and the requirement for application-controlled, low-latency updates.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/ai-search"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_004",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "AI Search",
+        "columns_to_sync",
+        "PII",
+        "metadata filtering",
+        "least data"
+      ],
+      "question": "A source Delta table contains chunk_id, chunk_text, product_code, document_title, author_email, and employee_salary. The RAG application needs semantic search, product_code filtering, and document titles in citations, but the index must not contain the email or salary columns. What should the engineer configure?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create the Delta Sync index with columns_to_sync limited to product_code and document_title; the primary key and embedding source are still included as required.",
+          "explanation": "Correct. Selecting columns limits indexed metadata while retaining the required primary key and embedding source column. This supports filtering and citations without copying unrelated PII into the index."
+        },
+        {
+          "id": "B",
+          "text": "Sync all columns and rely on the application prompt not to mention email or salary.",
+          "explanation": "Incorrect. Prompt instructions do not remove sensitive fields from the index. Least-data design should prevent unnecessary PII from being synchronized in the first place."
+        },
+        {
+          "id": "C",
+          "text": "Exclude product_code because metadata filters can access any source-table column even when it is not synchronized.",
+          "explanation": "Incorrect. Filtering operates on fields available in the index. A field needed for filtering must be synchronized."
+        },
+        {
+          "id": "D",
+          "text": "Use Direct Vector Access only because selective column synchronization is unavailable for Delta Sync indexes.",
+          "explanation": "Incorrect. Delta Sync supports selecting columns to synchronize. Switching index ownership models is unnecessary."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Selective synchronization reduces indexed data while preserving the fields needed for retrieval, filtering, and citation display.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/ai-search"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_005",
+      "source": "Generated practice",
+      "section": "2. Data Preparation",
+      "difficulty": "Hard",
+      "tags": [
+        "Delta table",
+        "primary key",
+        "chunk ID",
+        "incremental sync",
+        "reprocessing"
+      ],
+      "question": "A document pipeline rebuilds the same chunk table every night. It assigns chunk IDs with monotonically_increasing_id(), so unchanged chunks receive different IDs on every run. The Delta Sync index grows and re-embeds far more rows than expected. What is the best correction?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Derive a deterministic chunk key from stable source identity and chunk position, such as a hash of document_id and chunk_index.",
+          "explanation": "Correct. A deterministic key lets synchronization recognize the same logical chunk across runs and update it instead of treating it as a new record."
+        },
+        {
+          "id": "B",
+          "text": "Keep the changing IDs and increase the embedding endpoint rate limit.",
+          "explanation": "Incorrect. More throughput may hide the symptom temporarily but does not fix unstable row identity or duplicate index records."
+        },
+        {
+          "id": "C",
+          "text": "Use the chunk text itself as the only primary key.",
+          "explanation": "Incorrect. Identical text can occur in multiple documents, and a small text edit changes the key. Source identity plus chunk position is more reliable."
+        },
+        {
+          "id": "D",
+          "text": "Disable incremental synchronization and recreate the endpoint after every run.",
+          "explanation": "Incorrect. Recreating infrastructure is costly and avoids the benefit of stable incremental updates rather than solving the data-model problem."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Stable record identity is essential for correct incremental indexing and efficient embedding reuse.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/ai-search"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_006",
+      "source": "Generated practice",
+      "section": "2. Data Preparation",
+      "difficulty": "Hard",
+      "tags": [
+        "Delta table",
+        "chunking",
+        "Change Data Feed",
+        "metadata",
+        "multi-select"
+      ],
+      "question": "A team is preparing PDF chunks for a standard Delta Sync AI Search index. Which THREE design choices best support reliable incremental indexing and useful retrieval?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Store one retrievable chunk per row rather than an array of all chunks for a document.",
+          "explanation": "Correct. Row-level chunks allow the index to return the specific passage that answers a query instead of an entire document-level array."
+        },
+        {
+          "id": "B",
+          "text": "Create a stable unique key for each logical chunk.",
+          "explanation": "Correct. The primary key allows the sync pipeline to distinguish inserts, updates, and deletes across refreshes."
+        },
+        {
+          "id": "C",
+          "text": "Retain retrieval metadata such as document ID, section, date, or product code when those fields are useful for filters and citations.",
+          "explanation": "Correct. Relevant metadata supports constrained retrieval and traceable answers without forcing those attributes into the chunk text."
+        },
+        {
+          "id": "D",
+          "text": "Generate new random chunk IDs on every run so the index can detect that the pipeline completed.",
+          "explanation": "Incorrect. Random IDs make unchanged rows look new, causing duplicate records and unnecessary embedding work."
+        },
+        {
+          "id": "E",
+          "text": "Keep the source table without Change Data Feed because standard endpoints derive all changes from the model-serving logs.",
+          "explanation": "Incorrect. Model-serving logs are unrelated to source-table synchronization. Standard endpoints require Change Data Feed on the source Delta table."
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "A good chunk table combines appropriate row granularity, stable identity, and useful metadata; standard endpoint prerequisites must also be configured separately.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search",
+        "https://docs.databricks.com/aws/en/tables/features/change-data-feed"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_007",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "Prompt Registry",
+        "aliases",
+        "promotion",
+        "rollback",
+        "CI/CD"
+      ],
+      "question": "A deployed application loads prompts using prompts:/catalog.schema.support@production. Version 8 passes staging evaluation, while production currently points to version 6. The team wants promotion and rollback without rebuilding the application. What should the release pipeline do?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Move the production alias to version 8 after approval, while preserving or recording the previous production version so the alias can be moved back if needed.",
+          "explanation": "Correct. Prompt versions are immutable, while aliases are mutable references designed for promotion and rollback without changing application code."
+        },
+        {
+          "id": "B",
+          "text": "Overwrite version 6 with the version 8 template so the production URI remains unchanged.",
+          "explanation": "Incorrect. Prompt versions are immutable snapshots. Promotion should change the alias, not rewrite history."
+        },
+        {
+          "id": "C",
+          "text": "Hard-code version 8 in the application and redeploy every time a prompt is promoted.",
+          "explanation": "Incorrect. A version-specific URI removes the operational benefit of aliases and couples prompt releases to application deployments."
+        },
+        {
+          "id": "D",
+          "text": "Store the prompt only in a production Git branch and remove it from Prompt Registry.",
+          "explanation": "Incorrect. Git can manage application code, but this requirement specifically benefits from registry versions, evaluation lineage, aliases, and rollback."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Aliases separate the stable production reference used by the app from the immutable prompt version selected by the release process.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt/prompt-registry/",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt/prompt-registry/use-prompts-in-deployed-apps"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_008",
+      "source": "Generated practice",
+      "section": "6. Evaluation and Monitoring",
+      "difficulty": "Hard",
+      "tags": [
+        "Unity AI Gateway",
+        "usage table",
+        "inference tables",
+        "cost attribution",
+        "request tags"
+      ],
+      "question": "An account administrator needs a cross-workspace report of token consumption, latency, requester, and estimated cost grouped by team. They do not need full prompt or response bodies. Which data source and tagging approach is most appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Query system.ai_gateway.usage and attach team or project request tags to the traffic for attribution.",
+          "explanation": "Correct. The usage system table is designed for request counts, tokens, latency, requester details, and tagged usage analysis across governed AI services."
+        },
+        {
+          "id": "B",
+          "text": "Enable inference tables and parse every request and response payload to estimate usage.",
+          "explanation": "Incorrect. Inference tables are valuable for payload-level debugging, but they are not the most direct source for centralized usage and token attribution."
+        },
+        {
+          "id": "C",
+          "text": "Use MLflow Prompt Registry tags because prompt tags automatically capture every model-service token and cost record.",
+          "explanation": "Incorrect. Prompt tags describe prompt versions; they do not replace AI Gateway usage telemetry or request-level attribution tags."
+        },
+        {
+          "id": "D",
+          "text": "Read the AI Search index metadata because every model request is recorded in the search index.",
+          "explanation": "Incorrect. AI Search stores searchable data and metadata, not centralized model-service usage records."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Choose usage tracking for aggregate consumption and performance; choose inference tables when exact request and response payloads are required.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-gateway/usage-tracking",
+        "https://docs.databricks.com/aws/en/ai-gateway/inference-tables"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_009",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "Databricks Apps",
+        "OAuth",
+        "user authorization",
+        "Unity Catalog",
+        "row filters"
+      ],
+      "question": "A Databricks App queries a customer table whose Unity Catalog row filters differ by employee. The app also runs a nightly shared-cache refresh that is not tied to any interactive user. Which identity design best satisfies both requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use user authorization for interactive table queries and the app service principal for the background cache refresh, granting each identity only the required scopes and permissions.",
+          "explanation": "Correct. User authorization preserves each employee’s Unity Catalog policies, while app authorization supports autonomous background work with the app’s dedicated service principal."
+        },
+        {
+          "id": "B",
+          "text": "Use the app service principal for all requests and reproduce every row-filter rule in application code.",
+          "explanation": "Incorrect. This bypasses the user’s governed identity context and duplicates access-control logic that Unity Catalog already enforces."
+        },
+        {
+          "id": "C",
+          "text": "Forward a shared personal access token from the browser for both interactive and background operations.",
+          "explanation": "Incorrect. Long-lived shared credentials in the client weaken security, auditing, and user-specific authorization."
+        },
+        {
+          "id": "D",
+          "text": "Use user authorization for the nightly job by selecting an arbitrary employee identity.",
+          "explanation": "Incorrect. Background work should use the app’s identity rather than impersonating a user whose permissions or employment status can change."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Databricks Apps deliberately separates user authorization from app authorization so interactive and autonomous operations can use the correct governed identity.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/dev-tools/databricks-apps/auth"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_010",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "MCP",
+        "custom MCP server",
+        "Databricks Apps",
+        "resources",
+        "multi-select"
+      ],
+      "question": "An agent must call a proprietary internal approval API. No managed MCP server or Marketplace MCP Service exists, and the API requires organization-specific validation logic. Which TWO actions best fit the Databricks MCP architecture?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Host a custom MCP server, for example as a Databricks App, that exposes governed tools for the proprietary API.",
+          "explanation": "Correct. A custom MCP server is appropriate when the integration and validation logic are specific to an internal system."
+        },
+        {
+          "id": "B",
+          "text": "Declare and grant access to the custom MCP resource and its dependent Databricks resources when deploying the agent.",
+          "explanation": "Correct. The deployed agent needs explicit permission to the MCP server and to any resources the server uses."
+        },
+        {
+          "id": "C",
+          "text": "Register the proprietary API as a managed MCP server without implementing a server.",
+          "explanation": "Incorrect. Managed servers are provided by Databricks for supported services; an unsupported proprietary API requires an actual custom integration."
+        },
+        {
+          "id": "D",
+          "text": "Embed the API secret in the system prompt so the model can authenticate its tool calls.",
+          "explanation": "Incorrect. Prompts are not secure secret stores and can leak through logs or model output. Authentication should use OAuth, service-principal credentials, or Databricks secrets as appropriate."
+        },
+        {
+          "id": "E",
+          "text": "Replace the API call with vector retrieval from documentation because all MCP tools are read-only.",
+          "explanation": "Incorrect. MCP tools can take actions as well as retrieve information. Documentation retrieval cannot execute an approval transaction."
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "Use a custom MCP server for proprietary logic and treat the server plus its dependencies as governed resources of the deployed agent.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/agents/mcp/use-mcp-in-agents"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_011",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "ai_query",
+        "batch inference",
+        "failOnError",
+        "throughput",
+        "multi-select"
+      ],
+      "question": "A team must summarize several million Delta-table rows with ai_query(). A small fraction of malformed rows may fail, but successful outputs should be retained and overall throughput should remain high. Which TWO practices are recommended?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Submit the dataset through a set-based query rather than manually issuing many tiny batches from a Python loop.",
+          "explanation": "Correct. AI Functions handle parallelization, retries, and scaling; fragmenting the workload into many small client-side batches can reduce throughput."
+        },
+        {
+          "id": "B",
+          "text": "Set failOnError to false so failed rows return error information without aborting the entire workload.",
+          "explanation": "Correct. This allows successful rows to complete and isolates failures for later repair."
+        },
+        {
+          "id": "C",
+          "text": "Query the AI Search index instead of calling the model endpoint because vector_search() performs text generation.",
+          "explanation": "Incorrect. AI Search retrieves records; it does not replace model inference for summarization."
+        },
+        {
+          "id": "D",
+          "text": "Force every row through a separate synchronous REST request to guarantee maximum parallelism.",
+          "explanation": "Incorrect. Per-row client requests add orchestration overhead and do not take advantage of the set-based batch execution model."
+        },
+        {
+          "id": "E",
+          "text": "Enable Change Data Feed on the output table because CDF retries failed model calls automatically.",
+          "explanation": "Incorrect. Change Data Feed tracks table changes; it does not control ai_query error handling or retry semantics."
+        }
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "For large batch inference, use set-based ai_query execution and row-level error capture rather than client-managed micro-batching.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/large-language-models/ai-query"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_012",
+      "source": "Generated practice",
+      "section": "1. Design Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "Agent Bricks",
+        "Supervisor Agent",
+        "Genie Agent",
+        "Knowledge Assistant",
+        "permissions"
+      ],
+      "question": "A business assistant must answer policy questions from documents, calculate metrics through a governed Genie Agent, and create tickets through a tool. The organization wants one conversational endpoint, but each employee must only use subagents and data they already have permission to access. Which design is strongest?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use a Supervisor Agent to coordinate a Knowledge Assistant, Genie Agent, and ticket tool, while granting end users the required permission on each delegated resource.",
+          "explanation": "Correct. The supervisor provides a unified endpoint and delegates by task, while built-in access controls still require users to be authorized for the underlying subagents and resources."
+        },
+        {
+          "id": "B",
+          "text": "Copy all policy documents and metric tables into the supervisor prompt so downstream permissions are unnecessary.",
+          "explanation": "Incorrect. This is not scalable and would bypass governed access boundaries by moving protected data into a shared prompt."
+        },
+        {
+          "id": "C",
+          "text": "Use a Knowledge Assistant alone because it can automatically execute governed SQL and ticket transactions without tools or subagents.",
+          "explanation": "Incorrect. A Knowledge Assistant is optimized for document-grounded questions, not every structured-data and action workflow."
+        },
+        {
+          "id": "D",
+          "text": "Use the supervisor’s service principal to grant every user access to all subagents regardless of their own permissions.",
+          "explanation": "Incorrect. The supervisor does not erase end-user authorization requirements; users must have access to the delegated resources they invoke."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "A Supervisor Agent is appropriate when one interface must coordinate specialized agents and tools while preserving downstream access controls.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/agents/agent-bricks/multi-agent-supervisor"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_013",
+      "source": "Generated practice",
+      "section": "2. Data Preparation",
+      "difficulty": "Hard",
+      "tags": [
+        "AI Search",
+        "hybrid search",
+        "metadata filtering",
+        "product codes",
+        "latency"
+      ],
+      "question": "A support index must handle exact identifiers such as XR-17A and semantic questions such as “battery swelling after a flight.” Product-code metadata is available, and strict latency requirements rule out a separate reranking model. Which retrieval plan is most appropriate?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use hybrid keyword-vector retrieval and apply a product-code metadata filter when the query contains a recognized identifier.",
+          "explanation": "Correct. Hybrid search combines exact-term and semantic signals, while metadata filtering narrows results to the identified product without adding a separate reranker call."
+        },
+        {
+          "id": "B",
+          "text": "Use vector-only retrieval and remove product-code metadata because embeddings always preserve exact identifiers.",
+          "explanation": "Incorrect. Exact alphanumeric codes are a common case where keyword and metadata signals complement embeddings."
+        },
+        {
+          "id": "C",
+          "text": "Use keyword-only retrieval for every query because semantic similarity adds no value when some queries contain codes.",
+          "explanation": "Incorrect. Keyword search can match identifiers but may miss semantically related descriptions that use different wording."
+        },
+        {
+          "id": "D",
+          "text": "Fine-tune the answer-generating LLM to memorize the product catalog and disable retrieval.",
+          "explanation": "Incorrect. Catalog content changes, and fine-tuning does not provide a governed, current replacement for retrieval and filtering."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The design needs both exact identifier matching and semantic retrieval, with filters used when structured query clues are available.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/ai-search",
+        "https://docs.databricks.com/aws/en/sql/language-manual/functions/vector_search"
+      ],
+      "origin": "Generated practice",
+      "origin_type": "Generated practice",
+      "origin_label": "Generated practice"
+    },
+    {
+      "id": "V512_HARD_014",
+      "source": "Generated practice",
+      "section": "4. Assembling and Deploying Applications",
+      "difficulty": "Hard",
+      "tags": [
+        "AI Search",
+        "sync mode",
+        "continuous",
+        "triggered",
+        "endpoint type"
+      ],
+      "question": "A team requires an AI Search index to reflect source-table updates continuously. They selected a storage-optimized endpoint because the dataset may grow later, but the index-creation request rejects continuous sync. What is the most accurate resolution?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use a standard endpoint if continuous Delta Sync is a firm requirement, or keep storage optimized and change the requirement to triggered refreshes.",
+          "explanation": "Correct. Standard endpoints support continuous or triggered Delta Sync, whereas storage-optimized endpoints use triggered sync."
+        },
+        {
+          "id": "B",
+          "text": "Keep the storage-optimized endpoint and enable Change Data Feed, which makes continuous mode supported.",
+          "explanation": "Incorrect. Change Data Feed is a source-table prerequisite for standard endpoint synchronization; it does not add continuous mode to storage-optimized endpoints."
+        },
+        {
+          "id": "C",
+          "text": "Attach an inference table to the endpoint so request logging drives continuous index refresh.",
+          "explanation": "Incorrect. Inference tables observe model traffic and do not control AI Search synchronization."
+        },
+        {
+          "id": "D",
+          "text": "Switch to Direct Vector Access and expect Databricks to monitor the Delta table continuously.",
+          "explanation": "Incorrect. Direct access requires the application to perform updates; it does not provide automatic Delta-table synchronization."
+        }
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Endpoint type and sync mode must be selected together; future scale alone does not override an immediate continuous-freshness requirement.",
+      "source_links": [
+        "https://docs.databricks.com/aws/en/ai-search/create-ai-search",
+        "https://docs.databricks.com/aws/en/ai-search/ai-search"
       ],
       "origin": "Generated practice",
       "origin_type": "Generated practice",

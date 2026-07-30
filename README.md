@@ -1,4 +1,21 @@
-# Databricks GenAI Cert Prep App — v5.11
+# Databricks GenAI Cert Prep App — v5.12
+
+## v5.12 additions
+
+Adds 14 difficult, scenario-based questions for underrepresented objectives in the March 2026 exam guide. The new set focuses on:
+
+- AI Search Delta Sync versus Direct Vector Access
+- Change Data Feed only where it directly supports standard AI Search endpoint synchronization
+- standard versus storage-optimized endpoint and sync-mode tradeoffs
+- stable chunk primary keys and selective metadata synchronization
+- MLflow Prompt Registry versions, aliases, promotion, and rollback
+- Unity AI Gateway usage tracking versus inference tables
+- Databricks Apps user authorization versus app authorization
+- managed/external/custom MCP architecture
+- resilient large-scale `ai_query()` batch inference
+- Supervisor Agent orchestration and downstream permissions
+
+Existing User imported questions and answer keys were not modified in this release.
 
 Browser-based practice app for the Databricks Certified Generative AI Engineer Associate exam.
 
