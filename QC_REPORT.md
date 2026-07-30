@@ -1,58 +1,43 @@
-# QC Report — v5.10 mobile support polish
+# QC Report - v5.11.1
 
-## Counts
+## Scope
 
 - Total questions: 325
-- Generated practice: 224
-- User imported: 91
-- Official guide sample: 10
-- Difficulty: Easy 22, Medium 259, Hard 44
+- User-imported questions reviewed: 91
+- User-imported questions corrected or materially reframed: 29
+- User-imported questions retained after review: 62
 
-## Question-bank repairs retained from v5.7
+The review used the official March 2026 Databricks Certified Generative AI Engineer Associate exam guide and current official Databricks documentation for AI Search, MLflow GenAI, Model Serving, AI Gateway, authentication, Unity Catalog model lifecycle, Genie/structured retrieval, and Agent Framework.
 
-- Repaired `USER_IMPORTED_030`, whose imported source said “following error” but omitted the actual error. The question now supplies an explicit **input-context-length overflow** while preserving the intended two answers (smaller chunks and fewer retrieved chunks). The uploaded source confirms the original text omitted the error itself.
-- Repaired three other imported questions that depended on missing material:
-  - `USER_IMPORTED_023`: added the preceding VectorSearchClient setup.
-  - `USER_IMPORTED_040`: removed the unavailable “diagram above” dependency.
-  - `USER_IMPORTED_080`: added the missing `PromptTemplate` code.
-  - `USER_IMPORTED_086`: added the missing agent prompt-variable configuration.
-- Replaced 197 copied generic examples with option-specific examples derived from the actual answer choice and explanation.
-- Removed 12 instances of generic NOT-question boilerplate.
-- Corrected small wording/typing issues without changing answer keys.
-- Added a compact bottom-right **Buy me a coffee** widget using the supplied Wallet of Satoshi Lightning address and QR code. The QR crop was decoded successfully before packaging.
+## Corrected or reframed user-imported questions
 
-- Replaced 58 generic main-question summaries with concept-specific summaries derived from the correct option explanations.
-- Rewrote four remaining generic distractor explanations manually.
+USER_IMPORTED_012, USER_IMPORTED_017, USER_IMPORTED_016, USER_IMPORTED_021, USER_IMPORTED_024, USER_IMPORTED_025, USER_IMPORTED_028, USER_IMPORTED_029, USER_IMPORTED_031, USER_IMPORTED_032, USER_IMPORTED_036, USER_IMPORTED_039, USER_IMPORTED_041, USER_IMPORTED_044, USER_IMPORTED_047, USER_IMPORTED_048, USER_IMPORTED_059, USER_IMPORTED_060, USER_IMPORTED_063, USER_IMPORTED_064, USER_IMPORTED_067, USER_IMPORTED_081, USER_IMPORTED_082, USER_IMPORTED_084, USER_IMPORTED_086, USER_IMPORTED_087, USER_IMPORTED_088, USER_IMPORTED_089, USER_IMPORTED_091
 
-## Automated structural checks
+## Notable corrections
 
-- Missing visual/code/error references after repairs: 0
-- Missing per-option `Example:` blocks: 0
-- Duplicate option explanations within the same question: 0
-- Fixed answer-letter references incompatible with shuffled options: 0
-- Multi-select wording/key inconsistencies: 0
-- Example texts repeated 4+ times after cleanup: 0
+- `USER_IMPORTED_017` and `USER_IMPORTED_060`: removed references to missing sample-email text while preserving the structured-output learning objective.
+- `USER_IMPORTED_021`: changed the ambiguous answer key and wording so retrieval evaluation is explicitly the first step before changing search configuration.
+- `USER_IMPORTED_028`: replaced an incorrect “accuracy and relevance” safety answer with harmful-content safety evaluation.
+- `USER_IMPORTED_031`: removed multiple simultaneously-invalid distractors and separated latency/capacity from relevance techniques.
+- `USER_IMPORTED_032`: changed the answer from prompt-only filtering to upstream corpus cleaning before indexing.
+- `USER_IMPORTED_047`: replaced raw cosine-score comparison with labeled retrieval metrics such as recall@k or NDCG.
+- `USER_IMPORTED_059`: updated the safety control to Databricks AI Gateway guardrails/service policies.
+- `USER_IMPORTED_064`: changed embedding selection to in-domain retrieval benchmarking rather than a single leaderboard or domain claim.
+- `USER_IMPORTED_067`: updated structured-data access to a governed Genie Agent/SQL tool pattern.
+- `USER_IMPORTED_084`: corrected the legal-document chunking strategy to structure-aware chunks with temporal metadata.
+- `USER_IMPORTED_087`: updated the LangGraph/ReAct construction sequence.
+- `USER_IMPORTED_089`: replaced weak model-inversion mitigations with governed access, rate limiting/budgets, and monitoring.
+- `USER_IMPORTED_091`: updated ChatAgent-era wording to ResponsesAgent-compatible deployment and clarified default operational metrics versus configured quality scorers.
 
-## Source notes
+## Automated integrity checks
 
-- Current Databricks documentation uses **Databricks AI Search** for the product formerly called Databricks Vector Search. Imported and official-guide questions may retain the older wording where it is part of the source material; explanations and links use current terminology where practical.
-- User-imported questions remain labelled `User imported`. Their wording is kept where possible, but missing screenshots/code/configuration were reconstructed as explicit, self-contained scenarios so the questions can be answered in the browser.
-- This automated scan checks structure, answer-key consistency, missing context markers, repeated explanations, and shuffle-safe wording. It does not claim that every third-party imported answer is an official Databricks exam answer; source links remain available for verification.
+- All correct-answer IDs exist in their option sets.
+- Every user-imported option has a non-empty explanation.
+- No correct option explanation starts with “Incorrect.”
+- No incorrect option explanation starts with “Correct.”
+- Multi-select answer counts match multi-select wording.
+- Fixed answer letters are not referenced inside explanations.
 
+## Important limitation
 
-## v5.10 UI changes
-
-- Buy Me a Coffee and Lightning support options.
-- Icon-only floating support button.
-- Mobile layout cleanup.
-- Support panel closes on outside click or Escape.
-
-
-## v5.10 explanation cleanup
-
-- Repetitive boilerplate examples removed: 197
-- Truncated example fragments removed: 2
-- Manually repaired imported questions: USER_IMPORTED_001, 003, 005, 006, 007, 010, 046, 051, 073, 081
-- Remaining `If the engineer chose` phrases: 0
-- Remaining `A concrete implementation is to` phrases: 0
-- Remaining explanation truncation artifacts (`…` after boilerplate): 0
+These are practice questions, not guaranteed live exam items. Product behavior and exam objectives can change, so users should verify time-sensitive details against the official Databricks exam guide and documentation shortly before the exam.

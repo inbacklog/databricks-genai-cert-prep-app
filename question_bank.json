@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "5.10",
+    "version": "5.11.1",
     "updated": "2026-07-30",
     "question_count": 325,
-    "notes": "v5.10 removes repetitive and truncated auto-generated examples, repairs several mismatched imported-option explanations, and keeps the v5.9.1 mobile/support UI.",
+    "notes": "v5.11.1 re-audits all 91 user-imported questions against the March 2026 exam guide and current official Databricks documentation; 29 ambiguous, stale, incomplete, or incorrect imported items were corrected or reframed.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Uploaded Big Book of GenAI PDF",
@@ -17,7 +17,7 @@
       "User imported"
     ],
     "generated_at": "2026-07-25",
-    "description": "v5.10: concise, non-repetitive option explanations with targeted semantic repairs; Buy Me a Coffee and Lightning support retained."
+    "description": "v5.11.1: full user-imported question re-audit, corrected answer logic, repaired missing context, updated Databricks terminology, and concise option-specific explanations."
   },
   "questions": [
     {
@@ -8646,41 +8646,39 @@
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "governance"
+        "licensing",
+        "governance",
+        "legal risk"
       ],
-      "question": "When developing an LLM application, it’s crucial to ensure that the data used for training the model complies with licensing requirements to avoid legal risks. Which action is NOT appropriate to avoid legal risks?",
+      "question": "When developing an LLM application, the team must ensure that third-party training data is used lawfully. Which action is NOT an appropriate way to reduce licensing risk?",
       "options": [
         {
           "id": "A",
-          "text": "Reach out to the data curators directly before you have started using the trained model to let them know.",
-          "explanation": "Incorrect. Contacting curators before use can reduce legal risk, but it must result in permission/license clarity, not just a notification."
+          "text": "Obtain written permission or a license from the data curator before using the data.",
+          "explanation": "Incorrect as the NOT choice. Written permission or a license obtained before use directly addresses legal authorization."
         },
         {
           "id": "B",
-          "text": "Use any available data you personally created which is completely original and you can decide what license to use.",
-          "explanation": "Incorrect. Original data you created can be usable if you control the rights, but you still need to document the license/permission decision."
+          "text": "Use data that the organization created and owns, subject to any internal policies and third-party rights.",
+          "explanation": "Incorrect as the NOT choice. Organization-owned original data is generally a lower-risk source when rights are clear."
         },
         {
           "id": "C",
-          "text": "Only use data explicitly labeled with an open license and ensure the license terms are followed.",
-          "explanation": "Incorrect. Using data with an explicit open license and following its terms is a safe licensing practice."
+          "text": "Use data whose license explicitly permits the intended use, and comply with attribution, redistribution, and other terms.",
+          "explanation": "Incorrect as the NOT choice. Following the applicable license is a core licensing-control practice."
         },
         {
           "id": "D",
-          "text": "Reach out to the data curators directly after you have started using the trained model to let them know.",
-          "explanation": "Correct. This is the option to avoid. Asking permission after using the data is too late; licensing should be resolved before training or deployment. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives."
+          "text": "Start using the data first and notify the curator afterward without obtaining permission or confirming license terms.",
+          "explanation": "Correct. Notification after use does not retroactively grant rights and leaves the organization exposed to licensing claims."
         }
       ],
       "correct_answers": [
         "D"
       ],
-      "explanation": "This is the option to avoid. Asking permission after using the data is too late; licensing should be resolved before training or deployment. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives.",
+      "explanation": "Licensing must be resolved before use through ownership, an applicable license, or explicit permission. A later notification is not a substitute for authorization.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models",
-        "https://www.databricks.com/learn/certification/genai-engineer-associate",
-        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/guardrails"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -8826,40 +8824,40 @@
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "RAG/retrieval"
+        "model selection",
+        "confidential data",
+        "self-hosted model"
       ],
-      "question": "A Generative AI Engineer is tasked with developing a RAG application that will help a small internal group of experts at their company answer specific questions, augmented by an internal knowledge base. They want the best possible quality in the answers, and neither latency nor throughput is a huge concern given that the user group is small and they’re willing to wait for the best answer. The topics are sensitive in nature and the data is highly confidential and so, due to regulatory requirements, none of the information is allowed to be transmitted to third parties. Which model meets all the Generative AI Engineer’s needs in this situation?",
+      "question": "A small internal expert group needs the highest practical answer quality for sensitive RAG questions. Latency and throughput are not major concerns, and regulatory requirements prohibit sending prompts or retrieved data to third-party model providers. Which model strategy best meets these requirements?",
       "options": [
         {
           "id": "A",
-          "text": "Dolly 1.5B",
-          "explanation": "Incorrect. Dolly 1.5B is small and unlikely to provide the best answer quality for sensitive expert Q&A. Example: the small model may be cheaper, but quality is the priority and latency is not a major constraint."
+          "text": "Use a very small self-hosted general model without evaluating it on the expert task.",
+          "explanation": "Incorrect. Self-hosting meets the data-boundary requirement, but an unevaluated small model is unlikely to maximize answer quality."
         },
         {
           "id": "B",
-          "text": "OpenAI GPT-4",
-          "explanation": "Incorrect. GPT-4 may be high quality, but the scenario says confidential data must not be transmitted to third parties. Example: sending retrieved internal context to an external provider can violate the regulatory constraint."
+          "text": "Call a frontier model through an external third-party API because it has the strongest public benchmark scores.",
+          "explanation": "Incorrect. This can violate the requirement that confidential prompts and context remain within the organization’s controlled environment."
         },
         {
           "id": "C",
-          "text": "BGE-large",
-          "explanation": "Incorrect. BGE-large is an embedding model used for retrieval, not the final response-generating LLM. Example: it can embed documents but cannot itself produce the final expert answer."
+          "text": "Use an embedding model as the response-generating model.",
+          "explanation": "Incorrect. An embedding model produces vectors for retrieval; it does not generate the final natural-language answer."
         },
         {
           "id": "D",
-          "text": "Llama2-70B",
-          "explanation": "Correct. Among the listed choices, a large open model is the best fit for high-quality answers while keeping data inside the controlled environment. Example: self-host the model and retrieve internal knowledge without sending context to a third-party provider."
+          "text": "Deploy a high-quality open-weight instruct model inside the organization’s Databricks environment and validate it on a representative expert evaluation set.",
+          "explanation": "Correct. This keeps data inside the controlled environment while allowing the team to prioritize quality through task-specific evaluation."
         }
       ],
       "correct_answers": [
         "D"
       ],
-      "explanation": "Among the listed choices, a large open model is the best fit for high-quality answers while keeping data inside the controlled environment.",
+      "explanation": "The best fit is a strong open-weight generation model hosted within the organization’s governed environment and selected using representative quality tests.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+        "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -8874,7 +8872,7 @@
         "user-imported",
         "application development"
       ],
-      "question": "A Generative AI Engineer would like an LLM to generate formatted JSON from emails. This will require parsing and extracting the following information: order ID, date, and sender email. Here’s a sample email: They will need to write a prompt that will extract the relevant information in JSON format with the highest level of output accuracy. Which prompt will do that?",
+      "question": "A Generative AI Engineer wants an LLM to extract the date, sender email, and order ID from customer emails and return valid JSON with consistent field names. Which prompt is most likely to produce the highest output-format accuracy?",
       "options": [
         {
           "id": "A",
@@ -9052,40 +9050,41 @@
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "RAG/retrieval"
+        "RAG",
+        "retrieval evaluation",
+        "context relevance"
       ],
-      "question": "Generative AI Engineer at an electronics company just deployed a RAG application for customers to ask questions about products that the company carries. However, they received feedback that the RAG response often returns information about an irrelevant product. What can the engineer do to improve the relevance of the RAG’s response?",
+      "question": "A customer-facing RAG application frequently answers with information about the wrong product. What should the engineer do FIRST to diagnose and improve retrieval relevance?",
       "options": [
         {
           "id": "A",
-          "text": "Assess the quality of the retrieved context",
-          "explanation": "Incorrect. Assessing retrieved context is the first step when a RAG app returns irrelevant products or documents."
+          "text": "Evaluate the retrieved context for a representative set of product queries and identify whether the correct product documents are being returned and ranked highly.",
+          "explanation": "Correct. Retrieval evaluation establishes the failure mode before the engineer changes search configuration. For example, inspect recall@k, precision/context relevance, and the rank of the correct product document."
         },
         {
           "id": "B",
-          "text": "Implement caching for frequently asked questions",
-          "explanation": "Incorrect. Caching can reduce latency/cost for repeated questions, but it does not fix irrelevant retrieval."
+          "text": "Implement caching for frequently asked questions.",
+          "explanation": "Incorrect. Caching can reduce latency and cost, but it preserves the same irrelevant result if retrieval is wrong."
         },
         {
           "id": "C",
-          "text": "Use a different LLM to improve the generated response",
-          "explanation": "Incorrect. Changing the generator may not help if the wrong context is being retrieved."
+          "text": "Replace the response-generating LLM immediately.",
+          "explanation": "Incorrect. A stronger generator cannot reliably fix answers when the retrieved context belongs to the wrong product."
         },
         {
           "id": "D",
-          "text": "Use a different semantic similarity search algorithm",
-          "explanation": "Correct. Changing the retrieval/search algorithm can improve relevance, but first you should evaluate the retrieved context to know the failure mode."
+          "text": "Immediately replace the semantic search algorithm without first measuring retrieval quality.",
+          "explanation": "Incorrect. A retrieval change might help, but changing it without a reproducible evaluation set makes improvement impossible to verify. After diagnosis, the engineer can test hybrid search, metadata filters, reranking, or other retrieval changes."
         }
       ],
       "correct_answers": [
-        "D"
+        "A"
       ],
-      "explanation": "Changing the retrieval/search algorithm can improve relevance, but first you should evaluate the retrieved context to know the failure mode.",
+      "explanation": "Evaluate retrieval first. Once the engineer knows whether the problem is missing, irrelevant, or poorly ranked product context, they can choose the appropriate retrieval fix and measure whether it worked.",
       "source_links": [
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+        "https://docs.databricks.com/aws/en/ai-search/ai-search",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9184,42 +9183,40 @@
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "deployment"
+        "model serving",
+        "secrets",
+        "environment variables"
       ],
-      "question": "A Generative AI Engineer is tasked with deploying an application that takes advantage of a custom MLflow Pyfunc model to return some interim results. How should they configure the endpoint to pass the secrets and credentials?",
+      "question": "A custom MLflow pyfunc model served on Databricks needs credentials to call a protected resource at inference time. How should the endpoint receive those credentials?",
       "options": [
         {
           "id": "A",
-          "text": "Use spark.conf.set ()",
-          "explanation": "Incorrect. spark.conf is notebook/cluster configuration and is not the recommended way to pass production serving credentials."
+          "text": "Store the credential with spark.conf.set() in the development notebook.",
+          "explanation": "Incorrect. Notebook configuration is not automatically reproduced in the isolated Model Serving runtime."
         },
         {
           "id": "B",
-          "text": "Pass variables using the Databricks Feature Store API",
-          "explanation": "Incorrect. Feature Store/Feature Engineering APIs provide features, not a general mechanism for endpoint credentials."
+          "text": "Pass the credential through the Feature Store API.",
+          "explanation": "Incorrect. Feature Store serves feature values; it is not the mechanism for delivering endpoint credentials."
         },
         {
           "id": "C",
-          "text": "Add credentials using environment variables",
-          "explanation": "Correct. ALS/collaborative filtering is for recommendations, not document-grounded question answering."
+          "text": "Configure a secret-backed environment variable on the Model Serving endpoint.",
+          "explanation": "Correct. Model Serving can resolve a Databricks secret into an environment variable for the model code at runtime without placing the secret in source code."
         },
         {
           "id": "D",
-          "text": "Pass the secrets in plain text",
-          "explanation": "Incorrect. Plain-text secrets are unsafe and should not be committed or embedded in model code."
+          "text": "Embed the secret as plain text in the model or endpoint configuration.",
+          "explanation": "Incorrect. Plain-text credentials can leak through code, configuration, logs, or version control."
         }
       ],
       "correct_answers": [
         "C"
       ],
-      "explanation": "ALS/collaborative filtering is for recommendations, not document-grounded question answering.",
+      "explanation": "Use secret-backed endpoint environment variables so credentials are retrieved securely at runtime.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
-        "https://docs.databricks.com/aws/en/mlflow/models",
         "https://docs.databricks.com/aws/en/machine-learning/model-serving/store-env-variable-model-serving",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app"
+        "https://docs.databricks.com/aws/en/dev-tools/auth"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9231,41 +9228,40 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "business requirements",
+        "inputs and outputs",
+        "personalization"
       ],
-      "question": "A Generative AI Engineer wants to build an LLM-based solution to help a restaurant improve its online customer experience with bookings by automatically handling common customer inquiries. The goal of the solution is to minimize escalations to human intervention and phone calls while maintaining a personalized interaction. To design the solution, the Generative AI Engineer needs to define the input data to the LLM and the task it should perform. Which input/output pair will support their goal?",
+      "question": "A restaurant wants an LLM-powered assistant to answer booking questions, use current availability, and personalize the interaction using relevant customer history. Which input/output definition best supports that goal?",
       "options": [
         {
           "id": "A",
-          "text": "Input: Online chat logs; Output: Group the chat logs by users, followed by summarizing each user’s interactions",
-          "explanation": "Correct. Historical chat logs are the right input for learning common booking issues and personalizing automated responses. Example: summarize prior customer interactions to identify frequent booking questions and reduce human escalations."
+          "text": "Input: the current customer message, current booking availability and policies, and relevant customer history. Output: a grounded personalized answer or booking action.",
+          "explanation": "Correct. The assistant receives the live facts and customer context needed to answer or take the requested booking action."
         },
         {
           "id": "B",
-          "text": "Input: Online chat logs; Output: Buttons that represent choices for booking details",
-          "explanation": "Incorrect. Buttons may be a UI feature, but they are not the core LLM task for understanding and answering booking inquiries. Example: buttons for date/time selection do not summarize or resolve a customer’s question."
+          "text": "Input: historical chat logs only. Output: a fixed set of booking buttons.",
+          "explanation": "Incorrect. Fixed buttons may help navigation, but chat logs alone do not provide current availability or enough information for grounded booking assistance."
         },
         {
           "id": "C",
-          "text": "Input: Customer reviews; Output: Classify review sentiment",
-          "explanation": "Incorrect. Classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue."
+          "text": "Input: customer reviews. Output: a sentiment label.",
+          "explanation": "Incorrect. Sentiment classification does not answer booking questions or execute booking actions."
         },
         {
           "id": "D",
-          "text": "Input: Online chat logs; Output: Cancellation options",
-          "explanation": "Incorrect. Cancellation options cover only one booking workflow and miss broader customer inquiries. Example: customers may ask about opening hours, reservation changes, dietary notes, or party size."
+          "text": "Input: historical chat logs only. Output: cancellation options for every user.",
+          "explanation": "Incorrect. This supports only one narrow workflow and ignores the user’s current request and live booking data."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "Historical chat logs are the right input for learning common booking issues and personalizing automated responses.",
+      "explanation": "A useful booking assistant needs the current inquiry, authoritative live booking data, applicable policies, and only the customer history relevant to personalization.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
-        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/build-agents"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9363,41 +9359,41 @@
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "evaluation/monitoring"
+        "safety",
+        "translation",
+        "evaluation"
       ],
-      "question": "Which indicator should be considered to evaluate the safety of the LLM outputs when qualitatively assessing LLM responses for a translation use case?",
+      "question": "When qualitatively evaluating an LLM translation application, which indicator most directly assesses output safety?",
       "options": [
         {
           "id": "A",
-          "text": "The ability to generate responses in code",
-          "explanation": "Incorrect. Code generation ability is unrelated to translation safety/quality."
+          "text": "Whether the translation introduces or preserves toxic, hateful, violent, or otherwise harmful content in a way that violates the application’s safety policy.",
+          "explanation": "Correct. Safety evaluation checks for harmful content and unsafe transformations, including harmful material that was not present in the source."
         },
         {
           "id": "B",
-          "text": "The similarity to the previous language",
-          "explanation": "Incorrect. Similarity to the source language is not a reliable safety or translation-quality indicator."
+          "text": "The number of words shared with the source language.",
+          "explanation": "Incorrect. Word overlap is not a safety measure and is often meaningless across different languages."
         },
         {
           "id": "C",
-          "text": "The latency of the response and the length of text generated",
-          "explanation": "Incorrect. Latency and output length are operational metrics, not indicators of safe/accurate translation."
+          "text": "The response latency and number of generated tokens.",
+          "explanation": "Incorrect. These are operational and cost metrics, not indicators of harmful output."
         },
         {
           "id": "D",
-          "text": "The accuracy and relevance of the responses",
-          "explanation": "Correct. For a translation use case, quality/safety review should include whether the translation is accurate and relevant to the source meaning."
+          "text": "Whether the model can also generate source code.",
+          "explanation": "Incorrect. Code-generation capability is unrelated to translation safety."
         }
       ],
       "correct_answers": [
-        "D"
+        "A"
       ],
-      "explanation": "For a translation use case, quality/safety review should include whether the translation is accurate and relevant to the source meaning.",
+      "explanation": "Translation safety is about harmful or policy-violating content, not latency, length, or unrelated model capabilities.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-gateway/guardrails",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/"
+        "https://docs.databricks.com/aws/en/mlflow3/genai/",
+        "https://docs.databricks.com/aws/en/ai-gateway/overview-serving-endpoints",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9409,40 +9405,40 @@
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported"
+        "guardrails",
+        "healthcare",
+        "emergency escalation"
       ],
-      "question": "A Generative AI Engineer is developing a patient-facing healthcare-focused chatbot. If the patient’s question is not a medical emergency, the chatbot should solicit more information from the patient to pass to the doctor’s office and suggest a few relevant pre-approved medical articles for reading. If the patient’s question is urgent, direct the patient to calling their local emergency services. Given the following user input: “I have been experiencing severe headaches and dizziness for the past two days.” Which response is most appropriate for the chatbot to generate?",
+      "question": "A patient-facing healthcare chatbot is instructed to direct clearly urgent cases to local emergency services. The user says: “I suddenly developed the worst headache of my life, severe dizziness, one-sided weakness, and difficulty speaking.” Which response is most appropriate?",
       "options": [
         {
           "id": "A",
-          "text": "Here are a few relevant articles for your browsing. Let me know if you have questions after reading them.",
-          "explanation": "Incorrect. Providing articles is for non-urgent education, not potential emergencies."
+          "text": "Here are some articles about headaches. Read them and contact your doctor if the symptoms continue.",
+          "explanation": "Incorrect. The symptoms indicate a potential emergency; providing reading material could delay urgent care."
         },
         {
           "id": "B",
-          "text": "Please call your local emergency services.",
-          "explanation": "Correct. For urgent healthcare symptoms, the safest response is to direct the user to emergency services rather than continue triage."
+          "text": "Please contact your local emergency services immediately.",
+          "explanation": "Correct. The sudden severe neurological symptoms require immediate escalation rather than routine questioning or self-service content."
         },
         {
           "id": "C",
-          "text": "Headaches can be tough. Hope you feel better soon!",
-          "explanation": "Incorrect. A sympathetic message alone does not satisfy the safety requirement."
+          "text": "Headaches can be difficult. I hope you feel better soon.",
+          "explanation": "Incorrect. Empathy alone does not provide the required emergency escalation."
         },
         {
           "id": "D",
-          "text": "Please provide your age, recent activities, and any other symptoms you have noticed along with your headaches and dizziness.",
-          "explanation": "Incorrect. Collecting more information is appropriate for non-emergency triage, but severe symptoms in the prompt should trigger emergency guidance."
+          "text": "Please provide your age, recent activities, and a complete symptom history before I decide what to recommend.",
+          "explanation": "Incorrect. Collecting more information should not delay emergency escalation when the prompt already describes clear red-flag symptoms."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "For urgent healthcare symptoms, the safest response is to direct the user to emergency services rather than continue triage.",
+      "explanation": "The chatbot should follow its emergency-escalation policy and immediately direct the user to local emergency services.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/mlflow3/genai/prompt-version-mgmt",
-        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9504,38 +9500,41 @@
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported"
+        "retrieval relevance",
+        "latency",
+        "operational metrics"
       ],
-      "question": "A Generative AI Engineer is building a system which will answer questions on latest stock news articles. Which will NOT help with ensuring the outputs are relevant to financial news?",
+      "question": "A RAG application answers questions about current financial news. Which action primarily addresses serving capacity or latency rather than retrieval relevance?",
       "options": [
         {
           "id": "A",
-          "text": "Implement a comprehensive guardrail framework that includes policies for content filters tailored to the finance sector.",
-          "explanation": "Incorrect. Domain-specific guardrails/content policies can keep outputs aligned to financial-news use cases."
+          "text": "Evaluate retrieval on labeled finance queries and inspect whether the correct ticker- and date-specific articles appear in the top results.",
+          "explanation": "Incorrect as the capacity/latency choice. This is a retrieval-quality evaluation step."
         },
         {
           "id": "B",
-          "text": "Increase the compute to improve processing speed of questions to allow greater relevancy analysis",
-          "explanation": "Correct. This is the option to avoid. More compute can make the app faster, but it does not make answers more relevant to financial news. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives."
+          "text": "Increase serving compute or endpoint capacity to handle more concurrent requests.",
+          "explanation": "Correct. More serving capacity can improve throughput or latency, but it does not make the retrieved financial articles more relevant."
         },
         {
           "id": "C",
-          "text": "Implement a profanity filter to screen out offensive language.",
-          "explanation": "Incorrect. A profanity filter handles offensive language, but it does not ensure the content is financially relevant."
+          "text": "Filter retrieval by ticker, publication date, and approved financial-news source.",
+          "explanation": "Incorrect as the capacity/latency choice. Metadata filtering directly improves retrieval relevance."
         },
         {
           "id": "D",
-          "text": "Incorporate manual reviews to correct any problematic outputs prior to sending to the users",
-          "explanation": "Incorrect. Curating upstream data attacks toxic or inflammatory outputs at the source before that content is retrieved and passed to the LLM."
+          "text": "Use hybrid search or reranking to improve the ordering of finance-specific results.",
+          "explanation": "Incorrect as the capacity/latency choice. Hybrid retrieval and reranking are retrieval-quality techniques."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "This is the option to avoid. More compute can make the app faster, but it does not make answers more relevant to financial news. In this scenario, the exam is asking for the bad fit, and this choice is weaker than the safer/direct alternatives.",
+      "explanation": "Compute capacity affects operational performance. Relevance is improved through retrieval evaluation, filtering, hybrid search, reranking, and data quality.",
       "source_links": [
-        "https://www.databricks.com/learn/certification/genai-engineer-associate",
-        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/guardrails"
+        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/monitor-diagnose-endpoints",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9547,41 +9546,40 @@
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "RAG/retrieval"
+        "data preparation",
+        "content filtering",
+        "RAG quality"
       ],
-      "question": "A Generative AI Engineer is building a RAG application that answers questions about internal documents for the company SnoPen AI. The source documents may contain a significant amount of irrelevant content, such as advertisements, sports news, or entertainment news, or content about other companies. Which approach is advisable when building a RAG application to achieve this goal of filtering irrelevant information?",
+      "question": "A RAG application should answer only from internal SnoPen AI documents, but the source collection also contains advertisements, sports stories, entertainment news, and documents about other companies. What is the best preparation step?",
       "options": [
         {
           "id": "A",
-          "text": "Keep all articles because the RAG application needs to understand non-company content to avoid answering questions about them.",
-          "explanation": "Incorrect. Keeping irrelevant articles increases retrieval noise and can cause off-topic context to enter the prompt. Example: sports articles may be retrieved for a company question if not filtered."
+          "text": "Keep all content so the model can learn what it should ignore.",
+          "explanation": "Incorrect. Irrelevant content increases the chance of retrieving distracting passages and wastes index capacity."
         },
         {
           "id": "B",
-          "text": "Include in the system prompt that any information it sees will be about SnoPenAI, even if no data filtering is performed.",
-          "explanation": "Incorrect. Telling the model all content is about SnoPen AI is misleading and does not remove irrelevant documents from retrieval. Example: an ad in the context can still influence the answer."
+          "text": "Keep all content and tell the model that every retrieved document is about SnoPen AI.",
+          "explanation": "Incorrect. A prompt cannot make irrelevant documents authoritative, and this instruction can increase hallucination risk."
         },
         {
           "id": "C",
-          "text": "Include in the system prompt that the application is not supposed to answer any questions unrelated to SnoPen AI.",
-          "explanation": "Correct. Correct among the provided choices. A system prompt can instruct the app not to answer unrelated questions, although in a real system you would also filter irrelevant content upstream or at retrieval time. Example: refuse questions about unrelated companies."
+          "text": "Filter or remove irrelevant documents and boilerplate before chunking and indexing, while retaining useful source metadata.",
+          "explanation": "Correct. Cleaning the corpus improves retrieval precision by preventing unrelated content from entering the searchable index."
         },
         {
           "id": "D",
-          "text": "Consolidate all SnoPen AI related documents into a single chunk in the vector database.",
-          "explanation": "Incorrect. One giant chunk destroys retrieval granularity and may exceed context limits. Example: the model cannot efficiently find the small paragraph about a specific policy."
+          "text": "Combine every SnoPen AI document into one very large chunk.",
+          "explanation": "Incorrect. A single oversized chunk harms precise retrieval and can exceed model or embedding constraints."
         }
       ],
       "correct_answers": [
         "C"
       ],
-      "explanation": "This user-imported question has imperfect options. The best listed answer is a system-level scope instruction, but in a real RAG build you should also remove/filter irrelevant documents before retrieval.",
+      "explanation": "Remove extraneous content before indexing. Corpus quality is a major driver of retrieval quality in RAG systems.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/ai-search",
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9731,40 +9729,40 @@
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "deployment"
+        "Foundation Model APIs",
+        "cost",
+        "pay per token"
       ],
-      "question": "A Generative AI Engineer developed an LLM application using the provisioned throughput Foundation Model API. Now that the application is ready to be deployed, they realize their volume of requests are not sufficiently high enough to create their own provisioned throughput endpoint. They want to choose a strategy that ensures the best cost-effectiveness for their application. What strategy should the Generative AI Engineer use?",
+      "question": "An application currently uses provisioned-throughput Foundation Model APIs, but its request volume is too low to justify reserved capacity. Which serving mode is generally more cost-effective for this workload?",
       "options": [
         {
           "id": "A",
-          "text": "Switch to using External Models instead",
-          "explanation": "Incorrect. External Models route to third-party providers; they do not directly solve underutilized provisioned throughput cost."
+          "text": "Route all traffic to an external provider without comparing cost, quality, or governance requirements.",
+          "explanation": "Incorrect. External Models are a provider-routing option, not automatically the lowest-cost choice."
         },
         {
           "id": "B",
-          "text": "Deploy the model using pay-per-token throughput as it comes with cost guarantees",
-          "explanation": "Correct. Pay-per-token Foundation Model APIs are cost-effective for low/variable traffic because you avoid reserving dedicated throughput."
+          "text": "Use pay-per-token Foundation Model APIs so charges follow actual usage instead of reserved provisioned capacity.",
+          "explanation": "Correct. Pay-per-token is generally better suited to low or variable request volume that does not justify provisioned throughput."
         },
         {
           "id": "C",
-          "text": "Change to a model with a fewer number of parameters in order to reduce hardware constraint issues",
-          "explanation": "Incorrect. A smaller model may reduce cost/latency but does not address the deployment pricing mode mismatch by itself."
+          "text": "Choose a smaller model solely to avoid the provisioned-throughput pricing decision.",
+          "explanation": "Incorrect. Model size can affect cost, but it does not resolve the mismatch between low utilization and reserved serving capacity."
         },
         {
           "id": "D",
-          "text": "Throttle the incoming batch of requests manually to avoid rate limiting issues",
-          "explanation": "Incorrect. Manual throttling is an operational workaround, not the cost-effective serving mode choice."
+          "text": "Manually queue or throttle requests while keeping underused provisioned capacity.",
+          "explanation": "Incorrect. Throttling does not make reserved capacity cost-effective and can worsen user experience."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "Pay-per-token Foundation Model APIs are cost-effective for low/variable traffic because you avoid reserving dedicated throughput.",
+      "explanation": "For low or variable traffic, usage-based pay-per-token serving is generally more cost-effective than underutilized provisioned throughput.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
-        "https://docs.databricks.com/aws/en/ai-gateway/rate-limits-beta",
-        "https://docs.databricks.com/aws/en/ai-gateway/"
+        "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9867,38 +9865,40 @@
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "evaluation/monitoring"
+        "response quality",
+        "diversity",
+        "engagement"
       ],
-      "question": "A Generative AI Engineer is designing a chatbot for a gaming company that aims to engage users on its platform while its users play online video games. Which metric would help them increase user engagement and retention for their platform?",
+      "question": "A gaming chatbot should avoid monotonous interactions that repeat the same phrasing. Which response-quality signal is most relevant to that goal?",
       "options": [
         {
           "id": "A",
-          "text": "Randomness",
-          "explanation": "Incorrect. Randomness alone can make responses inconsistent or irrelevant; diversity should be controlled and useful."
+          "text": "Uncontrolled randomness, regardless of relevance or safety.",
+          "explanation": "Incorrect. Randomness alone can make responses inconsistent or unsafe."
         },
         {
           "id": "B",
-          "text": "Diversity of responses",
-          "explanation": "Correct. Response diversity can improve engagement by avoiding repetitive chatbot interactions."
+          "text": "Response diversity and non-repetition while preserving relevance and policy compliance.",
+          "explanation": "Correct. Measuring varied but appropriate responses helps identify repetitive interactions that can reduce engagement."
         },
         {
           "id": "C",
-          "text": "Lack of relevance",
-          "explanation": "Incorrect. Irrelevance reduces engagement because users do not get useful responses."
+          "text": "Lack of relevance to the user’s message.",
+          "explanation": "Incorrect. Irrelevant variation harms the conversation rather than improving engagement."
         },
         {
           "id": "D",
-          "text": "Repetition of responses",
-          "explanation": "Incorrect. Repetitive responses make the assistant feel stale and reduce retention."
+          "text": "The frequency with which the same response is repeated.",
+          "explanation": "Incorrect. High repetition is the problem to reduce, not the desired signal."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "Response diversity can improve engagement by avoiding repetitive chatbot interactions.",
+      "explanation": "The useful target is controlled diversity: responses should vary enough to avoid repetition while remaining relevant, safe, and consistent.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/"
+        "https://docs.databricks.com/aws/en/mlflow3/genai/",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -9956,38 +9956,40 @@
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported"
+        "model selection",
+        "code generation",
+        "benchmarking"
       ],
-      "question": "A team wants to serve a code generation model as an assistant for their software developers. It should support multiple programming languages. Quality is the primary objective. Which of the Databricks Foundation Model APIs, or models available in the Marketplace, would be the best fit?",
+      "question": "A team needs a high-quality multilingual code assistant. Which model-selection approach is strongest?",
       "options": [
         {
           "id": "A",
-          "text": "Llama2-70b",
-          "explanation": "Incorrect. Llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here."
+          "text": "Choose the largest general-purpose chat model without testing code quality.",
+          "explanation": "Incorrect. Parameter count and general chat capability do not guarantee the best code generation across the team’s languages."
         },
         {
           "id": "B",
-          "text": "BGE-large",
-          "explanation": "Incorrect. BGE is an embedding model family, not a code-generation chat/completion model."
+          "text": "Use an embedding model because it represents source code as vectors.",
+          "explanation": "Incorrect. Embedding models support retrieval and similarity search; they do not generate the final code response."
         },
         {
           "id": "C",
-          "text": "MPT-7b",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "text": "Choose the newest model release based only on its publication date.",
+          "explanation": "Incorrect. Recency is not evidence of task fit or multilingual code quality."
         },
         {
           "id": "D",
-          "text": "CodeLlama-34B",
-          "explanation": "Correct. CodeLlama is specialized for code generation, making it a better fit for a coding assistant than general chat models."
+          "text": "Benchmark code-specialized instruct models on representative multilingual coding tasks, and compare quality, context needs, latency, and serving cost.",
+          "explanation": "Correct. Task-specific evaluation is more reliable than selecting by name, size, or release date."
         }
       ],
       "correct_answers": [
         "D"
       ],
-      "explanation": "CodeLlama is specialized for code generation, making it a better fit for a coding assistant than general chat models.",
+      "explanation": "Select a code-capable model using representative code-generation evaluations and operational constraints, not a static model-name recommendation.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
-        "https://docs.databricks.com/aws/en/ai-gateway/"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -10090,41 +10092,40 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "model cards",
+        "context window",
+        "open-weight models"
       ],
-      "question": "A Generative AI Engineer is tasked with developing an application that is based on an open source large language model (LLM). They need a foundation LLM with a large context window. Which model fits this need?",
+      "question": "A team needs an open-weight foundation model that can process long prompts. What is the best way to select it?",
       "options": [
         {
           "id": "A",
-          "text": "DistilBERT",
-          "explanation": "Incorrect. DistilBERT is a smaller encoder model for understanding/classification, not a large generative LLM."
+          "text": "Choose the model with the most downloads, without checking its context limit or license.",
+          "explanation": "Incorrect. Popularity does not establish long-context support, task fit, or acceptable licensing."
         },
         {
           "id": "B",
-          "text": "MPT-30B",
-          "explanation": "Incorrect. MPT is a general open model family; it is not as specifically code-oriented as CodeLlama for this task."
+          "text": "Choose the model with the largest parameter count, regardless of memory and latency requirements.",
+          "explanation": "Incorrect. More parameters do not guarantee the required context window or the best quality-cost trade-off."
         },
         {
           "id": "C",
-          "text": "Llama2-70B",
-          "explanation": "Incorrect. Llama 2 is a general chat/completion model; it can code somewhat but is not the most specialized option here."
+          "text": "Choose any general-purpose open model and assume the runtime will extend its context window.",
+          "explanation": "Incorrect. The supported context length is a model property and must be verified."
         },
         {
           "id": "D",
-          "text": "DBRX",
-          "explanation": "Correct. DBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models."
+          "text": "Inspect model cards for context-window size, license, architecture, and intended tasks, then validate shortlisted models on representative long-context inputs.",
+          "explanation": "Correct. Model metadata and task-specific evaluation are the reliable basis for selection."
         }
       ],
       "correct_answers": [
         "D"
       ],
-      "explanation": "DBRX is an open general-purpose LLM with a large context window, so it can fit large-context application needs better than smaller older models.",
+      "explanation": "Long-context model selection should be grounded in model-card metadata and representative evaluation, not an outdated fixed list of model names.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search",
-        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -10227,42 +10228,40 @@
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "evaluation/monitoring"
+        "retrieval evaluation",
+        "recall@k",
+        "NDCG"
       ],
-      "question": "A Generative AI Engineer is deciding between using LSH (Locality Sensitive Hashing) and HNSW (Hierarchical Navigable Small World) for indexing their vector database. Their top priority is semantic accuracy. Which approach should the Generative AI Engineer use to evaluate these two techniques?",
+      "question": "A team is comparing two approximate-nearest-neighbor index configurations for a semantic retrieval system. Which evaluation approach best measures retrieval accuracy?",
       "options": [
         {
           "id": "A",
-          "text": "Compare the cosine similarities of the embeddings of returned results against those of a representative sample of test inputs",
-          "explanation": "Correct. Comparing returned-neighbor quality on representative queries directly measures retrieval effectiveness. Example: test whether the nearest results for known inputs are semantically correct under LSH vs HNSW."
+          "text": "Use labeled query-document relevance judgments and compare recall@k or NDCG at a comparable latency and resource budget.",
+          "explanation": "Correct. Retrieval metrics on a representative labeled set show whether each configuration returns and ranks the documents users actually need."
         },
         {
           "id": "B",
-          "text": "Compare the Bilingual Evaluation Understudy (BLEU) scores of returned results for a representative sample of test inputs",
-          "explanation": "Incorrect. BLEU measures n-gram overlap for generated text such as translations; it does not evaluate retrieval ranking or application operations."
+          "text": "Compute BLEU between the query and retrieved document text.",
+          "explanation": "Incorrect. BLEU measures n-gram overlap for generated text and is not a retrieval-ranking metric."
         },
         {
           "id": "C",
-          "text": "Compare the Recall-Oriented-Understudy for Gisting Evaluation (ROUGE) scores of returned results for a representative sample of test inputs",
-          "explanation": "Incorrect. ROUGE measures text overlap against references; it is useful for some summarization checks, but weak for full RAG diagnosis because it misses grounding and retrieval behavior."
+          "text": "Compare only the raw cosine-similarity values returned by each index.",
+          "explanation": "Incorrect. Similarity scores are not necessarily calibrated across configurations and do not prove that the retrieved documents are relevant."
         },
         {
           "id": "D",
-          "text": "Compare the Levenshtein distances of returned results against a representative sample of test inputs",
-          "explanation": "Incorrect. Levenshtein distance compares character edits, not semantic relevance."
+          "text": "Compare character-level Levenshtein distance between queries and documents.",
+          "explanation": "Incorrect. Character edit distance does not capture semantic relevance for natural-language retrieval."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "Comparing returned-neighbor quality on representative queries directly measures retrieval effectiveness.",
+      "explanation": "Use a labeled retrieval benchmark and metrics such as recall@k or NDCG, while also checking latency and cost constraints.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/ai-search",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
+        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -10274,41 +10273,39 @@
       "section": "5. Governance",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "governance"
+        "licensing",
+        "legal risk",
+        "data governance"
       ],
-      "question": "When developing an LLM application, it’s crucial to ensure that the data used for training the model complies with licensing requirements to avoid legal risks. Which action is most appropriate to avoid legal risks?",
+      "question": "Which practice most reliably reduces legal risk when using third-party data to train or evaluate an LLM application?",
       "options": [
         {
           "id": "A",
-          "text": "Only use data explicitly labeled with an open license and ensure the license terms are followed.",
-          "explanation": "Correct. Using data with an explicit open license and following its terms is a safe licensing practice."
+          "text": "Use data only when ownership, a license, or written permission explicitly allows the intended use, and comply with all applicable terms.",
+          "explanation": "Correct. The intended training or evaluation use must be authorized and any attribution, redistribution, or usage restrictions must be followed."
         },
         {
           "id": "B",
-          "text": "Any LLM outputs are reasonable to use because they do not reveal the original sources of data directly.",
-          "explanation": "Incorrect. LLM outputs can still be derived from copyrighted or restricted data, and the output itself does not erase licensing obligations. Example: generated text closely based on restricted training data may still create compliance risk."
+          "text": "Assume generated outputs are legally safe because they do not directly display every source document.",
+          "explanation": "Incorrect. Output transformation does not eliminate licensing, copyright, privacy, or contractual obligations."
         },
         {
           "id": "C",
-          "text": "Reach out to the data curators directly to gain written consent for using their data.",
-          "explanation": "Incorrect. Written consent can help in some cases, but “data curator” consent alone may not satisfy the actual license or rights holder terms. Example: a curator may not own the copyright to every document in a dataset."
+          "text": "Notify a curator informally without obtaining permission or reviewing the license.",
+          "explanation": "Incorrect. Notification alone does not grant rights."
         },
         {
           "id": "D",
-          "text": "Use any publicly available data as public data does not have legal restrictions.",
-          "explanation": "Incorrect. Publicly accessible data is not automatically free to use. Example: a website can be public but still have copyright restrictions, terms of service, or non-commercial license limits."
+          "text": "Treat all publicly accessible data as unrestricted.",
+          "explanation": "Incorrect. Public accessibility does not mean the data is free of copyright, license, privacy, or contractual limits."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "Using data with an explicit open license and following its terms is a safe licensing practice.",
+      "explanation": "Use data only when the intended use is authorized by ownership, an applicable license, or explicit permission.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/foundation-model-overview",
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/custom-models",
-        "https://www.databricks.com/learn/certification/genai-engineer-associate",
-        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/guardrails"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -10780,39 +10777,41 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "AI Gateway",
+        "guardrails",
+        "safety"
       ],
-      "question": "A Generative AI Engineer is building a production-ready LLM system which replies directly to customers. The solution makes use of the Foundation Model API via provisioned throughput. They are concerned that the LLM could potentially respond in a toxic or otherwise unsafe way. They also wish to perform this with the least amount of effort. Which approach will do this?",
+      "question": "A production customer-facing LLM endpoint may generate toxic or unsafe responses. The team wants the most Databricks-native, low-effort control at the serving layer. What should they configure?",
       "options": [
         {
           "id": "A",
-          "text": "Ask users to report unsafe responses",
-          "explanation": "Incorrect. User reporting is reactive and does not prevent unsafe content from reaching customers."
+          "text": "Rely on users to report unsafe responses after they are displayed.",
+          "explanation": "Incorrect. Reactive reporting does not prevent harmful responses from reaching users."
         },
         {
           "id": "B",
-          "text": "Host Llama Guard on Foundation Model API and use it to detect unsafe responses.",
-          "explanation": "Correct. Foundation Model APIs generate or embed text; they do not by themselves provide live structured data like current scores unless connected to a data source."
+          "text": "Enable AI Gateway safety guardrails or an equivalent service policy on the model service or serving endpoint.",
+          "explanation": "Correct. Databricks guardrails can inspect requests and responses and block unsafe content without requiring the team to build a separate moderation chain."
         },
         {
           "id": "C",
-          "text": "Add some LLM calls to their chain to detect unsafe content before returning text",
-          "explanation": "Incorrect. Adding an LLM safety check can help, but a production-ready system should use governed guardrails and evaluation rather than relying only on another ad-hoc model call. Example: unsafe content should be blocked consistently before the response reaches a customer."
+          "text": "Add an additional general-purpose LLM call and hope it consistently detects unsafe content.",
+          "explanation": "Incorrect. A custom moderation chain requires more engineering and must itself be evaluated and governed."
         },
         {
           "id": "D",
-          "text": "Add a regex expression on inputs and outputs to detect unsafe responses.",
-          "explanation": "Incorrect. Regex catches simple patterns but is brittle for nuanced toxic or unsafe language."
+          "text": "Use regular expressions as the only safety control.",
+          "explanation": "Incorrect. Regex can catch a small set of known patterns but cannot reliably detect semantic toxicity or harmful intent."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "Foundation Model APIs generate or embed text; they do not by themselves provide live structured data like current scores unless connected to a data source.",
+      "explanation": "Use Databricks AI Gateway guardrails/service policies for serving-layer safety filtering, then monitor outcomes and add custom policies when needed.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
-        "https://docs.databricks.com/aws/en/ai-gateway/"
+        "https://docs.databricks.com/aws/en/ai-gateway/",
+        "https://docs.databricks.com/aws/en/ai-gateway/overview-serving-endpoints",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -10827,7 +10826,7 @@
         "user-imported",
         "application development"
       ],
-      "question": "A Generative AI Engineer would like an LLM to parse and extract the following information: date, sender email, and order ID. The output should be formatted into JSON. Here’s an email sample: They need a prompt that will extract and output the required information in JSON with the highest level of output accuracy. Which prompt will do that?",
+      "question": "An application must extract the date, sender email, and order ID from customer emails and return the result as valid JSON with consistent field names. Which prompt is most likely to produce the most reliable structured output?",
       "options": [
         {
           "id": "A",
@@ -10962,38 +10961,40 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "inputs and outputs",
+        "customer support",
+        "personalization"
       ],
-      "question": "A Generative AI Engineer is working with a retail company that wants to enhance its customer experience by automatically handling common customer inquiries. They are working on an LLM-powered AI solution that should improve response times while maintaining a personalized interaction. They want to define the appropriate input and LLM task to do this. Which input/output pair will do this?",
+      "question": "A retail assistant should answer common customer questions quickly while maintaining a personalized interaction. Which input/output definition best supports the application?",
       "options": [
         {
           "id": "A",
-          "text": "Input: Customer service chat logs; Output: Group the chat logs by users, followed by summarizing each user’s interactions, then respond",
-          "explanation": "Correct. Customer-service logs are the relevant input, and summarizing/grouping interactions supports personalized, automated support. Example: the assistant can use prior chat context to avoid asking the same question again."
+          "text": "Input: the current customer message, relevant customer history, and grounded product or policy context. Output: a personalized answer or appropriate action.",
+          "explanation": "Correct. This combines the current request with authoritative knowledge and only the customer context needed for personalization."
         },
         {
           "id": "B",
-          "text": "Input: Customer service chat logs; Output: Find the answers to similar questions and respond with a summary",
-          "explanation": "Incorrect. Finding similar past questions can help FAQ retrieval, but it is less aligned with the stated goal of summarizing each user’s interaction history. Example: it may answer a generic question but miss the customer’s specific booking context."
+          "text": "Input: historical chat logs only. Output: a generic summary of similar questions.",
+          "explanation": "Incorrect. Similarity to past chats does not guarantee a correct answer from current product or policy data."
         },
         {
           "id": "C",
-          "text": "Input: Customer reviews; Output: Classify review sentiment",
-          "explanation": "Incorrect. Classifying sentiment first and adapting the system prompt lets the assistant de-escalate angry users while solving the issue."
+          "text": "Input: customer reviews. Output: a sentiment label.",
+          "explanation": "Incorrect. Sentiment analysis is a different task and does not answer the customer’s inquiry."
         },
         {
           "id": "D",
-          "text": "Input: Customer reviews; Output: Group the reviews by users and aggregate per-user average rating, then respond",
-          "explanation": "Incorrect. Customer reviews and average ratings are not the same as service chat histories. Example: ratings can show satisfaction trends, but they do not provide the user-level interaction context needed for a support response."
+          "text": "Input: customer reviews. Output: an average rating for each user.",
+          "explanation": "Incorrect. Rating aggregation does not provide responsive customer support."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "Customer-service logs are the relevant input, and summarizing/grouping interactions supports personalized, automated support.",
+      "explanation": "The assistant needs the current inquiry, authoritative task context, and relevant user history to produce a grounded personalized response.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/build-agents"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -11005,40 +11006,40 @@
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "RAG/retrieval"
+        "embedding model",
+        "retrieval evaluation",
+        "MTEB"
       ],
-      "question": "A Generative AI Engineer is developing a RAG application and would like to experiment with different embedding models to improve the application performance. Which strategy for picking an embedding model should they choose?",
+      "question": "A team wants to choose an embedding model for an in-domain RAG application. Which selection strategy is strongest?",
       "options": [
         {
           "id": "A",
-          "text": "Pick an embedding model with multilingual support to support potential multilingual user questions",
-          "explanation": "Incorrect. Multilingual support is useful only if the scenario requires multiple languages. Example: if the corpus and user questions are all English, domain-specific retrieval quality matters more."
+          "text": "Choose a multilingual model even though the application is confirmed to be single-language.",
+          "explanation": "Incorrect. Multilingual support is useful only when it matches actual requirements and should not replace in-domain evaluation."
         },
         {
           "id": "B",
-          "text": "Pick the most recent and most performant open LLM released at the time",
-          "explanation": "Incorrect. The question is about an embedding model for RAG retrieval, not the newest response-generating LLM. Example: an open chat model does not replace the embedding model used to index and query documents."
+          "text": "Choose the newest general-purpose LLM release.",
+          "explanation": "Incorrect. A response-generating LLM is not automatically an embedding model, and recency is not evidence of retrieval quality."
         },
         {
           "id": "C",
-          "text": "Pick an embedding model trained on related domain knowledge",
-          "explanation": "Correct. Domain-aligned embeddings improve retrieval when terminology is specialized. Example: a medical or automotive embedding model may match domain terms better than a generic embedding model."
+          "text": "Benchmark candidate embedding models on representative labeled in-domain queries using retrieval metrics such as recall@k or NDCG, while considering latency and cost.",
+          "explanation": "Correct. Task-specific retrieval evaluation shows which model performs best for the application’s documents and queries."
         },
         {
           "id": "D",
-          "text": "Pick the embedding model ranked highest on the Massive Text Embedding Benchmark (MTEB) leaderboard hosted by HuggingFace",
-          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation LLMs."
+          "text": "Choose the top global MTEB model without testing it on the application’s data.",
+          "explanation": "Incorrect. MTEB is useful for shortlisting, but leaderboard performance may not transfer to the specific domain, language, and retrieval setup."
         }
       ],
       "correct_answers": [
         "C"
       ],
-      "explanation": "Domain-aligned embeddings improve retrieval when terminology is specialized.",
+      "explanation": "Use public benchmarks to shortlist models, then select using an in-domain retrieval evaluation and operational requirements.",
       "source_links": [
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -11140,40 +11141,40 @@
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "RAG/retrieval"
+        "Genie",
+        "structured data",
+        "tool calling"
       ],
-      "question": "Generative AI Engineer is helping a cinema extend its website’s chat bot to be able to respond to questions about specific showtimes for movies currently playing at their local theater. They already have the location of the user provided by location services to their agent, and a Delta table which is continually updated with the latest showtime information by location. They want to implement this new capability in their RAG application. Which option will do this with the least effort and in the most performant way?",
+      "question": "A cinema chatbot must answer current showtime questions using a frequently updated Delta table and the user’s location. Which approach is the most Databricks-native with relatively low implementation effort?",
       "options": [
         {
           "id": "A",
-          "text": "Create a Feature Serving Endpoint from a FeatureSpec that references an online store synced from the Delta table. Query the Feature Serving Endpoint as part of the agent logic / tool implementation.",
-          "explanation": "Incorrect. Feature Serving can be useful for low-latency online features, but showtime lookup from a continually updated Delta table can be implemented more directly with SQL in the agent/tool. Example: an online feature endpoint is useful when you already need low-latency feature lookup, but it is more setup than a direct governed SQL tool for exact showtime lookup."
+          "text": "Create an online Feature Store and Feature Serving endpoint even though the use case is primarily natural-language analytics over a curated table.",
+          "explanation": "Incorrect. Feature Serving can provide low-latency structured lookups, but it adds an online-store and FeatureSpec workflow that is unnecessary for this conversational table-query use case."
         },
         {
           "id": "B",
-          "text": "Query the Delta table directly via a SQL query constructed from the user’s input using a text-to-SQL LLM in the agent logic / tool implementation.",
-          "explanation": "Correct. The data is already structured and current in Delta, so a SQL/text-to-SQL tool can retrieve exact showtimes by movie and location. Example: query showtimes where location_id = user_location and title = requested movie."
+          "text": "Connect the agent to a governed Genie Agent or structured-data SQL tool over the Delta table, and pass the returned rows to the response-generating model.",
+          "explanation": "Correct. Genie Agents are designed for natural-language questions over curated Unity Catalog data and avoid embedding rapidly changing structured facts."
         },
         {
           "id": "C",
-          "text": "Set up a task in Databricks Workflows to write the information in the Delta table periodically to an external database such as MySQL and query the information from there as part of the agent logic / tool implementation.",
-          "explanation": "Incorrect. Copying the Delta table to MySQL adds infrastructure and synchronization work. Example: it creates another database to maintain without improving answer quality."
+          "text": "Copy the table periodically into an external database and query that copy.",
+          "explanation": "Incorrect. This adds infrastructure, duplication, and freshness risk without a clear benefit."
         },
         {
           "id": "D",
-          "text": "Write the Delta table contents to a text column, then embed those texts using an embedding model and store these in the vector index. Look up the information based on the embedding as part of the agent logic / tool implementation.",
-          "explanation": "Incorrect. Embedding structured showtimes as text is less precise than querying the table. Example: exact dates/times are better handled by SQL filters than semantic similarity."
+          "text": "Convert all showtime rows to text and place them in a vector index.",
+          "explanation": "Incorrect. Exact, frequently changing structured facts such as times and locations are better queried as structured data."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "For exact, frequently updated structured facts such as movie showtimes, query the governed Delta table directly through an agent/tool rather than treating it as unstructured text.",
+      "explanation": "Use a governed structured-data tool, such as a Genie Agent, to translate the user’s showtime question into a query against the current Delta data.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/agents/agent-framework/structured-retrieval-tools",
-        "https://docs.databricks.com/aws/en/genie/",
-        "https://docs.databricks.com/aws/en/agents/agent-framework/create-custom-tool"
+        "https://docs.databricks.com/aws/en/agents/custom-agents/structured-retrieval-tools",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -11768,40 +11769,40 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "prompt chaining",
+        "workflow decomposition",
+        "evaluation"
       ],
-      "question": "A Generative AI Engineer has been reviewing issues with their company's LLM based question-answering assistant and has determined that a technique called prompt chaining could help alleviate some performance concerns. However, to suggest this to their team, they have to clearly explain how it works and how it can benefit their question-answering assistant. Which explanation do they communicate to the team?",
+      "question": "A team is considering prompt chaining for a complex question-answering assistant. Which explanation correctly describes the technique?",
       "options": [
         {
           "id": "A",
-          "text": "It allows you to break down complex tasks into multiple independent subtasks. This enables the assistant to generate more comprehensive and accurate responses.",
-          "explanation": "Correct. Prompt chaining decomposes a complex task into controlled steps, allowing each intermediate output to be inspected and optimized. Example: retrieve evidence, extract key facts, and then generate the final answer in separate stages."
+          "text": "Break a complex task into smaller ordered steps, pass the output of one step into the next when needed, and evaluate the components and end-to-end result.",
+          "explanation": "Correct. Prompt chaining makes complex workflows easier to control and debug by separating tasks such as classification, retrieval, drafting, and review."
         },
         {
           "id": "B",
-          "text": "It allows you to reduce the latency of your applications. By having multiple chains participating in the response as a chain, you increase the rate at which the response is generated.",
-          "explanation": "Incorrect. Prompt chains are commonly sequential and may increase latency because they require multiple model or tool calls; they do not automatically execute in parallel."
+          "text": "Run many unrelated prompts in parallel so latency always decreases.",
+          "explanation": "Incorrect. Chaining can be sequential and may increase latency because it adds model calls."
         },
         {
           "id": "C",
-          "text": "It allows you to decrease the effort involved in crafting a prompt. Chains make it possible to reuse prompt text across multiple different use cases.",
-          "explanation": "Incorrect. Reusable prompt components can reduce some duplication, but the main purpose of prompt chaining is task decomposition and controlled handoff between steps, not avoiding prompt design."
+          "text": "Reuse the same prompt text for every use case without changing task logic.",
+          "explanation": "Incorrect. Prompt reuse is not the defining feature of chaining."
         },
         {
           "id": "D",
-          "text": "It reduces the average cost of a typical request. Chains make more efficient use of the tokens produced to generate higher quality responses with fewer tokens.",
-          "explanation": "Incorrect. Multiple calls can increase token usage and cost. Chaining is chosen primarily for control, modularity, and quality, not guaranteed cost reduction."
+          "text": "Guarantee lower token cost by adding more model calls.",
+          "explanation": "Incorrect. Additional chain steps can increase token use and cost; they are justified when they improve control or quality."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "Prompt chaining decomposes a complex task into smaller steps so each step is easier to control and evaluate.",
+      "explanation": "Prompt chaining decomposes a complex workflow into explicit, often sequential components whose intermediate outputs can be inspected and evaluated.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/langchain",
-        "https://python.langchain.com/docs/introduction/"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/build-agents"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -11813,45 +11814,46 @@
       "section": "6. Evaluation and Monitoring",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "evaluation/monitoring"
+        "code generation",
+        "model selection",
+        "hosting cost"
       ],
-      "question": "An AI developer team wants to fine tune an open-weight model to have exceptional performance on a code generation use case. They are trying to choose the best model to start with. They want to minimize model hosting costs, and are using Huggingface model cards and spaces to explore models. Which TWO model attributes and metrics should the team focus on to make their selection? (Choose two.)",
+      "question": "A team wants to fine-tune an open-weight model for high-quality code generation while controlling hosting cost. Which TWO attributes should they prioritize when shortlisting a base model? (Choose two.)",
       "options": [
         {
           "id": "A",
-          "text": "Big Code Models Leaderboard",
-          "explanation": "Correct. A code-specific leaderboard helps identify models suited for code generation."
+          "text": "Performance on representative code-generation benchmarks and the team’s own target-language test set.",
+          "explanation": "Correct. Task-specific quality evidence is essential when the goal is exceptional code generation."
         },
         {
           "id": "B",
-          "text": "Number of model parameters",
-          "explanation": "Correct. Parameter count affects hosting cost and capacity planning; fewer parameters usually reduce serving cost."
+          "text": "Parameter count and estimated serving footprint for the required precision and context length.",
+          "explanation": "Correct. Model size and runtime requirements are important inputs to hosting cost."
         },
         {
           "id": "C",
-          "text": "MTEB Leaderboard",
-          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation LLMs."
+          "text": "MTEB embedding leaderboard position.",
+          "explanation": "Incorrect. MTEB evaluates embedding models, not code-generation quality."
         },
         {
           "id": "D",
-          "text": "Chatbot Arena Leaderboard",
-          "explanation": "Incorrect. Chatbot Arena measures general chat preference, not specifically code-generation performance."
+          "text": "A general chatbot preference leaderboard with no code-specific breakdown.",
+          "explanation": "Incorrect. General chat preference is not a reliable substitute for code-task evaluation."
         },
         {
           "id": "E",
-          "text": "Number of model downloads last month",
-          "explanation": "Incorrect. Download count is popularity, not a reliable quality or cost metric."
+          "text": "Download count during the previous month.",
+          "explanation": "Incorrect. Popularity does not establish code quality, license suitability, or serving cost."
         }
       ],
       "correct_answers": [
         "A",
         "B"
       ],
-      "explanation": "The correct choices are: “Big Code Models Leaderboard”; “Number of model parameters”. This is a multi-select item, so each selected option must satisfy a separate part of the scenario. Use the per-option explanations to see why the alternatives are weaker.",
+      "explanation": "Choose a base model using code-task quality evidence and the serving footprint that drives hosting cost.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/",
-        "https://huggingface.co/docs/hub/model-cards"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf",
+        "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -11908,40 +11910,40 @@
       "section": "2. Data Preparation",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "RAG/retrieval"
+        "advanced chunking",
+        "metadata filtering",
+        "legal documents"
       ],
-      "question": "A Generative AI Engineer at a legal firm is designing a RAG system to analyze historical legal case precedents. The system needs to process millions of court opinions and legal documents, already organized by time and topic, to track how interpretations of specific laws have evolved over time. All of these documents are in plain-text. The engineer needs to choose a chunking method that would most effectively preserve continuity and the temporal nature of the cases. Which method do they choose?",
+      "question": "A legal RAG system must analyze millions of court opinions and track how interpretations change over time. Documents are already organized by case date and topic. Which chunking approach best preserves legal context and supports temporal retrieval?",
       "options": [
         {
           "id": "A",
-          "text": "Implement windowed summarization with overlapping chunks.",
-          "explanation": "Correct. Windowed/overlapping chunks preserve continuity across time and neighboring legal text."
+          "text": "Create only rolling summaries and discard the original case sections.",
+          "explanation": "Incorrect. Summaries can lose quotations, holdings, and citations needed for legal analysis."
         },
         {
           "id": "B",
-          "text": "Implement a hierarchical tree structure, like RAPTOR, to group similar legal concepts.",
-          "explanation": "Incorrect. Hierarchical retrieval can help large corpora, but this scenario emphasizes temporal continuity over concept clustering."
+          "text": "Group all semantically similar concepts into a hierarchy without retaining case date or source metadata.",
+          "explanation": "Incorrect. A hierarchy can support broad exploration, but omitting temporal and source metadata prevents reliable analysis of change over time."
         },
         {
           "id": "C",
-          "text": "Implement paragraph level embeddings with each chunk.",
-          "explanation": "Incorrect. Paragraph chunks may be too isolated for tracking legal evolution across connected sections/time."
+          "text": "Create isolated sentence chunks with no overlap or case-level context.",
+          "explanation": "Incorrect. Sentence-only chunks can separate a legal statement from its reasoning, holding, and cited precedent."
         },
         {
           "id": "D",
-          "text": "Implement sentence level embeddings with each chunk tagged with the time to enable metadata filtering.",
-          "explanation": "Incorrect. Metadata filters such as model year or topic reduce search space and improve relevance for catalog-like RAG."
+          "text": "Chunk by meaningful case sections, preserve case/date/topic metadata, and use modest overlap where adjacent context is needed.",
+          "explanation": "Correct. Structure-aware chunks retain legal coherence, while metadata enables time- and topic-aware filtering and analysis."
         }
       ],
       "correct_answers": [
-        "A"
+        "D"
       ],
-      "explanation": "Windowed/overlapping chunks preserve continuity across time and neighboring legal text.",
+      "explanation": "For temporal legal analysis, preserve the document’s logical sections and attach case date, topic, court, and source metadata to each chunk.",
       "source_links": [
         "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/generative-ai/tutorials/ai-cookbook/quality-issues/low-retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-search/query-ai-search"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -11999,38 +12001,39 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "prompt template",
+        "input variables",
+        "debugging"
       ],
-      "question": "A Generative AI Engineer is configuring an agent in Databricks Agent Framework (formerly Mosaic AI Agent Framework) with `prompt=\"Use the supplied context to answer {user_input}\"` but declares only `input_variables=[\"context\"]`. The agent returns irrelevant responses because the actual user question is not substituted into the prompt. Which configuration error causes the problem?",
+      "question": "A prompt template contains `prompt=\"Use the supplied context to answer {user_input}\"` but declares only `input_variables=[\"context\"]`. The user question is never substituted. Which configuration error causes the problem?",
       "options": [
         {
           "id": "A",
-          "text": "The prompt does not parse the user's input vars",
-          "explanation": "Correct. If the prompt does not parse/fill the user input variables, the agent receives placeholders or missing context and responds irrelevantly. Example: {question} must be populated with the actual user question."
+          "text": "The template references `user_input` but does not declare and populate it as an input variable.",
+          "explanation": "Correct. Every placeholder used by the template must be supplied using the expected variable name."
         },
         {
           "id": "B",
-          "text": "The prompt does not set the retriever schema",
-          "explanation": "Incorrect. Retriever schema matters when configuring retrieval outputs, but this error is about prompt variables not being passed into the prompt. Example: schema cannot fix a literal {input} placeholder."
+          "text": "The prompt does not define the vector index schema.",
+          "explanation": "Incorrect. The failure is prompt-variable substitution, not index schema configuration."
         },
         {
           "id": "C",
-          "text": "The prompt does not list available agents for the LLM to call",
-          "explanation": "Incorrect. Listing available agents is relevant for multi-agent routing, not for a single prompt-parameter issue. Example: adding agent names will not fill the user question variable."
+          "text": "The prompt does not enumerate every possible subagent.",
+          "explanation": "Incorrect. Tool or agent descriptions are unrelated to the missing `user_input` placeholder."
         },
         {
           "id": "D",
-          "text": "The prompt is not wrapped in ChatModel",
-          "explanation": "Incorrect. Wrapping in ChatModel changes the model interface, but it does not solve missing variable interpolation. Example: even a chat model fails if the prompt receives no user input."
+          "text": "The prompt is not wrapped in a specific chat-model class.",
+          "explanation": "Incorrect. Changing the model wrapper does not resolve a missing template variable."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "The prompt references `user_input`, but that variable is not declared and populated. The agent therefore receives a missing or literal placeholder instead of the user question.",
+      "explanation": "The template uses `{user_input}` but declares only `context`; the application must declare and pass the user-input variable consistently.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent"
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -12042,40 +12045,40 @@
       "section": "3. Application Development",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "application development"
+        "LangGraph",
+        "ReAct",
+        "tools"
       ],
-      "question": "A Generative AI Engineer is using LangGraph to define multiple tools in a single agentic application. They want to enable the main orchestrator LLM to decide on its own which tools are most appropriate to call for a given prompt. To do this, they must determine the general flow of the code. Which sequence will do this?",
+      "question": "A LangGraph application should let an LLM choose among several tools using a ReAct-style agent. Which general implementation sequence is correct?",
       "options": [
         {
           "id": "A",
-          "text": "1. Define or import the tools 2. Add tools and LLM to the agent 3. Create the ReAct agent",
-          "explanation": "Incorrect. This order is close but incomplete: simply adding tools and LLM is not enough unless the agent is defined/initialized with the ReAct tool-calling pattern. Example: tools must be registered with the agent runtime."
+          "text": "Define or import the tools, initialize the chat model, create the ReAct agent with the model and tools, then invoke the resulting graph.",
+          "explanation": "Correct. The agent must know the available tools when the graph is created so the model can select and call them."
         },
         {
           "id": "B",
-          "text": "1. Define or import the tools 2. Define the agent 3. Initialize the agent with ReAct, the LLM, and the tools",
-          "explanation": "Correct. Define/import the tools, define the agent, then initialize it with ReAct, the LLM, and the tools so the orchestrator can choose tool calls. Example: the agent decides whether to call search, SQL, or calculator for a prompt."
+          "text": "Create the agent before defining the tools, then attach the tools after the graph has already been invoked.",
+          "explanation": "Incorrect. The tool definitions must be available when the agent is constructed."
         },
         {
           "id": "C",
-          "text": "1. Define the tools 2. Load each tool into a separate agent 3. Instruct the LLM to use ReAct to call the appropriate agent",
-          "explanation": "Incorrect. Loading every tool into separate agents is unnecessary for one orchestrator deciding among tools. Example: one ReAct agent can choose the right tool directly."
+          "text": "Put every tool in a separate agent and require the user to choose the agent manually.",
+          "explanation": "Incorrect. This avoids the requested orchestrator behavior and transfers routing responsibility to the user."
         },
         {
           "id": "D",
-          "text": "1. Define the tools inside the agents 2. Load the agents into the LLM 3. Instruct the LLM to use CoT reasoning to determine the appropriate agent",
-          "explanation": "Incorrect. Chain-of-thought prompting alone does not register callable tools. Example: the LLM can reason about needing SQL, but it cannot call SQL unless the tool is attached."
+          "text": "Use chain-of-thought prompting without registering callable tools.",
+          "explanation": "Incorrect. Reasoning text alone does not provide executable tool interfaces."
         }
       ],
       "correct_answers": [
-        "B"
+        "A"
       ],
-      "explanation": "For a tool-using LangGraph/LangChain agent, define tools and initialize the agent with the LLM and tool set so the orchestrator can decide which tool to call.",
+      "explanation": "The standard flow is tools plus model, then `create_react_agent(model, tools)`, followed by graph invocation and tracing/evaluation.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/generative-ai/agent-framework/langchain-uc-integration",
-        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
-        "https://python.langchain.com/docs/introduction/"
+        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/",
+        "https://docs.databricks.com/aws/en/agents/agent-framework/build-agents"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -12087,38 +12090,40 @@
       "section": "1. Design Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported"
+        "authentication",
+        "REST API",
+        "SDK"
       ],
-      "question": "All of the following are python APIs used to query Databricks foundation models. When running in an interactive notebook, which of the following libraries does not automatically use the current session credentials?",
+      "question": "When querying a Databricks model endpoint from an interactive notebook, which approach generally requires the developer to construct the HTTP authentication header explicitly rather than relying on a Databricks SDK/client with unified or session authentication?",
       "options": [
         {
           "id": "A",
-          "text": "OpenAI client",
-          "explanation": "Incorrect. The Databricks-compatible OpenAI client can be configured to use workspace credentials in notebook examples."
+          "text": "DatabricksOpenAI or an OpenAI-compatible client configured through Databricks authentication helpers.",
+          "explanation": "Incorrect. Databricks-supported clients can use the configured Databricks authentication context."
         },
         {
           "id": "B",
-          "text": "REST API via requests library",
-          "explanation": "Correct. A raw requests call does not automatically pick up notebook session credentials; you must provide the host/token/auth headers yourself."
+          "text": "MLflow Deployments SDK.",
+          "explanation": "Incorrect. The SDK integrates with Databricks authentication mechanisms."
         },
         {
           "id": "C",
-          "text": "MLflow Deployments SDK",
-          "explanation": "Incorrect. The MLflow Deployments SDK integrates with Databricks credentials more directly than raw HTTP requests."
+          "text": "Databricks Python SDK.",
+          "explanation": "Incorrect. The Databricks SDK is designed to use unified authentication and handle low-level authentication details."
         },
         {
           "id": "D",
-          "text": "Databricks Python SDK",
-          "explanation": "Incorrect. The Databricks SDK is built to use Databricks authentication from the current environment."
+          "text": "A raw `requests` call to the serving-endpoint REST API.",
+          "explanation": "Correct. With a raw HTTP request, the developer normally builds the endpoint URL and Authorization header explicitly unless they add their own helper."
         }
       ],
       "correct_answers": [
-        "B"
+        "D"
       ],
-      "explanation": "A raw requests call does not automatically pick up notebook session credentials; you must provide the host/token/auth headers yourself.",
+      "explanation": "Higher-level Databricks clients handle authentication configuration; raw REST calls require the developer to provide the request headers.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/machine-learning/model-serving/",
-        "https://docs.databricks.com/aws/en/mlflow/models"
+        "https://docs.databricks.com/aws/en/dev-tools/auth",
+        "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -12130,39 +12135,41 @@
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "deployment"
+        "model extraction",
+        "rate limiting",
+        "AI security"
       ],
-      "question": "A Generative AI Engineer is deploying a customer-facing, fine-tuned LLM on their public website. Given the large investment the company put into fine tuning this model, and the proprietary nature of the tuning data, they are concerned about model inversion attacks. Which of the following Databricks AI Security Framework (DASF) risk mitigation strategies are most relevant to this use case?",
+      "question": "A public application exposes a valuable fine-tuned model. The team is concerned that an attacker could automate many carefully chosen queries to extract or imitate model behavior. Which control most directly limits this extraction attempt?",
       "options": [
         {
           "id": "A",
-          "text": "Implement AI guardrails to allow users to configure and enforce compliance",
-          "explanation": "Incorrect. Letting users configure guardrails does not protect the proprietary model from unauthorized access or inversion attempts."
+          "text": "Apply only a response-style guideline such as “be concise.”",
+          "explanation": "Incorrect. A style rule does not limit automated high-volume probing."
         },
         {
           "id": "B",
-          "text": "Leverage Databricks access control lists (ACLs) to configure permissions for accessing models",
-          "explanation": "Correct. ACLs control who can access a model/endpoint and are directly relevant to protecting proprietary models."
+          "text": "Use AI Gateway authentication, per-principal rate limits or budgets, and usage monitoring to restrict and detect abnormal query patterns.",
+          "explanation": "Correct. Limiting and monitoring access directly reduces the scale of automated extraction attempts and provides evidence for investigation."
         },
         {
           "id": "C",
-          "text": "Use secure model features with Databricks Feature Store",
-          "explanation": "Incorrect. Feature Store secures features, not the model artifact itself."
+          "text": "Store model features in Feature Store.",
+          "explanation": "Incorrect. Feature storage does not control how frequently a public client can query the model."
         },
         {
           "id": "D",
-          "text": "Apply attribute-based access controls (ABAC) to limit unauthorized access",
-          "explanation": "Incorrect. ABAC can be useful for fine-grained data access, but the direct model-access mitigation here is model/endpoint ACLs."
+          "text": "Allow unauthenticated access so every user receives the same model response policy.",
+          "explanation": "Incorrect. Broader unauthenticated access increases exposure and makes abuse harder to attribute or control."
         }
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "ACLs control who can access a model/endpoint and are directly relevant to protecting proprietary models.",
+      "explanation": "For a public endpoint, enforce governed access, rate limits or budgets, and monitoring so high-volume extraction behavior can be constrained and detected.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/ai-search/retrieval-quality",
-        "https://docs.databricks.com/aws/en/ai-gateway/guardrails"
+        "https://docs.databricks.com/aws/en/ai-gateway/",
+        "https://docs.databricks.com/aws/en/dev-tools/auth",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",
@@ -12221,42 +12228,41 @@
       "section": "4. Assembling and Deploying Applications",
       "difficulty": "Medium",
       "tags": [
-        "user-imported",
-        "deployment"
+        "ResponsesAgent",
+        "operational metrics",
+        "quality monitoring"
       ],
-      "question": "A generative AI engineer is deploying an AI agent authored with MLflow's ChatAgent interface for a retail company's customer support system on Databricks. The agent must handle thousands of inquiries daily, and the engineer needs to track its performance and quality in real-time to ensure it meets service-level agreements. Which metrics are automatically captured by default and made available for monitoring when the agent is deployed using the Mosaic AI Agent Framework?",
+      "question": "A retail customer-support agent is deployed on Databricks using the current MLflow ResponsesAgent-compatible serving path. Which metrics are available by default as serving-endpoint health metrics, before the team configures quality scorers?",
       "options": [
         {
           "id": "A",
-          "text": "Operational metrics like request volume, latency, and errors",
-          "explanation": "Correct. Deployed serving/agent endpoints automatically expose operational telemetry such as request volume, latency, and errors. Example: monitor p95 latency and error rate against SLA."
+          "text": "Operational metrics such as request rate, latency, and HTTP error rate.",
+          "explanation": "Correct. Databricks Model Serving exposes endpoint-health metrics by default for operational monitoring."
         },
         {
           "id": "B",
-          "text": "Quality metrics like correctness and guideline adherence",
-          "explanation": "Incorrect. Correctness and guideline adherence are quality metrics that require evaluation datasets, scorers, judges, or monitoring configuration. Example: a correctness judge needs expected facts or reference answers."
+          "text": "Quality metrics such as correctness and guideline adherence for every request.",
+          "explanation": "Incorrect. Quality metrics require evaluation data, scorers/judges, or production monitoring configuration."
         },
         {
           "id": "C",
-          "text": "Both operational and quality metrics",
-          "explanation": "Incorrect. Both operational and quality metrics are important, but they are not all automatically captured by default. Example: latency is automatic; answer correctness needs an evaluator."
+          "text": "Both operational and all application-specific quality metrics with no configuration.",
+          "explanation": "Incorrect. Operational metrics are available by default, but application quality is not inferred automatically."
         },
         {
           "id": "D",
-          "text": "No metrics are automatically captured",
-          "explanation": "Incorrect. “No metrics” is too strong because serving endpoints do capture operational metrics. Example: request count and latency are available for monitoring."
+          "text": "No metrics are available until the team builds a custom logging service.",
+          "explanation": "Incorrect. Endpoint health metrics are available without a separate logging microservice."
         }
       ],
       "correct_answers": [
         "A"
       ],
-      "explanation": "The key distinction is operational telemetry versus quality evaluation. Operational metrics are captured by default; quality metrics require configured evaluation/monitoring.",
+      "explanation": "Serving endpoints provide operational health metrics by default. Quality monitoring requires MLflow traces plus configured built-in or custom scorers.",
       "source_links": [
-        "https://docs.databricks.com/aws/en/mlflow/models",
-        "https://docs.databricks.com/aws/en/agents/agent-framework/author-agent",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/tracing/",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/evaluate-app",
-        "https://docs.databricks.com/aws/en/mlflow3/genai/eval-monitor/concepts/scorers"
+        "https://docs.databricks.com/aws/en/machine-learning/model-serving/monitor-diagnose-endpoints",
+        "https://docs.databricks.com/aws/en/mlflow3/genai/",
+        "https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf"
       ],
       "origin": "User imported",
       "origin_type": "User imported",

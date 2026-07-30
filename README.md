@@ -1,8 +1,8 @@
-# Databricks GenAI Cert Prep App — v5.10
+# Databricks GenAI Cert Prep App — v5.11
 
 Browser-based practice app for the Databricks Certified Generative AI Engineer Associate exam.
 
-## v5.10 notes
+## v5.11 notes
 
 This version repairs incomplete imported questions, removes repeated generic examples, expands structural QC, and adds an optional Wallet of Satoshi support widget.
 
@@ -20,7 +20,7 @@ This version repairs incomplete imported questions, removes repeated generic exa
 - Previous question in Study mode
 - Mark for review, Report issue, Hide for session
 - `Unhide session-hidden` button
-- New: compact bottom-right Wallet of Satoshi support button
+- Compact bottom-right coffee button with Buy Me a Coffee and Bitcoin Lightning options
 - Performance tracking by section/tag
 
 ## Important content note
@@ -77,12 +77,18 @@ Copy/replace the files into your local repo folder, then run:
 ```bash
 git status
 git add .
-git commit -m "Repair question context and add support widget"
+git commit -m "Re-audit user imported questions"
 git push
 ```
 
 Then open your GitHub Pages URL with a cache buster, for example:
 
 ```text
-https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=57
+https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=5111
 ```
+
+
+
+## Question quality and sources
+
+The 91 `User imported` questions were re-audited against the March 2026 official exam guide and current Databricks documentation. Twenty-nine ambiguous, stale, incomplete, or incorrect items were corrected or reframed while retaining the original learning objective and `User imported` origin label.
