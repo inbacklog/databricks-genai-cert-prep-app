@@ -86,10 +86,3 @@ Then open your GitHub Pages URL with a cache buster, for example:
 ```text
 https://inbacklog.github.io/databricks-genai-cert-prep-app/?v=57
 ```
-
-
-## v5.10 support-widget update
-
-- Adds Buy Me a Coffee and Bitcoin Lightning options.
-- Uses an icon-only floating coffee button.
-- Improves mobile layout and closes the support panel when clicking outside it.
