@@ -1,10 +1,10 @@
 window.QUESTION_BANK = {
   "meta": {
     "title": "Databricks GenAI Certification Prep App",
-    "version": "5.12",
+    "version": "5.13",
     "updated": "2026-07-31",
     "question_count": 339,
-    "notes": "v5.12 adds 14 source-grounded hard questions on underrepresented March 2026 exam objectives, including AI Search index architecture, Delta Sync/CDF prerequisites, Prompt Registry aliases, Unity AI Gateway usage tracking, Databricks Apps authorization, MCP, ai_query batch inference, and Supervisor Agent permissions.",
+    "notes": "Difficulty recalibration of all previously Hard questions and realistic-distractor rewrite for generated practice questions. User imported questions unchanged.",
     "sources": [
       "Uploaded Databricks exam guide, March 18 2026",
       "Uploaded Big Book of GenAI PDF",
@@ -447,7 +447,7 @@ window.QUESTION_BANK = {
       "id": "OFFICIAL_SAMPLE_010",
       "source": "Official guide sample",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "SME feedback",
         "evaluation",
@@ -1594,18 +1594,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Add a stronger system prompt telling the model to never leak data, with no tool-side checks.",
-          "explanation": "Incorrect. A system prompt is useful, but it is not enough for dangerous tool calls because prompt injection explicitly tries to override instructions. Example: the email tool must still check the requested recipient, table, and user permissions outside the LLM."
+          "text": "Use a prompt-injection classifier to block suspicious requests, but do not enforce permissions in the tools.",
+          "explanation": "Incorrect as the primary control. Detection can reduce attacks but cannot guarantee that an allowed-looking request is authorized. Example: a benignly phrased request could still ask for the full customer table."
         },
         {
           "id": "C",
-          "text": "Evaluate only answer helpfulness after the response is generated.",
-          "explanation": "Incorrect. Offline helpfulness evaluation happens after generation and cannot prevent a live tool from sending data. Example: scoring the response as unsafe after the full customer table was emailed is too late."
+          "text": "Require human approval before sending email, while allowing the data tool to return the requested table to the model.",
+          "explanation": "Incorrect. Approval protects the final email action but restricted data has already entered model context. Example: the model can summarize or log customer records before approval."
         },
         {
           "id": "D",
-          "text": "Log the tool call after execution but do not block it.",
-          "explanation": "Incorrect. Audit logs are important, but logging after execution is detection, not prevention. Example: a log entry proving that data leaked does not undo the leak."
+          "text": "Execute tool calls under a privileged identity and rely on audit logs and alerts to investigate misuse.",
+          "explanation": "Incorrect. Auditing supports detection and response but does not prevent the harmful action. Example: the email may already have been sent before an alert is reviewed."
         }
       ],
       "correct_answers": [
@@ -2299,18 +2299,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Rely only on the system prompt asking the model not to reveal PII",
-          "explanation": "Incorrect. Prompt instructions help, but they are weaker than deterministic masking/redaction controls. Example: the model may still quote a retrieved email address."
+          "text": "Pass raw retrieved context to the model, then apply a regex-based PII filter to the generated response.",
+          "explanation": "Incorrect as the strongest pattern. Output filtering helps, but the model and traces still process raw PII and regexes can miss variants. Example: an email address can appear in an unexpected format."
         },
         {
           "id": "C",
-          "text": "Remove all retrieval context whenever PII might exist",
-          "explanation": "Incorrect. This may make the app useless. Better is to control what is retrieved and redact sensitive fields. Example: keep order status but mask customer email."
+          "text": "Mask PII in the retrieved documents but leave tool responses and conversation history unmasked.",
+          "explanation": "Incorrect. Partial masking leaves other paths through which PII can reach the model or UI. Example: an order-status tool may return the same customer email."
         },
         {
           "id": "D",
-          "text": "Store PII only in vector metadata and never in chunk text",
-          "explanation": "Incorrect as a standalone fix. Metadata can still be exposed or used incorrectly. Example: if metadata is returned to the app, it still needs access control and masking."
+          "text": "Add a system instruction prohibiting PII disclosure and review a small test set before release.",
+          "explanation": "Incorrect. Prompt instructions and spot checks are not a reliable enforcement boundary. Example: prompt injection or a new response format can bypass the instruction."
         }
       ],
       "correct_answers": [
@@ -2390,18 +2390,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Use only a prompt that says “never call dangerous tools.”",
-          "explanation": "Incorrect. Prompt instructions are a useful layer but are not a reliable enforcement boundary for tool execution. Example: “never call refund_tool” can still be bypassed if the tool layer accepts arbitrary calls."
+          "text": "Use an input classifier to block prompts that look like prompt injection, but leave tool permissions unchanged.",
+          "explanation": "Incorrect as the strongest control. Classifiers are useful defense in depth but can miss novel attacks. Example: an indirect instruction can appear benign while still targeting a dangerous tool."
         },
         {
           "id": "C",
-          "text": "Increase model size so it understands security better.",
-          "explanation": "Incorrect. A larger model may follow instructions better, but it still needs hard controls around dangerous actions. Example: even a strong model can call delete_customer if the tool is exposed without authorization checks."
+          "text": "Check the user's role before exposing the tool, but accept any model-generated arguments once the role is allowed.",
+          "explanation": "Incorrect. Role checks must be combined with argument and policy validation. Example: an authorized user should not be able to delete records outside the approved scope."
         },
         {
           "id": "D",
-          "text": "Rely only on offline answer-quality evaluation.",
-          "explanation": "Incorrect. Offline answer-quality evaluation helps find failures in test sets, but it does not block a malicious live request. Example: a passing eval suite cannot stop a new prompt-injection payload at runtime."
+          "text": "Run offline answer-quality and safety evaluation and review tool-call logs after deployment.",
+          "explanation": "Incorrect. Evaluation and auditing measure risk but do not enforce least privilege at execution time. Example: a dangerous call can succeed before it appears in a report."
         }
       ],
       "correct_answers": [
@@ -2482,18 +2482,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Retrieve everything, then ask the LLM not to reveal restricted facts",
-          "explanation": "Incorrect. Restricted context already reached the model, creating leakage risk. Example: the model may paraphrase confidential text despite the instruction."
+          "text": "Retrieve documents with a broadly privileged app identity, then ask the LLM to ignore documents whose metadata does not match the user.",
+          "explanation": "Incorrect. Authorization must occur before context reaches the model. Example: prompt logic can fail or be bypassed, exposing restricted text."
         },
         {
           "id": "C",
-          "text": "Store all documents in a public bucket",
-          "explanation": "Incorrect. Public storage bypasses enterprise access control. Example: anyone with the URL could read restricted PDFs."
+          "text": "Maintain separate department indexes but let the application choose the index from an unvalidated department value supplied by the user.",
+          "explanation": "Incorrect. Physical separation helps, but untrusted routing can still grant access to the wrong index. Example: the selected resource must be authorized against the authenticated identity."
         },
         {
           "id": "D",
-          "text": "Use a higher-quality LLM and no permissions",
-          "explanation": "Incorrect. Model quality does not enforce authorization. Example: GPT-level reasoning cannot replace UC privileges."
+          "text": "Restrict access to the model endpoint but allow every endpoint caller to retrieve from the full document index.",
+          "explanation": "Incorrect. Endpoint access does not enforce document-level permissions among authorized users. Example: a finance user and an HR user may both call the endpoint but require different documents."
         }
       ],
       "correct_answers": [
@@ -2579,18 +2579,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Publish the model artifacts publicly so external users can inspect them for transparency.",
-          "explanation": "Incorrect. Publishing artifacts increases exposure of proprietary behavior and potentially sensitive learned patterns. Example: external users could download or probe model artifacts derived from internal data."
+          "text": "Keep model artifacts private but expose the serving endpoint to a broad workspace group with no model-specific grants.",
+          "explanation": "Incorrect. Private artifacts do not help if the deployed endpoint is broadly accessible. Example: unauthorized users can still query the model through serving."
         },
         {
           "id": "C",
-          "text": "Keep the endpoint public but rely on a system prompt telling the model not to reveal proprietary information.",
-          "explanation": "Incorrect. A public endpoint plus a polite system prompt is not an access-control strategy. Example: attackers can repeatedly probe the model even if it is instructed not to reveal private details."
+          "text": "Require endpoint authentication but use one shared credential for all consumers and no per-principal authorization.",
+          "explanation": "Incorrect. Authentication proves possession of the shared credential but does not provide least-privilege access or useful attribution. Example: access cannot be revoked for one consumer independently."
         },
         {
           "id": "D",
-          "text": "Use only longer context windows to reduce model inversion risk.",
-          "explanation": "Incorrect. Longer context windows change how much input the model can read; they do not restrict who can invoke the model or inspect artifacts. Example: a 128k model can still leak if access is public."
+          "text": "Apply output filters that block proprietary phrases while leaving model and endpoint access broadly available.",
+          "explanation": "Incorrect. Output controls may reduce direct leakage but do not prevent unauthorized access or model-extraction attempts. Example: repeated probing can reveal behavior without reproducing an exact phrase."
         }
       ],
       "correct_answers": [
@@ -3504,18 +3504,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Increase temperature for creativity",
-          "explanation": "Incorrect. Higher temperature usually increases variability. Example: it may output “purchaseOrder” instead of “order_id”."
+          "text": "Add several few-shot JSON examples but do not enforce an output schema or parser.",
+          "explanation": "Incorrect as the most reliable fix. Examples improve consistency but still allow invalid keys or extra text. Example: the model can imitate the structure yet rename one field."
         },
         {
           "id": "C",
-          "text": "Remove examples from the prompt",
-          "explanation": "Incorrect. Examples help the model learn the required structure. Example: one valid JSON example can reduce format drift."
+          "text": "Post-process responses with heuristic field-name mappings after generation.",
+          "explanation": "Incorrect as the preferred design. Heuristics become brittle as new variants appear and may map fields incorrectly. Example: 'customer' and 'customer_name' can be confused across schemas."
         },
         {
           "id": "D",
-          "text": "Use only a vector index",
-          "explanation": "Incorrect. A vector index retrieves context; it does not enforce output schema. Example: extraction still needs generation/parsing."
+          "text": "Use a larger instruction-tuned model while keeping temperature and unvalidated free-form output unchanged.",
+          "explanation": "Incorrect. Model capacity can help, but deterministic settings and schema enforcement address the failure directly. Example: even a strong model can occasionally emit a different key name."
         }
       ],
       "correct_answers": [
@@ -3683,18 +3683,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Ignore SMEs and trust the judge forever",
-          "explanation": "Incorrect. SMEs define domain quality; the judge should be calibrated, not blindly trusted. Example: legal nuance may require expert labels."
+          "text": "Adjust the judge threshold until its aggregate pass rate matches the SME pass rate.",
+          "explanation": "Incorrect. Matching totals does not ensure agreement on the same borderline cases. Example: both may pass 80% while disagreeing on which 20% fail."
         },
         {
           "id": "C",
-          "text": "Delete borderline examples from the evaluation set",
-          "explanation": "Incorrect. Borderline cases are valuable for improving the system. Example: ambiguous policy exceptions reveal model weaknesses."
+          "text": "Replace the judge with a larger model before clarifying the rubric or reviewing disagreement examples.",
+          "explanation": "Incorrect. A larger judge cannot resolve ambiguous criteria. Example: domain experts may use a definition of completeness not present in the judge prompt."
         },
         {
           "id": "D",
-          "text": "Use only latency metrics",
-          "explanation": "Incorrect. Latency says nothing about semantic quality. Example: a fast but wrong answer still fails."
+          "text": "Keep the judge unchanged and let SMEs override individual flags during production review.",
+          "explanation": "Incorrect as the best next step. Overrides do not improve the automated evaluator used for future releases and monitoring. Example: the same false-positive pattern will recur."
         }
       ],
       "correct_answers": [
@@ -3846,7 +3846,7 @@ window.QUESTION_BANK = {
       "id": "QC_074",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "evaluation granularity",
         "component metrics"
@@ -3855,23 +3855,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Evaluate retrieval metrics, generation faithfulness/correctness, and end-to-end answer quality separately.",
-          "explanation": "Correct. Component-level evaluation separates “retrieval failed” from “generation failed after good retrieval.” Example: high recall but low groundedness points to prompt/generation issues, not indexing."
+          "text": "Evaluate retrieval quality, generation groundedness/correctness, and end-to-end answer quality as separate layers.",
+          "explanation": "Correct. Layered evaluation reveals whether the retriever failed, the generator mishandled good context, or both. Example: high retrieval recall with low groundedness points to prompt or generation behavior rather than indexing."
         },
         {
           "id": "B",
-          "text": "Evaluate only final answer correctness against a gold set.",
-          "explanation": "Incorrect. End-to-end correctness tells you the answer is wrong but may not explain why. Example: a wrong answer could come from missing context or from ignoring correct context."
+          "text": "Score end-to-end answer correctness first, then inspect retrieval only for the failed responses.",
+          "explanation": "Incorrect as the primary plan. This can triage failures, but it does not produce independent retriever and generator metrics across the evaluation set. Example: two equally wrong answers can come from very different failure stages."
         },
         {
           "id": "C",
-          "text": "Evaluate only the base LLM leaderboard score.",
-          "explanation": "Incorrect. Leaderboard quality does not diagnose your retrieval pipeline or your prompt/context use. Example: a strong model can still answer incorrectly if the retriever returns wrong docs."
+          "text": "Compare retriever configurations using only the final answer-correctness score.",
+          "explanation": "Incorrect. Final-answer correctness combines retrieval and generation effects, so it cannot cleanly attribute a change to the retriever. Example: a better retriever can appear unchanged if the prompt still ignores supplied context."
         },
         {
           "id": "D",
-          "text": "Evaluate only latency and token cost.",
-          "explanation": "Incorrect. Operational metrics are useful but do not identify retrieval-vs-generation quality failures. Example: a fast answer can still be unsupported."
+          "text": "Combine retrieval recall and groundedness into one aggregate quality score.",
+          "explanation": "Incorrect. A single aggregate can hide opposite movements in retrieval and generation quality. Example: improved recall can offset degraded groundedness numerically while the underlying failure remains unclear."
         }
       ],
       "correct_answers": [
@@ -3911,13 +3911,13 @@ window.QUESTION_BANK = {
         },
         {
           "id": "C",
-          "text": "Use only an answer LLM and store no vectors",
-          "explanation": "Incorrect. The scenario requires creating/deleting vector records from events. Example: semantic retrieval over personal notes needs an index."
+          "text": "Write application events to a Delta table and run a triggered Delta Sync refresh every few minutes.",
+          "explanation": "Incorrect for direct, seconds-level personalized updates. This adds ingestion and sync delay. Example: a deleted preference vector may remain searchable until the next refresh."
         },
         {
           "id": "D",
-          "text": "Use a model alias to represent each user’s vector set",
-          "explanation": "Incorrect. Model aliases point to model versions, not per-user vector records. Example: @Champion cannot store a user’s embeddings."
+          "text": "Create a separate continuously synchronized Delta table and index for each user.",
+          "explanation": "Incorrect. This creates excessive operational overhead and still routes updates through table synchronization. Example: thousands of users would require impractical index lifecycle management."
         }
       ],
       "correct_answers": [
@@ -5174,18 +5174,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Paste the entire index into the system prompt",
-          "explanation": "Incorrect. Indexes can be large and dynamic; pasting everything is impossible and costly. Example: thousands of chunks exceed context limits."
+          "text": "Run the retriever before every agent request and always place its results in the prompt.",
+          "explanation": "Incorrect for an agent that should search only when needed. Unconditional retrieval adds latency and irrelevant context. Example: a simple greeting does not need an index query."
         },
         {
           "id": "C",
-          "text": "Use only output parsing",
-          "explanation": "Incorrect. Parsing structures outputs but does not retrieve knowledge. Example: JSON parser cannot find policy text."
+          "text": "Expose a generic Python execution tool that can call the index, without a specific tool schema or description.",
+          "explanation": "Incorrect. The model needs a clear, constrained interface to select and use retrieval reliably. Example: a vague code tool increases argument and security risk."
         },
         {
           "id": "D",
-          "text": "Disable tool descriptions",
-          "explanation": "Incorrect. Without descriptions, the agent is less likely to choose the right tool. Example: the model may not know when to call policy search."
+          "text": "Add the index name and retrieval instructions to the system prompt but do not register a callable tool.",
+          "explanation": "Incorrect. Prompt text alone does not provide executable access to the index. Example: the agent can describe a search but cannot perform one."
         }
       ],
       "correct_answers": [
@@ -5578,32 +5578,32 @@ window.QUESTION_BANK = {
       "id": "QC_112",
       "source": "Generated practice",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "security",
         "tool outputs"
       ],
-      "question": "A tool returns raw SQL query results. The agent should not reveal rows the user lacks permission for. Where should filtering happen?",
+      "question": "A tool queries governed SQL data for an agent. Some rows are not visible to the requesting user. Which design best prevents unauthorized rows from entering the model context?",
       "options": [
         {
           "id": "A",
-          "text": "Filter/enforce permissions in the data or tool layer before results are passed to the LLM",
-          "explanation": "Correct. The LLM should never receive rows the user is not allowed to see. Example: the SQL query applies row-level permissions before returning rows to the agent."
+          "text": "Enforce row permissions in Unity Catalog, SQL, or the governed tool before results are returned to the agent.",
+          "explanation": "Correct. Authorization should be applied before restricted rows reach the LLM. Example: the query executes under the appropriate identity and row filter, so the tool returns only permitted records."
         },
         {
           "id": "B",
-          "text": "Ask the LLM in the final prompt not to reveal unauthorized rows",
-          "explanation": "Incorrect. If unauthorized rows are already in the prompt, the data has already leaked into model context. Example: prompt injection could ask the model to repeat hidden rows."
+          "text": "Query with a broadly privileged service identity, then filter the generated answer in the browser.",
+          "explanation": "Incorrect. The model has already received unauthorized data, and client-side filtering can be bypassed. Example: a hidden browser field does not prevent the model from summarizing restricted rows."
         },
         {
           "id": "C",
-          "text": "Return all rows to the LLM but redact after generation",
-          "explanation": "Incorrect. Post-generation redaction is too late and may miss subtle leaks. Example: a summary could reveal counts or sensitive trends from unauthorized rows."
+          "text": "Return all rows but mask sensitive columns before placing the result in the prompt.",
+          "explanation": "Incorrect. Column masking does not enforce row-level access. Example: the user could still learn counts or transactions belonging to another region even if one column is masked."
         },
         {
           "id": "D",
-          "text": "Hide table names from the user but leave row access unrestricted",
-          "explanation": "Incorrect. Security by obscurity does not enforce data permissions. Example: the agent can still return restricted row values."
+          "text": "Run a post-response policy judge and block answers that appear to contain unauthorized information.",
+          "explanation": "Incorrect. Output checking is defense in depth, not the primary authorization boundary. Example: a judge may miss an indirect disclosure after the model has already processed restricted data."
         }
       ],
       "correct_answers": [
@@ -6002,7 +6002,7 @@ window.QUESTION_BANK = {
       "id": "V42_003",
       "source": "Generated practice",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "AI Search",
         "index sizing",
@@ -6206,18 +6206,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Fine-tune the LLM every time a policy changes",
-          "explanation": "Incorrect. Frequent fine-tuning is expensive, slow, and does not naturally provide citations. Example: weekly policy changes are better handled by refreshing retrieval data."
+          "text": "Store the latest policy text in Prompt Registry and update the production prompt whenever a policy changes.",
+          "explanation": "Incorrect as the strongest architecture. Prompt Registry manages prompts, not a frequently changing document corpus or source citations. Example: large policy sets will exceed practical prompt size and be difficult to trace to paragraphs."
         },
         {
           "id": "C",
-          "text": "Put all policies into a single system prompt",
-          "explanation": "Incorrect. This hits context limits and becomes hard to update/govern. Example: thousands of pages of policies cannot reliably fit in one prompt."
+          "text": "Fine-tune the model periodically on approved policy documents and add citations in the prompt instructions.",
+          "explanation": "Incorrect. Fine-tuning is not ideal for rapidly changing factual content, and it does not naturally provide document-level citations. Example: a weekly update can remain stale until the next training run."
         },
         {
           "id": "D",
-          "text": "Use only a safety guardrail and no retrieval",
-          "explanation": "Incorrect. Guardrails can block risky outputs, but they do not provide policy knowledge. Example: a guardrail cannot answer “What is the new travel limit?” without the policy source."
+          "text": "Use an indexed policy corpus but refresh it manually only before major releases.",
+          "explanation": "Incorrect. The design uses retrieval, but the refresh process does not meet the requirement for changes every few days. Example: an emergency policy update could remain absent from answers."
         }
       ],
       "correct_answers": [
@@ -6283,34 +6283,34 @@ window.QUESTION_BANK = {
       "id": "V42_009",
       "source": "Generated practice",
       "section": "1. Design Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "multi-agent",
         "structured data",
         "unstructured data",
         "Genie"
       ],
-      "question": "An enterprise assistant must answer questions that may require both a policy document search and a live SQL aggregation over governed sales tables. Which architecture best matches the requirement?",
+      "question": "An enterprise assistant must answer policy questions from documents and live analytics questions over governed sales tables. Separate teams own the two capabilities and require independent permissions and evaluation. Which architecture best matches the requirement?",
       "options": [
         {
           "id": "A",
-          "text": "Use an orchestrated agent/supervisor with a document retriever and governed structured-data tool",
-          "explanation": "Correct. The user request can require both unstructured policy context and live structured lookup. Example: retrieve policy terms, then query account-specific sales data through a governed tool."
+          "text": "Use a supervisor/router that delegates to a document-retrieval capability and a governed structured-data capability.",
+          "explanation": "Correct. Explicit routing preserves specialized tools, permissions, and evaluation while presenting one interface. Example: a policy query goes to AI Search, while a margin calculation goes to a governed Genie or SQL tool."
         },
         {
           "id": "B",
-          "text": "Put table exports and policy PDFs into one vector index and avoid SQL tools",
-          "explanation": "Incorrect. Vectorizing tables can help some semantic lookup, but analytics questions need governed structured queries. Example: “total sales last month by region” is better answered by SQL/Genie."
+          "text": "Give one general-purpose agent both tools and use one shared prompt and permission model for every request.",
+          "explanation": "Incorrect for the stated governance requirement. A single agent can work technically, but it weakens capability-specific permissions and evaluation boundaries. Example: the SQL tool may need stricter access than document search."
         },
         {
           "id": "C",
-          "text": "Use only a SQL/Genie tool and skip document retrieval",
-          "explanation": "Incorrect. The app also needs policy-document answers. Example: “what is the refund exception?” may require policy text, not a metric query."
+          "text": "Periodically export the sales tables to text and place both exports and policies in one AI Search index.",
+          "explanation": "Incorrect. This makes analytics stale and replaces governed aggregation with retrieval over snapshots. Example: a current-quarter total should be computed from live tables, not inferred from an indexed export."
         },
         {
           "id": "D",
-          "text": "Ask the LLM to infer both policy and analytics answers from its pretraining",
-          "explanation": "Incorrect. Current enterprise facts and governed data are not reliably in model memory. Example: last month’s sales are workspace data, not pretraining knowledge."
+          "text": "Deploy separate document and analytics applications and require users to choose the correct one before asking.",
+          "explanation": "Incorrect. This preserves specialization but violates the requirement for a unified conversational experience. Example: routing can happen behind one endpoint without forcing users to understand the architecture."
         }
       ],
       "correct_answers": [
@@ -7180,18 +7180,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Use a more cheerful assistant tone",
-          "explanation": "Incorrect. Tone does not constrain actions. Example: a polite agent can still execute a malicious email tool if permissions are too broad."
+          "text": "Add a prompt-injection detector before the agent, while keeping broad finance and email tool permissions.",
+          "explanation": "Incorrect as the strongest control. Detection can miss novel attacks and does not limit damage if one passes. Example: least-privilege scopes should still restrict recipients and accessible tables."
         },
         {
           "id": "C",
-          "text": "Use only answer relevancy as an offline metric",
-          "explanation": "Incorrect. Relevancy evaluation does not enforce runtime permissions. Example: a malicious action can be relevant to the prompt but unauthorized."
+          "text": "Restrict tool availability by user role but allow unrestricted arguments for each exposed tool.",
+          "explanation": "Incorrect. Role-based tool access must be combined with action and argument constraints. Example: an email tool should restrict recipients and attachments even for an allowed user."
         },
         {
           "id": "D",
-          "text": "Increase retrieved chunk count",
-          "explanation": "Incorrect. More context can even increase injection exposure if untrusted documents are retrieved. Example: a retrieved page containing “ignore rules” should not control tools."
+          "text": "Require human approval for outgoing emails but let the finance query tool access all tables under a privileged identity.",
+          "explanation": "Incorrect. Approval protects one action but leaves data exfiltration risk through the query tool and model context. Example: restricted finance rows can still be retrieved and summarized."
         }
       ],
       "correct_answers": [
@@ -7490,7 +7490,7 @@ window.QUESTION_BANK = {
       "id": "V42_035",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "MLflow scorers",
         "custom scorers",
@@ -7500,23 +7500,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Add a custom scorer or rule-based judge that checks the emergency-escalation policy on relevant test cases.",
-          "explanation": "Correct. Business/safety-specific rules often require custom scorers beyond generic relevance/groundedness. Example: if input mentions chest pain and shortness of breath, the scorer checks that the answer advises emergency services."
+          "text": "Add a custom scorer or guidelines judge that tests the emergency-escalation rule on representative urgent and non-urgent cases.",
+          "explanation": "Correct. The requirement is a domain-specific policy that generic relevance and groundedness judges do not directly measure. Example: the scorer verifies that chest-pain scenarios recommend emergency care without over-escalating routine symptoms."
         },
         {
           "id": "B",
-          "text": "Use only BLEU against one generic emergency response.",
-          "explanation": "Incorrect. BLEU is text-overlap based and may fail when correct escalations are phrased differently. Example: “call emergency services now” and “dial local emergency number” may be semantically equivalent but have low n-gram overlap."
+          "text": "Use groundedness as the acceptance gate and include the emergency policy in the retrieved context.",
+          "explanation": "Incorrect by itself. An answer can be grounded in the supplied policy yet still omit the required escalation action. Example: it may accurately summarize symptoms without advising emergency services."
         },
         {
           "id": "C",
-          "text": "Monitor only latency and GPU utilization for urgent cases.",
-          "explanation": "Incorrect. Operational metrics do not evaluate whether the answer follows the medical escalation policy. Example: a fast response can still be unsafe."
+          "text": "Use exact-match scoring against one approved emergency-response sentence.",
+          "explanation": "Incorrect. Correct responses can use many valid phrasings, so exact matching creates false negatives and may reward superficial wording. Example: 'call emergency services now' and 'seek emergency care immediately' express the same policy."
         },
         {
           "id": "D",
-          "text": "Exclude urgent symptoms from the evaluation set to avoid risky examples.",
-          "explanation": "Incorrect. Safety-critical edge cases must be tested, not hidden. Example: excluding urgent cases prevents detecting failure to escalate."
+          "text": "Rely on periodic human review of production responses without an automated policy check.",
+          "explanation": "Incorrect as the main evaluation design. Human review is valuable for calibration, but it is too sparse for consistent release and production monitoring. Example: rare urgent cases could be missed between reviews."
         }
       ],
       "correct_answers": [
@@ -7830,18 +7830,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Rely only on embeddings of yesterday’s articles.",
-          "explanation": "Incorrect. Static indexed articles may be stale for live game state. Example: yesterday’s preview cannot answer a goal scored two minutes ago."
+          "text": "Copy live-score updates into a vector index every minute and answer through semantic retrieval.",
+          "explanation": "Incorrect as the strongest pattern. Frequently changing structured state is better queried through a current data tool than embedded repeatedly. Example: a score change can occur between index refreshes."
         },
         {
           "id": "C",
-          "text": "Fine-tune the model weekly on historical sports articles.",
-          "explanation": "Incorrect. Fine-tuning historical data does not provide live score updates. Example: the model cannot know today’s score from last week’s training."
+          "text": "Use a score API tool with a 15-minute application cache to reduce external calls.",
+          "explanation": "Incorrect for questions about the last five minutes. The cache can return stale state beyond the allowed freshness window. Example: a recent goal may not appear."
         },
         {
           "id": "D",
-          "text": "Increase answer creativity to infer current events.",
-          "explanation": "Incorrect. The model should not guess live facts. Example: higher temperature may hallucinate a winner."
+          "text": "Search recent news articles and social posts, then ask the LLM to infer the current score.",
+          "explanation": "Incorrect. Indirect sources are slower and less authoritative than a live score feed. Example: articles may describe a match without reflecting the latest event."
         }
       ],
       "correct_answers": [
@@ -8064,18 +8064,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Ignore the receipt and answer from the model’s general knowledge.",
-          "explanation": "Incorrect. The decision depends on the actual receipt and company policy. Example: general knowledge cannot know the merchant, amount, or role-specific limit."
+          "text": "Send the receipt image and the complete policy document to a multimodal LLM, but do not retrieve the user's role or approval limit.",
+          "explanation": "Incorrect. The model lacks user-specific facts needed for an eligibility decision. Example: the same receipt may be allowed for one role and disallowed for another."
         },
         {
           "id": "C",
-          "text": "Ask the model to be brief without adding routing or grounding logic.",
-          "explanation": "Incorrect. Brevity is a formatting constraint, not a decision architecture. Example: a short answer can still be unsupported."
+          "text": "Extract receipt fields and retrieve policy passages, but apply one generic approval limit to every user.",
+          "explanation": "Incorrect. This grounds the receipt and policy but ignores role-specific limits. Example: executives and contractors may have different thresholds."
         },
         {
           "id": "D",
-          "text": "Use only the embedding vector as the final answer.",
-          "explanation": "Incorrect. Embeddings are intermediate representations, not user-facing decisions. Example: a vector cannot explain why the expense is approved or rejected."
+          "text": "Use a classifier trained on historical approve/reject decisions from receipts and roles without retrieving the current policy.",
+          "explanation": "Incorrect. Historical labels can become stale and do not provide current policy evidence. Example: a newly prohibited expense category may not appear in training data."
         }
       ],
       "correct_answers": [
@@ -8109,18 +8109,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Keep the toxic corpus unchanged and rely only on a system prompt telling the model to be polite.",
-          "explanation": "Incorrect. A system prompt helps, but it is weak if retrieval keeps supplying toxic text. Example: the model may still quote or summarize offensive retrieved posts."
+          "text": "Clean or filter toxic source content before indexing but add no output-level protection or evaluation.",
+          "explanation": "Incorrect as the strongest defense. Upstream curation reduces risk but cannot catch every harmful passage or model-generated variation. Example: borderline content can remain in the corpus."
         },
         {
           "id": "C",
-          "text": "Increase generation temperature so the model paraphrases the toxic content more creatively.",
-          "explanation": "Incorrect. Higher temperature makes outputs less predictable and does not remove harmful source content. Example: the model may produce a different but still harmful paraphrase."
+          "text": "Keep the corpus unchanged and apply a toxicity guardrail only to the final response.",
+          "explanation": "Incorrect as the strongest defense. Output guardrails help, but the model still receives harmful context and may be influenced by it. Example: unsafe content can affect reasoning even if exact words are blocked."
         },
         {
           "id": "D",
-          "text": "Monitor only token counts and latency because toxicity is not a retrieval issue.",
-          "explanation": "Incorrect. Token/latency metrics do not detect harmful content. Example: a short, fast answer can still repeat toxic language from a retrieved post."
+          "text": "Score retrieved chunks for toxicity during evaluation but do not filter, rerank, or block them at runtime.",
+          "explanation": "Incorrect. Measurement alone does not mitigate production exposure. Example: the app can continue retrieving known-toxic chunks after the metric reports them."
         }
       ],
       "correct_answers": [
@@ -12272,7 +12272,7 @@ window.QUESTION_BANK = {
       "id": "V49_001",
       "source": "v4.9 full quality review",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "chunking",
         "parent-child retrieval",
@@ -12282,23 +12282,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use parent-child retrieval: embed smaller child chunks for precise matching, then return the larger parent clause/section around matched children.",
-          "explanation": "Correct. Child chunks improve matching precision while parent chunks preserve interpretive context. Example: match a sentence about notice period, then return the full termination clause."
+          "text": "Use parent-child retrieval: match on smaller child chunks, then return the larger parent clause or section around the match.",
+          "explanation": "Correct. Small chunks improve retrieval precision while the parent preserves legal context. Example: match a defined term in one sentence, then provide the full surrounding clause for interpretation."
         },
         {
           "id": "B",
-          "text": "Embed each full contract as one chunk to ensure no clause is missing.",
-          "explanation": "Incorrect. Whole-contract chunks are noisy and may exceed context limits. Example: a single 80-page chunk makes it hard to retrieve the specific notice provision."
+          "text": "Embed and retrieve overlapping section-sized chunks directly.",
+          "explanation": "Incorrect as the strongest design. Larger chunks preserve context but reduce matching precision for narrow legal questions. Example: several unrelated obligations in one section can dilute the relevant clause embedding."
         },
         {
           "id": "C",
-          "text": "Embed only clause titles and let the LLM infer missing clause text.",
-          "explanation": "Incorrect. Titles are not enough evidence for grounded legal answers. Example: “Termination” does not specify the notice period or exceptions."
+          "text": "Embed small clause fragments and provide only the matched fragments to the LLM.",
+          "explanation": "Incorrect. This improves precision but can omit definitions, exceptions, or neighboring language needed for legal interpretation. Example: a termination sentence may depend on the preceding notice requirement."
         },
         {
           "id": "D",
-          "text": "Use sentence-sized chunks and pass only the top sentence to the model.",
-          "explanation": "Incorrect. This may be precise but can lose surrounding definitions/exceptions. Example: a sentence may say “unless section 9 applies” without including section 9."
+          "text": "Retrieve whole contracts, then ask the LLM to locate the relevant clause inside the prompt.",
+          "explanation": "Incorrect. Whole-document retrieval is expensive and makes relevant evidence harder to rank within the context window. Example: a 100-page agreement can crowd out the exact clause needed."
         }
       ],
       "correct_answers": [
@@ -12365,7 +12365,7 @@ window.QUESTION_BANK = {
       "id": "V49_003",
       "source": "v4.9 full quality review",
       "section": "3. Application Development",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "tool calling",
         "guardrails",
@@ -12375,23 +12375,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Validate the requested refund against policy, order state, and user authorization before executing the tool.",
-          "explanation": "Correct. Tool-side checks must enforce business rules even if the prompt is malicious. Example: cap refund to the eligible paid amount and reject unauthorized double refunds."
+          "text": "Validate the refund amount, policy limits, order state, and caller authorization in the tool layer before execution.",
+          "explanation": "Correct. Deterministic authorization and business rules must constrain the action regardless of model instructions. Example: the tool rejects an amount above the eligible refund even if the model requests it."
         },
         {
           "id": "B",
-          "text": "Let the LLM decide whether the user sounds trustworthy, then execute the tool call.",
-          "explanation": "Incorrect. Trust judgement in text is not a reliable authorization control. Example: a polite prompt can still request an invalid refund."
+          "text": "Detect prompt-injection language and block suspicious requests before the tool call, but leave refund limits to the model.",
+          "explanation": "Incorrect. Input screening is useful defense in depth, but it does not replace deterministic policy enforcement. Example: a benignly worded request could still exceed the permitted refund."
         },
         {
           "id": "C",
-          "text": "Increase temperature so the model is less likely to follow the exact malicious wording.",
-          "explanation": "Incorrect. Randomness is not a security control. Example: the agent may still call the refund tool with the wrong amount."
+          "text": "Require a human approval only when the model assigns a high risk score to the request.",
+          "explanation": "Incorrect as the primary control. The model's risk classification can be wrong, and routine policy validation is still required. Example: a low-risk classification must not bypass authorization checks."
         },
         {
           "id": "D",
-          "text": "Hide the refund policy from the prompt so attackers cannot reference it.",
-          "explanation": "Incorrect. Obscuring policy does not enforce it and may make valid decisions worse. Example: the tool still needs explicit validation rules."
+          "text": "Validate the refund amount but rely on the model to determine whether the caller is authorized for the order.",
+          "explanation": "Incorrect. Partial validation leaves an authorization gap. Example: a valid amount could still be issued for another customer's order."
         }
       ],
       "correct_answers": [
@@ -12410,7 +12410,7 @@ window.QUESTION_BANK = {
       "id": "V49_004",
       "source": "v4.9 full quality review",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "MLflow tracing",
         "agent debugging",
@@ -12425,18 +12425,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Increase top-K retrieval before inspecting generation.",
-          "explanation": "Incorrect. More context may add noise if the right document is already retrieved. Example: top-K=20 could make contradiction worse."
+          "text": "Strengthen the system prompt to say that retrieved context must be followed, without adding groundedness evaluation or trace review.",
+          "explanation": "Incorrect as the best next step. Prompt changes may help, but the team needs evidence about where and why context use fails. Example: a trace can reveal conflicting instructions or truncation."
         },
         {
           "id": "C",
-          "text": "Benchmark a different embedding model before checking whether retrieved context is being used correctly.",
-          "explanation": "Incorrect. Embeddings affect retrieval, but the trace already shows retrieval found the right document. Example: swapping embeddings does not address the LLM ignoring context."
+          "text": "Reduce top-k so the prompt contains only the highest-ranked document.",
+          "explanation": "Incorrect based on the diagnosis. The correct document is already present, and reducing context can remove necessary supporting passages. Example: the contradiction may come from generation rather than retrieval noise."
         },
         {
           "id": "D",
-          "text": "Monitor only endpoint CPU and memory.",
-          "explanation": "Incorrect. Infrastructure metrics will not explain a contradiction between answer and context. Example: low CPU does not prove groundedness."
+          "text": "Switch to a stronger answer model while preserving the same prompt and evaluation setup.",
+          "explanation": "Incorrect as the first targeted action. A stronger model might improve behavior, but it does not isolate the context-use failure. Example: compare groundedness and inspect spans before changing the model."
         }
       ],
       "correct_answers": [
@@ -12502,7 +12502,7 @@ window.QUESTION_BANK = {
       "id": "V49_006",
       "source": "v4.9 full quality review",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "custom scorers",
         "business rules",
@@ -12512,23 +12512,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use groundedness/relevance judges plus a custom scorer that detects unnecessary support-escalation recommendations.",
-          "explanation": "Correct. Generic judges check support from context; the custom scorer checks the business rule. Example: if the context says “reset password in portal,” the scorer flags “call support.”"
+          "text": "Use groundedness and relevance judges together with a custom scorer for unnecessary support escalation.",
+          "explanation": "Correct. Generic RAG metrics test evidence use, while the custom scorer tests the business-specific self-service rule. Example: the scorer flags 'call support' when the retrieved policy already gives complete online steps."
         },
         {
           "id": "B",
-          "text": "Use only toxicity scoring.",
-          "explanation": "Incorrect. “Call support” is not toxic, but it may violate the support-deflection business rule. Example: a polite escalation can still be wrong."
+          "text": "Use groundedness plus a string check that rejects every response containing the phrase 'call support'.",
+          "explanation": "Incorrect. A blanket phrase rule ignores cases where escalation is genuinely required. Example: a locked account with no self-service recovery may correctly require support."
         },
         {
           "id": "C",
-          "text": "Use only latency percentiles.",
-          "explanation": "Incorrect. Speed does not indicate policy compliance. Example: a fast “call support” response can still fail the requirement."
+          "text": "Use answer correctness against a small set of reference answers, without a dedicated escalation criterion.",
+          "explanation": "Incorrect. Correctness can miss a recurring policy behavior when references use different wording. Example: an otherwise accurate answer may still add an unnecessary escalation sentence."
         },
         {
           "id": "D",
-          "text": "Use only BLEU against one reference answer for all policies.",
-          "explanation": "Incorrect. One reference answer cannot cover many valid self-service procedures and phrasings. Example: different policies require different steps."
+          "text": "Use human review on a small random production sample and no automated scorer during development.",
+          "explanation": "Incorrect as the complete setup. Human review helps calibrate policy, but automated checks are needed for repeatable release testing and broader monitoring. Example: a rare escalation failure may not appear in a small sample."
         }
       ],
       "correct_answers": [
@@ -12547,7 +12547,7 @@ window.QUESTION_BANK = {
       "id": "V49_007",
       "source": "v4.9 full quality review",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "metadata",
         "access control",
@@ -12557,23 +12557,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Country/product metadata on chunks and query-time filters based on the user or request context.",
-          "explanation": "Correct. Metadata filters enforce the correct jurisdiction/product scope before generation. Example: retrieve “Returns Policy” for country=DE and product=Alpha, not the US version."
+          "text": "Store country and product metadata on chunks and apply query-time filters from authenticated request context.",
+          "explanation": "Correct. Metadata filtering prevents same-named products from crossing policy jurisdictions. Example: a German user retrieves only Germany-specific warranty chunks for the selected product."
         },
         {
           "id": "B",
-          "text": "A larger answer model with no metadata filters so it can decide after seeing mixed-country documents.",
-          "explanation": "Incorrect. If retrieval mixes policies, the model may blend conflicting rules. Example: it might answer with US return windows for a German user."
+          "text": "Include the country name in chunk text and rely on semantic ranking without metadata filters.",
+          "explanation": "Incorrect. Text cues help, but semantically similar policies from other countries can still rank highly. Example: two warranty documents may differ only in one jurisdiction-specific exception."
         },
         {
           "id": "C",
-          "text": "One global chunk per product that merges all country policies together.",
-          "explanation": "Incorrect. Merging conflicting policies increases ambiguity. Example: the answer may cite a rule that applies only in France."
+          "text": "Filter by product identifier but combine all country policies for that product in the retrieved context.",
+          "explanation": "Incorrect. Product filtering alone does not resolve jurisdiction conflicts. Example: the model may cite a US return period for an EU customer."
         },
         {
           "id": "D",
-          "text": "Remove country names from documents before indexing to reduce bias.",
-          "explanation": "Incorrect. Country is essential routing/filtering information, not noise. Example: removing “DE” prevents selecting the correct policy."
+          "text": "Retrieve globally and instruct the LLM to choose the applicable country after reading the results.",
+          "explanation": "Incorrect. The model should not receive conflicting policies when deterministic request metadata can narrow retrieval first. Example: filtering reduces both hallucination risk and token usage."
         }
       ],
       "correct_answers": [
@@ -12637,7 +12637,7 @@ window.QUESTION_BANK = {
       "id": "V49_009",
       "source": "v4.9 full quality review",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "inference tables",
         "PII",
@@ -12647,23 +12647,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Enable logging with masking/redaction of sensitive fields plus restricted access and retention for logged data.",
-          "explanation": "Correct. This keeps useful observability while reducing sensitive-data exposure. Example: log prompt length, status, and redacted text where SSNs/emails are masked."
+          "text": "Log masked or redacted request data with restricted access, explicit retention, and the metadata needed for debugging.",
+          "explanation": "Correct. This preserves useful observability while minimizing exposure of personal data. Example: retain trace IDs, latency, errors, and redacted prompt fields in a tightly governed table."
         },
         {
           "id": "B",
-          "text": "Log full raw prompts and responses to a broadly accessible table so debugging is easier.",
-          "explanation": "Incorrect. This maximizes exposure of personal data. Example: analysts who do not need raw PII could see sensitive prompts."
+          "text": "Store raw prompts in a restricted table and hash only direct identifiers such as customer IDs.",
+          "explanation": "Incorrect as the best balance. Free-text prompts can contain names, addresses, or health details that hashing one field does not remove. Example: a user may type a full address directly into the question."
         },
         {
           "id": "C",
-          "text": "Log only aggregate success counts and no request/response context at all.",
-          "explanation": "Incorrect. This may be too little for debugging quality or failures. Example: you cannot inspect why a specific request failed."
+          "text": "Log trace metadata and errors but never retain any request or response content.",
+          "explanation": "Incorrect as a universal design. This maximizes privacy but can make semantic failures impossible to diagnose. Example: an argument-selection bug may require a redacted view of the original request."
         },
         {
           "id": "D",
-          "text": "Move sensitive values into vector metadata because metadata is not part of the answer text.",
-          "explanation": "Incorrect. Metadata can still be stored, queried, and exposed to systems with access. Example: putting SSNs in metadata is still storing sensitive data."
+          "text": "Sample a small percentage of raw prompts and use very short retention without masking.",
+          "explanation": "Incorrect. Sampling and short retention reduce exposure volume but do not protect the sensitive records that are captured. Example: one sampled medical prompt can still create a privacy incident."
         }
       ],
       "correct_answers": [
@@ -12730,7 +12730,7 @@ window.QUESTION_BANK = {
       "id": "V49_011",
       "source": "v4.9 full quality review",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "context precision",
         "context recall",
@@ -12740,23 +12740,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "The retriever often finds the needed information but returns too much irrelevant context; tune ranking, filters, top-K, or reranking.",
-          "explanation": "Correct. High recall means relevant chunks are present; low precision means noisy chunks are also included or ranked too high. Example: The right policy appears in top 10, but seven unrelated policies are passed to the prompt."
+          "text": "The retriever usually includes the answer-bearing evidence but also returns too much irrelevant context; tune ranking, filters, top-k, or reranking.",
+          "explanation": "Correct. High recall means needed evidence is present, while low precision means noise is also present. Example: reduce irrelevant regional policies through metadata filters or reranking."
         },
         {
           "id": "B",
-          "text": "The retriever misses the needed information entirely; add more source documents before changing ranking.",
-          "explanation": "Incorrect. Missing the needed information entirely would be low recall, not high recall. Example: if the correct policy never appears in top-k, then adding/cleaning sources or query expansion may be the first step."
+          "text": "The retriever is missing the answer-bearing evidence; increase the corpus and candidate count before changing ranking.",
+          "explanation": "Incorrect. Missing evidence is associated with low recall, not high recall. Example: adding more candidates can worsen precision when the needed passage is already retrieved."
         },
         {
           "id": "C",
-          "text": "The LLM is too slow; reduce max output tokens first.",
-          "explanation": "Incorrect. Latency tuning does not address irrelevant retrieved chunks. Example: reducing max output tokens may make the answer faster but still grounded in noisy context."
+          "text": "The generator is failing to use good context; tune the prompt before modifying retrieval.",
+          "explanation": "Incorrect as the first diagnosis from these metrics. Generator behavior may also need evaluation, but low context precision directly identifies retriever noise. Example: first inspect why irrelevant chunks rank in the prompt."
         },
         {
           "id": "D",
-          "text": "The answer is toxic; add a profanity filter before touching retrieval.",
-          "explanation": "Incorrect. Toxicity filtering is a safety control, not a retrieval precision fix. Example: a profanity filter will not remove irrelevant policy chunks from the prompt."
+          "text": "The retriever is too restrictive; increase top-k so more context is passed to the model.",
+          "explanation": "Incorrect. Increasing top-k generally adds more irrelevant chunks and can further reduce precision. Example: passing 20 chunks instead of 5 may bury the useful evidence."
         }
       ],
       "correct_answers": [
@@ -12792,18 +12792,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Fine-tune the LLM every day and remove retrieval.",
-          "explanation": "Incorrect. Daily fine-tuning is expensive and still weak for exact citations/freshness. Example: the model may recall yesterday’s wording or invent a paragraph reference."
+          "text": "Store the complete current policy text in a versioned prompt and update the prompt daily.",
+          "explanation": "Incorrect as the strongest design. Prompt versioning helps instructions, but a growing policy corpus is difficult to fit, search, and cite accurately. Example: retrieval can select the exact current paragraph instead."
         },
         {
           "id": "C",
-          "text": "Use a static prompt containing last quarter’s policies.",
-          "explanation": "Incorrect. Static prompts become stale and may exceed context limits. Example: today’s policy update would not be included."
+          "text": "Fine-tune the model on each daily policy snapshot and generate citations from memorized document identifiers.",
+          "explanation": "Incorrect. Daily training is costly and facts can remain stale; generated citations may not correspond to exact evidence. Example: retrieval gives direct lineage to the current chunk."
         },
         {
           "id": "D",
-          "text": "Use only a classifier that returns the policy category.",
-          "explanation": "Incorrect. A category label is not a cited answer. Example: returning “Travel Policy” does not explain the current reimbursement rule."
+          "text": "Use RAG but refresh the index weekly and rely on prompt instructions to prefer newer policy language.",
+          "explanation": "Incorrect. The refresh cadence does not meet daily updates, and the model cannot use a document not yet indexed. Example: a policy changed today remains unavailable until the weekly sync."
         }
       ],
       "correct_answers": [
@@ -12822,7 +12822,7 @@ window.QUESTION_BANK = {
       "id": "V49_013",
       "source": "v4.9 full quality review",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "traffic split",
         "aliases",
@@ -12832,23 +12832,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Serve champion and challenger through a controlled serving/deployment configuration with explicit traffic split and monitored metrics.",
-          "explanation": "Correct. Traffic splitting supports canary/A-B testing and rollback. Example: route 10% to challenger, monitor latency/quality/errors, then move back to 100% champion if needed."
+          "text": "Use a controlled deployment with an explicit 90/10 traffic split, version tags, monitored metrics, and a rollback path.",
+          "explanation": "Correct. Centralized routing and version attribution support a measurable canary and fast rollback. Example: shift the challenger back to zero traffic if quality or latency breaches thresholds."
         },
         {
           "id": "B",
-          "text": "Replace champion with challenger for all users immediately and compare complaints afterward.",
-          "explanation": "Incorrect. This is a risky big-bang deployment with no controlled exposure. Example: all users see a bad challenger before you detect problems."
+          "text": "Mirror a sample of production requests to the challenger without returning challenger responses to users.",
+          "explanation": "Incorrect for the stated live-traffic comparison. Shadow testing is useful for safety and offline comparison, but it does not measure user-facing behavior on 10% of requests. Example: downstream user feedback is unavailable for shadow responses."
         },
         {
           "id": "C",
-          "text": "Create two unrelated endpoints and ask users to manually choose the challenger URL.",
-          "explanation": "Incorrect. Manual user selection is not a reliable traffic split and makes comparison biased. Example: only power users may choose the challenger."
+          "text": "Complete offline evaluation, move the production alias to the challenger for all traffic, and roll back if needed.",
+          "explanation": "Incorrect. Alias rollback is useful, but an all-at-once switch does not satisfy the requested 10% canary. Example: a hidden production issue would affect every user immediately."
         },
         {
           "id": "D",
-          "text": "Rename the model artifact file without changing serving configuration.",
-          "explanation": "Incorrect. File renaming does not implement traffic routing or rollback. Example: the endpoint may continue serving the old configured version."
+          "text": "Randomize prompt or model selection in the client application without centrally recording the served version.",
+          "explanation": "Incorrect. Client-side randomization weakens auditability and makes metrics difficult to attribute. Example: the server cannot reliably separate champion and challenger outcomes."
         }
       ],
       "correct_answers": [
@@ -12869,7 +12869,7 @@ window.QUESTION_BANK = {
       "id": "V49_014",
       "source": "v4.9 full quality review",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "data licensing",
         "RAG corpus",
@@ -12879,23 +12879,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Verify license/usage terms and document whether the content can be used for indexing, retrieval, and generated answers.",
-          "explanation": "Correct. Legal rights must be checked before incorporating third-party content into a GenAI system. Example: Some docs may allow reading but not redistribution or derivative use in generated answers."
+          "text": "Verify the license and usage terms for indexing, retrieval, quotation, and generated answers before adding the content.",
+          "explanation": "Correct. Third-party content rights must be understood before it enters the public RAG workflow. Example: a license may allow internal search but prohibit public redistribution of excerpts."
         },
         {
           "id": "B",
-          "text": "Index everything because RAG does not train the model and therefore has no legal risk.",
-          "explanation": "Incorrect. RAG still uses and may surface third-party content, so licensing and usage rights matter. Example: a generated answer might quote restricted documentation even if the model was not fine-tuned."
+          "text": "Index the content in a private staging environment first and review the license before public launch.",
+          "explanation": "Incorrect as the safest first step. Staging reduces exposure, but ingesting content can itself violate restrictions or internal policy. Example: license review should precede copying the corpus."
         },
         {
           "id": "C",
-          "text": "Remove source URLs so users cannot tell which third-party docs were used.",
-          "explanation": "Incorrect. Removing source URLs reduces transparency and auditability; it does not create legal rights. Example: hiding citations can make it harder to prove which licensed source supported an answer."
+          "text": "Provide citations and source links for every answer and treat attribution as permission to use the content.",
+          "explanation": "Incorrect. Attribution does not replace a valid license or permission. Example: a source can require payment or prohibit automated reuse even when credited."
         },
         {
           "id": "D",
-          "text": "Fine-tune on the content instead of retrieving it because fine-tuning hides the source.",
-          "explanation": "Incorrect. Fine-tuning can increase legal and memorization risk because source text may be embedded in model behavior without citations. Example: the model might reproduce restricted text from training data."
+          "text": "Limit the application to authenticated customers and assume restricted access resolves licensing concerns.",
+          "explanation": "Incorrect. Access restriction may affect risk, but it does not establish the right to index or generate from the material. Example: contractual terms can still prohibit internal automated processing."
         }
       ],
       "correct_answers": [
@@ -12914,7 +12914,7 @@ window.QUESTION_BANK = {
       "id": "V49_015",
       "source": "v4.9 full quality review",
       "section": "3. Application Development",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "model selection",
         "context window",
@@ -12924,23 +12924,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Reduce/compress retrieved context through better ranking or choose a larger-context model after evaluation",
-          "explanation": "Correct. The input is too large for the selected model, but grounded answers still require relevant evidence. Example: rerank and summarize chunks, or validate a 16k-context model."
+          "text": "Reduce or compress retrieved context through evaluated ranking and history management, or select a larger-context model after comparison.",
+          "explanation": "Correct. The prompt must fit while retaining answer-bearing evidence. Example: rerank candidates, keep fewer high-value chunks, summarize older turns, and verify groundedness."
         },
         {
           "id": "B",
-          "text": "Drop the retrieved context and let the model answer from memory",
-          "explanation": "Incorrect. That violates the grounded-answer requirement. Example: policy-specific answers may hallucinate without context."
+          "text": "Trim only the conversation history and keep all eight retrieved chunks unchanged.",
+          "explanation": "Incorrect. Removing 2,000 history tokens still leaves roughly 8,000 retrieval tokens for a 4,096-token model. Example: the request remains over the context limit before system and output tokens are counted."
         },
         {
           "id": "C",
-          "text": "Increase chunk overlap to preserve more context",
-          "explanation": "Incorrect. More overlap usually increases duplicate tokens and worsens context pressure. Example: the same paragraph appears in several chunks."
+          "text": "Summarize all retrieved chunks with another LLM and always pass the summary to the final model.",
+          "explanation": "Incorrect as an automatic fix. Compression can help, but an unvalidated summarizer can omit evidence or introduce errors. Example: compare summary-based compression with direct reranked chunks on a grounded evaluation set."
         },
         {
           "id": "D",
-          "text": "Use a smaller embedding model because embedding dimension controls prompt-token length",
-          "explanation": "Incorrect. Embedding dimension affects vector storage/search, not the number of text tokens in the LLM prompt. Example: 384-dim embeddings do not shrink 8,000 words of retrieved context."
+          "text": "Allow the serving client to truncate the prompt at the model limit.",
+          "explanation": "Incorrect. Blind truncation can remove the relevant evidence or instructions unpredictably. Example: the answer-bearing chunk may be at the end of the prompt."
         }
       ],
       "correct_answers": [
@@ -12979,18 +12979,18 @@ window.QUESTION_BANK = {
         },
         {
           "id": "B",
-          "text": "Point monitoring directly at opaque JSON strings and expect it to infer every nested metric.",
-          "explanation": "Incorrect. Opaque JSON makes metrics and drift/profile calculations difficult. Example: latency_ms must be a column to profile it easily."
+          "text": "Create the monitoring profile directly on raw nested JSON and define all needed fields only inside dashboard queries.",
+          "explanation": "Incorrect. Monitoring expects analyzable columns for metrics and slices rather than dashboard-only extraction. Example: latency and model name should be materialized consistently before profiling."
         },
         {
           "id": "C",
-          "text": "Delete inference logs after every run to avoid stale data.",
-          "explanation": "Incorrect. Deleting logs removes the history needed for monitoring. Example: you cannot analyze latency trends if logs are gone."
+          "text": "Extract request metadata such as latency and model name but leave the answer and prompt fields as opaque nested payloads.",
+          "explanation": "Incorrect for the stated monitoring needs. Some operational metrics become available, but answer-level quality and prompt-length analysis remain difficult. Example: scorers cannot easily consume the nested answer."
         },
         {
           "id": "D",
-          "text": "Use only model registry aliases as monitoring metrics.",
-          "explanation": "Incorrect. Aliases show lifecycle references, not request-level behavior. Example: champion does not contain prompt length or latency."
+          "text": "Create a view that exposes only daily aggregate counts and discard row-level inference records.",
+          "explanation": "Incorrect. Aggregates lose the per-request fields needed for distributions, slices, and quality analysis. Example: you cannot correlate a bad answer with its model version and latency."
         }
       ],
       "correct_answers": [
@@ -13011,7 +13011,7 @@ window.QUESTION_BANK = {
       "id": "V49_017",
       "source": "v4.9 full quality review",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "reranking",
         "top-k",
@@ -13104,7 +13104,7 @@ window.QUESTION_BANK = {
       "id": "V55_001",
       "source": "Generated practice",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "document parsing",
         "RAG quality",
@@ -13114,23 +13114,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Improve document parsing/extraction and validate table structure before changing the model.",
-          "explanation": "Correct. If tables are parsed incorrectly, the retriever and LLM receive corrupted evidence. Example: a revenue table with shifted columns should be fixed in preprocessing before benchmarking bigger models."
+          "text": "Improve document parsing and table extraction, then validate that rows, columns, and totals are represented correctly before changing the model.",
+          "explanation": "Correct. Corrupted table structure cannot be repaired reliably by a stronger generator. Example: verify that year and revenue values remain aligned after PDF extraction."
         },
         {
           "id": "B",
-          "text": "Switch immediately to the largest available frontier model while keeping the same extracted text.",
-          "explanation": "Incorrect. A stronger model cannot reliably reason over scrambled rows and columns. Example: if the extracted table says Q3 revenue belongs to the wrong department, a larger LLM still sees bad evidence."
+          "text": "Tune chunk size and retrieval ranking while keeping the current extracted table text.",
+          "explanation": "Incorrect as the first step. Retrieval tuning cannot recover row and column relationships already lost during parsing. Example: the correct chunk may still contain scrambled financial values."
         },
         {
           "id": "C",
-          "text": "Increase answer temperature to allow the model to infer missing table relationships.",
-          "explanation": "Incorrect. Higher temperature usually increases variability and does not repair bad source extraction. Example: a deterministic table lookup should not rely on creative inference."
+          "text": "Use a multimodal model on selected PDF pages without first benchmarking the current extraction failure.",
+          "explanation": "Incorrect as the immediate default. Vision may help, but the team should first identify and measure the parsing issue and compare solutions. Example: a specialized parser can be cheaper and more consistent for repeated tables."
         },
         {
           "id": "D",
-          "text": "Fine-tune the answer model on final answers before inspecting retrieval evidence.",
-          "explanation": "Incorrect. Fine-tuning answer style or behavior does not fix missing or malformed context. Example: a tuned model may sound more confident while still using broken PDF text."
+          "text": "Fine-tune the answer model on examples of correct totals while preserving the same parsed corpus.",
+          "explanation": "Incorrect. Fine-tuning can teach behavior but does not restore missing or misaligned source data. Example: the model may memorize training examples and still fail on a new table layout."
         }
       ],
       "correct_answers": [
@@ -13194,7 +13194,7 @@ window.QUESTION_BANK = {
       "id": "V55_003",
       "source": "Generated practice",
       "section": "1. Design Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "RAG",
         "fine-tuning",
@@ -13240,7 +13240,7 @@ window.QUESTION_BANK = {
       "id": "V55_004",
       "source": "Generated practice",
       "section": "3. Application Development",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "multi-stage reasoning",
         "ReAct",
@@ -13250,23 +13250,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use a ReAct-style agent loop with governed retrieval and action tools.",
-          "explanation": "Correct. ReAct-style patterns combine reasoning, tool action, observation, and follow-up reasoning. Example: after finding order status, the agent can decide whether to call the return API or ask for missing information."
+          "text": "Use a ReAct-style loop with governed lookup, retrieval, and action tools so observations can change the next step.",
+          "explanation": "Correct. The workflow requires sequential reasoning based on tool results. Example: a failed order lookup should stop the return action rather than continue a fixed sequence."
         },
         {
           "id": "B",
-          "text": "Generate a single final answer from the first user message without tool calls.",
-          "explanation": "Incorrect. The task requires external state and an action. Example: the agent cannot initiate a return without calling the relevant API."
+          "text": "Use a deterministic chain that always performs order lookup, policy lookup, and return creation in that order.",
+          "explanation": "Incorrect for the stated adaptive requirement. A fixed chain can work for simple cases but does not let the model revise the plan based on observations. Example: an ineligible order should not reach the return-creation step."
         },
         {
           "id": "C",
-          "text": "Precompute one static prompt containing every possible order and return policy.",
-          "explanation": "Incorrect. Orders and policies are dynamic and access-controlled. Example: pasting all orders into a prompt is not scalable or secure."
+          "text": "Use a planner that creates the full action sequence once, then execute it without replanning after tool responses.",
+          "explanation": "Incorrect. Upfront planning alone does not satisfy the need to react when intermediate results change the workflow. Example: the policy tool may reveal an exception requiring approval."
         },
         {
           "id": "D",
-          "text": "Run a batch summarization job after business hours and ask users to wait for results.",
-          "explanation": "Incorrect. The scenario needs interactive multi-step assistance. Example: a support workflow should not require a nightly batch before returning an RMA status."
+          "text": "Issue order lookup, policy lookup, and return creation as parallel tool calls to minimize latency.",
+          "explanation": "Incorrect. The return action depends on outputs from the earlier steps. Example: the API call needs a verified order ID and eligibility decision."
         }
       ],
       "correct_answers": [
@@ -13286,7 +13286,7 @@ window.QUESTION_BANK = {
       "id": "V55_005",
       "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "MCP",
         "managed server",
@@ -13296,28 +13296,28 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use the managed MCP server for the Databricks-hosted capability where available.",
-          "explanation": "Correct. Managed MCP servers reduce maintenance and integrate with platform governance. Example: a managed connector for search avoids writing custom connection code."
+          "text": "Use the managed MCP server for the Databricks-hosted capability when one is available.",
+          "explanation": "Correct. Managed servers reduce custom infrastructure and inherit platform governance. Example: use the Databricks-managed AI Search MCP capability rather than wrapping it yourself."
         },
         {
           "id": "B",
-          "text": "Configure the external MCP server with its connection details and store the API key in a managed secret.",
-          "explanation": "Correct. External MCP servers are appropriate for third-party APIs, and secrets should not be hard-coded. Example: a SaaS search API key belongs in Databricks Secrets, not in agent code."
+          "text": "Configure the external MCP server for the SaaS API and reference its API key through a managed secret.",
+          "explanation": "Correct. External tools need explicit connection configuration and secure credential handling. Example: the key is stored outside prompts and source code."
         },
         {
           "id": "C",
-          "text": "Build a custom MCP server for every connector even when a managed server already exists.",
-          "explanation": "Incorrect. Custom MCP is useful for proprietary internal APIs, but it adds unnecessary maintenance when a managed connector exists. Example: rewriting a managed search connector wastes effort."
+          "text": "Use a custom MCP server for the SaaS API and also wrap the existing managed Databricks capability in the same server.",
+          "explanation": "Incorrect. A custom server may be justified for the SaaS API, but wrapping an available managed capability adds unnecessary maintenance. Example: custom code duplicates platform-provided authentication and discovery."
         },
         {
           "id": "D",
-          "text": "Put the SaaS API key in the prompt so the agent can decide when to use it.",
-          "explanation": "Incorrect. Prompts are not secure secret stores. Example: a user or trace viewer could expose the key if it is placed in plain text."
+          "text": "Configure both capabilities as external MCP servers so their deployment model is consistent.",
+          "explanation": "Incorrect. The Databricks-hosted capability should use its managed integration when available. Example: treating it as external can lose simplified governance and lifecycle management."
         },
         {
           "id": "E",
-          "text": "Cache all third-party results permanently in a Delta table to avoid using the external server.",
-          "explanation": "Incorrect. Caching may help some workloads, but it can violate freshness or licensing requirements. Example: a live pricing API should not be replaced with stale cached data without approval."
+          "text": "Place the SaaS key in an application environment variable without declaring a secret-backed resource.",
+          "explanation": "Incorrect. Environment variables are acceptable only when populated securely; hardcoded or unmanaged values weaken credential rotation and auditing. Example: declare a secret resource and inject the reference at runtime."
         }
       ],
       "correct_answers": [
@@ -13337,7 +13337,7 @@ window.QUESTION_BANK = {
       "id": "V55_006",
       "source": "Generated practice",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "AI Gateway",
         "credentials",
@@ -13347,23 +13347,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use AI Gateway / governed serving controls for provider credentials, rate limits, usage tracking, and guardrails.",
-          "explanation": "Correct. Centralizing these controls avoids scattering secrets and policy logic across apps. Example: rate-limit a costly model endpoint and track usage by app or user."
+          "text": "Use AI Gateway and governed serving controls for provider credentials, rate limits, usage tracking, and guardrails.",
+          "explanation": "Correct. The gateway centralizes controls that otherwise become fragmented across applications. Example: apply per-team rate limits and query usage records without exposing provider keys to app code."
         },
         {
           "id": "B",
-          "text": "Ask each application team to manage provider keys and retry logic independently.",
-          "explanation": "Incorrect. This fragments governance and makes cost/security enforcement inconsistent. Example: one app may forget to rotate keys or apply rate limits."
+          "text": "Use separate Model Serving endpoints and manage credentials and quotas independently on each endpoint.",
+          "explanation": "Incorrect as the best fit. This can work operationally, but it does not provide the requested centralized multi-provider control plane. Example: policies and usage attribution must be duplicated across endpoints."
         },
         {
           "id": "C",
-          "text": "Store model provider keys inside the browser application so calls can be made directly.",
-          "explanation": "Incorrect. Frontend secrets are exposed to users. Example: a personal access token embedded in JavaScript can be copied from developer tools."
+          "text": "Store provider credentials in Databricks Secrets and implement rate limiting and audit logging separately in each application.",
+          "explanation": "Incorrect as the strongest architecture. Secret storage is good, but application-specific controls create inconsistent enforcement and reporting. Example: one team may omit a quota or log different attribution fields."
         },
         {
           "id": "D",
-          "text": "Rely on the LLM to self-limit cost when the prompt asks it to be economical.",
-          "explanation": "Incorrect. Cost control should be enforced outside the model. Example: a prompt cannot guarantee request throttling or per-user quotas."
+          "text": "Use the AI Gateway usage table for reporting, while applications call providers directly with their own credentials.",
+          "explanation": "Incorrect. Usage reporting alone does not centralize credential handling, routing, or rate-limit enforcement. Example: direct calls can bypass the gateway controls entirely."
         }
       ],
       "correct_answers": [
@@ -13383,7 +13383,7 @@ window.QUESTION_BANK = {
       "id": "V55_007",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "MLflow tracing",
         "debugging",
@@ -13393,23 +13393,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "A trace showing the tool-call span, generated arguments, tool response/error, timing, and surrounding prompts.",
-          "explanation": "Correct. The failure is inside the agent execution path, so span-level traces expose the chosen tool and arguments. Example: the trace shows the agent called create_ticket(priority='low') when the policy required priority='urgent'."
+          "text": "Inspect a trace containing the tool-call span, generated arguments, tool result or error, timing, and surrounding model context.",
+          "explanation": "Correct. Span-level evidence shows exactly how the model formed the failing call. Example: the trace reveals an incorrect customer_id or enum value passed to the API."
         },
         {
           "id": "B",
-          "text": "A monthly aggregate answer-correctness score with no per-run details.",
-          "explanation": "Incorrect. Aggregate scores reveal quality trends but not the exact failing argument. Example: 82% correctness does not show which tool call passed the wrong account_id."
+          "text": "Inspect structured application logs that record the tool name and final error but omit the generated arguments and parent spans.",
+          "explanation": "Incorrect as the most useful evidence. Logs can confirm that a tool failed, but they may not show why the model produced the bad input. Example: the API error alone does not reveal the preceding prompt and argument-generation step."
         },
         {
           "id": "C",
-          "text": "A GPU utilization chart for the serving endpoint.",
-          "explanation": "Incorrect. GPU metrics help capacity tuning, not semantic tool-debugging. Example: low GPU utilization does not explain why a CRM API received the wrong field."
+          "text": "Replay the user prompt in AI Playground and compare whether the tool succeeds in a new run.",
+          "explanation": "Incorrect for root-cause analysis of the original failure. Reproduction is useful, but a new run can choose different arguments and lacks the exact production state. Example: nondeterminism can make the bug disappear."
         },
         {
           "id": "D",
-          "text": "A static code coverage report for the Python package.",
-          "explanation": "Incorrect. Coverage helps testing code paths, but it does not show the live LLM decision and generated arguments. Example: a function can be covered by tests while an agent still supplies bad runtime input."
+          "text": "Measure tool-call success rate across an evaluation dataset.",
+          "explanation": "Incorrect for debugging one failure. Aggregate metrics identify prevalence, not the precise argument path of the failed run. Example: a 5% failure rate does not identify which field was malformed."
         }
       ],
       "correct_answers": [
@@ -13429,7 +13429,7 @@ window.QUESTION_BANK = {
       "id": "V55_008",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "guidelines judge",
         "custom scorer",
@@ -13439,23 +13439,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "A guidelines judge or custom scorer that checks the prohibited-name policy on sampled production traces.",
-          "explanation": "Correct. The requirement is a business-specific output policy, so a rule/check should be evaluated directly. Example: fail any answer containing 'RM_INTERNAL_V7'."
+          "text": "Run a guidelines judge or custom scorer for the prohibited-name rule on release evaluations and sampled production traces.",
+          "explanation": "Correct. The company-specific policy needs a dedicated, repeatable check. Example: fail responses containing internal model identifiers while allowing ordinary risk terminology."
         },
         {
           "id": "B",
-          "text": "A larger embedding model for the retrieval index.",
-          "explanation": "Incorrect. Embedding quality helps retrieve better context, but it does not directly enforce a response-style rule. Example: even perfect retrieval can still let the final answer mention a forbidden internal name."
+          "text": "Add the prohibition to the system prompt and verify a small set of examples manually before release.",
+          "explanation": "Incorrect as the complete solution. Prompt instructions and spot checks help, but they do not provide continuous measurement in production. Example: a later prompt or model version can regress."
         },
         {
           "id": "C",
-          "text": "A cost dashboard based on tokens per request.",
-          "explanation": "Incorrect. Token cost monitoring is useful operationally, but it does not test policy compliance. Example: a cheap answer can still reveal an internal system name."
+          "text": "Apply a regex postprocessor that removes known names from the final text, without adding an evaluation metric.",
+          "explanation": "Incorrect for the monitoring requirement. Postprocessing may enforce a narrow blocklist, but it does not measure missed variants, false positives, or upstream behavior. Example: aliases and newly introduced names may bypass the list."
         },
         {
           "id": "D",
-          "text": "A generic BLEU score against one approved answer.",
-          "explanation": "Incorrect. BLEU is brittle for policy compliance and wording variation. Example: an answer can match a reference closely while still including one forbidden identifier."
+          "text": "Use the built-in safety judge as the production gate.",
+          "explanation": "Incorrect. General safety judges are not designed to recognize the organization's proprietary naming rule. Example: mentioning an internal identifier may be compliant with generic safety but still violate policy."
         }
       ],
       "correct_answers": [
@@ -13611,7 +13611,7 @@ window.QUESTION_BANK = {
       "id": "V55_012",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "production monitoring",
         "SME feedback",
@@ -13621,23 +13621,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Collect SME feedback on representative traces and use it to refine the judge/scorer criteria or evaluation dataset.",
-          "explanation": "Correct. Expert feedback helps align automated judges with domain-specific standards. Example: a medical abbreviation that looks risky to a generic judge may be acceptable in a clinician workflow."
+          "text": "Collect SME labels on representative traces and refine the judge rubric, examples, thresholds, or evaluation dataset from that evidence.",
+          "explanation": "Correct. Expert calibration aligns automated evaluation with domain-specific meaning. Example: update the rubric so accepted clinical terminology is distinguished from genuinely unsafe advice."
         },
         {
           "id": "B",
-          "text": "Disable all quality monitoring because the judge produced false positives.",
-          "explanation": "Incorrect. False positives mean the judge needs calibration, not that monitoring should disappear. Example: stopgap review may be needed while criteria are improved."
+          "text": "Raise the judge threshold until its aggregate pass rate approximately matches the experts' pass rate.",
+          "explanation": "Incorrect. Matching aggregate rates does not ensure agreement on the same examples. Example: the judge and experts can each pass 90% while disagreeing on many individual responses."
         },
         {
           "id": "C",
-          "text": "Replace the application model before inspecting the judge errors.",
-          "explanation": "Incorrect. The issue may be the evaluator, not the application model. Example: if experts agree the output is fine, changing the generator does not fix judge miscalibration."
+          "text": "Replace the judge with a larger model before clarifying the rubric and reviewing disagreements.",
+          "explanation": "Incorrect. A stronger model cannot compensate for ambiguous criteria or a poor reference set. Example: two capable judges may interpret 'unsafe' differently without domain guidance."
         },
         {
           "id": "D",
-          "text": "Rely on token usage trends to decide whether the answers are safe.",
-          "explanation": "Incorrect. Token volume does not measure safety or domain acceptability. Example: a short answer can still contain unsafe instructions."
+          "text": "Keep the generic judge unchanged and allow experts to override flags only after deployment.",
+          "explanation": "Incorrect as the best next step. Overrides address individual cases but do not improve the evaluator used for releases and monitoring. Example: the same false-positive pattern will recur continuously."
         }
       ],
       "correct_answers": [
@@ -13746,34 +13746,34 @@ window.QUESTION_BANK = {
       "id": "V55_015",
       "source": "Generated practice",
       "section": "1. Design Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "multi-agent supervisor",
         "Genie",
         "RAG",
         "routing"
       ],
-      "question": "A retail assistant must answer book-policy questions from PDFs and sales-trend questions from structured Delta tables. The team wants one user interface but separate specialized capabilities. Which design is strongest?",
+      "question": "A retail assistant must answer policy questions from PDFs and sales-trend questions from governed Delta tables. The capabilities have separate owners, permission models, and evaluation suites, but users need one conversational endpoint. Which design is strongest?",
       "options": [
         {
           "id": "A",
-          "text": "Use a supervisor/router that delegates document questions to a knowledge/retrieval agent and structured analytics questions to a Genie/data agent.",
-          "explanation": "Correct. The use case combines unstructured document Q&A and structured analytics, so routing to specialized agents/tools is appropriate. Example: policy questions use retrieved documents; sales-trend questions use governed table analytics."
+          "text": "Use a supervisor/router that delegates document questions to a knowledge agent and analytics questions to a governed Genie or data agent.",
+          "explanation": "Correct. The supervisor provides one interface while preserving specialized ownership, permissions, and evaluation. Example: the user sees one chat, but each subagent accesses only its governed resources."
         },
         {
           "id": "B",
-          "text": "Put all PDFs and all tables into one prompt and ask the model to infer everything without tools.",
-          "explanation": "Incorrect. This is not scalable, secure, or reliable. Example: a sales-trend query needs current table access, not a stale prompt dump."
+          "text": "Use one general tool-calling agent with both capabilities and a single shared permission model.",
+          "explanation": "Incorrect for the stated separation requirements. A single agent can be simpler, but it weakens independent permissions and evaluation boundaries. Example: document access and sales-table access may belong to different user groups."
         },
         {
           "id": "C",
-          "text": "Create a vector index over table screenshots and use it for all questions.",
-          "explanation": "Incorrect. Screenshots are a poor substitute for governed structured query. Example: a trend calculation should query the sales table, not approximate from an image."
+          "text": "Load extracted PDF text into Delta tables and route every question through the structured analytics capability.",
+          "explanation": "Incorrect. Converting text to a table does not make document-grounded retrieval equivalent to governed analytics. Example: nuanced policy passages still need semantic retrieval and citations."
         },
         {
           "id": "D",
-          "text": "Force users to choose between separate apps before asking any question.",
-          "explanation": "Incorrect. Separate apps may work, but the requirement asks for one user interface with routed capabilities. Example: a supervisor can route behind the scenes while preserving a unified experience."
+          "text": "Precompute sales summaries into documents and answer every question through the knowledge agent.",
+          "explanation": "Incorrect. This creates stale analytics and cannot reliably support ad hoc calculations. Example: a user requesting a new regional breakdown needs live governed computation."
         }
       ],
       "correct_answers": [
@@ -13838,7 +13838,7 @@ window.QUESTION_BANK = {
       "id": "V55_017",
       "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "provisioned throughput",
         "Foundation Model APIs",
@@ -13848,23 +13848,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Provisioned throughput or a capacity option that provides performance guarantees for the serving workload.",
-          "explanation": "Correct. Predictable high-volume production workloads may need guaranteed capacity rather than opportunistic pay-per-token behavior. Example: a support chatbot with known 9am traffic spikes can reserve capacity to protect latency."
+          "text": "Use provisioned throughput or another capacity option that provides predictable serving performance for the peak workload.",
+          "explanation": "Correct. Reserved or guaranteed capacity is appropriate when known peaks and latency SLAs make opportunistic limits unacceptable. Example: size capacity from measured peak tokens per second and concurrency."
         },
         {
           "id": "B",
-          "text": "Use the same pay-per-token setup and rely on users retrying failed requests.",
-          "explanation": "Incorrect. User retries can worsen peak load and violate SLAs. Example: rate-limit errors during peak support hours create a bad customer experience."
+          "text": "Keep pay-per-token serving and add exponential backoff and higher client retry limits.",
+          "explanation": "Incorrect for a strict SLA. Retries can handle transient errors but do not create capacity and can amplify peak traffic. Example: many clients retrying after rate limits increase queueing."
         },
         {
           "id": "C",
-          "text": "Move the whole app to batch inference even though users need interactive chat.",
-          "explanation": "Incorrect. Batch inference is appropriate for offline workloads, not interactive low-latency conversations. Example: nightly summarization can be batch; live support chat cannot."
+          "text": "Deploy several identical pay-per-token endpoints and distribute requests across them from the application.",
+          "explanation": "Incorrect as the preferred solution. This adds routing complexity and may not provide a supported capacity guarantee. Example: all endpoints can encounter the same provider-level limits."
         },
         {
           "id": "D",
-          "text": "Reduce evaluation frequency and assume serving capacity will improve.",
-          "explanation": "Incorrect. Evaluation frequency does not allocate serving capacity. Example: fewer quality checks do not remove endpoint rate limits."
+          "text": "Shorten prompts and outputs to reduce average latency while keeping the same serving capacity.",
+          "explanation": "Incorrect as the complete answer. Token optimization is useful, but it does not eliminate rate-limit risk during predictable peaks. Example: concurrency can exceed capacity even with shorter prompts."
         }
       ],
       "correct_answers": [
@@ -13926,7 +13926,7 @@ window.QUESTION_BANK = {
       "id": "V55_019",
       "source": "Generated practice",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "chunking",
         "hierarchical documents",
@@ -13936,23 +13936,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use structure-aware chunks based on sections/tables, preserve metadata such as product, chapter, and warning type, then evaluate retrieval quality.",
-          "explanation": "Correct. Structure-aware chunking keeps meaningful context while metadata supports filtering and citations. Example: keep a troubleshooting table together and tag it with model number and chapter."
+          "text": "Use structure-aware chunks for sections and tables, retain useful metadata, and select sizes through retrieval evaluation.",
+          "explanation": "Correct. The design preserves document meaning while supporting filters and both broad and precise queries. Example: keep a troubleshooting table intact and tag it with model and chapter."
         },
         {
           "id": "B",
-          "text": "Split every document into fixed 50-token chunks with no metadata for maximum granularity.",
-          "explanation": "Incorrect. Tiny chunks can lose context and make retrieval noisy. Example: a warning sentence without the table header may be misleading."
+          "text": "Use fixed-token chunks with overlap and preserve document metadata for every chunk.",
+          "explanation": "Incorrect as the strongest option. This is a reasonable baseline, but it can split warnings and tables at arbitrary boundaries. Example: an error code can be separated from its remedy row."
         },
         {
           "id": "C",
-          "text": "Create one embedding for each full manual regardless of length.",
-          "explanation": "Incorrect. Full-manual chunks are often too coarse and may exceed context limits. Example: retrieving an entire 300-page manual for one error code wastes context and hides the relevant passage."
+          "text": "Use section-aware text chunks but flatten tables into unstructured lines before indexing.",
+          "explanation": "Incorrect. Section boundaries help prose, but poor table serialization can still destroy row and column relationships. Example: a model number may become detached from the corresponding fix."
         },
         {
           "id": "D",
-          "text": "Remove tables before indexing because LLMs work best with prose.",
-          "explanation": "Incorrect. Troubleshooting tables may contain the exact answer. Example: an error-code table should be parsed and indexed, not discarded."
+          "text": "Use one document-level embedding per manual and retrieve relevant passages from the selected manual after generation.",
+          "explanation": "Incorrect. Document-level retrieval is too coarse, and passage selection should occur before generation. Example: a broad manual match can consume the context window without locating the precise warning."
         }
       ],
       "correct_answers": [
@@ -14017,7 +14017,7 @@ window.QUESTION_BANK = {
       "id": "V55_021",
       "source": "Generated practice",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "user permissions",
         "Databricks Apps",
@@ -14027,23 +14027,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use an authenticated Databricks App/backend to call the agent endpoint and enforce permissions from the authenticated context.",
-          "explanation": "Correct. The backend can keep credentials server-side and apply identity-aware access. Example: the browser sends a user request to the app backend, which calls the endpoint without exposing a PAT."
+          "text": "Use an authenticated Databricks App backend and propagate the appropriate user authorization context when accessing permissioned resources.",
+          "explanation": "Correct. The backend avoids exposing long-lived credentials and lets governed data access respect the requesting user. Example: Unity Catalog row or document permissions are evaluated for the employee identity."
         },
         {
           "id": "B",
-          "text": "Embed a personal access token in JavaScript so the browser can call the endpoint directly.",
-          "explanation": "Incorrect. Tokens in frontend code can be extracted by users. Example: anyone opening browser developer tools could copy the token."
+          "text": "Use the app service principal for every request and reproduce user-specific document permissions in application code.",
+          "explanation": "Incorrect as the strongest design. This duplicates governance logic and risks divergence from Unity Catalog policies. Example: a new group grant might not be reflected in custom code."
         },
         {
           "id": "C",
-          "text": "Publish the endpoint anonymously and rely on the model to refuse unauthorized questions.",
-          "explanation": "Incorrect. Authorization must be enforced before data is retrieved or served. Example: a prompt refusal is not a substitute for access control."
+          "text": "Use one broadly privileged service principal for data access and add the employee identity only as a trace tag.",
+          "explanation": "Incorrect. Trace attribution does not constrain what data the service principal can retrieve. Example: the model can still receive documents the employee is not allowed to view."
         },
         {
           "id": "D",
-          "text": "Copy all internal documents to a public bucket so the agent can retrieve them without authentication.",
-          "explanation": "Incorrect. This breaks the permission requirement. Example: confidential HR documents should not become public to simplify retrieval."
+          "text": "Let the browser call the agent endpoint directly with a reusable shared token stored in local storage.",
+          "explanation": "Incorrect. Shared client-side credentials can be extracted and do not preserve per-user authorization. Example: any browser user could copy the token and bypass the app."
         }
       ],
       "correct_answers": [
@@ -14108,7 +14108,7 @@ window.QUESTION_BANK = {
       "id": "V55_023",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "retrieval metrics",
         "NDCG",
@@ -14118,23 +14118,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Add or tune reranking and evaluate top-k ordering metrics such as NDCG/context precision.",
-          "explanation": "Correct. The problem is ranking order, not complete absence of relevant documents. Example: if the best chunk is ranked sixth but only top three are sent to the LLM, reranking can move it into context."
+          "text": "Tune reranking and the final top-k cutoff, and compare ordering metrics such as NDCG or context precision.",
+          "explanation": "Correct. The needed chunks exist but rank too low, so ordering is the primary failure. Example: rerank a larger candidate set and measure whether answer-bearing chunks move into the prompt cutoff."
         },
         {
           "id": "B",
-          "text": "Increase answer temperature so the LLM explores lower-ranked documents.",
-          "explanation": "Incorrect. The LLM only sees the chunks included in the prompt. Example: a hidden sixth-ranked chunk cannot influence the answer if it is not passed as context."
+          "text": "Increase the candidate and final top-k values so more chunks are passed to the LLM without reranking.",
+          "explanation": "Incorrect as the first choice. This may include the useful chunk but also increases noise, latency, and prompt cost. Example: passing 30 chunks can bury evidence among irrelevant results."
         },
         {
           "id": "C",
-          "text": "Remove metadata filters because filters always reduce recall.",
-          "explanation": "Incorrect. Filters can be useful when chosen correctly; the stated issue is ordering among retrieved candidates. Example: product-year filters can improve relevance for exact product queries."
+          "text": "Replace the embedding model before measuring whether reranking fixes the current ordering.",
+          "explanation": "Incorrect. A new embedding model may help, but the current retriever already finds relevant candidates. Example: first optimize the stage that determines which candidates enter the prompt."
         },
         {
           "id": "D",
-          "text": "Fine-tune the final answer model before measuring retrieval ordering.",
-          "explanation": "Incorrect. If the right evidence is not in top-k context, the generator may not have the facts. Example: training answer style does not move the missing chunk into the prompt."
+          "text": "Fine-tune the final answer model to infer information from the chunks that remain below the cutoff.",
+          "explanation": "Incorrect. The generator cannot use evidence that is not included in its context. Example: training does not expose the omitted retrieved passage at runtime."
         }
       ],
       "correct_answers": [
@@ -14153,7 +14153,7 @@ window.QUESTION_BANK = {
       "id": "V55_024",
       "source": "Generated practice",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "masking",
         "guardrails",
@@ -14163,23 +14163,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Mask or redact sensitive fields before they reach the model/output while preserving non-sensitive fields needed for the task.",
-          "explanation": "Correct. Masking reduces exposure while keeping useful context. Example: pass order status and last four digits, not the full card number."
+          "text": "Apply governed masking or redaction before sensitive values reach the model, while retaining the non-sensitive order fields needed for the task.",
+          "explanation": "Correct. Data minimization preserves utility and prevents raw identifiers from entering prompts and outputs. Example: expose last four card digits and order status, not the full card number."
         },
         {
           "id": "B",
-          "text": "Remove all order records from retrieval because some fields are sensitive.",
-          "explanation": "Incorrect. This avoids the task entirely rather than controlling sensitive fields. Example: the assistant still needs shipping status to answer customers."
+          "text": "Pass raw order records to the model and mask sensitive values only in the final browser display.",
+          "explanation": "Incorrect. The model and logs have already processed the sensitive data before UI masking. Example: the model could mention the value in a summary or tool call."
         },
         {
           "id": "C",
-          "text": "Ask the model in the system prompt not to reveal PII while still passing full raw PII.",
-          "explanation": "Incorrect. Prompt instructions help but should not be the only control. Example: a jailbreak or model error could still expose raw values supplied in context."
+          "text": "Tokenize sensitive fields before the model call but include a reversible token map in the prompt for troubleshooting.",
+          "explanation": "Incorrect. Providing the map defeats tokenization because the model can reconstruct the original values. Example: the prompt should not contain both token and plaintext mapping."
         },
         {
           "id": "D",
-          "text": "Store PII in a vector index without metadata so it is harder to search directly.",
-          "explanation": "Incorrect. Obscurity is not governance. Example: embeddings or retrieved text can still surface sensitive content if not masked."
+          "text": "Rely on a system instruction that prohibits revealing PII while leaving the raw fields in context.",
+          "explanation": "Incorrect. Prompt instructions are not a reliable security boundary. Example: prompt injection or model error can still expose the number."
         }
       ],
       "correct_answers": [
@@ -14242,7 +14242,7 @@ window.QUESTION_BANK = {
       "id": "V55_026",
       "source": "Generated practice",
       "section": "3. Application Development",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "prompt chaining",
         "task decomposition",
@@ -14252,23 +14252,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use prompt chaining to split retrieval, exception extraction, comparison, and final drafting into separate evaluated steps.",
-          "explanation": "Correct. Breaking a complex task into stages can reduce cognitive load and make failures observable. Example: first retrieve policy, then extract exceptions, then decide applicability, then draft."
+          "text": "Use prompt chaining with explicit intermediate outputs for retrieval, exception extraction, scenario comparison, and final drafting, and evaluate each stage.",
+          "explanation": "Correct. Decomposition makes complex reasoning observable and testable. Example: validate extracted exceptions before they influence the final compliance response."
         },
         {
           "id": "B",
-          "text": "Use one larger prompt with all instructions repeated several times.",
-          "explanation": "Incorrect. More repeated instructions do not necessarily improve multi-step correctness. Example: the model may still skip the exception-comparison step."
+          "text": "Use one carefully structured prompt with sections, examples, and a larger context window.",
+          "explanation": "Incorrect as the most reliable design for the stated failure. Better prompting may help, but all reasoning remains coupled in one opaque step. Example: it is still difficult to know whether retrieval or exception comparison failed."
         },
         {
           "id": "C",
-          "text": "Remove intermediate checks so the final answer is generated faster.",
-          "explanation": "Incorrect. The problem is reliability, not primarily latency. Example: skipping extraction validation may make compliance errors harder to detect."
+          "text": "Use an agent loop with the same prompt and tools but do not define or validate intermediate schemas.",
+          "explanation": "Incorrect. Multiple iterations do not automatically create reliable decomposition. Example: the agent can repeatedly propagate a misread exception without a checked intermediate result."
         },
         {
           "id": "D",
-          "text": "Use a pure embedding similarity score as the final answer.",
-          "explanation": "Incorrect. Embedding similarity retrieves related text; it does not perform the reasoning and drafting steps. Example: a policy paragraph is not a user-ready compliance answer."
+          "text": "Fine-tune the model on final compliance answers without retaining the intermediate evidence and decisions.",
+          "explanation": "Incorrect. Final-answer tuning does not guarantee correct policy selection or exception handling. Example: the model may imitate style while reasoning from the wrong clause."
         }
       ],
       "correct_answers": [
@@ -14287,7 +14287,7 @@ window.QUESTION_BANK = {
       "id": "V55_027",
       "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "dependencies",
         "pyfunc",
@@ -14332,7 +14332,7 @@ window.QUESTION_BANK = {
       "id": "V55_028",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "A/B testing",
         "champion challenger",
@@ -14342,23 +14342,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Serve champion and challenger versions behind controlled traffic splits and monitor quality/latency/cost before promotion.",
-          "explanation": "Correct. Canary or A/B-style rollout limits risk while collecting live evidence. Example: send 10% of traffic to the challenger and compare groundedness, latency, and cost."
+          "text": "Route a controlled slice of traffic to champion and challenger prompt versions, log the served version, and compare quality, latency, and cost before promotion.",
+          "explanation": "Correct. Versioned traffic and attribution enable a safe live comparison. Example: promote the challenger only if production scorers and operational metrics meet thresholds."
         },
         {
           "id": "B",
-          "text": "Replace production fully because offline correctness improved.",
-          "explanation": "Incorrect. Offline gains may not hold under production traffic. Example: live prompts may be longer, more diverse, or permission-dependent."
+          "text": "Shadow the challenger on copied production requests without returning its responses to users.",
+          "explanation": "Incorrect for the requested live slice. Shadowing is a useful preliminary step but does not measure user-facing outcomes or downstream interactions. Example: it can compare scorer results but not actual user feedback."
         },
         {
           "id": "C",
-          "text": "Keep both prompts in the same endpoint but choose randomly in the browser without logging version IDs.",
-          "explanation": "Incorrect. Without version attribution, results cannot be compared reliably. Example: a bad answer must be linked to the exact prompt version."
+          "text": "Move the production alias to the new prompt for all traffic and rely on alias rollback if metrics decline.",
+          "explanation": "Incorrect. Rollback is valuable, but the all-at-once switch does not provide a small controlled comparison. Example: a production-only defect affects every request immediately."
         },
         {
           "id": "D",
-          "text": "Evaluate only token cost and ignore correctness during rollout.",
-          "explanation": "Incorrect. Cost is important, but prompt changes can affect answer quality and safety. Example: a cheaper prompt that omits citations may fail requirements."
+          "text": "Randomly select prompt versions inside the client without recording version metadata in traces.",
+          "explanation": "Incorrect. Unattributed randomization prevents trustworthy comparison and auditing. Example: quality scores cannot be grouped by the prompt actually served."
         }
       ],
       "correct_answers": [
@@ -14423,7 +14423,7 @@ window.QUESTION_BANK = {
       "id": "V55_030",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "custom scorer",
         "business rules",
@@ -14433,23 +14433,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "A custom scorer or guidelines judge that explicitly checks the emergency-escalation rule.",
-          "explanation": "Correct. Relevance and groundedness do not guarantee compliance with domain-specific safety policy. Example: if chest pain plus shortness of breath appears, the scorer checks that the response advises urgent/emergency care."
+          "text": "Add a custom scorer or guidelines judge that explicitly tests the emergency-escalation requirement on representative cases.",
+          "explanation": "Correct. The requirement is business- and domain-specific, so it needs a dedicated criterion. Example: evaluate urgent, borderline, and routine symptoms to measure both misses and over-escalation."
         },
         {
           "id": "B",
-          "text": "A higher context precision score as the only acceptance gate.",
-          "explanation": "Incorrect. Good context ranking does not prove the final answer follows the escalation rule. Example: the right triage policy may be retrieved but ignored in the response."
+          "text": "Add a deterministic postprocessor that inserts an emergency-care sentence whenever selected symptom keywords appear.",
+          "explanation": "Incorrect as the evaluation answer. A postprocessor may enforce a narrow rule, but it can create false positives and does not measure system compliance. Example: keywords can appear in a negated or historical context."
         },
         {
           "id": "C",
-          "text": "A BLEU score against one generic emergency response.",
-          "explanation": "Incorrect. The assistant may phrase a safe escalation many ways, and BLEU may miss policy compliance. Example: 'call emergency services now' and 'seek immediate emergency care' may both be acceptable."
+          "text": "Use groundedness against retrieved medical guidance as the sole acceptance criterion.",
+          "explanation": "Incorrect. A response can be fully grounded yet omit the mandated action. Example: it may accurately describe urgent symptoms without recommending emergency care."
         },
         {
           "id": "D",
-          "text": "A GPU memory alert for the serving endpoint.",
-          "explanation": "Incorrect. GPU memory is operational telemetry, not a safety-policy metric. Example: enough GPU RAM does not guarantee urgent cases are escalated."
+          "text": "Send all urgent-case responses for manual review after production deployment.",
+          "explanation": "Incorrect as the primary evaluation strategy. Human oversight can supplement testing, but release-time and continuous automated checks are still needed. Example: users need immediate responses, so retrospective review cannot prevent every failure."
         }
       ],
       "correct_answers": [
@@ -14468,7 +14468,7 @@ window.QUESTION_BANK = {
       "id": "V55_031",
       "source": "Generated practice",
       "section": "1. Design Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "model cards",
         "Hugging Face",
@@ -14478,23 +14478,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Review model cards/training-data descriptions, license constraints, context length, and relevant domain benchmarks, then validate on a medical-summary evaluation set.",
-          "explanation": "Correct. Model selection should use metadata plus task-specific evaluation. Example: a model with medical-domain training still needs validation on the team's guideline summaries."
+          "text": "Review model cards and training information, license, context limits, and relevant benchmarks, then validate candidates on a representative medical-summary set.",
+          "explanation": "Correct. Selection must combine eligibility constraints with task-specific evidence. Example: a model with a strong generic score may fail long clinical documents or have an incompatible license."
         },
         {
           "id": "B",
-          "text": "Pick the model with the most downloads because popularity proves domain reliability.",
-          "explanation": "Incorrect. Downloads can reflect popularity, not suitability. Example: a general chat model may be popular but weak on medical abbreviations or licensing requirements."
+          "text": "Choose the model with the strongest published medical benchmark and proceed without reviewing license or context requirements.",
+          "explanation": "Incorrect. Domain scores are useful but do not guarantee deployability or fit for the actual documents. Example: a benchmark model may have a context window shorter than the guidelines."
         },
         {
           "id": "C",
-          "text": "Pick the newest uploaded model because recency guarantees best performance.",
-          "explanation": "Incorrect. Newer does not mean better for the target task or safe for the license. Example: a new model may lack a usable commercial license or medical evaluation."
+          "text": "Choose the strongest general-purpose leaderboard model and plan to fine-tune it if domain quality is insufficient.",
+          "explanation": "Incorrect as the initial selection process. Generic rankings do not replace model-card review and representative evaluation. Example: the model may be restricted for the intended commercial use."
         },
         {
           "id": "D",
-          "text": "Choose any model family known for strong general chat and skip domain validation.",
-          "explanation": "Incorrect. General capability does not guarantee medical-document performance. Example: a strong chat model can still miss clinical terminology or hallucinate citations."
+          "text": "Choose the newest model whose card mentions medical data and run only a few manual examples.",
+          "explanation": "Incorrect. Recency and a broad data claim do not establish reliability. Example: the training mix, safety behavior, and summarization accuracy still need systematic validation."
         }
       ],
       "correct_answers": [
@@ -14558,33 +14558,33 @@ window.QUESTION_BANK = {
       "id": "V55_033",
       "source": "Generated practice",
       "section": "3. Application Development",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "guardrails",
         "prompt injection",
         "tool permissions"
       ],
-      "question": "A user asks an agent to ignore previous instructions and call a tool that deletes customer records. The tool exists for admins, but normal support users should not trigger it. Which design is strongest?",
+      "question": "A support agent has lookup tools and an admin-only customer-record deletion tool. A normal user attempts prompt injection to trigger deletion. Which control design is strongest?",
       "options": [
         {
           "id": "A",
-          "text": "Enforce tool permissions and allowed actions outside the prompt, and validate tool arguments before execution.",
-          "explanation": "Correct. Tool governance must not rely solely on the model following instructions. Example: the runtime blocks delete_customer unless the authenticated user and use case allow it."
+          "text": "Enforce role-based tool authorization and action allowlists outside the prompt, and validate deletion arguments and policy conditions before execution.",
+          "explanation": "Correct. External authorization and deterministic validation prevent the model from elevating user privileges. Example: the deletion tool rejects calls unless the authenticated identity has the admin role and all required approvals."
         },
         {
           "id": "B",
-          "text": "Add a system prompt saying the model should not call dangerous tools.",
-          "explanation": "Incorrect as a standalone control. Prompt instructions help, but a prompt-injection attempt may still influence tool selection. Example: an allowlist in code is stronger than asking politely."
+          "text": "Add prompt-injection defenses and a system instruction that normal users must not call the deletion tool.",
+          "explanation": "Incorrect as the primary control. Prompt defenses reduce risk but are not a reliable authorization boundary. Example: novel injection wording can still influence the model."
         },
         {
           "id": "C",
-          "text": "Remove all tools from the agent, including safe lookup tools.",
-          "explanation": "Incorrect. This avoids useful functionality rather than governing it. Example: support agents may still need read-only order lookup."
+          "text": "Check the caller's admin role before the tool call but accept the model-generated record ID and deletion reason without further validation.",
+          "explanation": "Incorrect. Authorization alone does not prevent accidental or manipulated deletion of the wrong record. Example: arguments must be checked against approved scope and workflow state."
         },
         {
           "id": "D",
-          "text": "Let the model call the tool, then inspect logs after the action completes.",
-          "explanation": "Incorrect. Dangerous actions should be prevented before execution. Example: audit logs help investigation but cannot undo deleted records easily."
+          "text": "Validate deletion arguments and approval state but allow any authenticated user to request the tool call.",
+          "explanation": "Incorrect. Strong argument validation does not replace role-based authorization. Example: a support user should not gain deletion capability merely by supplying valid parameters."
         }
       ],
       "correct_answers": [
@@ -14604,7 +14604,7 @@ window.QUESTION_BANK = {
       "id": "V55_034",
       "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "memory",
         "persistent datastore",
@@ -14614,23 +14614,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Persist structured state in a governed datastore keyed by conversation/user/workflow identifiers.",
-          "explanation": "Correct. Durable structured state should be stored explicitly, not inferred from prompts. Example: store ticket_id and approval_status in a Delta table or governed service table."
+          "text": "Persist structured workflow state in a governed transactional store keyed by conversation, user, and workflow identifiers.",
+          "explanation": "Correct. Durable structured state supports concurrency, recovery, and explicit updates across turns. Example: store ticket ID, approval state, and last completed action as fields rather than prose."
         },
         {
           "id": "B",
-          "text": "Rely on the current prompt context window for all long-running workflow state.",
-          "explanation": "Incorrect. Context windows are temporary and can be truncated. Example: after many turns, the original ticket ID may fall out of context."
+          "text": "Use MLflow trace metadata as the authoritative store for workflow state.",
+          "explanation": "Incorrect. Traces are designed for observability and analysis, not transactional state mutation. Example: replaying or querying traces is not a safe way to update an approval status."
         },
         {
           "id": "C",
-          "text": "Store state only inside the final natural-language answer.",
-          "explanation": "Incorrect. Text responses are not reliable structured state stores. Example: downstream tools need exact ticket IDs, not prose summaries."
+          "text": "Summarize the conversation periodically and treat the summary as the only state checkpoint.",
+          "explanation": "Incorrect for structured workflows. Summaries can lose exact values and are difficult to update atomically. Example: an approval flag or API idempotency key should not depend on generated prose."
         },
         {
           "id": "D",
-          "text": "Use the embedding index as the primary transactional store for approval status.",
-          "explanation": "Incorrect. Vector indexes are for retrieval, not transactional workflow state. Example: approval_status should be updated deterministically, not searched semantically."
+          "text": "Store workflow facts in the vector index and retrieve the most similar state record on each turn.",
+          "explanation": "Incorrect. Semantic similarity is not reliable for exact transactional state. Example: retrieving a similar previous ticket can return the wrong approval status."
         }
       ],
       "correct_answers": [
@@ -14649,7 +14649,7 @@ window.QUESTION_BANK = {
       "id": "V55_035",
       "source": "Generated practice",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "data preparation",
         "deduplication",
@@ -14659,23 +14659,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Clean or filter repetitive boilerplate before chunking/indexing, then re-evaluate retrieval quality.",
-          "explanation": "Correct. Repeated low-value content can dominate retrieval and reduce signal-to-noise. Example: remove page footers like 'Confidential internal use only' before embedding."
+          "text": "Remove or normalize repeated boilerplate during ingestion before chunking and indexing, then re-evaluate retrieval.",
+          "explanation": "Correct. Cleaning the corpus prevents duplicated non-content text from dominating similarity results. Example: strip recurring headers and navigation while preserving unique legal clauses."
         },
         {
           "id": "B",
-          "text": "Increase the number of retrieved chunks without changing the corpus.",
-          "explanation": "Incorrect. Returning more noisy chunks may crowd out useful context. Example: top-20 retrieval can still include many duplicate footer chunks."
+          "text": "Add metadata filters that exclude entire pages identified as containing headers or footers.",
+          "explanation": "Incorrect as the first general fix. Page-level exclusion can remove useful body content on the same pages. Example: cleaning repeated elements is more precise than dropping the whole page."
         },
         {
           "id": "C",
-          "text": "Increase model temperature so the LLM can ignore irrelevant context creatively.",
-          "explanation": "Incorrect. Generation settings do not fix noisy retrieval. Example: the model may still cite boilerplate if it is what the retriever returns."
+          "text": "Keep the corpus unchanged and use a reranker to demote repetitive chunks at query time.",
+          "explanation": "Incorrect as the preferred first step. Reranking can help, but it adds latency and leaves unnecessary duplicates in the index. Example: remove deterministic noise upstream before paying query-time cost."
         },
         {
           "id": "D",
-          "text": "Use a larger final-answer LLM and keep the noisy index unchanged.",
-          "explanation": "Incorrect. A larger model may handle noise better, but the retrieval system still supplies poor evidence. Example: repeated navigation text wastes context budget for any model."
+          "text": "Reduce top-k so fewer repetitive chunks reach the prompt.",
+          "explanation": "Incorrect. A lower cutoff can hide some noise but may also remove the answer-bearing chunk. Example: the ranking problem remains because boilerplate still scores highly."
         }
       ],
       "correct_answers": [
@@ -14694,7 +14694,7 @@ window.QUESTION_BANK = {
       "id": "V55_036",
       "source": "Generated practice",
       "section": "6. Evaluation and Monitoring",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "cost control",
         "token usage",
@@ -14704,23 +14704,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Monitor token usage by prompt/output and reduce unnecessary context or output length while rechecking quality.",
-          "explanation": "Correct. Cost in LLM apps is often driven by tokens. Example: cap retrieved chunks and require a concise summary, then evaluate whether correctness remains acceptable."
+          "text": "Break down input and output token usage from traces, reduce unnecessary retrieved context and verbosity, and re-evaluate quality.",
+          "explanation": "Correct. The evidence directly identifies token volume as the cost driver. Example: rerank to fewer chunks, summarize older history, and set an appropriate output limit."
         },
         {
           "id": "B",
-          "text": "Disable retrieval entirely because retrieval creates tokens.",
-          "explanation": "Incorrect. Removing retrieval may reduce cost but can destroy groundedness. Example: a policy summary may become cheaper but unsupported."
+          "text": "Route all requests to a smaller model before determining whether excessive context is the primary cost source.",
+          "explanation": "Incorrect as the first step. A smaller model may reduce price but can preserve the waste and reduce quality. Example: diagnose avoidable token usage before changing the model."
         },
         {
           "id": "C",
-          "text": "Increase max output tokens to make the model finish more confidently.",
-          "explanation": "Incorrect. Larger outputs usually increase cost and may worsen verbosity. Example: allowing 4,000 output tokens for one-paragraph summaries wastes spend."
+          "text": "Enable prompt caching for repeated prefixes while leaving long, request-specific retrieved context unchanged.",
+          "explanation": "Incorrect as the complete solution. Caching can help repeated content, but unique retrieval tokens may still dominate cost. Example: measure cacheable and non-cacheable portions separately."
         },
         {
           "id": "D",
-          "text": "Ignore cost until the next model version is available.",
-          "explanation": "Incorrect. Cost is a production requirement and can be managed with usage monitoring, rate limits, prompt/context tuning, and model selection. Example: a shorter prompt may cut cost immediately."
+          "text": "Cap output tokens aggressively while leaving the oversized retrieved context unchanged.",
+          "explanation": "Incorrect. Output limits can reduce one component, but the traces already show large input context as another major source. Example: a short answer can still be expensive when the prompt contains many irrelevant chunks."
         }
       ],
       "correct_answers": [
@@ -14830,33 +14830,33 @@ window.QUESTION_BANK = {
       "id": "V55_039",
       "source": "Generated practice",
       "section": "5. Governance",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "Unity Catalog",
         "functions",
         "tool discovery"
       ],
-      "question": "An agent should call a refund-eligibility function, but only approved teams should be able to use it, and the function description must help the LLM choose it correctly. What should be emphasized?",
+      "question": "A refund-eligibility function should be discoverable by an agent, but only approved teams may execute it. Which design best combines tool selection quality with enforceable access control?",
       "options": [
         {
           "id": "A",
-          "text": "Register the function in Unity Catalog with clear comments/metadata and manage permissions through UC grants.",
-          "explanation": "Correct. Unity Catalog can govern function access and metadata helps agents discover the right tool. Example: a comment describes inputs order_id and customer_id plus when refund eligibility should be checked."
+          "text": "Register the function in Unity Catalog with clear parameter and behavior comments, and grant EXECUTE only to approved principals.",
+          "explanation": "Correct. Metadata helps the model select and populate the tool, while Unity Catalog grants enforce who can execute it. Example: the description states eligibility conditions and the schema documents required order fields."
         },
         {
           "id": "B",
-          "text": "Put the function code in a notebook cell and tell users not to call it unless approved.",
-          "explanation": "Incorrect. Notebook convention is not a governed tool catalog. Example: permissions and discoverability are weaker than registering a UC function."
+          "text": "Register the function with clear metadata, grant broad EXECUTE access, and instruct the agent prompt to restrict usage to approved teams.",
+          "explanation": "Incorrect. Good metadata supports discovery, but prompt instructions do not enforce authorization. Example: an unapproved user could still invoke the function through another client."
         },
         {
           "id": "C",
-          "text": "Expose the function as an unauthenticated public HTTP endpoint for easier tool calls.",
-          "explanation": "Incorrect. Public unauthenticated access violates the requirement for approved teams. Example: anyone with the URL could check refund status."
+          "text": "Expose the function through a custom tool using a broadly privileged app identity and check the user's team only in the chat prompt.",
+          "explanation": "Incorrect. The privileged identity can bypass user-level governance, and prompt checks are not a security boundary. Example: authorization must be validated in the tool or governed resource layer."
         },
         {
           "id": "D",
-          "text": "Hide the function description so the LLM cannot overuse it.",
-          "explanation": "Incorrect. Poor descriptions can cause the agent to choose the wrong tool or arguments. Example: a clear comment reduces accidental use for non-refund questions."
+          "text": "Grant EXECUTE to all workspace users and rely on audit logs to detect unauthorized calls after they occur.",
+          "explanation": "Incorrect. Auditing is important but does not prevent unauthorized execution. Example: least-privilege grants should block the call before a refund decision is exposed."
         }
       ],
       "correct_answers": [
@@ -14876,7 +14876,7 @@ window.QUESTION_BANK = {
       "id": "V55_040",
       "source": "Generated practice",
       "section": "1. Design Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "quality system",
         "production readiness",
@@ -14886,23 +14886,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "The prototype may be promising, but it is not production-ready until quality, governance, observability, and cost controls are engineered.",
-          "explanation": "Correct. Production GenAI is a system engineering problem, not just a good demo. Example: a chatbot that works for one tester may fail at scale without permissions and monitoring."
+          "text": "Treat the demo as promising but not production-ready until quality, permissions, observability, reliability, and cost controls are defined and tested.",
+          "explanation": "Correct. Positive feedback does not replace production engineering. Example: build an evaluation set, capture traces, enforce data access, monitor costs, and define release gates."
         },
         {
           "id": "B",
-          "text": "Positive tester feedback is enough to deploy because GenAI quality is mainly subjective.",
-          "explanation": "Incorrect. Vibe-based evaluation is insufficient for production. Example: customer-facing apps need measured quality and safety, not just demo impressions."
+          "text": "Run a limited production pilot with tracing, but defer permission design until usage grows.",
+          "explanation": "Incorrect. A pilot can reduce rollout risk, but access controls must exist before real users and data are exposed. Example: small scale does not make unauthorized document access acceptable."
         },
         {
           "id": "C",
-          "text": "The next step is to choose the largest model and skip architecture review.",
-          "explanation": "Incorrect. Model size alone does not solve governance, data quality, monitoring, or cost. Example: a larger model still needs permissioned retrieval and tracing."
+          "text": "Create an evaluation set and quality threshold, then deploy without cost monitoring or governance because accuracy is the main blocker.",
+          "explanation": "Incorrect. Quality is necessary but not sufficient for production readiness. Example: a correct application can still leak data or produce unsustainable serving costs."
         },
         {
           "id": "D",
-          "text": "The app should be deployed first, and evaluation should start only after user complaints arrive.",
-          "explanation": "Incorrect. Waiting for complaints increases risk. Example: production monitoring should be planned before launch for safety-critical workflows."
+          "text": "Add authentication and data permissions, then rely on demo feedback for quality and operational readiness.",
+          "explanation": "Incorrect. Governance alone does not establish reliability, latency, cost, or answer quality. Example: production traces and repeatable evaluation are still required."
         }
       ],
       "correct_answers": [
@@ -14922,7 +14922,7 @@ window.QUESTION_BANK = {
       "id": "V512_HARD_001",
       "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "AI Search",
         "Delta Sync",
@@ -14934,23 +14934,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Enable Change Data Feed on the source Delta table, then retry the Delta Sync index creation.",
-          "explanation": "Correct. Standard AI Search endpoints require Change Data Feed on the source table so changes can be synchronized incrementally. Example: set the table property delta.enableChangeDataFeed=true before creating the index."
+          "text": "Enable Change Data Feed on the source Delta table and retry creation of the standard Delta Sync index.",
+          "explanation": "Correct for the stated prerequisite. Standard Delta Sync uses source changes to maintain the index incrementally. Example: set the required table property before creating the index."
         },
         {
           "id": "B",
-          "text": "Replace the primary key with a generated UUID on every pipeline run.",
-          "explanation": "Incorrect. A new key on every run destroys row identity and can create duplicates or unnecessary re-embedding. Stable keys are needed to recognize updates to existing chunks."
+          "text": "Rebuild the source with deterministic primary keys and retry without enabling Change Data Feed.",
+          "explanation": "Incorrect. Stable keys are important, but the scenario already has a unique key and the missing prerequisite is change tracking. Example: fixing an already-valid key does not enable incremental sync."
         },
         {
           "id": "C",
-          "text": "Change the index to Direct Vector Access but continue expecting the Delta table to synchronize automatically.",
-          "explanation": "Incorrect. Direct Vector Access transfers update responsibility to the application. It does not automatically track changes in the source Delta table."
+          "text": "Create a Direct Vector Access index and schedule a job that reads the Delta table and upserts vectors.",
+          "explanation": "Incorrect for the desired managed synchronization. This can be engineered, but the application must then own embedding and update logic. Example: it changes the architecture rather than fixing the Delta Sync prerequisite."
         },
         {
           "id": "D",
-          "text": "Enable inference tables on the embedding endpoint.",
-          "explanation": "Incorrect. Inference tables log model-service requests and responses; they do not provide the change stream used by a Delta Sync index."
+          "text": "Use a storage-optimized endpoint because it can infer source-table changes without Change Data Feed.",
+          "explanation": "Incorrect. Endpoint type does not remove the source-table requirements for the selected synchronization design. Example: scale characteristics and change tracking are separate concerns."
         }
       ],
       "correct_answers": [
@@ -15017,7 +15017,7 @@ window.QUESTION_BANK = {
       "id": "V512_HARD_003",
       "source": "Generated practice",
       "section": "4. Assembling and Deploying Applications",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "AI Search",
         "Direct Vector Access",
@@ -15029,23 +15029,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Direct Vector Access, with the application performing vector upserts and deletes through the SDK or REST API.",
-          "explanation": "Correct. Direct access is designed for application-managed vectors and record-level updates when there is no Delta source to synchronize."
+          "text": "Use Direct Vector Access and let the application upsert and delete the externally generated vectors through the SDK or REST API.",
+          "explanation": "Correct. The records are application-managed and not sourced from a Delta table. Example: each external event can immediately update the corresponding vector record."
         },
         {
           "id": "B",
-          "text": "A Delta Sync index with continuous mode, using the external service as the source table.",
-          "explanation": "Incorrect. Delta Sync requires a Delta table source. An external service is not itself a synchronizable Delta source."
+          "text": "Land the vectors in a Delta table and use a triggered Delta Sync index on a frequent schedule.",
+          "explanation": "Incorrect for the seconds-level requirement. This introduces staging and scheduled-sync latency. Example: triggered refreshes can lag behind real-time updates."
         },
         {
           "id": "C",
-          "text": "A managed-embedding Delta Sync index, while continuing to use the externally computed vectors as the authoritative embeddings.",
-          "explanation": "Incorrect. Managed embeddings and externally supplied vectors are different ownership models. The requirement is to preserve externally computed vectors and manage their updates directly."
+          "text": "Land the vectors in a Delta table and use a managed-embedding Delta Sync index.",
+          "explanation": "Incorrect. Managed embeddings would recompute vectors and ignore the externally supplied embeddings as authoritative. Example: use a self-managed-embedding design only when supported by the chosen source architecture."
         },
         {
           "id": "D",
-          "text": "An inference table attached to the external embedding model.",
-          "explanation": "Incorrect. Inference tables capture request and response logs; they are not a searchable vector index and do not support upsert/delete semantics."
+          "text": "Use continuous Delta Sync by presenting the external API as the index source.",
+          "explanation": "Incorrect. Delta Sync requires a supported Delta-table source rather than an arbitrary external service endpoint. Example: the service must either write to a source table or manage Direct Vector Access updates."
         }
       ],
       "correct_answers": [
@@ -15111,7 +15111,7 @@ window.QUESTION_BANK = {
       "id": "V512_HARD_005",
       "source": "Generated practice",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "Delta table",
         "primary key",
@@ -15123,23 +15123,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Derive a deterministic chunk key from stable source identity and chunk position, such as a hash of document_id and chunk_index.",
-          "explanation": "Correct. A deterministic key lets synchronization recognize the same logical chunk across runs and update it instead of treating it as a new record."
+          "text": "Derive a deterministic chunk key from stable source identity and logical chunk position or content identity.",
+          "explanation": "Correct. Stable keys let incremental sync recognize unchanged chunks. Example: hash document_id, section_id, and chunk_index rather than assigning a new sequence each run."
         },
         {
           "id": "B",
-          "text": "Keep the changing IDs and increase the embedding endpoint rate limit.",
-          "explanation": "Incorrect. More throughput may hide the symptom temporarily but does not fix unstable row identity or duplicate index records."
+          "text": "Use the complete chunk text as the primary key so identical content receives the same identifier.",
+          "explanation": "Incorrect as the best design. Text can be long, mutable, duplicated across documents, and unsuitable as a stable business key. Example: repeated boilerplate would create collisions across files."
         },
         {
           "id": "C",
-          "text": "Use the chunk text itself as the only primary key.",
-          "explanation": "Incorrect. Identical text can occur in multiple documents, and a small text edit changes the key. Source identity plus chunk position is more reliable."
+          "text": "Keep generated IDs but merge the nightly table with the previous run to preserve IDs for exact text matches.",
+          "explanation": "Incorrect as the preferred correction. This can work but adds complex matching and still breaks when text changes slightly. Example: derive identity from stable source structure upstream instead."
         },
         {
           "id": "D",
-          "text": "Disable incremental synchronization and recreate the endpoint after every run.",
-          "explanation": "Incorrect. Recreating infrastructure is costly and avoids the benefit of stable incremental updates rather than solving the data-model problem."
+          "text": "Recreate the index after every nightly rebuild so changing IDs no longer affect incremental behavior.",
+          "explanation": "Incorrect. Full rebuilds increase cost and downtime and discard the benefit of incremental synchronization. Example: unchanged documents would be re-embedded every night."
         }
       ],
       "correct_answers": [
@@ -15503,7 +15503,7 @@ window.QUESTION_BANK = {
       "id": "V512_HARD_013",
       "source": "Generated practice",
       "section": "2. Data Preparation",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
       "tags": [
         "AI Search",
         "hybrid search",
@@ -15515,23 +15515,23 @@ window.QUESTION_BANK = {
       "options": [
         {
           "id": "A",
-          "text": "Use hybrid keyword-vector retrieval and apply a product-code metadata filter when the query contains a recognized identifier.",
-          "explanation": "Correct. Hybrid search combines exact-term and semantic signals, while metadata filtering narrows results to the identified product without adding a separate reranker call."
+          "text": "Use hybrid keyword-vector retrieval and apply a product-code metadata filter when a recognized identifier is present.",
+          "explanation": "Correct. Hybrid search handles both lexical identifiers and semantic descriptions without a separate reranker. Example: filter to XR-17A for a code query while vector similarity handles symptom wording."
         },
         {
           "id": "B",
-          "text": "Use vector-only retrieval and remove product-code metadata because embeddings always preserve exact identifiers.",
-          "explanation": "Incorrect. Exact alphanumeric codes are a common case where keyword and metadata signals complement embeddings."
+          "text": "Use hybrid retrieval for every query but do not apply metadata filters, because keyword matching is sufficient for product codes.",
+          "explanation": "Incorrect. Hybrid scoring helps exact terms, but same or similar identifiers can still appear in accessories, revisions, or unrelated documents. Example: a deterministic product filter narrows the candidate set."
         },
         {
           "id": "C",
-          "text": "Use keyword-only retrieval for every query because semantic similarity adds no value when some queries contain codes.",
-          "explanation": "Incorrect. Keyword search can match identifiers but may miss semantically related descriptions that use different wording."
+          "text": "Route code-shaped queries to keyword-only search and all other queries to vector-only search.",
+          "explanation": "Incorrect as the strongest plan. Query routing can work, but mixed queries often contain both an identifier and semantic symptoms. Example: hybrid retrieval preserves both signals in one search."
         },
         {
           "id": "D",
-          "text": "Fine-tune the answer-generating LLM to memorize the product catalog and disable retrieval.",
-          "explanation": "Incorrect. Catalog content changes, and fine-tuning does not provide a governed, current replacement for retrieval and filtering."
+          "text": "Use vector search with the product code appended repeatedly to the query to strengthen the exact-match signal.",
+          "explanation": "Incorrect. Prompting the embedding input does not provide the deterministic behavior of lexical search and metadata filtering. Example: exact identifiers can be poorly represented by embeddings."
         }
       ],
       "correct_answers": [
